@@ -1,7 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.entity.Produto;
-import com.br.projetoFinal.service.ProdutoService;
+import com.br.projetoFinal.serviceImpl.ProdutoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class ProdutoController {
 
     @Autowired
-    ProdutoService produtoService;
+    ProdutoServiceImpl produtoService;
 
     @PostMapping
     public void salvar(@RequestBody Produto produto) {

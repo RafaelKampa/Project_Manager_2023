@@ -1,7 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.service.ServicoService;
+import com.br.projetoFinal.serviceImpl.ServicoServiceImpl;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ import java.util.NoSuchElementException;
 public class ServicoController {
 
     @Autowired
-    ServicoService servicoService;
+    ServicoServiceImpl servicoService;
 
     @PostMapping
     public ResponseEntity<?> salvar(@RequestBody Servico servico) throws ExcecaoExemplo {

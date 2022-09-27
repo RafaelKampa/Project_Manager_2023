@@ -2,7 +2,7 @@ package com.br.projetoFinal.controller;
 
 
 import com.br.projetoFinal.entity.Usuario;
-import com.br.projetoFinal.service.UsuarioService;
+import com.br.projetoFinal.serviceImpl.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    UsuarioService usuarioService;
+    UsuarioServiceImpl usuarioService;
 
     @PostMapping
     public void salvar(@RequestBody Usuario usuario) {
@@ -29,6 +29,12 @@ public class UsuarioController {
     public Usuario buscarPorId(@PathVariable("id") Integer id){
         return usuarioService.buscarPorId(id);
     }
+
+    @GetMapping("/{nome}")
+    public Usuario buscarPorNome(@PathVariable("nome") String nome){
+        return usuarioService.buscarPorNome(nome);
+    }
+
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable("id") Integer id) {
         usuarioService.excluir(id);
