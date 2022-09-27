@@ -36,7 +36,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         try {
 
-            UserDetails u = new CustomUser("cleverson",
+            UserDetails u = new CustomUser("rafaelkampa",
                     "$2a$12$LlxKRPHgE2I41V9o2hcN5ud.4dRUA67QCZhDUbh9C6GevJBoyoPo2",
                     true,
                     true,

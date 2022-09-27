@@ -1,7 +1,7 @@
 package com.br.projetoFinal.security.component;
 
-import br.pucbr.exemplo.security.filter.JWTAuthenticationFilter;
-import br.pucbr.exemplo.security.filter.JWTLoginFilter;
+import com.br.projetoFinal.security.filter.JWTAuthenticationFilter;
+import com.br.projetoFinal.security.filter.JWTLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,11 +29,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/public/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/public/exemplo/autenticacao").permitAll()
+                .antMatchers(HttpMethod.POST, "/public/projetoFinal/autenticacao").permitAll()
                 .anyRequest().authenticated().and()
 
                 // filtra requisições de login
-                .addFilterBefore(new JWTLoginFilter("/public/exemplo/autenticacao", authenticationManager()),
+                .addFilterBefore(new JWTLoginFilter("/public/projetoFinal/autenticacao", authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
 
                 // filtra outras requisições para verificar a presença do JWT no header
