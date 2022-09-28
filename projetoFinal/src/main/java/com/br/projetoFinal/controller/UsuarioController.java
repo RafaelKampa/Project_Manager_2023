@@ -3,6 +3,7 @@ package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.serviceImpl.UsuarioServiceImpl;
+import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class UsuarioController {
     UsuarioServiceImpl usuarioService;
 
     @PostMapping
-    public void salvar(@RequestBody Usuario usuario) {
+    public void salvar(@RequestBody Usuario usuario) throws ExcecaoExemplo {
         usuarioService.salvar(usuario);
     }
 
