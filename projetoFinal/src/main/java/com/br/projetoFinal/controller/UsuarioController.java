@@ -1,6 +1,5 @@
 package com.br.projetoFinal.controller;
 
-
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.serviceImpl.UsuarioServiceImpl;
@@ -10,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.SystemException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -21,8 +21,8 @@ public class UsuarioController {
     UsuarioServiceImpl usuarioService;
 
     @PostMapping
-    public void salvar(@RequestBody Usuario usuario) throws ExcecaoExemplo {
-        usuarioService.salvar(usuario);
+    public void salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
+        usuarioService.salvarUsuario(usuarioDto);
     }
 
     @GetMapping

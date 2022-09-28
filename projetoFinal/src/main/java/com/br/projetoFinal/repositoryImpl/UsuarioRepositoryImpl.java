@@ -3,13 +3,15 @@ package com.br.projetoFinal.repositoryImpl;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
+import org.modelmapper.ModelMapper;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.*;
 import java.util.List;
-import java.util.Map;
 
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
@@ -27,27 +29,27 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public void salvar(Usuario usuario) {
-        em.createNamedQuery("INSERT INTO usuario (id, login, senha, tipoUsuario, nome, dataNascimento, cpf, enderecoResidencial, " +
-                    "telefone, email, contratante, dataAdmissao, dataDesligamento, cargo, remuneracao) " +
-                    "VALUES (:id, :login, :senha, :tipoUsuario, :nome, :dataNascimento, :cpf, :enderecoResidencial, :telefone, :email, " +
-                    ":contratante, :dataAdmissao, :dataDesligamento, :cargo, :remuneracao)")
-                .setParameter("id", usuario.getId())
-                .setParameter("login", usuario.getLogin())
-                .setParameter("senha", usuario.getSenha())
-                .setParameter("tipoUsuario", usuario.getTipoUsuario())
-                .setParameter("nome", usuario.getNome())
-                .setParameter("dataNascimento", usuario.getDataNascimento())
-                .setParameter("cpf", usuario.getCpf())
-                .setParameter("enderecoResidencial", usuario.getEnderecoResidencial())
-                .setParameter("telefone", usuario.getTelefone())
-                .setParameter("email", usuario.getEmail())
-                .setParameter("contratante", usuario.getContratante())
-                .setParameter("dataAdmissao", usuario.getDataAdmissao())
-                .setParameter("dataDesligamento", usuario.getDataDesligamento())
-                .setParameter("cargo", usuario.getCargo())
-                .setParameter("remuneracao", usuario.getRemuneracao())
-                .executeUpdate();
+    public void salvarUsuario(UsuarioDto usuarioDto) {
+            em.createNativeQuery("INSERT INTO usuario (id, login, senha, tipoUsuario, nome, dataNascimento, cpf, enderecoResidencial, " +
+                            "telefone, email, contratante, dataAdmissao, dataDesligamento, cargo, remuneracao) " +
+                            "VALUES (:id, :login, :senha, :tipoUsuario, :nome, :dataNascimento, :cpf, :enderecoResidencial, :telefone, :email, " +
+                            ":contratante, :dataAdmissao, :dataDesligamento, :cargo, :remuneracao)")
+                    .setParameter("id", usuarioDto.getId())
+                    .setParameter("login", usuarioDto.getLogin())
+                    .setParameter("senha", usuarioDto.getSenha())
+                    .setParameter("tipoUsuario", usuarioDto.getTipoUsuario())
+                    .setParameter("nome", usuarioDto.getNome())
+                    .setParameter("dataNascimento", usuarioDto.getDataNascimento())
+                    .setParameter("cpf", usuarioDto.getCpf())
+                    .setParameter("enderecoResidencial", usuarioDto.getEnderecoResidencial())
+                    .setParameter("telefone", usuarioDto.getTelefone())
+                    .setParameter("email", usuarioDto.getEmail())
+                    .setParameter("contratante", usuarioDto.getContratante())
+                    .setParameter("dataAdmissao", usuarioDto.getDataAdmissao())
+                    .setParameter("dataDesligamento", usuarioDto.getDataDesligamento())
+                    .setParameter("cargo", usuarioDto.getCargo())
+                    .setParameter("remuneracao", usuarioDto.getRemuneracao())
+                    .executeUpdate();
     }
 
     @Override

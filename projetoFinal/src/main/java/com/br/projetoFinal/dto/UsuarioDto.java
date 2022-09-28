@@ -1,12 +1,14 @@
 package com.br.projetoFinal.dto;
 
+import com.br.projetoFinal.entity.Usuario;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-public class UsuarioDto {
+public class UsuarioDto extends Usuario {
 
     private Integer id;
     private String login;
