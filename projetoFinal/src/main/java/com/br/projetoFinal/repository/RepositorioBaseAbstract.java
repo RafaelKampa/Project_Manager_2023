@@ -72,7 +72,6 @@ public abstract class RepositorioBaseAbstract {
         }
     }
 
-    @SuppressWarnings("unchecked")
     protected  <T> T getSingleResultOrNull(Query query) {
         try {
             return (T) query.getSingleResult();

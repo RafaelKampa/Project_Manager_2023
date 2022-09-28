@@ -8,8 +8,8 @@ public interface UsuarioService {
 
     public void salvar(Usuario usuario);
     public List<Usuario> listar();
-    public Usuario buscarPorId(Integer id);
-    public Usuario buscarPorNome(String nome);
+    public List<Usuario> buscarPorId(Integer id);
+    public List<Usuario> buscarPorNome(String nome);
     public void excluir(Integer id);
 
 }

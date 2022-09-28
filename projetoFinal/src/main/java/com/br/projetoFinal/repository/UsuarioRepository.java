@@ -8,9 +8,9 @@ import java.util.Map;
 
 public interface UsuarioRepository {
 
-    Usuario buscarPorNome(String nome);
+    List<Usuario> buscarPorNome(String nome);
     void salvar(Usuario usuario);
     List<Usuario> listar();
-    Map<Object, Object> buscarPorId(Integer id);
+    List<Usuario> buscarPorId(Integer id);
     void excluirPorId(Integer id);
 }

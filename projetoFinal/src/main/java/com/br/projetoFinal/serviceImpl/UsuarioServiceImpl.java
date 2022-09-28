@@ -22,11 +22,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.listar();
     }
 
-    public Usuario buscarPorId(Integer id) {
-        return (Usuario) usuarioRepository.buscarPorId(id);
+    public List<Usuario> buscarPorId(Integer id) {
+        return usuarioRepository.buscarPorId(id);
     }
 
-    public Usuario buscarPorNome(String nome){
+    public List<Usuario> buscarPorNome(String nome){
         return usuarioRepository.buscarPorNome(nome);
     }
 
