@@ -1,11 +1,13 @@
 package com.br.projetoFinal.repositoryImpl;
 
+import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Map;
 
@@ -18,10 +20,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return em;
     }
 
-    public List<Usuario> buscarPorNome(String nome) {
-        Query query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE nome = :nome")
-                .setParameter("nome", nome);
-        return query.getResultList();
+    public UsuarioDto buscarPorNome(String nome) {
+        TypedQuery<UsuarioDto> query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE nome = :nome", UsuarioDto.class);
+        query.setParameter("id", nome);
+        return query.getSingleResult();
     }
 
     @Override
@@ -55,10 +57,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public List<Usuario> buscarPorId(Integer id) {
-        Query query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE id = :id")
-                .setParameter("id", id);
-        return query.getResultList();
+    public UsuarioDto buscarPorId(Integer id) {
+        TypedQuery<UsuarioDto> query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE id = :id", UsuarioDto.class);
+                query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     @Override

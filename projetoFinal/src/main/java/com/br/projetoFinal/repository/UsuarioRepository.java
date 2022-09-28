@@ -1,5 +1,6 @@
 package com.br.projetoFinal.repository;
 
+import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,9 +10,9 @@ import java.util.Map;
 
 public interface UsuarioRepository {
 
-    List<Usuario> buscarPorNome(String nome);
+    UsuarioDto buscarPorNome(String nome);
     void salvar(Usuario usuario) throws ExcecaoExemplo;
     List<Usuario> listar();
-    List<Usuario> buscarPorId(Integer id);
+    UsuarioDto buscarPorId(Integer id);
     void excluirPorId(Integer id);
 }

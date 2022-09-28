@@ -1,5 +1,6 @@
 package com.br.projetoFinal.serviceImpl;
 
+import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 import com.br.projetoFinal.service.UsuarioService;
@@ -39,11 +40,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.listar();
     }
 
-    public List<Usuario> buscarPorId(Integer id) {
+    public UsuarioDto buscarPorId(Integer id) {
         return usuarioRepository.buscarPorId(id);
     }
 
-    public List<Usuario> buscarPorNome(String nome){
+    public UsuarioDto buscarPorNome(String nome){
         return usuarioRepository.buscarPorNome(nome);
     }
 
