@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "USUARIO")
 public class Usuario {
 
     //Dados de login
@@ -12,48 +12,48 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "login", nullable = false)
+    @Column(name = "LOGIN", nullable = false)
     private String login;
 
-    @Column(name = "senha", nullable = false, unique = true)
+    @Column(name = "SENHA", nullable = false, unique = true)
     private String senha;
 
-    @Column(name = "tipoUsuario", nullable = false)
+    @Column(name = "TIPO_USUARIO", nullable = false)
     private Integer tipoUsuario; //0 = Administrador / 1 = Usuario com privilégios de edição de serviços / 2 = Usuário somente leitura
 
     //Dados pessoais do usuário
-    @Column(name = "nome", nullable = false)
+    @Column(name = "NOME", nullable = false)
     private String nome;
 
-    @Column(name = "dataNascimento")
+    @Column(name = "DATA_NASCIMENTO")
     private Date dataNascimento;
 
-    @Column(name = "cpf")
+    @Column(name = "CPF")
     private String cpf;
 
-    @Column(name = "enderecoResidencial")
+    @Column(name = "ENDERECO_RESIDENCIAL")
     private String enderecoResidencial;
 
-    @Column(name = "telefone")
+    @Column(name = "TELEFONE")
     private String telefone;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
     //Dados do contrato do usuario
-    @Column(name = "contratante", nullable = false)
+    @Column(name = "CONTRATANTE", nullable = false)
     private String contratante;//Buscar dados da tabela contratante
 
-    @Column(name = "dataAdmissao", nullable = false)
+    @Column(name = "DATA_ADMISSAO", nullable = false)
     private Date dataAdmissao;
 
-    @Column(name = "dataDesligamento")
+    @Column(name = "DATA_DESLIGAMENTO")
     private Date dataDesligamento;
 
-    @Column(name = "cargo", nullable = false)
+    @Column(name = "CARGO", nullable = false)
     private String cargo; //Pegar essa informação da tabela "Cargos"
 
-    @Column(name = "remuneracao", nullable = false)
+    @Column(name = "REMUNERACAO", nullable = false)
     private double remuneracao; //Pegar essa informação da tabela Cargos
 
     public Integer getId() {

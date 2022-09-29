@@ -3,19 +3,19 @@ package com.br.projetoFinal.repositoryImpl;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
-import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.transaction.*;
 import java.util.List;
 
+@Component
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
-    @Inject
+    @Resource
     EntityManager em;
 
     protected EntityManager getEntityManager() {
@@ -23,8 +23,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     public UsuarioDto buscarPorNome(String nome) {
-        TypedQuery<UsuarioDto> query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE nome = :nome", UsuarioDto.class);
-        query.setParameter("id", nome);
+        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE nome = :nome")
+            .setParameter("nome", nome);
         return query.getSingleResult();
     }
 
@@ -54,20 +54,20 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public List<Usuario> listar() {
-        Query query = getEntityManager().createNamedQuery("SELECT * FROM usuario");
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM usuario");
         return query.getResultList();
     }
 
     @Override
     public UsuarioDto buscarPorId(Integer id) {
-        TypedQuery<UsuarioDto> query = getEntityManager().createNamedQuery("SELECT * FROM usuario WHERE id = :id", UsuarioDto.class);
-                query.setParameter("id", id);
+        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE id = :id")
+                .setParameter("id", id);
         return query.getSingleResult();
     }
 
     @Override
     public void excluirPorId(Integer id) {
-        em.createNamedQuery("DELETE * FROM usuario WHERE id = :id")
+        em.createNativeQuery("DELETE * FROM usuario WHERE id = :id")
                 .setParameter("id", id);
     }
 

@@ -5,11 +5,13 @@ import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.serviceImpl.UsuarioServiceImpl;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 import java.util.List;
 import java.util.NoSuchElementException;
 

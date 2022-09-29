@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.transaction.*;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 import java.util.List;
 
 @Service
@@ -20,7 +21,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Inject
+    @Resource
     ModelMapper mapper;
 
     @Resource
