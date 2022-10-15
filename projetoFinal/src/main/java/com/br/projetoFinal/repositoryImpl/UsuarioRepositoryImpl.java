@@ -2,11 +2,10 @@ package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
-import com.br.projetoFinal.repository.UsuarioRepository;
+import com.br.projetoFinal.repositoryImpl.repository.UsuarioRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;

@@ -1,7 +1,7 @@
 package com.br.projetoFinal.serviceImpl;
 
 import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.repository.ServicoRepository;
+import com.br.projetoFinal.repositoryImpl.repository.ServicoRepository;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

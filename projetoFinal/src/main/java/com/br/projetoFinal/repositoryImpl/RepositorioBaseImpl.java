@@ -1,6 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
-import com.br.projetoFinal.repository.RepositorioBaseAbstract;
+import com.br.projetoFinal.repositoryImpl.repository.RepositorioBaseAbstract;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -2,7 +2,7 @@ package com.br.projetoFinal.serviceImpl;
 
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
-import com.br.projetoFinal.repository.UsuarioRepository;
+import com.br.projetoFinal.repositoryImpl.repository.UsuarioRepository;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.modelmapper.ModelMapper;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.List;
