@@ -2,7 +2,7 @@ package com.br.projetoFinal.serviceImpl;
 
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
-import com.br.projetoFinal.repositoryImpl.repository.UsuarioRepository;
+import com.br.projetoFinal.repository.UsuarioRepository;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.modelmapper.ModelMapper;
@@ -26,6 +26,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Resource
     private UserTransaction utx;
 
+    @Override
     public void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         Usuario usuario = mapper.map(usuarioDto, Usuario.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
@@ -53,19 +54,22 @@ public class UsuarioServiceImpl implements UsuarioService {
             e.printStackTrace();
         }
     }
-
+    @Override
     public List<Usuario> listar() {
         return usuarioRepository.listar();
     }
 
-    public UsuarioDto buscarPorId(Integer id) {
+    @Override
+    public Usuario buscarPorId(Integer id) {
         return usuarioRepository.buscarPorId(id);
     }
 
-    public UsuarioDto buscarPorNome(String nome){
+    @Override
+    public Usuario buscarPorNome(String nome){
         return usuarioRepository.buscarPorNome(nome);
     }
 
+    @Override
     public void excluir(Integer id){
         usuarioRepository.excluirPorId(id);
     }

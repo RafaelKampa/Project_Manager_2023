@@ -1,4 +1,4 @@
-package com.br.projetoFinal.repositoryImpl.repository;
+package com.br.projetoFinal.repository;
 
 
 import java.math.BigDecimal;

@@ -1,6 +1,9 @@
 package com.br.projetoFinal.controller;
 
+import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Servico;
+import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.serviceImpl.ServicoServiceImpl;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +17,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.SystemException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/servico")
-
 public class ServicoController {
 
     @Autowired
     ServicoServiceImpl servicoService;
 
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody Servico servico) throws ExcecaoExemplo {
-        servico = servicoService.salvar(servico);
-        return new ResponseEntity<>(servico, HttpStatus.CREATED);
+    public void salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
+        servicoService.salvarNovoServico(servicoDto);
     }
 
     @GetMapping
@@ -51,4 +53,8 @@ public class ServicoController {
         servicoService.excluir(id);
     }
 
+    @GetMapping("/{tipoServico}")
+    public List<Servico> buscarPorNome(@PathVariable("tipoServico") String tipoServico) {
+        return servicoService.buscarPorServico(tipoServico);
+    }
 }

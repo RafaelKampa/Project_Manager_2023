@@ -8,11 +8,9 @@ import javax.transaction.SystemException;
 import java.util.List;
 
 public interface UsuarioService {
-
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
-    UsuarioDto buscarPorId(Integer id);
-    UsuarioDto buscarPorNome(String nome);
+    Usuario buscarPorId(Integer id);
+    Usuario buscarPorNome(String nome);
     void excluir(Integer id);
-
 }

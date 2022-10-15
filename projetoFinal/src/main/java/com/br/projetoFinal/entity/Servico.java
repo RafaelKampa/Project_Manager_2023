@@ -1,5 +1,7 @@
 package com.br.projetoFinal.entity;
 
+import com.br.projetoFinal.dto.UsuarioDto;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,44 +11,53 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "SERVICO")
+@Table(name = "servico")
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "TIPOSERVICO", nullable = false, unique = true)
+    @Column(name = "tipoServico", nullable = false, unique = true)
     private String tipoServico;
 
-    @Column(name = "VALORUNITARIO", nullable = false, unique = false)
+    @Column(name = "valorUnitario", nullable = false, unique = false)
     private Double valorUnitario;
 
-    @Column(name = "DIMENSAO", nullable = false, unique = false)
+    @Column(name = "dimensao", nullable = false, unique = false)
     private Double dimensao;
 
-    @Column(name = "LOCALEXECUCAO", nullable = false, unique = false)
+    @Column(name = "localExecucao", nullable = false, unique = false)
     private String localExecucao;
 
     //Vem da tabela "Usuario"
-    @Column(name = "EXECUTOR", nullable = false, unique = false)
+    @Column(name = "executor", nullable = false, unique = false)
     private String executor;
 
     //Vem do usuário logado que fará o cadastro do serviço
-    @Column(name = "CONFERENTE", nullable = false, unique = false)
+    @Column(name = "conferente", nullable = false, unique = false)
     private String conferente;
 
-    @Column(name = "DTINICIO", nullable = false, unique = false)
+    @Column(name = "dataInicio", nullable = false, unique = false)
     private Date dataInicio;
 
-    @Column(name = "DATAFINAL", nullable = true, unique = false)
+    @Column(name = "dataFinal", nullable = true, unique = false)
     private Date dataFinal;
 
-    @Column(name = "VALORTOTAL", nullable = true, unique = false)
+    @Column(name = "valorTotal", nullable = true, unique = false)
     private Double valorTotal;
 
-    public Servico(Integer id, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao,
-                   String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal) {
+    @Column(name = "obs", nullable = true, unique = false)
+    private String obs;
+
+    //Situacao é referente a aprovação ou não do serviço, considerar 0 como não aprovado e 1 como aprovado após a execução
+    //por padrão o serviço é cadastrado como 0 e só deve ser alterado após a conferência aprovar a execução do serviço
+    //que irá realizar o pagamento do serviço ao funcionário executor
+    @Column(name = "situacao", nullable = false, unique = false)
+    private int situacao;
+
+    public Servico(Integer id, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
+                   String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs, int situacao) {
         this.id = id;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
@@ -57,10 +68,12 @@ public class Servico {
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
         this.valorTotal = valorTotal;
+        this.obs = obs;
+        this.situacao = situacao;
     }
 
     public Servico(String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
-                   String conferente, Date dataInicio) {
+                   String conferente, Date dataInicio, int situacao) {
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
@@ -68,6 +81,7 @@ public class Servico {
         this.executor = executor;
         this.conferente = conferente;
         this.dataInicio = dataInicio;
+        this.situacao = situacao;
     }
 
     public Servico() {
@@ -160,5 +174,21 @@ public class Servico {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+
+    public int getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(int situacao) {
+        this.situacao = situacao;
     }
 }

@@ -1,4 +1,4 @@
-package com.br.projetoFinal.repositoryImpl.repository;
+package com.br.projetoFinal.repository;
 
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
@@ -12,9 +12,9 @@ import java.util.Map;
 
 public interface UsuarioRepository {
 
-    UsuarioDto buscarPorNome(String nome);
+    Usuario buscarPorNome(String nome);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
-    UsuarioDto buscarPorId(Integer id);
+    Usuario buscarPorId(Integer id);
     void excluirPorId(Integer id);
 }

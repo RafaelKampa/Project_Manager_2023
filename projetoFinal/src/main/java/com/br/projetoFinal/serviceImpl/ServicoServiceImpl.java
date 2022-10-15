@@ -1,48 +1,81 @@
 package com.br.projetoFinal.serviceImpl;
 
+import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.repositoryImpl.repository.ServicoRepository;
+import com.br.projetoFinal.repository.ServicoRepository;
+import com.br.projetoFinal.service.ServicoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 import java.util.List;
 
 @Service
-public class ServicoServiceImpl {
+public class ServicoServiceImpl implements ServicoService{
 
     @Autowired
     private ServicoRepository servicoRepository;
 
-    public Servico salvar(Servico servico) throws ExcecaoExemplo {
-        if (servico.getTipoServico().equals(null)) {
-            throw new ExcecaoExemplo("ERR002","É necessário informar o tipo de serviço.");
-        } else if (servico.getDimensao().equals(null)) {
-            throw new ExcecaoExemplo("ERR003", "É necessário informar a dimensão do serviço.");
-        } else if (servico.getValor().equals(null)) {
-            throw new ExcecaoExemplo("ERR004", "É necessário informar o valor do serviço");
-        } else if (servico.getLocalExecucao().equals(null)) {
-            throw new ExcecaoExemplo("ERR005", "É necessário informar o local do serviço");
-        } else if (servico.getExecutor().equals(null)) { //Adicionar caso um funcionario não exista no banco de dados
-            throw new ExcecaoExemplo("ESSE ERRO NÃO EXISTE", "É necessário informar funcionário responsável pela execução do serviço");
-        } else if (servico.getDataInicio().equals(null)) { //Adicionar caso um funcionario não exista no banco de dados
-            throw new ExcecaoExemplo("ERR007", "É necessário informar a data de início do serviço");
-        } else if (servico.getConferente().equals(null)) { //Adicionar o nome de quem está cadastrando o serviço
-            throw new ExcecaoExemplo("ESSE ERRO NÃO EXISTE", "É necessário informar funcionário responsável pela conferência do serviço");
+    @Resource
+    ModelMapper mapper;
+
+    @Resource
+    private UserTransaction utx;
+
+    @Override
+    public void salvarNovoServico(ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
+        Servico servico = mapper.map(servicoDto, Servico.class);//Utilizado para mapear um DTO para Entity e vice versa
+        try {
+            utx.begin();
+            if (servicoDto.getTipoServico().equals(null)) {
+                throw new ExcecaoExemplo("ERR008", "É necessário informar o tipo de serviço.");
+            } else if (servicoDto.getDimensao().equals(null)) {
+                throw new ExcecaoExemplo("ERR009", "É necessário informar a dimensão do serviço.");
+            } else if (servicoDto.getValor().equals(null)) {
+                throw new ExcecaoExemplo("ERR010", "É necessário informar o valor do serviço");
+            } else if (servicoDto.getLocalExecucao().equals(null)) {
+                throw new ExcecaoExemplo("ERR011", "É necessário informar o local do serviço");
+            } else if (servicoDto.getExecutor().equals(null)) {
+                throw new ExcecaoExemplo("ERR012", "É necessário informar funcionário responsável pela execução do serviço");
+            } else if (servicoDto.getConferente().equals(null)) {
+                throw new ExcecaoExemplo("ERR013", "É necessário informar funcionário responsável pela conferência do serviço");
+            } else if (servicoDto.getDataInicio().equals(null)) {
+                throw new ExcecaoExemplo("ERR014", "É necessário informar a data de início do serviço");
+            } else if (servicoDto.getSituacao() != 0 && servicoDto.getSituacao() != 1 ) {
+                throw new ExcecaoExemplo("ERR015", "É necessário informar a situação do serviço");
+            } else {
+                servicoRepository.salvarNovoServico((ServicoDto) servico);
+                utx.commit();
+            }
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
         }
-        return servicoRepository.save(servico);
     }
 
+    @Override
     public List<Servico> listar() {
-        return servicoRepository.findAll();
+        return servicoRepository.listar();
     }
 
+    @Override
     public Servico buscarPorId(Integer id) {
-        return servicoRepository.findById(id).get();
+        return servicoRepository.buscarPorId(id);
     }
 
-    public void excluir(Integer id) {
-        servicoRepository.deleteById(id);
+    @Override
+    public List<Servico> buscarPorServico(String tipoServico){
+        return servicoRepository.buscarPorServico(tipoServico);
     }
+
+    @Override
+    public void excluir(Integer id){
+        servicoRepository.excluirPorId(id);
+    }
+
 
 }

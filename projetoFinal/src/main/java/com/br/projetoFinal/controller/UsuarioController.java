@@ -35,7 +35,7 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity buscarPorId(@PathVariable("id") Integer id) {
         try {
-            UsuarioDto usuario = usuarioService.buscarPorId(id);
+            Usuario usuario = usuarioService.buscarPorId(id);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -43,9 +43,9 @@ public class UsuarioController {
     }
 
     @GetMapping("/{nome}")
-    public ResponseEntity buscarPorNome(@PathVariable("nome") String nome){
+    public ResponseEntity buscarPorNome(@PathVariable("nome") String nome) {
         try {
-            UsuarioDto usuario = usuarioService.buscarPorNome(nome);
+            Usuario usuario = usuarioService.buscarPorNome(nome);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

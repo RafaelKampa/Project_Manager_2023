@@ -2,7 +2,7 @@ package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
-import com.br.projetoFinal.repositoryImpl.repository.UsuarioRepository;
+import com.br.projetoFinal.repository.UsuarioRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -21,8 +21,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return em;
     }
 
-    public UsuarioDto buscarPorNome(String nome) {
-        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE nome = :nome")
+    public Usuario buscarPorNome(String nome) {
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE nome = :nome")
             .setParameter("nome", nome);
         return query.getSingleResult();
     }
@@ -58,8 +58,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDto buscarPorId(Integer id) {
-        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE id = :id")
+    public Usuario buscarPorId(Integer id) {
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE id = :id")
                 .setParameter("id", id);
         return query.getSingleResult();
     }

@@ -1,5 +1,6 @@
 package com.br.projetoFinal;
 
+import com.br.projetoFinal.repositoryImpl.ServicoRepositoryImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,12 @@ public class ProjetoFinalApplication {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+
+	@Bean
+	public ServicoRepositoryImpl servicoRepository() {
+		return new ServicoRepositoryImpl();
+	}
+
 	@Bean
 	public UserTransaction userTransaction() {
 		return new UserTransaction() {
