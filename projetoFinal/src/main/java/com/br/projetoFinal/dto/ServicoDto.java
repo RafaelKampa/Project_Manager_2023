@@ -1,11 +1,10 @@
 package com.br.projetoFinal.dto;
 
 import com.br.projetoFinal.entity.Servico;
-
 import java.util.Date;
 
 public class ServicoDto extends Servico {
-    public Integer id;
+    public Integer idServico;
     public String tipoServico;
     public Double valorUnitario;
     public Double dimensao;
@@ -21,10 +20,10 @@ public class ServicoDto extends Servico {
     public ServicoDto() {
     }
 
-    public ServicoDto(Integer id, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao,
+    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao,
                       String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs,
                       int situacao) {
-        this.id = id;
+        this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
@@ -50,12 +49,12 @@ public class ServicoDto extends Servico {
         this.situacao = situacao;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdServico() {
+        return idServico;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdServico(Integer idServico) {
+        this.idServico = idServico;
     }
 
     public String getTipoServico() {

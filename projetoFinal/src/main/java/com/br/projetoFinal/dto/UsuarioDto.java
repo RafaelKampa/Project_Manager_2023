@@ -2,15 +2,11 @@ package com.br.projetoFinal.dto;
 
 import com.br.projetoFinal.entity.Usuario;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 public class UsuarioDto extends Usuario {
 
-    private Integer id;
+    private Integer idUsuario;
     private String login;
     private String senha;
     private Integer tipoUsuario; //0 = Administrador / 1 = Usuario com privilégios de edição de serviços / 2 = Usuário somente leitura
@@ -29,10 +25,10 @@ public class UsuarioDto extends Usuario {
     public UsuarioDto() {
     }
 
-    public UsuarioDto(Integer id, String login, String senha, Integer tipoUsuario, String nome, Date dataNascimento, String cpf,
+    public UsuarioDto(Integer idUsuario, String login, String senha, Integer tipoUsuario, String nome, Date dataNascimento, String cpf,
                       String enderecoResidencial, String telefone, String email, String contratante, Date dataAdmissao, Date dataDesligamento,
                       String cargo, double remuneracao) {
-        this.id = id;
+        this.idUsuario = idUsuario;
         this.login = login;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
@@ -49,12 +45,12 @@ public class UsuarioDto extends Usuario {
         this.remuneracao = remuneracao;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getLogin() {

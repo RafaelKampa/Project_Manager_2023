@@ -10,7 +10,7 @@ import java.util.List;
 public interface UsuarioService {
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
-    Usuario buscarPorId(Integer id);
+    Usuario buscarPorId(Integer idUsuario);
     Usuario buscarPorNome(String nome);
-    void excluir(Integer id);
+    void excluir(Integer idUsuario);
 }

@@ -10,7 +10,7 @@ public class Usuario {
     //Dados de login
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idUsuario;
 
     @Column(name = "login", nullable = false)
     private String login;
@@ -56,12 +56,12 @@ public class Usuario {
     @Column(name = "remuneracao", nullable = false)
     private double remuneracao; //Pegar essa informação da tabela Cargos
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getLogin() {

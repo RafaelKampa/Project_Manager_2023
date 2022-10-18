@@ -21,11 +21,6 @@ public class ProjetoFinalApplication {
 	}
 
 	@Bean
-	public ServicoRepositoryImpl servicoRepository() {
-		return new ServicoRepositoryImpl();
-	}
-
-	@Bean
 	public UserTransaction userTransaction() {
 		return new UserTransaction() {
 			@Override

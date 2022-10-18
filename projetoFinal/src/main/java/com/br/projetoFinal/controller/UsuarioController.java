@@ -32,10 +32,10 @@ public class UsuarioController {
         return usuarioService.listar();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity buscarPorId(@PathVariable("id") Integer id) {
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity buscarPorId(@PathVariable("idUsuario") Integer idUsuario) {
         try {
-            Usuario usuario = usuarioService.buscarPorId(id);
+            Usuario usuario = usuarioService.buscarPorId(idUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -52,9 +52,9 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public void excluir(@PathVariable("id") Integer id) {
-        usuarioService.excluir(id);
+    @DeleteMapping("/{idUsuario}")
+    public void excluir(@PathVariable("idUsuario") Integer idUsuario) {
+        usuarioService.excluir(idUsuario);
     }
 
 }

@@ -15,6 +15,6 @@ public interface UsuarioRepository {
     Usuario buscarPorNome(String nome);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
-    Usuario buscarPorId(Integer id);
-    void excluirPorId(Integer id);
+    Usuario buscarPorId(Integer idUsuario);
+    void excluirPorId(Integer idUsuario);
 }

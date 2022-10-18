@@ -1,9 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.ServicoDto;
-import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.serviceImpl.ServicoServiceImpl;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,19 +36,19 @@ public class ServicoController {
         return servicoService.listar();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Servico> buscarPorId(@PathVariable("id") Integer id) {
+    @GetMapping("/{idServico}")
+    public ResponseEntity<Servico> buscarPorId(@PathVariable("idServico") Integer idServico) {
         try {
-            Servico servico = servicoService.buscarPorId(id);
+            Servico servico = servicoService.buscarPorId(idServico);
             return new ResponseEntity<>(servico, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{id}")
-    public void excluir(@PathVariable("id") Integer id) {
-        servicoService.excluir(id);
+    @DeleteMapping("/{idServico}")
+    public void excluir(@PathVariable("idServico") Integer idServico) {
+        servicoService.excluir(idServico);
     }
 
     @GetMapping("/{tipoServico}")

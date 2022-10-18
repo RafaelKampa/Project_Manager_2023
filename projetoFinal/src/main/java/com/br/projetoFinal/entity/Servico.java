@@ -1,7 +1,5 @@
 package com.br.projetoFinal.entity;
 
-import com.br.projetoFinal.dto.UsuarioDto;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,9 +14,9 @@ public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer idServico;
 
-    @Column(name = "tipoServico", nullable = false, unique = true)
+    @Column(name = "tipoServico", nullable = false, unique = false)
     private String tipoServico;
 
     @Column(name = "valorUnitario", nullable = false, unique = false)
@@ -56,9 +54,9 @@ public class Servico {
     @Column(name = "situacao", nullable = false, unique = false)
     private int situacao;
 
-    public Servico(Integer id, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
+    public Servico(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
                    String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs, int situacao) {
-        this.id = id;
+        this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
@@ -88,12 +86,12 @@ public class Servico {
         super();
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdServico() {
+        return idServico;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdServico(Integer idServico) {
+        this.idServico = idServico;
     }
 
     public String getTipoServico() {

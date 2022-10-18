@@ -8,7 +8,6 @@ import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
@@ -63,8 +62,8 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public Servico buscarPorId(Integer id) {
-        return servicoRepository.buscarPorId(id);
+    public Servico buscarPorId(Integer idServico) {
+        return servicoRepository.buscarPorId(idServico);
     }
 
     @Override
@@ -73,8 +72,8 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public void excluir(Integer id){
-        servicoRepository.excluirPorId(id);
+    public void excluir(Integer idServico){
+        servicoRepository.excluirPorId(idServico);
     }
 
 

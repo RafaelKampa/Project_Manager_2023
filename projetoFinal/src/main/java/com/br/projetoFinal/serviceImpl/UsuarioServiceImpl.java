@@ -60,8 +60,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario buscarPorId(Integer id) {
-        return usuarioRepository.buscarPorId(id);
+    public Usuario buscarPorId(Integer idUsuario) {
+        return usuarioRepository.buscarPorId(idUsuario);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public void excluir(Integer id){
-        usuarioRepository.excluirPorId(id);
+    public void excluir(Integer idUsuario){
+        usuarioRepository.excluirPorId(idUsuario);
     }
 
 }

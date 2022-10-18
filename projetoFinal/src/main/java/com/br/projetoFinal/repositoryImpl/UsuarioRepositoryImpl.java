@@ -4,6 +4,7 @@ import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Component
+@Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Resource
@@ -29,11 +30,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void salvarUsuario(UsuarioDto usuarioDto) {
-            em.createNativeQuery("INSERT INTO usuario (id, login, senha, tipoUsuario, nome, dataNascimento, cpf, enderecoResidencial, " +
+            em.createNativeQuery("INSERT INTO usuario (idUsuario, login, senha, tipoUsuario, nome, dataNascimento, cpf, enderecoResidencial, " +
                             "telefone, email, contratante, dataAdmissao, dataDesligamento, cargo, remuneracao) " +
-                            "VALUES (:id, :login, :senha, :tipoUsuario, :nome, :dataNascimento, :cpf, :enderecoResidencial, :telefone, :email, " +
+                            "VALUES (:idUsuario, :login, :senha, :tipoUsuario, :nome, :dataNascimento, :cpf, :enderecoResidencial, :telefone, :email, " +
                             ":contratante, :dataAdmissao, :dataDesligamento, :cargo, :remuneracao)")
-                    .setParameter("id", usuarioDto.getId())
+                    .setParameter("idUsuario", usuarioDto.getIdUsuario())
                     .setParameter("login", usuarioDto.getLogin())
                     .setParameter("senha", usuarioDto.getSenha())
                     .setParameter("tipoUsuario", usuarioDto.getTipoUsuario())
@@ -58,16 +59,16 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public Usuario buscarPorId(Integer id) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE id = :id")
-                .setParameter("id", id);
+    public Usuario buscarPorId(Integer idUsuario) {
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM usuario WHERE idUsuario = :idUsuario")
+                .setParameter("idUsuario", idUsuario);
         return query.getSingleResult();
     }
 
     @Override
-    public void excluirPorId(Integer id) {
-        em.createNativeQuery("DELETE * FROM usuario WHERE id = :id")
-                .setParameter("id", id);
+    public void excluirPorId(Integer idUsuario) {
+        em.createNativeQuery("DELETE * FROM usuario WHERE idUsuario = :idUsuario")
+                .setParameter("idUsuario", idUsuario);
     }
 
 
