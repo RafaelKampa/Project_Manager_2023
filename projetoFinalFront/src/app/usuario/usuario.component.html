@@ -1,2 +1,27 @@
-<p>usuario works!</p>
-<P>teste</P>
+<p>Cadastro de Usuário</p>
+<form class="example-form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Digite o código" name="id" [(ngModel)]="id" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite o nome" name="nome" [(ngModel)]="nome" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Login</mat-label>
+        <input matInput placeholder="Digite o login" name="login" [(ngModel)]="login" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input matInput placeholder="Digite a senha" name="senha" [(ngModel)]="senha" />
+    </mat-form-field>
+
+    <button (click)="salvar()">Salvar</button>
+
+    <button (click)="listar()">Listar</button>
+</form>

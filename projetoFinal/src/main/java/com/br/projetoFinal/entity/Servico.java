@@ -9,49 +9,49 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "servico")
+@Table(name = "SERVICO")
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idServico;
 
-    @Column(name = "tipoServico", nullable = false, unique = false)
+    @Column(name = "TIPO_SERVICO", nullable = false, unique = false)
     private String tipoServico;
 
-    @Column(name = "valorUnitario", nullable = false, unique = false)
+    @Column(name = "VALOR_UNITARIO", nullable = false, unique = false)
     private Double valorUnitario;
 
-    @Column(name = "dimensao", nullable = false, unique = false)
+    @Column(name = "DIMENSAO", nullable = false, unique = false)
     private Double dimensao;
 
-    @Column(name = "localExecucao", nullable = false, unique = false)
+    @Column(name = "LOCAL_EXECUCAO", nullable = false, unique = false)
     private String localExecucao;
 
     //Vem da tabela "Usuario"
-    @Column(name = "executor", nullable = false, unique = false)
+    @Column(name = "EXECUTOR", nullable = false, unique = false)
     private String executor;
 
     //Vem do usuário logado que fará o cadastro do serviço
-    @Column(name = "conferente", nullable = false, unique = false)
+    @Column(name = "CONFERENTE", nullable = false, unique = false)
     private String conferente;
 
-    @Column(name = "dataInicio", nullable = false, unique = false)
+    @Column(name = "DATA_INICIO", nullable = false, unique = false)
     private Date dataInicio;
 
-    @Column(name = "dataFinal", nullable = true, unique = false)
+    @Column(name = "DATA_FINAL", nullable = true, unique = false)
     private Date dataFinal;
 
-    @Column(name = "valorTotal", nullable = true, unique = false)
+    @Column(name = "VALOR_TOTAL", nullable = true, unique = false)
     private Double valorTotal;
 
-    @Column(name = "obs", nullable = true, unique = false)
+    @Column(name = "OBS", nullable = true, unique = false)
     private String obs;
 
     //Situacao é referente a aprovação ou não do serviço, considerar 0 como não aprovado e 1 como aprovado após a execução
     //por padrão o serviço é cadastrado como 0 e só deve ser alterado após a conferência aprovar a execução do serviço
     //que irá realizar o pagamento do serviço ao funcionário executor
-    @Column(name = "situacao", nullable = false, unique = false)
+    @Column(name = "SITUACAO", nullable = false, unique = false)
     private int situacao;
 
     public Servico(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,

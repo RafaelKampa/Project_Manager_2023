@@ -23,19 +23,18 @@ public class ServicoRepositoryImpl implements ServicoRepository {
 
     @Override
     public void salvarNovoServico(ServicoDto servicoDto) {
-        em.createNativeQuery("INSERT INTO servico (idServico, tipoServico, valorUnitario, dimensao, localExecucao, executor, conferente, dataInicio, " +
-                        "valorTotal, situacao) " +
-                        "VALUES (:idServico, :tipoServico, :valorUnitario, :dimensao, :localExecucao, :executor, :conferente, :dataInicio,:valorTotal, :situacao)")
-                .setParameter("idServico", servicoDto.getIdServico())
-                .setParameter("tipoServico", servicoDto.getTipoServico())
-                .setParameter("valorUnitario", servicoDto.getValorUnitario())
-                .setParameter("dimensao", servicoDto.getDimensao())
-                .setParameter("localExecucao", servicoDto.getLocalExecucao())
-                .setParameter("executor", servicoDto.getExecutor())
-                .setParameter("conferente", servicoDto.getConferente())
-                .setParameter("dataInicio", servicoDto.getDataInicio())
-                .setParameter("valorTotal", servicoDto.getDimensao()*servicoDto.getValorUnitario())
-                .setParameter("situacao", servicoDto.getSituacao())
+        em.createNativeQuery("INSERT INTO SERVICO (ID, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, VALOR_TOTAL, SITUACAO) \r\n" +
+                        "VALUES (:ID, :TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :VALOR_TOTAL, :SITUACAO)")
+                .setParameter("ID", servicoDto.getIdServico())
+                .setParameter("TIPO_SERVICO", servicoDto.getTipoServico())
+                .setParameter("VALOR_UNITARIO", servicoDto.getValorUnitario())
+                .setParameter("DIMENSAO", servicoDto.getDimensao())
+                .setParameter("LOCAL_EXECUCAO", servicoDto.getLocalExecucao())
+                .setParameter("EXECUTOR", servicoDto.getExecutor())
+                .setParameter("CONFERENTE", servicoDto.getConferente())
+                .setParameter("DATA_INICIO", servicoDto.getDataInicio())
+                .setParameter("VALOR_TOTAL", servicoDto.getDimensao()*servicoDto.getValorUnitario())
+                .setParameter("SITUACAO", servicoDto.getSituacao())
                 .executeUpdate();
     }
 
@@ -47,21 +46,21 @@ public class ServicoRepositoryImpl implements ServicoRepository {
 
     @Override
     public Servico buscarPorId(Integer idServico) {
-        TypedQuery<Servico> query = (TypedQuery<Servico>) getEntityManager().createNativeQuery("SELECT * FROM servico WHERE idServico = :idServico")
-                .setParameter("idServico", idServico);
+        TypedQuery<Servico> query = (TypedQuery<Servico>) getEntityManager().createNativeQuery("SELECT * FROM SERVICO WHERE ID = :ID")
+                .setParameter("ID", idServico);
         return query.getSingleResult();
     }
 
     @Override
     public void excluirPorId(Integer idServico) {
-        em.createNativeQuery("DELETE * FROM servico WHERE idServico = :idServico")
-                .setParameter("idServico", idServico);
+        em.createNativeQuery("DELETE * FROM SERVICO WHERE ID = :ID")
+                .setParameter("ID", idServico);
     }
 
     @Override
     public List<Servico> buscarPorServico(String tipoServico) {
-        TypedQuery<Servico> query = (TypedQuery<Servico>) getEntityManager().createNativeQuery("SELECT * FROM servico WHERE tipoServico = :tipoServico")
-                .setParameter("tipoServico", tipoServico);
+        TypedQuery<Servico> query = (TypedQuery<Servico>) getEntityManager().createNativeQuery("SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO")
+                .setParameter("TIPO_SERVICO", tipoServico);
         return query.getResultList();
     }
 }
