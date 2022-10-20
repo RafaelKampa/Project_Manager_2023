@@ -1,90 +1,76 @@
 package com.br.projetoFinal.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.br.projetoFinal.dto.ServicoDto;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "SERVICO")
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "Servico.dtoMapping", classes = {
+                @ConstructorResult(targetClass = ServicoDto.class,
+                        columns ={
+                        @ColumnResult(name = "ID", type = Integer.class),
+                        @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
+                        @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
+                        @ColumnResult(name = "DIMENSAO", type = Double.class),
+                        @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
+                        @ColumnResult(name = "EXECUTOR", type = String.class),
+                        @ColumnResult(name = "CONFERENTE", type = String.class),
+                        @ColumnResult(name = "DATA_INICIO", type = Date.class),
+                        @ColumnResult(name = "PREV_TERMINO", type = Date.class),
+                        @ColumnResult(name = "DATA_FINAL", type = Date.class),
+                        @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
+                        @ColumnResult(name = "OBS", type = String.class)
+                        }
+                )
+        })
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID = :ID", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.buscarPorServico", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY ID", resultSetMapping = "Servico.dtoMapping")
+})
 public class Servico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idServico;
 
-    @Column(name = "TIPO_SERVICO", nullable = false, unique = false)
-    private String tipoServico;
+    @Column(name = "TIPO_SERVICO", nullable = false)
+    private Integer tipoServico;
 
-    @Column(name = "VALOR_UNITARIO", nullable = false, unique = false)
+    @Column(name = "VALOR_UNITARIO", nullable = false)
     private Double valorUnitario;
 
-    @Column(name = "DIMENSAO", nullable = false, unique = false)
+    @Column(name = "DIMENSAO", nullable = false)
     private Double dimensao;
 
-    @Column(name = "LOCAL_EXECUCAO", nullable = false, unique = false)
+    @Column(name = "LOCAL_EXECUCAO", nullable = false)
     private String localExecucao;
 
     //Vem da tabela "Usuario"
-    @Column(name = "EXECUTOR", nullable = false, unique = false)
+    @Column(name = "EXECUTOR", nullable = false)
     private String executor;
 
     //Vem do usuário logado que fará o cadastro do serviço
-    @Column(name = "CONFERENTE", nullable = false, unique = false)
+    @Column(name = "CONFERENTE", nullable = false)
     private String conferente;
 
-    @Column(name = "DATA_INICIO", nullable = false, unique = false)
+    @Column(name = "DATA_INICIO", nullable = false)
     private Date dataInicio;
 
-    @Column(name = "DATA_FINAL", nullable = true, unique = false)
+    @Column(name = "PREV_TERMINO", nullable = false)
+    private Date previsaoTermino;
+
+    @Column(name = "DATA_FINAL")
     private Date dataFinal;
 
-    @Column(name = "VALOR_TOTAL", nullable = true, unique = false)
+    @Column(name = "VALOR_TOTAL")
     private Double valorTotal;
 
-    @Column(name = "OBS", nullable = true, unique = false)
+    @Column(name = "OBS")
     private String obs;
-
-    //Situacao é referente a aprovação ou não do serviço, considerar 0 como não aprovado e 1 como aprovado após a execução
-    //por padrão o serviço é cadastrado como 0 e só deve ser alterado após a conferência aprovar a execução do serviço
-    //que irá realizar o pagamento do serviço ao funcionário executor
-    @Column(name = "SITUACAO", nullable = false, unique = false)
-    private int situacao;
-
-    public Servico(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
-                   String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs, int situacao) {
-        this.idServico = idServico;
-        this.tipoServico = tipoServico;
-        this.valorUnitario = valorUnitario;
-        this.dimensao = dimensao;
-        this.localExecucao = localExecucao;
-        this.executor = executor;
-        this.conferente = conferente;
-        this.dataInicio = dataInicio;
-        this.dataFinal = dataFinal;
-        this.valorTotal = valorTotal;
-        this.obs = obs;
-        this.situacao = situacao;
-    }
-
-    public Servico(String tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
-                   String conferente, Date dataInicio, int situacao) {
-        this.tipoServico = tipoServico;
-        this.valorUnitario = valorUnitario;
-        this.dimensao = dimensao;
-        this.localExecucao = localExecucao;
-        this.executor = executor;
-        this.conferente = conferente;
-        this.dataInicio = dataInicio;
-        this.situacao = situacao;
-    }
-
-    public Servico() {
-        super();
-    }
 
     public Integer getIdServico() {
         return idServico;
@@ -94,11 +80,11 @@ public class Servico {
         this.idServico = idServico;
     }
 
-    public String getTipoServico() {
+    public Integer getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(String tipoServico) {
+    public void setTipoServico(Integer tipoServico) {
         this.tipoServico = tipoServico;
     }
 
@@ -158,6 +144,14 @@ public class Servico {
         this.dataInicio = dataInicio;
     }
 
+    public Date getPrevisaoTermino() {
+        return previsaoTermino;
+    }
+
+    public void setPrevisaoTermino(Date previsaoTermino) {
+        this.previsaoTermino = previsaoTermino;
+    }
+
     public Date getDataFinal() {
         return dataFinal;
     }
@@ -180,13 +174,5 @@ public class Servico {
 
     public void setObs(String obs) {
         this.obs = obs;
-    }
-
-    public int getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(int situacao) {
-        this.situacao = situacao;
     }
 }

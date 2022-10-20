@@ -2,7 +2,7 @@ package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.serviceImpl.ServicoServiceImpl;
+import com.br.projetoFinal.service.ServicoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/servico")
+@RequestMapping("/SERVICO")
 public class ServicoController {
 
     @Autowired
-    ServicoServiceImpl servicoService;
+    ServicoService servicoService;
 
     @PostMapping
     public void salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
@@ -36,8 +36,8 @@ public class ServicoController {
         return servicoService.listar();
     }
 
-    @GetMapping("/{idServico}")
-    public ResponseEntity<Servico> buscarPorId(@PathVariable("idServico") Integer idServico) {
+    @GetMapping("/{ID}")
+    public ResponseEntity<Servico> buscarPorId(@PathVariable("ID") Integer idServico) {
         try {
             Servico servico = servicoService.buscarPorId(idServico);
             return new ResponseEntity<>(servico, HttpStatus.OK);
@@ -46,13 +46,13 @@ public class ServicoController {
         }
     }
 
-    @DeleteMapping("/{idServico}")
-    public void excluir(@PathVariable("idServico") Integer idServico) {
+    @DeleteMapping("/{ID}")
+    public void excluir(@PathVariable("ID") Integer idServico) {
         servicoService.excluir(idServico);
     }
 
-    @GetMapping("/{tipoServico}")
-    public List<Servico> buscarPorNome(@PathVariable("tipoServico") String tipoServico) {
+    @GetMapping("/{TIPO_SERVICO}")
+    public List<Servico> buscarPorNome(@PathVariable("TIPO_SERVICO") String tipoServico) {
         return servicoService.buscarPorServico(tipoServico);
     }
 }

@@ -1,10 +1,38 @@
 package com.br.projetoFinal.entity;
 
+import com.br.projetoFinal.dto.ServicoDto;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "USUARIO")
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "Usuario.dtoMapping", classes = {
+                @ConstructorResult(targetClass = ServicoDto.class,
+                        columns ={
+                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "LOGIN", type = String.class),
+                                @ColumnResult(name = "SENHA", type = String.class),
+                                @ColumnResult(name = "TIPO_USUARIO", type = Integer.class),
+                                @ColumnResult(name = "NOME", type = String.class),
+                                @ColumnResult(name = "DATA_NASCIMENTO", type = Date.class),
+                                @ColumnResult(name = "CPF", type = String.class),
+                                @ColumnResult(name = "ENDERECO_RESIDENCIAL", type = String.class),
+                                @ColumnResult(name = "TELEFONE", type = String.class),
+                                @ColumnResult(name = "EMAIL", type = String.class),
+                                @ColumnResult(name = "CONTRATANTE", type = String.class),
+                                @ColumnResult(name = "DATA_ADMISSAO", type = Date.class),
+                                @ColumnResult(name = "DATA_DESLIGAMENTO", type = Date.class),
+                                @ColumnResult(name = "CARGO", type = String.class),
+                                @ColumnResult(name = "REMUNERACAO", type = Double.class)
+                        }
+                )
+        })
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name="Usuario.buscarPorId", query = "SELECT * FROM USUARIO WHERE ID = :ID", resultSetMapping = "Usuario.dtoMapping"),
+})
 public class Usuario {
 
     //Dados de login

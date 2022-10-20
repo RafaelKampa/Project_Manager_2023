@@ -30,7 +30,7 @@ public class ServicoServiceImpl implements ServicoService{
         Servico servico = mapper.map(servicoDto, Servico.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
             utx.begin();
-            if (servicoDto.getTipoServico().equals(null)) {
+            if (servicoDto.getTipoServico() == 0) {
                 throw new ExcecaoExemplo("ERR008", "É necessário informar o tipo de serviço.");
             } else if (servicoDto.getDimensao().equals(null)) {
                 throw new ExcecaoExemplo("ERR009", "É necessário informar a dimensão do serviço.");
@@ -44,8 +44,6 @@ public class ServicoServiceImpl implements ServicoService{
                 throw new ExcecaoExemplo("ERR013", "É necessário informar funcionário responsável pela conferência do serviço");
             } else if (servicoDto.getDataInicio().equals(null)) {
                 throw new ExcecaoExemplo("ERR014", "É necessário informar a data de início do serviço");
-            } else if (servicoDto.getSituacao() != 0 && servicoDto.getSituacao() != 1 ) {
-                throw new ExcecaoExemplo("ERR015", "É necessário informar a situação do serviço");
             } else {
                 servicoRepository.salvarNovoServico((ServicoDto) servico);
                 utx.commit();
