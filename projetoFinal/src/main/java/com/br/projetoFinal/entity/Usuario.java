@@ -1,6 +1,6 @@
 package com.br.projetoFinal.entity;
 
-import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.UsuarioDto;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name = "USUARIO")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "Usuario.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ServicoDto.class,
+                @ConstructorResult(targetClass = UsuarioDto.class,
                         columns ={
                                 @ColumnResult(name = "ID", type = Integer.class),
                                 @ColumnResult(name = "LOGIN", type = String.class),
