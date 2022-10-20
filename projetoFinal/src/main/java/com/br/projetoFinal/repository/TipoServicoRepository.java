@@ -1,7 +1,6 @@
 package com.br.projetoFinal.repository;
 
 import com.br.projetoFinal.dto.TipoServicoDto;
-import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.entity.TipoServico;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.TipoServicoDto;
-import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.entity.TipoServico;
 import com.br.projetoFinal.service.TipoServicoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;

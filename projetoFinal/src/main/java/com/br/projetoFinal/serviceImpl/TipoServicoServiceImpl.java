@@ -8,12 +8,14 @@ import com.br.projetoFinal.service.TipoServicoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import java.util.List;
 
+@Service
 public class TipoServicoServiceImpl implements TipoServicoService {
 
     @Autowired
