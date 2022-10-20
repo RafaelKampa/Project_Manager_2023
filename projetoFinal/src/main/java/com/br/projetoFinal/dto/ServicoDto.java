@@ -4,17 +4,17 @@ import com.br.projetoFinal.entity.Servico;
 import java.util.Date;
 
 public class ServicoDto extends Servico {
-    public Integer idServico;
-    public Integer tipoServico;
-    public Double valorUnitario;
-    public Double dimensao;
-    public String localExecucao;
-    public String executor;
-    public String conferente;
-    public Date dataInicio;
-    public Date dataFinal;
-    public Double valorTotal;
-    public String obs;
+    private Integer idServico;
+    private Integer tipoServico;
+    private Double valorUnitario;
+    private Double dimensao;
+    private String localExecucao;
+    private String executor;
+    private String conferente;
+    private Date dataInicio;
+    private Date dataFinal;
+    private Double valorTotal;
+    private String obs;
 
     public ServicoDto() {
     }
