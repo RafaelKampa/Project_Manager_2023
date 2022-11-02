@@ -28,7 +28,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Avaliacao.buscarPorId", query = "SELECT * FROM AVALIACAO WHERE ID = :ID", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarPorExecutor", query = "SELECT * FROM AVALIACAO WHERE ID_USU_EXECT = :ID_USU_EXECT ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarPorConferente", query = "SELECT * FROM AVALIACAO WHERE ID_USU_CONF = :ID_USU_CONF ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
-        @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
+        @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_SERVICO = s.ID WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping")
 })
 public class Avaliacao {
 

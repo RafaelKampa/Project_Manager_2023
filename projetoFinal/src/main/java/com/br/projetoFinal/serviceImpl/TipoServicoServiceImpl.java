@@ -33,11 +33,11 @@ public class TipoServicoServiceImpl implements TipoServicoService {
         try {
             utx.begin();
             if (tipoServicoDto.getNomeServico().equals(null)) {
-                throw new ExcecaoExemplo("ERR023", "É necessário informar o nome do serviço.");
+                throw new ExcecaoExemplo("ERR301", "É necessário informar o nome do serviço.");
             } else if (tipoServicoDto.getUnidadeMedida().equals(null)) {
-                throw new ExcecaoExemplo("ERR024", "É necessário informar a unidade de medida do serviço.");
+                throw new ExcecaoExemplo("ERR302", "É necessário informar a unidade de medida do serviço.");
             } else if (tipoServicoDto.getValorUnitario().equals(null)) {
-                throw new ExcecaoExemplo("ERR025", "É necessário informar o valor unitário do serviço");
+                throw new ExcecaoExemplo("ERR303", "É necessário informar o valor unitário do serviço");
             } else {
                 tipoServicoRepository.salvarNovoServico((TipoServicoDto) tipoServico);
                 utx.commit();

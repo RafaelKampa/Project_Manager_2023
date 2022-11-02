@@ -2,7 +2,6 @@ package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
 import com.br.projetoFinal.entity.Avaliacao;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.AvaliacaoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -41,9 +40,9 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
         em.createNativeQuery("UPDATE AVALIACAO \n" +
                         "SET RESULT_REAVAL = :RESULT_REAVAL, DATA_REAVALIACAO = :DATA_REAVALIACAO, OBS = :OBS \n" +
                         "WHERE ID = :ID")
-                .setParameter("id", avaliacaoDto.getIdAvaliacao())
+                .setParameter("ID", avaliacaoDto.getIdAvaliacao())
                 .setParameter("RESULT_REAVAL", avaliacaoDto.getResultReaval())
-                .setParameter("DATA_REAVAL", avaliacaoDto.getDataReavaliacao())
+                .setParameter("DATA_REAVALIACAO", avaliacaoDto.getDataReavaliacao())
                 .setParameter("OBS", avaliacaoDto.getObs())
                 .executeUpdate();
     }

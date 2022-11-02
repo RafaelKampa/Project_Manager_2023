@@ -4,6 +4,7 @@ import com.br.projetoFinal.dto.ParametrosAlvenariaDto;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "PARAMETROS_ALVENARIA")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "ParametrosAlvenaria.dtoMapping", classes = {
@@ -23,7 +24,8 @@ import javax.persistence.*;
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="ParametrosAlvenaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "PARAMETROS_ALVENARIA.dtoMapping")
+        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "PARAMETROS_ALVENARIA.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorId", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID = :ID", resultSetMapping = "ParametrosAlvenaria.dtoMapping")
 })
 public class ParametrosAlvenaria {
 

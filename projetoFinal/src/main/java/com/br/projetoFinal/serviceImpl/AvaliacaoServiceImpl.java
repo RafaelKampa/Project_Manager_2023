@@ -34,17 +34,17 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         try {
             utx.begin();
             if (avaliacaoDto.getTipoServico() == 0) {
-                throw new ExcecaoExemplo("ERR015", "É necessário informar o tipo de serviço.");
+                throw new ExcecaoExemplo("ERR201", "É necessário informar o tipo de serviço.");
             } else if (avaliacaoDto.getIdServico() == 0) {
-                throw new ExcecaoExemplo("ERR016", "É necessário informar o serviço a ser avaliado.");
+                throw new ExcecaoExemplo("ERR202", "É necessário informar o serviço a ser avaliado.");
             } else if (avaliacaoDto.getIdUsuExect() == 0) {
-                throw new ExcecaoExemplo("ERR017", "É necessário informar o funcionário a ser avaliado");
+                throw new ExcecaoExemplo("ERR203", "É necessário informar o funcionário a ser avaliado");
             } else if (avaliacaoDto.getIdUsuConf() == 0) {
-                throw new ExcecaoExemplo("ERR018", "É necessário informar o avaliador do serviço");
+                throw new ExcecaoExemplo("ERR204", "É necessário informar o avaliador do serviço");
             } else if (avaliacaoDto.getDataAvaliacao().equals(null)) {
-                throw new ExcecaoExemplo("ERR019", "É necessário informar a data da avaliação");
+                throw new ExcecaoExemplo("ERR205", "É necessário informar a data da avaliação");
             } else if (avaliacaoDto.getResultado().equals(null)) {
-                throw new ExcecaoExemplo("ERR020", "É necessário informar o resultado da avaliação");
+                throw new ExcecaoExemplo("ERR206", "É necessário informar o resultado da avaliação");
             } else {
                 avaliacaoRepository.avaliar((AvaliacaoDto) avaliacao);
                 utx.commit();
@@ -61,11 +61,11 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         try {
             utx.begin();
             if (avaliacaoDto.getIdServico() == 0) {
-                throw new ExcecaoExemplo("ERR200", "É necessário informar o serviço a ser avaliado.");
+                throw new ExcecaoExemplo("ERR207", "É necessário informar o serviço a ser avaliado.");
             } else if (avaliacaoDto.getDataReavaliacao().equals(null)) {
-                throw new ExcecaoExemplo("ERR201", "É necessário informar a data da reavaliação");
+                throw new ExcecaoExemplo("ERR208", "É necessário informar a data da reavaliação");
             } else if (avaliacaoDto.getResultReaval().equals(null)) {
-                throw new ExcecaoExemplo("ERR202", "É necessário informar o resultado da reavaliação");
+                throw new ExcecaoExemplo("ERR209", "É necessário informar o resultado da reavaliação");
             } else {
                 avaliacaoRepository.reavaliar((AvaliacaoDto) avaliacao);
                 utx.commit();
