@@ -61,11 +61,11 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         try {
             utx.begin();
             if (avaliacaoDto.getIdServico() == 0) {
-                throw new ExcecaoExemplo("ERR016", "É necessário informar o serviço a ser avaliado.");
+                throw new ExcecaoExemplo("ERR200", "É necessário informar o serviço a ser avaliado.");
             } else if (avaliacaoDto.getDataReavaliacao().equals(null)) {
-                throw new ExcecaoExemplo("ERR021", "É necessário informar a data da reavaliação");
+                throw new ExcecaoExemplo("ERR201", "É necessário informar a data da reavaliação");
             } else if (avaliacaoDto.getResultReaval().equals(null)) {
-                throw new ExcecaoExemplo("ERR022", "É necessário informar o resultado da reavaliação");
+                throw new ExcecaoExemplo("ERR202", "É necessário informar o resultado da reavaliação");
             } else {
                 avaliacaoRepository.reavaliar((AvaliacaoDto) avaliacao);
                 utx.commit();

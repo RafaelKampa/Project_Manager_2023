@@ -4,15 +4,15 @@ package com.br.projetoFinal.dto;
 import com.br.projetoFinal.entity.ParametrosAlvenaria;
 
 public class ParametrosAlvenariaDto extends ParametrosAlvenaria {
-    private Integer idParametrosAlvenaria;
-    private Integer idAvaliacao;
-    private Boolean prumo;
-    private Boolean nivel;
-    private Boolean alinhamento;
-    private Boolean dimensoes;
-    private Boolean integridade;
-    private Boolean limpeza;
-    private String obs;
+    public Integer idParametrosAlvenaria;
+    public Integer idAvaliacao;
+    public Boolean prumo;
+    public Boolean nivel;
+    public Boolean alinhamento;
+    public Boolean dimensoes;
+    public Boolean integridade;
+    public Boolean limpeza;
+    public String obs;
 
     public ParametrosAlvenariaDto() {
     }

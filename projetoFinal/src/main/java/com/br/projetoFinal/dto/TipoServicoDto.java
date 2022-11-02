@@ -3,10 +3,10 @@ package com.br.projetoFinal.dto;
 import com.br.projetoFinal.entity.TipoServico;
 
 public class TipoServicoDto extends TipoServico {
-    private Integer idTipoServico;
-    private String nomeServico;
-    private String unidadeMedida;
-    private Double valorUnitario;
+    public Integer idTipoServico;
+    public String nomeServico;
+    public String unidadeMedida;
+    public Double valorUnitario;
 
     public TipoServicoDto() {
     }

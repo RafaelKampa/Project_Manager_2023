@@ -15,6 +15,7 @@ import java.util.Date;
                         @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
                         @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
                         @ColumnResult(name = "DIMENSAO", type = Double.class),
+                        @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
                         @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
                         @ColumnResult(name = "EXECUTOR", type = String.class),
                         @ColumnResult(name = "CONFERENTE", type = String.class),
@@ -45,6 +46,9 @@ public class Servico {
 
     @Column(name = "DIMENSAO", nullable = false)
     private Double dimensao;
+
+    @Column(name = "CENTRO_DE_CUSTO", nullable = false)
+    private String centroDeCusto;
 
     @Column(name = "LOCAL_EXECUCAO", nullable = false)
     private String localExecucao;
@@ -102,6 +106,14 @@ public class Servico {
 
     public void setDimensao(Double dimensao) {
         this.dimensao = dimensao;
+    }
+
+    public String getCentroDeCusto() {
+        return centroDeCusto;
+    }
+
+    public void setCentroDeCusto(String centroDeCusto) {
+        this.centroDeCusto = centroDeCusto;
     }
 
     public String getLocalExecucao() {

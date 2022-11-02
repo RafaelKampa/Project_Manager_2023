@@ -31,19 +31,21 @@ public class ServicoServiceImpl implements ServicoService{
         try {
             utx.begin();
             if (servicoDto.getTipoServico() == 0) {
-                throw new ExcecaoExemplo("ERR008", "É necessário informar o tipo de serviço.");
+                throw new ExcecaoExemplo("ERR100", "É necessário informar o tipo de serviço.");
             } else if (servicoDto.getDimensao().equals(null)) {
-                throw new ExcecaoExemplo("ERR009", "É necessário informar a dimensão do serviço.");
+                throw new ExcecaoExemplo("ERR101", "É necessário informar a dimensão do serviço.");
             } else if (servicoDto.getValor().equals(null)) {
-                throw new ExcecaoExemplo("ERR010", "É necessário informar o valor do serviço");
+                throw new ExcecaoExemplo("ERR102", "É necessário informar o valor do serviço");
             } else if (servicoDto.getLocalExecucao().equals(null)) {
-                throw new ExcecaoExemplo("ERR011", "É necessário informar o local do serviço");
+                throw new ExcecaoExemplo("ERR103", "É necessário informar o centro de custo do serviço");
+            } else if (servicoDto.getCentroDeCusto().equals(null)) {
+                throw new ExcecaoExemplo("ERR104", "É necessário informar o local do serviço");
             } else if (servicoDto.getExecutor().equals(null)) {
-                throw new ExcecaoExemplo("ERR012", "É necessário informar funcionário responsável pela execução do serviço");
+                throw new ExcecaoExemplo("ERR105", "É necessário informar funcionário responsável pela execução do serviço");
             } else if (servicoDto.getConferente().equals(null)) {
-                throw new ExcecaoExemplo("ERR013", "É necessário informar funcionário responsável pela conferência do serviço");
+                throw new ExcecaoExemplo("ERR106", "É necessário informar funcionário responsável pela conferência do serviço");
             } else if (servicoDto.getDataInicio().equals(null)) {
-                throw new ExcecaoExemplo("ERR014", "É necessário informar a data de início do serviço");
+                throw new ExcecaoExemplo("ERR107", "É necessário informar a data de início do serviço");
             } else {
                 servicoRepository.salvarNovoServico((ServicoDto) servico);
                 utx.commit();

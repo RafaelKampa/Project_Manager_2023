@@ -4,27 +4,29 @@ import com.br.projetoFinal.entity.Servico;
 import java.util.Date;
 
 public class ServicoDto extends Servico {
-    private Integer idServico;
-    private Integer tipoServico;
-    private Double valorUnitario;
-    private Double dimensao;
-    private String localExecucao;
-    private String executor;
-    private String conferente;
-    private Date dataInicio;
-    private Date dataFinal;
-    private Double valorTotal;
-    private String obs;
+    public Integer idServico;
+    public Integer tipoServico;
+    public Double valorUnitario;
+    public Double dimensao;
+    public String centroDeCusto;
+    public String localExecucao;
+    public String executor;
+    public String conferente;
+    public Date dataInicio;
+    public Date dataFinal;
+    public Double valorTotal;
+    public String obs;
 
     public ServicoDto() {
     }
 
-    public ServicoDto(Integer idServico, Integer tipoServico, Double valorUnitario, Double dimensao, String localExecucao,
-                      String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs) {
+    public ServicoDto(Integer idServico, Integer tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto,
+                      String localExecucao, String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs) {
         this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
+        this.centroDeCusto = centroDeCusto;
         this.localExecucao = localExecucao;
         this.executor = executor;
         this.conferente = conferente;
@@ -34,11 +36,12 @@ public class ServicoDto extends Servico {
         this.obs = obs;
     }
 
-    public ServicoDto(Integer tipoServico, Double valorUnitario, Double dimensao, String localExecucao, String executor,
-                      String conferente, Date dataInicio) {
+    public ServicoDto(Integer tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto, String localExecucao,
+                      String executor, String conferente, Date dataInicio) {
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
+        this.centroDeCusto = centroDeCusto;
         this.localExecucao = localExecucao;
         this.executor = executor;
         this.conferente = conferente;
@@ -75,6 +78,14 @@ public class ServicoDto extends Servico {
 
     public void setDimensao(Double dimensao) {
         this.dimensao = dimensao;
+    }
+
+    public String getCentroDeCusto() {
+        return centroDeCusto;
+    }
+
+    public void setCentroDeCusto(String centroDeCusto) {
+        this.centroDeCusto = centroDeCusto;
     }
 
     public String getLocalExecucao() {

@@ -5,16 +5,16 @@ import com.br.projetoFinal.entity.Avaliacao;
 import java.util.Date;
 
 public class AvaliacaoDto extends Avaliacao {
-    private Integer idAvaliacao;
-    private Integer tipoServico;
-    private Integer idServico;
-    private Integer idUsuExect;
-    private Integer idUsuConf;
-    private Boolean resultado;
-    private Date dataAvaliacao;
-    private Date dataReavaliacao;
-    private Boolean resultReaval;
-    private String obs;
+    public Integer idAvaliacao;
+    public Integer tipoServico;
+    public Integer idServico;
+    public Integer idUsuExect;
+    public Integer idUsuConf;
+    public Boolean resultado;
+    public Date dataAvaliacao;
+    public Date dataReavaliacao;
+    public Boolean resultReaval;
+    public String obs;
 
     public AvaliacaoDto() {
     }

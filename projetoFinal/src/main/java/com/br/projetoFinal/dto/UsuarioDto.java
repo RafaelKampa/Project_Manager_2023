@@ -6,21 +6,21 @@ import java.util.Date;
 
 public class UsuarioDto extends Usuario {
 
-    private Integer idUsuario;
-    private String login;
-    private String senha;
-    private Integer tipoUsuario; //0 = Administrador / 1 = Usuario com privilégios de edição de serviços / 2 = Usuário somente leitura
-    private String nome;
-    private Date dataNascimento;
-    private String cpf;
-    private String enderecoResidencial;
-    private String telefone;
-    private String email;
-    private String contratante;//Buscar dados da tabela contratante
-    private Date dataAdmissao;
-    private Date dataDesligamento;
-    private String cargo; //Pegar essa informação da tabela "Cargos"
-    private double remuneracao; //Pegar essa informação da tabela Cargos}
+    public Integer idUsuario;
+    public String login;
+    public String senha;
+    public Integer tipoUsuario; //0 = Administrador / 1 = Usuario com privilégios de edição de serviços / 2 = Usuário somente leitura
+    public String nome;
+    public Date dataNascimento;
+    public String cpf;
+    public String enderecoResidencial;
+    public String telefone;
+    public String email;
+    public String contratante;//Buscar dados da tabela contratante
+    public Date dataAdmissao;
+    public Date dataDesligamento;
+    public String cargo; //Pegar essa informação da tabela "Cargos"
+    public double remuneracao; //Pegar essa informação da tabela Cargos}
 
     public UsuarioDto() {
     }
