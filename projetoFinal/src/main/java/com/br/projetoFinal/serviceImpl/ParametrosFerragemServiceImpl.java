@@ -7,11 +7,13 @@ import com.br.projetoFinal.service.ParametrosFerragemService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
+@Service
 public class ParametrosFerragemServiceImpl implements ParametrosFerragemService {
 
     @Autowired

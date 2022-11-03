@@ -3,11 +3,13 @@ package com.br.projetoFinal.repositoryImpl;
 import com.br.projetoFinal.dto.ParametrosCarpintariaDto;
 import com.br.projetoFinal.entity.ParametrosCarpintaria;
 import com.br.projetoFinal.repository.ParametrosCarpintariaRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+@Repository
 public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintariaRepository {
 
     @Resource

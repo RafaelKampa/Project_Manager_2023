@@ -3,11 +3,13 @@ package com.br.projetoFinal.repositoryImpl;
 import com.br.projetoFinal.dto.ParametrosFerragemDto;
 import com.br.projetoFinal.entity.ParametrosFerragem;
 import com.br.projetoFinal.repository.ParametrosFerragemRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+@Repository
 public class ParametrosFerragemRepositoryImpl implements ParametrosFerragemRepository {
 
     @Resource

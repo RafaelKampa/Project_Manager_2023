@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.SystemException;
 import java.util.NoSuchElementException;
 
+@RestController
+@RequestMapping("/PARAMETROS_FERRAGEM")
 public class ParametrosFerragemController {
 
     @Autowired
