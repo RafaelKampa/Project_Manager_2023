@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 
 public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintariaRepository {
 
-
     @Resource
     EntityManager em;
 
