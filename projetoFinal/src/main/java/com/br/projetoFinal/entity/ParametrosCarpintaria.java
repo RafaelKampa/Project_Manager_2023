@@ -1,6 +1,6 @@
 package com.br.projetoFinal.entity;
 
-import com.br.projetoFinal.dto.ParametrosAlvenariaDto;
+import com.br.projetoFinal.dto.ParametrosCarpintariaDto;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "PARAMETROS_CARPINTARIA")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "ParametrosCarpintaria.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ParametrosAlvenariaDto.class,
+                @ConstructorResult(targetClass = ParametrosCarpintariaDto.class,
                         columns ={
                                 @ColumnResult(name = "ID", type = Integer.class),
                                 @ColumnResult(name = "TIPO_CARPINTARIA", type = String.class),
