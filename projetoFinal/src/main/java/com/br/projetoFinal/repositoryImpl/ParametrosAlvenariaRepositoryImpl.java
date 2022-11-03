@@ -50,7 +50,7 @@ public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRep
 
     @Override
     public void excluirPorId(Integer idParametrosAlvenaria) {
-        em.createNativeQuery("DELETE * FROM PARAMETROS_ALVENARIA \n" +
+        em.createNativeQuery("DELETE FROM PARAMETROS_ALVENARIA \n" +
                         "WHERE ID = :ID")
                 .setParameter("ID", idParametrosAlvenaria);
     }

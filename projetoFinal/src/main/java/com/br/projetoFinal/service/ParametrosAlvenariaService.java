@@ -7,7 +7,6 @@ import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import javax.transaction.SystemException;
 
 public interface ParametrosAlvenariaService {
-
     void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException;
     ParametrosAlvenaria buscarPorId(Integer idParametrosAlvenaria);
     ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao);

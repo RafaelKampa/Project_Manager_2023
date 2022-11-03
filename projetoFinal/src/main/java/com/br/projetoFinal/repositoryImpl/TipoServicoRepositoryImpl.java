@@ -60,7 +60,7 @@ public class TipoServicoRepositoryImpl implements TipoServicoRepository {
 
     @Override
     public void excluirServico(Integer idTipoServico) {
-        em.createNativeQuery("DELETE * FROM TIPO_SERVICO_TABLE \n" +
+        em.createNativeQuery("DELETE FROM TIPO_SERVICO_TABLE \n" +
                         "WHERE ID = :ID")
                 .setParameter("ID", idTipoServico);
     }

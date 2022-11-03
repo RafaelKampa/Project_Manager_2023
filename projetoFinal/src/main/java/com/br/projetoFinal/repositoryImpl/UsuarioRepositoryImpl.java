@@ -66,7 +66,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public void excluirPorId(Integer idUsuario) {
-        em.createNativeQuery("DELETE * FROM USUARIO \n" +
+        em.createNativeQuery("DELETE FROM USUARIO \n" +
                         "WHERE ID = :ID")
                 .setParameter("ID", idUsuario);
     }

@@ -31,17 +31,17 @@ public class ParametrosAlvenariaServiceImpl implements ParametrosAlvenariaServic
         try {
             utx.begin();
             if (parametrosAlvenariaDto.getIdAvaliacao() == 0) {
-                throw new ExcecaoExemplo("ERR401", "É necessário informar a avaliação a qual estes dados serão associados.");
+                throw new ExcecaoExemplo("ERR400", "É necessário informar a qual Avaliação essse Serviço é associado.");
             } else if (parametrosAlvenariaDto.getPrumo().equals(null)) {
-                throw new ExcecaoExemplo("ERR402", "É necessário informar se o Prumo está Correto ou Incorreto.");
+                throw new ExcecaoExemplo("ERR401", "É necessário informar se o Prumo está Correto ou Incorreto.");
             } else if (parametrosAlvenariaDto.getNivel().equals(null)) {
-                throw new ExcecaoExemplo("ERR403", "É necessário informar se o Nível está Correto ou Incorreto");
+                throw new ExcecaoExemplo("ERR402", "É necessário informar se o Nível está Correto ou Incorreto");
             } else if (parametrosAlvenariaDto.getAlinhamento().equals(null)) {
-                throw new ExcecaoExemplo("ERR404", "É necessário informar se o Alinhamento está Correto ou Incorreto");
+                throw new ExcecaoExemplo("ERR403", "É necessário informar se o Alinhamento está Correto ou Incorreto");
             } else if (parametrosAlvenariaDto.getDimensoes().equals(null)) {
-                throw new ExcecaoExemplo("ERR405", "É necessário informar se as Dimensões são condizentes com o projeto");
+                throw new ExcecaoExemplo("ERR404", "É necessário informar se as Dimensões são condizentes com o projeto");
             } else if (parametrosAlvenariaDto.getIntegridade().equals(null)) {
-                throw new ExcecaoExemplo("ERR406", "É necessário informar se a Integridade da alvenaria está Correta ou Incorreta");
+                throw new ExcecaoExemplo("ERR405", "É necessário informar se a Integridade da alvenaria está Correta ou Incorreta");
             } else if (parametrosAlvenariaDto.getLimpeza().equals(null)) {
                 throw new ExcecaoExemplo("ERR406", "É necessário informar se a Limpeza do serviço está Correta ou Incorreta");
             } else {
@@ -61,13 +61,11 @@ public class ParametrosAlvenariaServiceImpl implements ParametrosAlvenariaServic
 
     @Override
     public ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao) {
-        return parametrosAlvenariaRepository.buscarPorId(idAvaliacao);
+        return parametrosAlvenariaRepository.buscarPorAvaliacao(idAvaliacao);
     }
 
     @Override
     public void excluir(Integer idParametrosAlvenaria){
         parametrosAlvenariaRepository.excluirPorId(idParametrosAlvenaria);
     }
-
-
 }

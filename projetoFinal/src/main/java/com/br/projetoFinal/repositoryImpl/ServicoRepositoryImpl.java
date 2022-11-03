@@ -24,7 +24,7 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     @Override
     public void salvarNovoServico(ServicoDto servicoDto) {
         em.createNativeQuery("INSERT INTO SERVICO (TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS) \n" +
-                        "VALUES (:TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
+                        "VALUES (:TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
                 .setParameter("TIPO_SERVICO", servicoDto.getTipoServico())
                 .setParameter("VALOR_UNITARIO", servicoDto.getValorUnitario())
                 .setParameter("DIMENSAO", servicoDto.getDimensao())
@@ -55,7 +55,7 @@ public class ServicoRepositoryImpl implements ServicoRepository {
 
     @Override
     public void excluirPorId(Integer idServico) {
-        em.createNativeQuery("DELETE * FROM SERVICO \n" +
+        em.createNativeQuery("DELETE FROM SERVICO \n" +
                         "WHERE ID = :ID")
                 .setParameter("ID", idServico);
     }
