@@ -40,10 +40,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idUsuario;
 
-    @Column(name = "LOGIN", nullable = false)
+    @Column(name = "LOGIN", nullable = false, unique = true)
     private String login;
 
-    @Column(name = "SENHA", nullable = false, unique = true)
+    @Column(name = "SENHA", nullable = false, unique = false)
     private String senha;
 
     @Column(name = "TIPO_USUARIO", nullable = false)
@@ -56,7 +56,7 @@ public class Usuario {
     @Column(name = "DATA_NASCIMENTO")
     private Date dataNascimento;
 
-    @Column(name = "CPF")
+    @Column(name = "CPF", nullable = false, unique = true)
     private String cpf;
 
     @Column(name = "ENDERECO_RESIDENCIAL")

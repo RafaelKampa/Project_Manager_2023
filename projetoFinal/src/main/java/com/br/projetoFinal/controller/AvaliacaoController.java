@@ -5,6 +5,7 @@ import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.service.AvaliacaoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +22,12 @@ public class AvaliacaoController {
     AvaliacaoService avaliacaoService;
 
     @PostMapping
-    public void avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    public void avaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
         avaliacaoService.avaliar(avaliacaoDto);
     }
 
-    @PostMapping void reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    @Modifying
+    public void reavaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
         avaliacaoService.reavaliar(avaliacaoDto);
     }
 

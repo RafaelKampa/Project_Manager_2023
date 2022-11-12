@@ -20,7 +20,7 @@ public class ParametrosAcabamentoController {
     ParametrosAcabamentoService parametrosAcabamentoService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosAcabamentoDto parametrosAcabamentoDto) throws ExcecaoExemplo, SystemException, SystemException {
+    public void salvarParametrosAvaliados(ParametrosAcabamentoDto parametrosAcabamentoDto) throws ExcecaoExemplo, SystemException, SystemException {
         parametrosAcabamentoService.salvarParametrosAvaliados(parametrosAcabamentoDto);
     }
 

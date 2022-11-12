@@ -20,7 +20,7 @@ public class ParametrosCarpintariaController {
     ParametrosCarpintariaService parametrosCarpintariaService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosCarpintariaDto parametrosCarpintariaDto) throws ExcecaoExemplo, SystemException{
+    public void salvarParametrosAvaliados(ParametrosCarpintariaDto parametrosCarpintariaDto) throws ExcecaoExemplo, SystemException{
         parametrosCarpintariaService.salvarParametrosAvaliados(parametrosCarpintariaDto);
     }
 

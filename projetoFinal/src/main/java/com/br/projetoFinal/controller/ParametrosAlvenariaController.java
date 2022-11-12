@@ -21,7 +21,7 @@ public class ParametrosAlvenariaController {
     ParametrosAlvenariaService parametrosAlvenariaService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException, SystemException {
+    public void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException, SystemException {
         parametrosAlvenariaService.salvarParametrosAvaliados(parametrosAlvenariaDto);
     }
 

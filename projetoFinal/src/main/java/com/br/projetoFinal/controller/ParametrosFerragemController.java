@@ -20,7 +20,7 @@ public class ParametrosFerragemController {
     ParametrosFerragemService parametrosFerragemService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosFerragemDto parametrosFerragemServiceDto) throws ExcecaoExemplo, SystemException {
+    public void salvarParametrosAvaliados(ParametrosFerragemDto parametrosFerragemServiceDto) throws ExcecaoExemplo, SystemException {
         parametrosFerragemService.salvarParametrosAvaliados(parametrosFerragemServiceDto);
     }
 

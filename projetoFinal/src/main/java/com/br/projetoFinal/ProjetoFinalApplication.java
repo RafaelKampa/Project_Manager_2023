@@ -44,11 +44,15 @@ public class ProjetoFinalApplication {
 			}
 
 			@Override
-			public Integer getStatus() throws SystemException {
+			public int getStatus() throws SystemException {
 				return 0;
 			}
 
 			@Override
+			public void setTransactionTimeout(int seconds) throws SystemException {
+
+			}
+
 			public void setTransactionTimeout(Integer seconds) throws SystemException {
 
 			}

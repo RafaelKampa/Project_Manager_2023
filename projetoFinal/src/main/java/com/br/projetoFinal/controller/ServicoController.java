@@ -27,7 +27,7 @@ public class ServicoController {
     ServicoService servicoService;
 
     @PostMapping
-    public void salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
+    public void salvarNovoServico(ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
         servicoService.salvarNovoServico(servicoDto);
     }
 

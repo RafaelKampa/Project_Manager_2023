@@ -20,7 +20,7 @@ public class CentroDeCustoController {
     CentroDeCustoService centroDeCustoService;
 
     @PostMapping
-    public void salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
+    public void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
         centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
     }
 

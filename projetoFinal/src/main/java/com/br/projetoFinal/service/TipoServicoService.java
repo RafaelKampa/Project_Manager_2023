@@ -14,5 +14,4 @@ public interface TipoServicoService {
     TipoServico buscarPorId(Integer idTipoServico);
     void excluir(Integer idTipoServico);
     List<TipoServico> buscarPorNome(String nomeServico);
-    void editarServico(TipoServicoDto tipoServicoDto) throws ExcecaoExemplo, SystemException;
 }

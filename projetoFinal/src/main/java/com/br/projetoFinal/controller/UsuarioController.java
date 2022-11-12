@@ -21,7 +21,7 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @PostMapping
-    public void salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
+    public void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         usuarioService.salvarUsuario(usuarioDto);
     }
 

@@ -49,27 +49,6 @@ public class TipoServicoServiceImpl implements TipoServicoService {
     }
 
     @Override
-    public void editarServico(TipoServicoDto tipoServicoDto) throws ExcecaoExemplo, SystemException  {
-        TipoServico tipoServico = mapper.map(tipoServicoDto, TipoServico.class);//Utilizado para mapear um DTO para Entity e vice versa
-        try {
-            utx.begin();
-            if (tipoServicoDto.getNomeServico().equals(null)) {
-                throw new ExcecaoExemplo("ERR023", "É necessário informar o nome do serviço.");
-            } else if (tipoServicoDto.getUnidadeMedida().equals(null)) {
-                throw new ExcecaoExemplo("ERR024", "É necessário informar a unidade de medida do serviço.");
-            } else if (tipoServicoDto.getValorUnitario().equals(null)) {
-                throw new ExcecaoExemplo("ERR025", "É necessário informar o valor unitário do serviço");
-            } else {
-                tipoServicoRepository.editarServico((TipoServicoDto) tipoServico);
-                utx.commit();
-            }
-        } catch (Exception e) {
-            utx.rollback();
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public List<TipoServico> listar() {
         return tipoServicoRepository.listar();
     }

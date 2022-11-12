@@ -76,7 +76,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     private class UserRowMapper implements RowMapper<CustomUser> {
         @Override
-        public CustomUser mapRow(ResultSet rs, Integer rowNum) throws SQLException {
+        public CustomUser mapRow(ResultSet rs, int rowNum) throws SQLException {
             return new CustomUser(rs.getString("email"), rs.getString("senha"), true, true, true, true,
                     Collections.emptyList(), rs.getInt("guidusuario"));
 

@@ -11,5 +11,4 @@ public interface TipoServicoRepository {
     TipoServico buscarPorid(Integer idTipoServico);
     void excluirServico(Integer idTipoServico);
     List<TipoServico> buscarPorNome(String nomeServico);
-    void editarServico(TipoServicoDto tipoServicoDto);
 }
