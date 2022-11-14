@@ -9,7 +9,7 @@ import { UsuarioService } from './service/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  public idUsuario: number = 0;
+  public idUsuario: any;
   public login: string = "";
   public senha: string = "";
   public tipoUsuario: number = 2;
@@ -30,14 +30,14 @@ export class UsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscarUltimoId() {
-    this.usuarioService.listar().subscribe();
+  public async buscarUltimoId() {
+    this.idUsuario = await this.usuarioService.buscarUltimoId().toPromise();
   }
 
   salvar() {
     this.buscarUltimoId();
     let usuario = new UsuarioModel();
-    usuario.idUsuario = this.idUsuario + 1;
+    usuario.idUsuario = this.idUsuario.valueOf() + 1;
     usuario.login = this.login;
     usuario.senha = this.senha;
     usuario.tipoUsuario = this.tipoUsuario;

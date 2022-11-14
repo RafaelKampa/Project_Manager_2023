@@ -20,7 +20,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping("/salvarUsuario")
     public void salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         usuarioService.salvarUsuario(usuarioDto);
     }
@@ -55,7 +55,7 @@ public class UsuarioController {
         usuarioService.excluir(idUsuario);
     }
 
-    @GetMapping("/{ID}")
+    @GetMapping("/buscarUltimoId")
     public int buscarUltimoId() {
         return usuarioService.buscarUltimoId();
     }
