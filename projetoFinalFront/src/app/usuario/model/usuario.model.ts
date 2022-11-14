@@ -1,17 +1,17 @@
 export class UsuarioModel {
-    id: number = 0;
-    login: string = '';
-    senha: string = '';
-    tipoUsuario: number = 2;
-    nome: string = '';
-    dataNascimento: Date = new Date();
-    cpf: string = '';
-    enderecoResidencial: string = '';
-    telefone: string = '';
-    email: string = '';
-    contratante: string = '';
-    dataAdmissao: Date = new Date();
-    dataDesligamento: Date = new Date();
-    cargo: string = '';
-    remuneracao: number = 0;
+    public idUsuario?: number;
+    public login?: string;
+    public senha?: string;
+    public tipoUsuario?: number;
+    public nome?: string;
+    public dataNascimento?: Date;
+    public cpf?: string;
+    public enderecoResidencial?: string;
+    public telefone?: string;
+    public email?: string;
+    public contratante?: string;
+    public dataAdmissao?: Date;
+    public dataDesligamento?: Date;
+    public cargo?: string = '';
+    public remuneracao?: number;
 }

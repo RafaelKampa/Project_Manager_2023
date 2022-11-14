@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'api',
     component: LayoutComponent,
     children: [
-      { path: 'home', component: UsuarioComponent },
+      { path: 'home', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },
       { path: 'cliente', component: ClienteComponent },
     ]

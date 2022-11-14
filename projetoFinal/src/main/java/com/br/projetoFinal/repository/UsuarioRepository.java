@@ -17,4 +17,5 @@ public interface UsuarioRepository {
     List<Usuario> listar();
     Usuario buscarPorId(Integer idUsuario);
     void excluirPorId(Integer idUsuario);
+    int buscarUltimoId();
 }

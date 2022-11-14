@@ -9,12 +9,16 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient) { }
 
-  salvar(usuarioModel: UsuarioModel) {
-    return this.httpClient.post<UsuarioModel>("http://localhost:8082/usuario",usuarioModel);
+  salvarUsuario(usuarioModel: UsuarioModel) {
+    return this.httpClient.post<UsuarioModel>("http://localhost:8082/USUARIO",usuarioModel);
   }
 
   listar() {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario");
+  }
+
+  buscarUltimoId() {
+    return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/USUARIO");
   }
 
 }

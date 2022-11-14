@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+
 import java.util.List;
 
 @Service
@@ -72,6 +73,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public void excluir(Integer idUsuario){
         usuarioRepository.excluirPorId(idUsuario);
+    }
+
+    @Override
+    public int buscarUltimoId() {
+        return usuarioRepository.buscarUltimoId();
     }
 
 }

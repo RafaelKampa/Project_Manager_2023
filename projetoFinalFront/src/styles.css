@@ -22,6 +22,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-background-image: url("C:\Users\rafae\IdeaProjects\projetoDesenvolvimentoWeb2022\projetoFinalFront\src\assets\background.jpg");
+background-image: url("src\assets\background.jpg");
 color: darkblue; 
 ;}

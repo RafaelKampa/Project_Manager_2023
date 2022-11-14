@@ -52,10 +52,6 @@ public class ProjetoFinalApplication {
 			public void setTransactionTimeout(int seconds) throws SystemException {
 
 			}
-
-			public void setTransactionTimeout(Integer seconds) throws SystemException {
-
-			}
 		};
 	}
 

@@ -9,40 +9,52 @@ import { UsuarioService } from './service/usuario.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  id: number = 0;
-  login: string = '';
-  senha: string = '';
-  tipoUsuario: number = 2;
-  nome: string = '';
-  dataNascimento: Date = new Date();
-  cpf: string = '';
-  enderecoResidencial: string = '';
-  telefone: string = '';
-  email: string = '';
-  contratante: string = '';
-  dataAdmissao: Date = new Date();
-  dataDesligamento: Date = new Date();
-  cargo: string = '';
-  remuneracao: number = 0;
+  public idUsuario: number = 0;
+  public login: string = "";
+  public senha: string = "";
+  public tipoUsuario: number = 2;
+  public nome: string = "";
+  public dataNascimento: Date = new Date();
+  public cpf: string = "";
+  public enderecoResidencial: string = "";
+  public telefone: string = "";
+  public email: string = "";
+  public contratante: string = "";
+  public dataAdmissao: Date = new Date();
+  public dataDesligamento: Date = new Date();
+  public cargo: string = "";
+  public remuneracao: number = 0;
 
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
-  salvar() {
-    console.log('id ' + this.id);
-    console.log('nome ' + this.nome);
-    console.log('login ' + this.login);
-    console.log('senha ' + this.senha);
+  buscarUltimoId() {
+    this.usuarioService.listar().subscribe();
+  }
 
+  salvar() {
+    this.buscarUltimoId();
     let usuario = new UsuarioModel();
-    usuario.id = this.id;
-    usuario.nome = this.nome;
+    usuario.idUsuario = this.idUsuario + 1;
     usuario.login = this.login;
     usuario.senha = this.senha;
+    usuario.tipoUsuario = this.tipoUsuario;
+    usuario.nome = this.nome;
+    usuario.dataNascimento = this.dataNascimento;
+    usuario.cpf = this.cpf;
+    usuario.enderecoResidencial = this.enderecoResidencial;
+    usuario.telefone = this.telefone;
+    usuario.email = this.email;
+    usuario.contratante = this.contratante;
+    usuario.dataAdmissao = this.dataAdmissao;
+    usuario.dataDesligamento = this.dataDesligamento;
+    usuario.cargo = this.cargo;
+    usuario.remuneracao = this.remuneracao;
 
-    this.usuarioService.salvar(usuario).subscribe(usuarioRetorno => {
+    this.usuarioService.salvarUsuario(usuario).subscribe(usuarioRetorno => {
+      alert("Usuário Cadastrado!")
       console.log('funcionou');
     }, err => {
       console.log(err);
@@ -50,18 +62,18 @@ export class UsuarioComponent implements OnInit {
   }
 
   cancelar() {
-    console.log('id ' + this.id);
+    console.log('idUsuario ' + this.idUsuario);
     console.log('nome ' + this.nome);
     console.log('login ' + this.login);
     console.log('senha ' + this.senha);
 
     let usuario = new UsuarioModel();
-    usuario.id = this.id;
+    usuario.idUsuario = this.idUsuario;
     usuario.nome = this.nome;
     usuario.login = this.login;
     usuario.senha = this.senha;
 
-    this.usuarioService.salvar(usuario).subscribe(usuarioRetorno => {
+    this.usuarioService.salvarUsuario(usuario).subscribe(usuarioRetorno => {
       console.log('funcionou');
     }, err => {
       console.log(err);
