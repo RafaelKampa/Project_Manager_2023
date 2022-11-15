@@ -578,3 +578,6 @@ delete from usuario where id > 0 [42122-214]
 2022-11-15 14:12:53 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUSARIO" not found; SQL statement:
 select * from ususario [42102-214]
+2022-11-15 18:55:46 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USUSARIO" not found; SQL statement:
+select * from ususario [42102-214]
