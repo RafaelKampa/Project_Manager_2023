@@ -28,7 +28,6 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de Nascimento</mat-label>
-            <mat-hint>DD/MM/YYYY</mat-hint>
             <input matInput [matDatepicker]="dataNascimento" name="novoUsuario.dataNascimento" [(ngModel)]="novoUsuario.dataNascimento" />
             <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
             <mat-datepicker #dataNascimento startView="multi-year"></mat-datepicker>
