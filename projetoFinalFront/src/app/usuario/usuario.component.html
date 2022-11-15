@@ -2,86 +2,87 @@
 <form class="example-form">
 
     <div class="center">
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Id</mat-label>
-            <input matInput placeholder="Digite o código" name="idUsuario" [(ngModel)]="idUsuario" />
-        </mat-form-field> -->
-
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Login</mat-label>
-            <input matInput placeholder="Digite o login" name="login" [(ngModel)]="login" />
+            <input matInput placeholder="Digite o login" name="novoUsuario.login" [(ngModel)]="novoUsuario.login" />
         </mat-form-field>
     </div>
 
     <div  class="center">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Senha</mat-label>
-            <input matInput placeholder="Digite a senha" name="senha" [(ngModel)]="senha" />
+            <input matInput placeholder="Digite a senha" name="novoUsuario.senha" [(ngModel)]="novoUsuario.senha" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Confirme sua senha</mat-label>
-            <input matInput placeholder="Digite a senha" name="senha" [(ngModel)]="senha" />
+            <input matInput placeholder="Confirme a sua senha" name="confirmarSenha" [(ngModel)]="confirmarSenha" />
         </mat-form-field>
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Nome</mat-label>
-            <input matInput placeholder="Digite o nome" name="nome" [(ngModel)]="nome" />
+            <input matInput placeholder="Digite o nome" name="novoUsuario.nome" [(ngModel)]="novoUsuario.nome" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de Nascimento</mat-label>
-            <input matInput placeholder="Digite a sua data de nascimento" name="dataNascimento" [(ngModel)]="dataNascimento" />
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <input matInput [matDatepicker]="dataNascimento" name="novoUsuario.dataNascimento" [(ngModel)]="novoUsuario.dataNascimento" />
+            <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+            <mat-datepicker #dataNascimento startView="multi-year"></mat-datepicker>
         </mat-form-field>
+
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>CPF</mat-label>
-            <input matInput placeholder="Digite o seu CPF" name="cpf" [(ngModel)]="cpf" />
+            <input matInput placeholder="Digite o seu CPF" name="novoUsuario.cpf" [(ngModel)]="novoUsuario.cpf" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Endereço</mat-label>
-            <input matInput placeholder="Digite o seu Endereço Residencial" name="enderecoResidencial" [(ngModel)]="enderecoResidencial" />
+            <input matInput placeholder="Digite o seu Endereço Residencial" name="novoUsuario.enderecoResidencial" [(ngModel)]="novoUsuario.enderecoResidencial" />
         </mat-form-field>
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>E-mail</mat-label>
-            <input matInput placeholder="Digite o seu E-mail" name="email" [(ngModel)]="email" />
+            <input matInput placeholder="Digite o seu E-mail" name="novoUsuario.email" [(ngModel)]="novoUsuario.email" />
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Contratante</mat-label>
-            <input matInput placeholder="Digite o Contratante ou Digite 'Autônomo'" name="email" [(ngModel)]="contratante" />
+            <input matInput placeholder="Digite o Contratante ou Digite 'Autônomo'" name="novoUsuario.contratante" [(ngModel)]="novoUsuario.contratante" />
         </mat-form-field> 
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Data de admissão</mat-label>
-            <input matInput placeholder="Digite a data de admissão ou para autônomo digite a data atual" name="dataAdmissao" [(ngModel)]="dataAdmissao" />
-        </mat-form-field> 
+            <mat-label>Data de Admissão</mat-label>
+            <input matInput [matDatepicker]="dataAdmissao" name="novoUsuario.dataAdmissao" [(ngModel)]="novoUsuario.dataAdmissao" />
+            <mat-datepicker-toggle matSuffix [for]="dataAdmissao"></mat-datepicker-toggle>
+            <mat-datepicker #dataAdmissao></mat-datepicker>
+        </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Cargo</mat-label>
-            <input matInput placeholder="Digite seu cargo" name="cargo" [(ngModel)]="cargo" />
+            <input matInput placeholder="Digite seu cargo" name="novoUsuario.cargo" [(ngModel)]="novoUsuario.cargo" />
         </mat-form-field> 
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Remuneração</mat-label>
-            <input matInput placeholder="Digite a sua remuneração média" name="remuneracao" [(ngModel)]="remuneracao" />
+            <input matInput placeholder="Digite a sua remuneração média" name="novoUsuario.remuneracao" [(ngModel)]="novoUsuario.remuneracao" />
         </mat-form-field> 
     </div>
 
     <div class="center">
-        <button class="button" mat-flat-button color="primary" padding="10px" (click)="salvar()">Salvar</button>
+        <button class="button" mat-flat-button color="primary" padding="10px" (click)="salvar()">Cadastrar</button>
         <button mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>
     </div>
     <br><br><br><br>

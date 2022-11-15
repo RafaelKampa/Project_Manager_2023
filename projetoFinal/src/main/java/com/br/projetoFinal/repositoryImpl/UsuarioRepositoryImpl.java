@@ -3,9 +3,7 @@ package com.br.projetoFinal.repositoryImpl;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
@@ -35,11 +33,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     @Transactional(value = TxType.REQUIRES_NEW)
     public void salvarUsuario(UsuarioDto usuarioDto) {
-            em.createNativeQuery("INSERT INTO USUARIO (ID, LOGIN, SENHA, TIPO_USUARIO, NOME, DATA_NASCIMENTO, CPF, ENDERECO_RESIDENCIAL, " +
-                            "TELEFONE, EMAIL, CONTRATANTE, DATA_ADMISSAO, DATA_DESLIGAMENTO, CARGO, REMUNERACAO, ID_USUARIO) \n " +
-                            "VALUES (:ID, :LOGIN, :SENHA, :TIPO_USUARIO, :NOME, :DATA_NASCIMENTO, :CPF, :ENDERECO_RESIDENCIAL, :TELEFONE, :EMAIL, " +
-                            ":CONTRATANTE, :DATA_ADMISSAO, :DATA_DESLIGAMENTO, :CARGO, :REMUNERACAO, :ID_USUARIO)")
-                    .setParameter("ID", usuarioDto.getIdUsuario())
+            em.createNativeQuery("INSERT INTO USUARIO (ID_USUARIO, CARGO, CONTRATANTE, CPF, DATA_ADMISSAO, DATA_NASCIMENTO, EMAIL, ENDERECO_RESIDENCIAL, LOGIN, NOME, REMUNERACAO, SENHA, TELEFONE, TIPO_USUARIO)\n" +
+                            "VALUES(SELECT MAX(ID_USUARIO) FROM USUARIO + 1, :CARGO, :CONTRATANTE, :CPF, :DATA_ADMISSAO, :DATA_NASCIMENTO, :EMAIL, :ENDERECO_RESIDENCIAL, :LOGIN, :NOME, :REMUNERACAO, :SENHA, :TELEFONE, :TIPO_USUARIO)")
                     .setParameter("LOGIN", usuarioDto.getLogin())
                     .setParameter("SENHA", usuarioDto.getSenha())
                     .setParameter("TIPO_USUARIO", usuarioDto.getTipoUsuario())
@@ -51,10 +46,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                     .setParameter("EMAIL", usuarioDto.getEmail())
                     .setParameter("CONTRATANTE", usuarioDto.getContratante())
                     .setParameter("DATA_ADMISSAO", usuarioDto.getDataAdmissao())
-                    .setParameter("DATA_DESLIGAMENTO", usuarioDto.getDataDesligamento())
                     .setParameter("CARGO", usuarioDto.getCargo())
                     .setParameter("REMUNERACAO", usuarioDto.getRemuneracao())
-                    .setParameter("ID_USUARIO", usuarioDto.getIdUsuario())
                     .executeUpdate();
     }
 
@@ -78,12 +71,5 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                         "WHERE ID = :ID")
                 .setParameter("ID", idUsuario);
     }
-
-    @Override
-    public int buscarUltimoId() {
-        Query query = getEntityManager().createNativeQuery("SELECT MAX(ID) FROM USUARIO");
-        return (int) query.getSingleResult();
-    }
-
 
 }

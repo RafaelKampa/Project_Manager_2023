@@ -11,15 +11,11 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient) { }
 
   salvarUsuario(usuarioModel: UsuarioModel) {
-    return this.httpClient.post<UsuarioModel>("http://localhost:8082/USUARIO/salvarUsuario",usuarioModel);
+    return this.httpClient.post<UsuarioModel>("http://localhost:8082/usuario/salvarUsuario",usuarioModel);
   }
 
   listar() {
-    return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario");
-  }
-
-  buscarUltimoId(): Observable<number> {
-    return this.httpClient.get<number>("http://localhost:8082/USUARIO/buscarUltimoId");
+    return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/listarUsuarios");
   }
 
 }

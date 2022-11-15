@@ -55,6 +55,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             e.printStackTrace();
         }
     }
+
     @Override
     public List<Usuario> listar() {
         return usuarioRepository.listar();
@@ -66,18 +67,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario buscarPorNome(String nome){
+    public Usuario buscarPorNome(String nome) {
         return usuarioRepository.buscarPorNome(nome);
     }
 
     @Override
-    public void excluir(Integer idUsuario){
+    public void excluir(Integer idUsuario) {
         usuarioRepository.excluirPorId(idUsuario);
     }
-
-    @Override
-    public int buscarUltimoId() {
-        return usuarioRepository.buscarUltimoId();
-    }
-
 }

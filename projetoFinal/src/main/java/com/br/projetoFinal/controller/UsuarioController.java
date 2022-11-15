@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/USUARIO")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
     @Autowired
@@ -25,12 +25,12 @@ public class UsuarioController {
         usuarioService.salvarUsuario(usuarioDto);
     }
 
-    @GetMapping
+    @GetMapping("/listarUsuarios")
     public List<Usuario> listar() {
         return usuarioService.listar();
     }
 
-    @GetMapping("/{ID}")
+    @GetMapping("/buscarPorId/{ID}")
     public ResponseEntity buscarPorId(@PathVariable("ID") Integer idUsuario) {
         try {
             Usuario usuario = usuarioService.buscarPorId(idUsuario);
@@ -40,7 +40,7 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/{NOME}")
+    @GetMapping("/buscarPorNome/{NOME}")
     public ResponseEntity buscarPorNome(@PathVariable("NOME") String nome) {
         try {
             Usuario usuario = usuarioService.buscarPorNome(nome);
@@ -50,14 +50,9 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/{ID}")
+    @DeleteMapping("/excluir/{ID}")
     public void excluir(@PathVariable("ID") Integer idUsuario) {
         usuarioService.excluir(idUsuario);
-    }
-
-    @GetMapping("/buscarUltimoId")
-    public int buscarUltimoId() {
-        return usuarioService.buscarUltimoId();
     }
 
 }

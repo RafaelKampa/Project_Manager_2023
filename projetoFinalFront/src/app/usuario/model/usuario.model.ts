@@ -1,10 +1,9 @@
 export class UsuarioModel {
-    public idUsuario?: number;
     public login?: string;
     public senha?: string;
     public tipoUsuario?: number;
     public nome?: string;
-    public dataNascimento?: Date;
+    public dataNascimento?: any;
     public cpf?: string;
     public enderecoResidencial?: string;
     public telefone?: string;
