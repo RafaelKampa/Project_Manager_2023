@@ -17,6 +17,8 @@ import { LayoutComponent } from './layout/layout.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
