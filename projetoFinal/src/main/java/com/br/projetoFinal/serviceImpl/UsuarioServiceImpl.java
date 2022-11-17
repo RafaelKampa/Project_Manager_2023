@@ -76,8 +76,4 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioRepository.excluirPorId(idUsuario);
     }
 
-    @Override
-    public Usuario logar(String login, String senha) {
-        return usuarioRepository.logar(login, senha);
-    }
 }

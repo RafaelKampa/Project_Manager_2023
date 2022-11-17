@@ -31,8 +31,8 @@ public class UsuarioController {
         return usuarioService.listar();
     }
 
-    @GetMapping("/buscarPorId/{ID}")
-    public ResponseEntity buscarPorId(@PathVariable("ID") Integer idUsuario) {
+    @GetMapping("/buscarPorId/{ID_USUARIO}")
+    public ResponseEntity buscarPorId(@PathVariable("ID_USUARIO") Integer idUsuario) {
         try {
             Usuario usuario = usuarioService.buscarPorId(idUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
@@ -51,19 +51,9 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/excluir/{ID}")
-    public void excluir(@PathVariable("ID") Integer idUsuario) {
+    @DeleteMapping("/excluir/{ID_USUARIO}")
+    public void excluir(@PathVariable("ID_USUARIO") Integer idUsuario) {
         usuarioService.excluir(idUsuario);
-    }
-
-    @GetMapping("/logar/{LOGIN}/{SENHA}")
-    public ResponseEntity logar(@PathVariable("LOGIN") String login, @PathVariable("SENHA") String senha) {
-        try {
-            Usuario usuario = usuarioService.logar(login, senha);
-            return new ResponseEntity<>(usuario, HttpStatus.OK);
-        } catch (NoSuchElementException ex) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.Date;
         @SqlResultSetMapping(name = "Usuario.dtoMapping", classes = {
                 @ConstructorResult(targetClass = UsuarioDto.class,
                         columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "ID_USUARIO", type = Integer.class),
                                 @ColumnResult(name = "LOGIN", type = String.class),
                                 @ColumnResult(name = "SENHA", type = String.class),
                                 @ColumnResult(name = "TIPO_USUARIO", type = Integer.class),
@@ -31,7 +31,7 @@ import java.util.Date;
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="Usuario.buscarPorId", query = "SELECT * FROM USUARIO WHERE ID = :ID", resultSetMapping = "Usuario.dtoMapping"),
+        @NamedNativeQuery(name="Usuario.buscarPorId", query = "SELECT * FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO", resultSetMapping = "Usuario.dtoMapping"),
 })
 public class Usuario {
 

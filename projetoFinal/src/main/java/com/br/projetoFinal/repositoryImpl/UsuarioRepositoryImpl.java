@@ -61,23 +61,15 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public Usuario buscarPorId(Integer idUsuario) {
         TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.buscarPorId", Usuario.class)
-                .setParameter("ID", idUsuario);
+                .setParameter("ID_USUARIO", idUsuario);
         return query.getSingleResult();
     }
 
     @Override
     public void excluirPorId(Integer idUsuario) {
         em.createNativeQuery("DELETE FROM USUARIO \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idUsuario);
-    }
-
-    @Override
-    public Usuario logar(String login, String senha) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN AND SENHA = :SENHA")
-                .setParameter("LOGIN", login)
-                .setParameter("SENHA", senha);
-        return query.getSingleResult();
+                        "WHERE ID_USUARIO = :ID_USUARIO")
+                .setParameter("ID_USUARIO", idUsuario);
     }
 
 }

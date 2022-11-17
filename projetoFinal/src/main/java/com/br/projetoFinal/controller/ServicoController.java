@@ -20,14 +20,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/SERVICO")
+@RequestMapping("/servico")
 public class ServicoController {
 
     @Autowired
     ServicoService servicoService;
 
-    @PostMapping
-    public void salvarNovoServico(ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
+    @PostMapping("/salvar-servico")
+    public void salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
         servicoService.salvarNovoServico(servicoDto);
     }
 

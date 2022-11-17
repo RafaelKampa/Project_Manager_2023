@@ -15,19 +15,19 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/AVALIACAO")
+@RequestMapping("/avaliacao")
 public class AvaliacaoController {
 
     @Autowired
     AvaliacaoService avaliacaoService;
 
-    @PostMapping
-    public void avaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    @PostMapping("/avaliar")
+    public void avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
         avaliacaoService.avaliar(avaliacaoDto);
     }
 
-    @Modifying
-    public void reavaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    @PostMapping("/reavaliar")
+    public void reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
         avaliacaoService.reavaliar(avaliacaoDto);
     }
 

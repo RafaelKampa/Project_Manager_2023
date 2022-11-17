@@ -13,5 +13,4 @@ public interface UsuarioService {
     Usuario buscarPorId(Integer idUsuario);
     Usuario buscarPorNome(String nome);
     void excluir(Integer idUsuario);
-    Usuario logar(String login, String senha);
 }

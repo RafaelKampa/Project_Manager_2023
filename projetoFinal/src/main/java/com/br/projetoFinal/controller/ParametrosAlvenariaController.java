@@ -13,14 +13,14 @@ import javax.transaction.SystemException;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/PARAMETROS_ALVENARIA")
+@RequestMapping("/parametros-alvenaria")
 public class ParametrosAlvenariaController {
 
     @Autowired
     ParametrosAlvenariaService parametrosAlvenariaService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException, SystemException {
+    public void salvarParametrosAvaliados(@RequestBody ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException, SystemException {
         parametrosAlvenariaService.salvarParametrosAvaliados(parametrosAlvenariaDto);
     }
 

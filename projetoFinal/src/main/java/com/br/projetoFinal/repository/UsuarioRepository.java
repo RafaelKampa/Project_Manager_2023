@@ -17,5 +17,4 @@ public interface UsuarioRepository {
     List<Usuario> listar();
     Usuario buscarPorId(Integer idUsuario);
     void excluirPorId(Integer idUsuario);
-    Usuario logar(String login, String senha);
 }

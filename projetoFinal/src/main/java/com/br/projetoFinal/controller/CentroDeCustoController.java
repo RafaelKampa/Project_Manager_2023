@@ -13,14 +13,14 @@ import javax.transaction.SystemException;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/CENTRO_DE_CUSTO")
+@RequestMapping("/centro-de-custo")
 public class CentroDeCustoController {
 
     @Autowired
     CentroDeCustoService centroDeCustoService;
 
     @PostMapping
-    public void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
+    public void salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
         centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
     }
 
