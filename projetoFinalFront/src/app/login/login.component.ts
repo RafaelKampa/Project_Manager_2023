@@ -72,6 +72,6 @@ export class LoginComponent implements OnInit {
   }
 
   cadastrar() {
-    window.open("/api/usuario","_self");
+    this.router.navigate(['/api/usuario']);
   }
 }

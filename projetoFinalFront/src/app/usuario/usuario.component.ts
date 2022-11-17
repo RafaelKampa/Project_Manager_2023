@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from './model/usuario.model';
 import { UsuarioService } from './service/usuario.service';
 import { DateAdapter } from '@angular/material/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -14,8 +15,10 @@ export class UsuarioComponent implements OnInit {
   public confirmarSenha: string = ""
 
   constructor(private usuarioService: UsuarioService,
-    private dateAdapter: DateAdapter<Date>) {
-      this.dateAdapter.setLocale('en-GB'); }
+    private dateAdapter: DateAdapter<Date>,
+    private router: Router) {
+      this.dateAdapter.setLocale('en-GB')
+    }
 
   ngOnInit(): void {
   }
@@ -66,7 +69,7 @@ export class UsuarioComponent implements OnInit {
       usuario = this.novoUsuario; 
       this.usuarioService.salvarUsuario(usuario).subscribe(usuarioRetorno => {
         alert("Usuário Cadastrado! Agora faça o seu login...");
-        window.open("/api/home","_self")
+        this.router.navigate(['/api/home']);
       }, err => {
         alert(err);
         return;
@@ -75,7 +78,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   cancelar() {
-    window.open("/api/home","_self")
+    this.router.navigate(['/api/home']);
   }
 
   listar() {

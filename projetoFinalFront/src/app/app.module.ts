@@ -43,7 +43,7 @@ import {MatTable, MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CurrencyMaskModule,
+    CurrencyMaskModule, //npm install ng2-currency-mask --save
     MatTableModule
   ],
   providers: [],
