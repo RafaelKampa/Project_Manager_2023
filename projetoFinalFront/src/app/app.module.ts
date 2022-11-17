@@ -19,7 +19,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {MatTable, MatTableModule} from '@angular/material/table';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -44,9 +46,11 @@ import {MatTable, MatTableModule} from '@angular/material/table';
     MatDatepickerModule,
     MatNativeDateModule,
     CurrencyMaskModule, //npm install ng2-currency-mask --save
-    MatTableModule
+    MatTableModule,
+    NgxMaskModule.forRoot() //npm install --save ngx-mask
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
