@@ -26,7 +26,7 @@ public class TokenAuthenticationService {
     static final String HEADER_STRING = "Authorization";
 
     public static Autenticacao getToken(HttpServletResponse response, String username,
-                                        Collection<? extends GrantedAuthority> authorities, Integer guidUsuario) {
+                                        Collection<? extends GrantedAuthority> authorities) {
         String token = Jwts.builder()
                 .setSubject(username)
                  .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))

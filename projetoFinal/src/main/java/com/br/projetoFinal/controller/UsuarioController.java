@@ -41,10 +41,10 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/buscarPorNome/{NOME}")
-    public ResponseEntity buscarPorNome(@PathVariable("NOME") String nome) {
+    @GetMapping("/buscarPorNome/{LOGIN}")
+    public ResponseEntity buscarPorNome(@PathVariable("LOGIN") String login) {
         try {
-            Usuario usuario = usuarioService.buscarPorNome(nome);
+            Usuario usuario = usuarioService.buscarPorNome(login);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

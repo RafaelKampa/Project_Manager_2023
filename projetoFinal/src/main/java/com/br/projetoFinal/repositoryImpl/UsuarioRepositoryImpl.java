@@ -24,9 +24,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public Usuario buscarPorNome(String nome) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE NOME = :NOME")
-            .setParameter("NOME", nome);
+    public Usuario buscarPorNome(String login) {
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN")
+            .setParameter("LOGIN", login);
         return query.getSingleResult();
     }
 

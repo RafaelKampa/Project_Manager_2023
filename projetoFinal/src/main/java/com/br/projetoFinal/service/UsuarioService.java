@@ -11,6 +11,6 @@ public interface UsuarioService {
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
     Usuario buscarPorId(Integer idUsuario);
-    Usuario buscarPorNome(String nome);
+    Usuario buscarPorNome(String login);
     void excluir(Integer idUsuario);
 }

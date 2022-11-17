@@ -10,9 +10,9 @@ import javax.transaction.SystemException;
 import java.util.List;
 import java.util.Map;
 
-public interface UsuarioRepository {
+public interface UsuarioRepository{
 
-    Usuario buscarPorNome(String nome);
+    Usuario buscarPorNome(String login);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<Usuario> listar();
     Usuario buscarPorId(Integer idUsuario);

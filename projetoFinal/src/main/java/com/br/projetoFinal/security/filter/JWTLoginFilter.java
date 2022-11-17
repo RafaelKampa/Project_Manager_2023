@@ -1,6 +1,7 @@
 package com.br.projetoFinal.security.filter;
 
 import com.br.projetoFinal.security.model.component.CustomUser;
+import com.br.projetoFinal.security.model.component.SecurityUser;
 import com.br.projetoFinal.security.model.component.TokenAuthenticationService;
 import com.br.projetoFinal.security.model.Autenticacao;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,9 +49,11 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain filterChain, Authentication auth) throws IOException, ServletException {
 
-        CustomUser c = (CustomUser) auth.getPrincipal();
+//        CustomUser c = (CustomUser) auth.getPrincipal();
+        SecurityUser c = (SecurityUser) auth.getPrincipal();
 
-        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), auth.getAuthorities(), c.getGuidUsuario());
+//        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), auth.getAuthorities(), c.getGuidUsuario());
+        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), auth.getAuthorities());
 
         ObjectMapper parser = new ObjectMapper();
         String json = parser.writeValueAsString(autenticacao);
