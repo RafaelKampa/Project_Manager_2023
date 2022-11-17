@@ -1,6 +1,6 @@
 export class UsuarioModel {
     public idUsuario?: number;
-    public login?: string;
+    public username?: string;
     public senha?: string;
     public tipoUsuario?: number;
     public nome?: string;

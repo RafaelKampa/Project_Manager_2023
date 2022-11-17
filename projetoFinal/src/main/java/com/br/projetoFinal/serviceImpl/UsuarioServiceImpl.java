@@ -32,7 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Usuario usuario = mapper.map(usuarioDto, Usuario.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
             utx.begin();
-            if (usuarioDto.getLogin().equals(null)) {
+            if (usuarioDto.getUsername().equals(null)) {
                 throw new ExcecaoExemplo("ERR0001", "É necessáraio informar um login para o usuário.");
             } else if (usuarioDto.getSenha().equals(null)) {
                 throw new ExcecaoExemplo("ERR0002", "É necessáraio informar uma senha para o usuário.");

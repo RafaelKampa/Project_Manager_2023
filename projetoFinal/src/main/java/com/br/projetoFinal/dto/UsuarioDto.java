@@ -7,7 +7,7 @@ import java.util.Date;
 public class UsuarioDto extends Usuario {
 
     public Integer idUsuario;
-    public String login;
+    public String username;
     public String senha;
     public Integer tipoUsuario; //0 = Administrador / 1 = Usuario com privilégios de edição de serviços / 2 = Usuário somente leitura
     public String nome;
@@ -25,11 +25,11 @@ public class UsuarioDto extends Usuario {
     public UsuarioDto() {
     }
 
-    public UsuarioDto(Integer idUsuario, String login, String senha, Integer tipoUsuario, String nome, Date dataNascimento, String cpf,
+    public UsuarioDto(Integer idUsuario, String username, String senha, Integer tipoUsuario, String nome, Date dataNascimento, String cpf,
                       String enderecoResidencial, String telefone, String email, String contratante, Date dataAdmissao, Date dataDesligamento,
                       String cargo, double remuneracao) {
         this.idUsuario = idUsuario;
-        this.login = login;
+        this.username = username;
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.nome = nome;
@@ -53,12 +53,12 @@ public class UsuarioDto extends Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSenha() {

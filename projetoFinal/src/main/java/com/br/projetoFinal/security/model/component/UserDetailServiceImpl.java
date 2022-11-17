@@ -41,8 +41,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException, DataAccessException {
-        Optional<Login> login = loginRepository.findUserByUsername(userName);
-        Login u = login.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+        Optional<Usuario> login = loginRepository.findUserByUsername(userName);
+        Usuario u = login.orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
 
         return new SecurityUser(u);
 //        try {

@@ -1,6 +1,7 @@
 package com.br.projetoFinal.security.model.component;
 
 import com.br.projetoFinal.entity.Login;
+import com.br.projetoFinal.entity.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,9 +10,9 @@ import java.util.List;
 
 public class SecurityUser implements UserDetails {
 
-    private final Login login;
+    private final Usuario login;
 
-    public SecurityUser(Login login) {
+    public SecurityUser(Usuario login) {
         this.login = login;
     }
 

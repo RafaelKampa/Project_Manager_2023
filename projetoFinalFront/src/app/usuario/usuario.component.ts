@@ -26,7 +26,7 @@ export class UsuarioComponent implements OnInit {
   salvar() {
     this.novoUsuario.tipoUsuario = 2;
     let usuario = new UsuarioModel();
-    if (this.novoUsuario.login === undefined || this.novoUsuario.login === null){
+    if (this.novoUsuario.username === undefined || this.novoUsuario.username === null){
       alert("O campo 'Login' é obrigatório!");
     }
     if (this.novoUsuario.senha != this.confirmarSenha || this.novoUsuario.senha === undefined || this.novoUsuario.senha === null){

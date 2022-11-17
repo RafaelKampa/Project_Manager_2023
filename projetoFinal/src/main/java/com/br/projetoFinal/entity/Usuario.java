@@ -41,7 +41,7 @@ public class Usuario {
     private Integer idUsuario;
 
     @Column(name = "LOGIN", nullable = false, unique = true)
-    private String login;
+    private String username;
 
     @Column(name = "SENHA", nullable = false, unique = false)
     private String senha;
@@ -92,12 +92,12 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSenha() {
