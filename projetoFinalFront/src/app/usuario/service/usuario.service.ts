@@ -18,4 +18,11 @@ export class UsuarioService {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/listarUsuarios");
   }
 
+  buscarPorNome(NOME: string) {
+    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{NOME}");
+  }
+
+  logar(usuarioModel: UsuarioModel) {
+    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/logar");
+  }
 }

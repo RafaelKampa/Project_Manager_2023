@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import {MatTable, MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

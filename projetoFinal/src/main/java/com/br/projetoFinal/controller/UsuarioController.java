@@ -21,8 +21,9 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @PostMapping("/salvarUsuario")
-    public void salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
+    public ResponseEntity<?> salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         usuarioService.salvarUsuario(usuarioDto);
+        return new ResponseEntity<>(usuarioDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/listarUsuarios")
@@ -53,6 +54,16 @@ public class UsuarioController {
     @DeleteMapping("/excluir/{ID}")
     public void excluir(@PathVariable("ID") Integer idUsuario) {
         usuarioService.excluir(idUsuario);
+    }
+
+    @GetMapping("/logar/{LOGIN}/{SENHA}")
+    public ResponseEntity logar(@PathVariable("LOGIN") String login, @PathVariable("SENHA") String senha) {
+        try {
+            Usuario usuario = usuarioService.logar(login, senha);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 }

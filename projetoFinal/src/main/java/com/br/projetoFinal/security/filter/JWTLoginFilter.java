@@ -1,7 +1,7 @@
 package com.br.projetoFinal.security.filter;
 
-import com.br.projetoFinal.security.component.CustomUser;
-import com.br.projetoFinal.security.component.TokenAuthenticationService;
+import com.br.projetoFinal.security.model.component.CustomUser;
+import com.br.projetoFinal.security.model.component.TokenAuthenticationService;
 import com.br.projetoFinal.security.model.Autenticacao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

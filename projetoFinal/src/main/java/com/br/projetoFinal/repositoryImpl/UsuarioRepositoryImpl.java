@@ -72,4 +72,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 .setParameter("ID", idUsuario);
     }
 
+    @Override
+    public Usuario logar(String login, String senha) {
+        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN AND SENHA = :SENHA")
+                .setParameter("LOGIN", login)
+                .setParameter("SENHA", senha);
+        return query.getSingleResult();
+    }
+
 }
