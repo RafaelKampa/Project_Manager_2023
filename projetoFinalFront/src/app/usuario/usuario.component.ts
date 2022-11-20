@@ -69,7 +69,7 @@ export class UsuarioComponent implements OnInit {
       usuario = this.novoUsuario; 
       this.usuarioService.salvarUsuario(usuario).subscribe(usuarioRetorno => {
         alert("Usuário Cadastrado! Agora faça o seu login...");
-        this.router.navigate(['/api/login']);
+        this.router.navigate(['/api/home']);
       }, err => {
         alert(err);
         return;
@@ -78,7 +78,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate(['/api/login']);
+    this.router.navigate(['/api/home']);
   }
 
   listar() {
