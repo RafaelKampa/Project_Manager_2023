@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
     
   }
 
-
   public logar() {
     if (this.loginForm.valid) {
       let autenticacao = new Autenticacao();
@@ -50,25 +49,9 @@ export class LoginComponent implements OnInit {
     }
 
   }
-
   
   public esqueciSenha(){
     alert("Problema é seu!");
-  }
-
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
-
-  listar() {
-    this.usuarioService.listar().subscribe(usuarios => {
-      this.listaUsuarios = usuarios;
-      console.log(this.listaUsuarios);
-    });
   }
 
   cadastrar() {
