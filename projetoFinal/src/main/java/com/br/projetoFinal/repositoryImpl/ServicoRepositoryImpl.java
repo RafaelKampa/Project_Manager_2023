@@ -23,8 +23,8 @@ public class ServicoRepositoryImpl implements ServicoRepository {
 
     @Override
     public void salvarNovoServico(ServicoDto servicoDto) {
-        em.createNativeQuery("INSERT INTO SERVICO (TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS) \n" +
-                        "VALUES (:TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
+        em.createNativeQuery("INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS) \n" +
+                        "VALUES (SELECT MAX(ID_SERVICO) FROM SERVICO + 1, :TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
                 .setParameter("TIPO_SERVICO", servicoDto.getTipoServico())
                 .setParameter("VALOR_UNITARIO", servicoDto.getValorUnitario())
                 .setParameter("DIMENSAO", servicoDto.getDimensao())

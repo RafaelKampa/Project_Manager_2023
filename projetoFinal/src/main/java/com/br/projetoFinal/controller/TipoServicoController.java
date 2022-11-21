@@ -25,7 +25,7 @@ public class TipoServicoController {
         tipoServicoService.salvarNovoServico(tipoServicoDto);
     }
 
-    @GetMapping
+    @GetMapping("/listarTiposServicos")
     public List<TipoServico> listar() {
         return tipoServicoService.listar();
     }

@@ -16,10 +16,12 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOption } from '@angular/material/core';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {MatTable, MatTableModule} from '@angular/material/table';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { CadastroServicoComponent } from './cadastro-servico/cadastro-servico.component'
+import { MatSelectModule } from '@angular/material/select';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -29,7 +31,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     UsuarioComponent,
     ClienteComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
+    CadastroServicoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     MatNativeDateModule,
     CurrencyMaskModule, //npm install ng2-currency-mask --save
     MatTableModule,
-    NgxMaskModule.forRoot() //npm install --save ngx-mask
+    NgxMaskModule.forRoot(), //npm install --save ngx-mask
+    MatSelectModule
   ],
   providers: [
   ],

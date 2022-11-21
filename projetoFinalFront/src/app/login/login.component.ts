@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.loginService.login(autenticacao).subscribe(retorno => {
         localStorage.setItem('token', retorno.token);
         console.log("logou")
-        this.router.navigate(['/api/cliente']);
+        this.router.navigate(['/api/cadastro-servico']);
       });
     } else {
       console.log("erro");
