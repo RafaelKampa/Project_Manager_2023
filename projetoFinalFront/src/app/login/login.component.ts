@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { never } from 'rxjs';
 import { UsuarioModel } from '../usuario/model/usuario.model';
-import { UsuarioService } from '../usuario/service/usuario.service';
 import { Autenticacao } from './model/login.model';
 import { LoginService } from './service/login.service';
 
@@ -26,7 +24,6 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private loginService: LoginService,
-    private usuarioService: UsuarioService,
     private router: Router) { }
 
   ngOnInit(): void {
