@@ -4,12 +4,13 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AuthGuard } from './shared/authguard.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '',
-    redirectTo: '/api/home',
+    redirectTo: '/api/login',
     pathMatch: 'full',
   },
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },
-      { path: 'cliente', component: ClienteComponent },
+      { path: 'cliente', component: ClienteComponent, canActivate: [AuthGuard]},
     ]
   }
 ];
