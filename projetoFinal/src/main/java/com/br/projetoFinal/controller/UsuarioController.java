@@ -31,6 +31,16 @@ public class UsuarioController {
         return usuarioService.listar();
     }
 
+    @GetMapping("/buscarConferentes")
+    public List<Usuario> buscarConferentes() {
+        return usuarioService.buscarConferentes();
+    }
+
+    @GetMapping("/buscarExecutores")
+    public List<Usuario> buscarExecutores() {
+        return usuarioService.buscarExecutores();
+    }
+
     @GetMapping("/buscarPorId/{ID_USUARIO}")
     public ResponseEntity buscarPorId(@PathVariable("ID_USUARIO") Integer idUsuario) {
         try {

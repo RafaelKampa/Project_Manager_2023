@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CadastroServicoModel } from '../model/cadastro-servico.model';
 import { TipoServicoModel } from '../model/tipo-servico.model';
 
@@ -19,10 +18,11 @@ export class CadastroServicoService {
   };
 
   salvarNovoServico(servicoModel: CadastroServicoModel) {
-    return this.httpClient.post<CadastroServicoModel>("http://localhost:8082/servico/salvar-servico",servicoModel, this.httpOptions);
+    return this.httpClient.post<CadastroServicoModel>("http://localhost:8082/servico/salvarServico",servicoModel, this.httpOptions);
   }
 
   listarTipos() {
     return this.httpClient.get<TipoServicoModel[]>("http://localhost:8082/tipo-servico-table/listarTiposServicos", this.httpOptions);
   }
+
 }

@@ -26,9 +26,10 @@ public class ServicoController {
     @Autowired
     ServicoService servicoService;
 
-    @PostMapping("/salvar-servico")
-    public void salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
+    @PostMapping("/salvarServico")
+    public ResponseEntity<?> salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
         servicoService.salvarNovoServico(servicoDto);
+        return new ResponseEntity<>(servicoDto, HttpStatus.CREATED);
     }
 
     @GetMapping

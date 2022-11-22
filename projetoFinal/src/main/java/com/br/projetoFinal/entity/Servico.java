@@ -39,7 +39,7 @@ public class Servico {
     private Integer idServico;
 
     @Column(name = "TIPO_SERVICO", nullable = false)
-    private Integer tipoServico;
+    private String tipoServico;
 
     @Column(name = "VALOR_UNITARIO", nullable = false)
     private Double valorUnitario;
@@ -84,20 +84,12 @@ public class Servico {
         this.idServico = idServico;
     }
 
-    public Integer getTipoServico() {
+    public String getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(Integer tipoServico) {
+    public void setTipoServico(String tipoServico) {
         this.tipoServico = tipoServico;
-    }
-
-    public Double getValor() {
-        return valorUnitario;
-    }
-
-    public void setValor(Double valor) {
-        this.valorUnitario = valor;
     }
 
     public Double getDimensao() {
@@ -177,7 +169,7 @@ public class Servico {
     }
 
     public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
+        this.valorTotal = valorUnitario * dimensao;
     }
 
     public String getObs() {

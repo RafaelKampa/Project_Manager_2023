@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -22,9 +23,10 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarNovoServico(ServicoDto servicoDto) {
-        em.createNativeQuery("INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS) \n" +
-                        "VALUES (SELECT MAX(ID_SERVICO) FROM SERVICO + 1, :TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
+        em.createNativeQuery("INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, OBS) \n" +
+                        "VALUES (SELECT MAX(ID_SERVICO) FROM SERVICO + 1, :TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :OBS)")
                 .setParameter("TIPO_SERVICO", servicoDto.getTipoServico())
                 .setParameter("VALOR_UNITARIO", servicoDto.getValorUnitario())
                 .setParameter("DIMENSAO", servicoDto.getDimensao())
@@ -34,7 +36,6 @@ public class ServicoRepositoryImpl implements ServicoRepository {
                 .setParameter("CONFERENTE", servicoDto.getConferente())
                 .setParameter("DATA_INICIO", servicoDto.getDataInicio())
                 .setParameter("PREV_TERMINO", servicoDto.getPrevisaoTermino())
-                .setParameter("VALOR_TOTAL", servicoDto.getDimensao()*servicoDto.getValorUnitario())
                 .setParameter("OBS", servicoDto.getObs())
                 .executeUpdate();
     }

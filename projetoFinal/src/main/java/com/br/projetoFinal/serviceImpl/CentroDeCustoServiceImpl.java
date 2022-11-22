@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import java.util.List;
 
 @Service
 public class CentroDeCustoServiceImpl implements CentroDeCustoService {
@@ -42,6 +43,11 @@ public class CentroDeCustoServiceImpl implements CentroDeCustoService {
             utx.rollback();
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<CentroDeCusto> listarCentrosDeCusto() {
+        return centroDeCustoRepository.listarCentrosDeCusto();
     }
 
     @Override

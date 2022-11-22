@@ -62,6 +62,16 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public List<Usuario> buscarConferentes() {
+        return usuarioRepository.buscarConferentes();
+    }
+
+    @Override
+    public List<Usuario> buscarExecutores() {
+        return usuarioRepository.buscarExecutores();
+    }
+
+    @Override
     public Usuario buscarPorId(Integer idUsuario) {
         return usuarioRepository.buscarPorId(idUsuario);
     }

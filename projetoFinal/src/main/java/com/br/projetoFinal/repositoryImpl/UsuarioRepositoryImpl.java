@@ -59,6 +59,22 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
+    public List<Usuario> buscarConferentes() {
+        Query query = getEntityManager().createNativeQuery("SELECT NOME FROM USUARIO \n" +
+                "WHERE TIPO_USUARIO = 1 \n" +
+                "ORDER BY NOME");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Usuario> buscarExecutores() {
+        Query query = getEntityManager().createNativeQuery("SELECT NOME FROM USUARIO \n" +
+                "WHERE TIPO_USUARIO = 2 \n" +
+                "ORDER BY NOME");
+        return query.getResultList();
+    }
+
+    @Override
     public Usuario buscarPorId(Integer idUsuario) {
         TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.buscarPorId", Usuario.class)
                 .setParameter("ID_USUARIO", idUsuario);

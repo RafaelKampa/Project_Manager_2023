@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ServicoDto extends Servico {
     public Integer idServico;
-    public Integer tipoServico;
+    public String tipoServico;
     public Double valorUnitario;
     public Double dimensao;
     public String centroDeCusto;
@@ -20,7 +20,7 @@ public class ServicoDto extends Servico {
     public ServicoDto() {
     }
 
-    public ServicoDto(Integer idServico, Integer tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto,
+    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto,
                       String localExecucao, String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs) {
         this.idServico = idServico;
         this.tipoServico = tipoServico;
@@ -36,7 +36,7 @@ public class ServicoDto extends Servico {
         this.obs = obs;
     }
 
-    public ServicoDto(Integer tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto, String localExecucao,
+    public ServicoDto(String tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto, String localExecucao,
                       String executor, String conferente, Date dataInicio) {
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
@@ -56,11 +56,11 @@ public class ServicoDto extends Servico {
         this.idServico = idServico;
     }
 
-    public Integer getTipoServico() {
+    public String getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(Integer tipoServico) {
+    public void setTipoServico(String tipoServico) {
         this.tipoServico = tipoServico;
     }
 

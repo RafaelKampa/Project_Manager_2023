@@ -1,24 +1,22 @@
 <h1 class="center">Cadastro de Serviço</h1>
-
+<form [formGroup]="cadastroServicoForm" (ngSubmit)="salvar()">
 
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
-            <mat-label>Tipo de Serviço</mat-label> <!--PEGAR DA LISTA-->
-            <mat-select [(value)]="servicoSelecionado">
-            <mat-option *ngFor="let tipos of tiposServicos" [value]="tipos.nomeServico">
-                {{tipos}}
-            </mat-option>
-              </mat-select>
-            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-label>Tipo de Serviço</mat-label>
+            <mat-select [(value)]="tipoServicoSelecionado" name="tipoServico" formControlName="tipoServico">
+                <mat-option *ngFor="let tipo of tiposServicos" [value]="tipo">
+                    {{tipo[1]}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </div>
-<form [formGroup]="cadastroServicoForm" (ngSubmit)="salvar()">
     <div class="center">
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
-            <mat-label>Valor Unitário</mat-label> <!--PEGAR DA LISTA-->
+            <mat-label>Valor Unitário</mat-label>
             <input matInput placeholder="Digite o nome" name="valorUnitario" formControlName="valorUnitario" 
-            currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false' }" required/>
+            [value]="'R$ ' + tipoServicoSelecionado[3] + ',00'" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
@@ -26,15 +24,26 @@
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Dimensões</mat-label>
-            <input matInput placeholder="Dimensões do serviço" name="dimensao" formControlName ="dimensoes" required/>
+            <input matInput placeholder="Dimensões do serviço" name="dimensoes" formControlName="dimensoes" required/>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width inputs" appearance="fill">
+            <mat-label>Unidade de Medida</mat-label>
+            <input matInput placeholder="Unidade de Medida" name="unidadeMedida" formControlName ="unidadeMedida" 
+            [value]="tipoServicoSelecionado[2]" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
-            <mat-label>Centro de Custo</mat-label> <!--PEGAR DA LISTA-->
-            <input matInput placeholder="centroDeCusto" name="centroDeCusto" formControlName="centroDeCusto" required/>
+            <mat-label>Centro de Custo</mat-label>
+            <mat-select [(value)]="centroSelecionado" name="centrosDeCusto">
+                <mat-option *ngFor="let centro of centrosDeCusto" [value]="centro">
+                    {{centro[2]}}
+                </mat-option>
+            </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
@@ -46,13 +55,21 @@
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Executor do serviço</mat-label>
-            <input matInput placeholder="Nome do Funcionário" name="executor" formControlName="executor" required/>
+            <mat-select [(value)]="executorSelecionado" name="conferente">
+                <mat-option *ngFor="let executor of executores" [value]="executor">
+                    {{executor}}
+                </mat-option>
+            </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
-            <mat-label>Conferente</mat-label> <!--PEGAR DA LISTA-->
-            <input matInput placeholder="Nome do Conferente" name="conferente" formControlName="conferente" required/>
+            <mat-label>Conferente</mat-label>
+            <mat-select [(value)]="conferenteSelecionado" name="conferente">
+                <mat-option *ngFor="let conferente of conferentes" [value]="conferente">
+                    {{conferente}}
+                </mat-option>
+            </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field> 
 
@@ -72,14 +89,12 @@
             <mat-datepicker #dataPrevista></mat-datepicker>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-    <div class="center">
+
         <mat-form-field class="example-full-width inputs" appearance="fill">
-            <mat-label>Valor Total do Serviço</mat-label>
-            <input  matInput name="valorTotal" formControlName="valorTotal"
-                currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false' }" required/>
-                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field> 
-    </div>
+            <mat-label>Observações</mat-label>
+            <input matInput placeholder="Observações" name="obs" formControlName="obs" required/>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
 
     <div class="center">
         <button class="button" mat-flat-button color="primary">Salvar novo Serviço</button>

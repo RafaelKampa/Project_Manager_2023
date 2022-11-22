@@ -5,6 +5,7 @@ import com.br.projetoFinal.entity.CentroDeCusto;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 
 import javax.transaction.SystemException;
+import java.util.List;
 
 public interface CentroDeCustoService {
 
@@ -12,4 +13,5 @@ public interface CentroDeCustoService {
     CentroDeCusto buscarPorId(Integer idCentroDeCusto);
     CentroDeCusto buscarPorNome(String nomeCentroDeCusto);
     void excluir(Integer idCentroDeCusto);
+    List<CentroDeCusto> listarCentrosDeCusto();
 }

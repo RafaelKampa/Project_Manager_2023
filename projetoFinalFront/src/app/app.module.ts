@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuarioComponent } from './usuario/usuario.component';
-import { ClienteComponent } from './cliente/cliente.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -22,6 +21,8 @@ import {MatTable, MatTableModule} from '@angular/material/table';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { CadastroServicoComponent } from './cadastro-servico/cadastro-servico.component'
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -29,10 +30,10 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
   declarations: [
     AppComponent,
     UsuarioComponent,
-    ClienteComponent,
     LoginComponent,
     LayoutComponent,
-    CadastroServicoComponent
+    CadastroServicoComponent,
+    CentroCustoComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +52,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     CurrencyMaskModule, //npm install ng2-currency-mask --save
     MatTableModule,
     NgxMaskModule.forRoot(), //npm install --save ngx-mask
-    MatSelectModule
+    MatSelectModule,
+    CommonModule
   ],
   providers: [
   ],

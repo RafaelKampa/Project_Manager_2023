@@ -2,13 +2,14 @@ package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.CentroDeCustoDto;
 import com.br.projetoFinal.entity.CentroDeCusto;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.CentroDeCustoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
@@ -27,6 +28,13 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
                 .setParameter("NOME_CENTRO_DE_CUSTO", centroDeCustoDto.getNomeCentroDeCusto())
                 .setParameter("ENDERECO", centroDeCustoDto.getEnderecoCentroDeCusto())
                 .executeUpdate();
+    }
+
+    @Override
+    public List<CentroDeCusto> listarCentrosDeCusto() {
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO \n" +
+                "ORDER BY NOME_CENTRO_DE_CUSTO ");
+        return query.getResultList();
     }
 
     @Override

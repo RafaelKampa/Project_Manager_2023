@@ -30,6 +30,14 @@ export class UsuarioService {
   listar() {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/listarUsuarios", this.httpOptions);
   }
+  
+  buscarConferentes() {
+    return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarConferentes", this.httpOptions);
+  }
+
+  buscarExecutores() {
+    return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarExecutores", this.httpOptions);
+  }
 
   buscarPorNome(NOME: string) {
     return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{NOME}", this.httpOptions);

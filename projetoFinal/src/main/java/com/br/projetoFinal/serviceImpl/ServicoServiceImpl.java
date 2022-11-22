@@ -30,11 +30,11 @@ public class ServicoServiceImpl implements ServicoService{
         Servico servico = mapper.map(servicoDto, Servico.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
             utx.begin();
-            if (servicoDto.getTipoServico() == 0) {
+            if (servicoDto.getTipoServico().equals(null)) {
                 throw new ExcecaoExemplo("ERR100", "É necessário informar o tipo de serviço.");
             } else if (servicoDto.getDimensao().equals(null)) {
                 throw new ExcecaoExemplo("ERR101", "É necessário informar a dimensão do serviço.");
-            } else if (servicoDto.getValor().equals(null)) {
+            } else if (servicoDto.getValorUnitario().equals(null)) {
                 throw new ExcecaoExemplo("ERR102", "É necessário informar o valor do serviço");
             } else if (servicoDto.getLocalExecucao().equals(null)) {
                 throw new ExcecaoExemplo("ERR103", "É necessário informar o centro de custo do serviço");

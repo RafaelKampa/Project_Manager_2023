@@ -1,6 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.CentroDeCustoDto;
+import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.CentroDeCusto;
 import com.br.projetoFinal.service.CentroDeCustoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -10,18 +11,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/centro-de-custo")
+@RequestMapping("/centroDeCusto")
 public class CentroDeCustoController {
 
     @Autowired
     CentroDeCustoService centroDeCustoService;
 
     @PostMapping
-    public void salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
+    public ResponseEntity<?> salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
         centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
+        return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/listarCentrosDeCusto")
+    public List<CentroDeCusto> listarCentrosDeCusto() {
+        return centroDeCustoService.listarCentrosDeCusto();
     }
 
     @GetMapping("/{ID}")
