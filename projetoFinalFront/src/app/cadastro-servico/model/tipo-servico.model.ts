@@ -1,6 +1,6 @@
 export class TipoServicoModel {
     public idTipoServico?: number;
-    public nomeServico: any;
-    public unidadeMedida: any;
-    public valorUnitario: any;
+    public nomeServico: string = "";
+    public unidadeMedida: string = "";
+    public valorUnitario: string = "";
 }

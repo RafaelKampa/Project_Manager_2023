@@ -1,20 +1,23 @@
 <h1 class="center">Cadastro de Serviço</h1>
-<form [formGroup]="cadastroServicoForm" (ngSubmit)="salvar()">
+
 
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Tipo de Serviço</mat-label> <!--PEGAR DA LISTA-->
-            <mat-select>
-                <mat-option *ngFor="let tipos of tiposServicos" [value]="tiposServicos.nomeServico">
-                  {{tiposServicos.nomeServico}}
-                </mat-option>
+            <mat-select [(value)]="servicoSelecionado">
+            <mat-option *ngFor="let tipos of tiposServicos" [value]="tipos.nomeServico">
+                {{tipos}}
+            </mat-option>
               </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
+    </div>
+<form [formGroup]="cadastroServicoForm" (ngSubmit)="salvar()">
+    <div class="center">
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Valor Unitário</mat-label> <!--PEGAR DA LISTA-->
-            <input matInput placeholder="Digite o nome" name="nome" formControlName="nome" 
+            <input matInput placeholder="Digite o nome" name="valorUnitario" formControlName="valorUnitario" 
             currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false' }" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -23,7 +26,7 @@
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Dimensões</mat-label>
-            <input matInput placeholder="Dimensões do serviço" name="dimensoes" formControlName ="dimensoes" required/>
+            <input matInput placeholder="Dimensões do serviço" name="dimensao" formControlName ="dimensoes" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
@@ -44,7 +47,7 @@
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Executor do serviço</mat-label>
             <input matInput placeholder="Nome do Funcionário" name="executor" formControlName="executor" required/>
-            <mat-error *ngIf="cadastroUserForm.get('email')">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
@@ -81,8 +84,4 @@
     <div class="center">
         <button class="button" mat-flat-button color="primary">Salvar novo Serviço</button>
     </div>
-</form>
-<div class="center">
-    <button class="button" mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>
-</div>
 <br><br><br><br>

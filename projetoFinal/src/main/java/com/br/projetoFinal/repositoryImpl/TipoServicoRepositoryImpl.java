@@ -35,7 +35,7 @@ public class TipoServicoRepositoryImpl implements TipoServicoRepository {
     @Override
     public List<TipoServico> listar() {
         Query query = getEntityManager().createNativeQuery("SELECT * FROM TIPO_SERVICO_TABLE \n" +
-                "ORDER BY ID");
+                "ORDER BY ID_TIPO_SERVICO");
         return query.getResultList();
     }
 
