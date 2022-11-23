@@ -1,1 +1,22 @@
-<p>centro-custo works!</p>
+<h1 class="center">Cadastro de Centro de Custo</h1>
+<form [formGroup]="cadastroCentroForm" (ngSubmit)="salvar()">
+
+    <div class="center">
+        <mat-form-field class="example-full-width inputs" appearance="fill">
+            <mat-label>Nome do Centro de Custo</mat-label>
+            <input matInput placeholder="Digite o nome do Centro de Custo" name="nomeCentroDeCusto" formControlName="nomeCentroDeCusto" required/>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width inputs" appearance="fill">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Digite o Endereço" name="enderecoCentroDeCusto" formControlName="enderecoCentroDeCusto" required/>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <button class="button" mat-flat-button color="primary">Cadastrar</button>
+        <button class="button" mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>
+    </div>
+</form>

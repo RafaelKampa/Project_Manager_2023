@@ -21,7 +21,7 @@ public class CentroDeCustoController {
     @Autowired
     CentroDeCustoService centroDeCustoService;
 
-    @PostMapping
+    @PostMapping("/salvarNovoCentroDeCusto")
     public ResponseEntity<?> salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
         centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
         return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);

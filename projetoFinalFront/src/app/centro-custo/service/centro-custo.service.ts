@@ -16,6 +16,9 @@ export class CentroCustoService {
     })
   };
 
+  salvarNovoCentro(centroModel: CentroCustoModel) {
+    return this.httpClient.post<CentroCustoModel>("http://localhost:8082/centroDeCusto/salvarNovoCentroDeCusto",centroModel, this.httpOptions);
+  }
   listarCentrosDeCusto() {
     return this.httpClient.get<CentroCustoModel[]>("http://localhost:8082/centroDeCusto/listarCentrosDeCusto", this.httpOptions);
   }
