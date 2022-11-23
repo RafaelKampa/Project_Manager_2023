@@ -108,8 +108,8 @@ export class CadastroServicoComponent implements OnInit {
       this.cadastroServicosService.salvarNovoServico(servico).subscribe(usuarioRetorno => {
         alert("Serviço cadastrado com Sucesso!");
         this.router.navigate(['/api/servico-home']);
-      }, err => {
-        alert(err);
+      }, (err) => {
+        alert("Serviço não cadastrado! \n Contate o Administrador");
         return;
       });
   }

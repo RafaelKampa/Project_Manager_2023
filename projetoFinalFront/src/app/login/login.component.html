@@ -4,14 +4,15 @@
     <div class="center">
         <mat-form-field appearance="fill">
         <mat-label>Digite seu login</mat-label>
-        <input  formControlName="login" matInput placeholder="pat@example.com" required>    
+        <input  formControlName="login" matInput placeholder="Nome de usuário" required>    
         </mat-form-field>
     </div>
     <div class="center">
         <mat-form-field appearance="fill">
         <mat-label>Digite sua senha</mat-label>
         <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
+            [attr.aria-pressed]="hide" required>
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         </mat-form-field>

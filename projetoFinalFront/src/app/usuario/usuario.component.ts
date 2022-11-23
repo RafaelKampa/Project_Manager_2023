@@ -24,7 +24,7 @@ export class UsuarioComponent implements OnInit {
     cargo: new FormControl('',Validators.required),
     remuneracao: new FormControl('',Validators.required),
     telefone: new FormControl(''),
-    senha: new FormControl('',Validators.required),
+    senha: new FormControl('',[Validators.required, Validators.min(4)]),
     confirmarSenha: new FormControl('',Validators.required)
   });
 
@@ -70,8 +70,8 @@ export class UsuarioComponent implements OnInit {
       this.usuarioService.salvarUsuario(usuario).subscribe(usuarioRetorno => {
         alert("Usuário Cadastrado! Agora faça o seu login...");
         this.router.navigate(['/api/login']);
-      }, err => {
-        alert(err);
+      }, (err) => {
+        alert("Usuário não cadastrado! \n Contate o Administrador");
         return;
       });
     }

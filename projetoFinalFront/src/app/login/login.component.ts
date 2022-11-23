@@ -39,11 +39,9 @@ export class LoginComponent implements OnInit {
       this.loginService.login(autenticacao).subscribe(retorno => {
         localStorage.setItem('token', retorno.token);
         this.router.navigate(['/api/servico-home']);
-      });
-    } else {
-      console.log("erro");
+      },
+      (err) => {alert("Usuário ou senha incorreto!")});
     }
-
   }
   
   public esqueciSenha(){
