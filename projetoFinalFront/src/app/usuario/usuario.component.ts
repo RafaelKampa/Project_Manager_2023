@@ -44,7 +44,7 @@ export class UsuarioComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,
     private dateAdapter: DateAdapter<Date>,
     private router: Router) {
-      this.dateAdapter.setLocale('en-GB')
+      this.dateAdapter.setLocale('pt-BR')
     }
 
   ngOnInit(): void {

@@ -19,6 +19,8 @@ export class AuthGuard implements CanActivate {
       if (!isLoggedIn){
         alert("Para essa função é necessário realizar o login")
         this.router.navigate(['/api/login']);
+      } else {
+        return;
       }
       })
     )

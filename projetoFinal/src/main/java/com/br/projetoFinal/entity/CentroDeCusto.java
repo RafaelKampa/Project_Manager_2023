@@ -32,6 +32,9 @@ public class CentroDeCusto {
     @Column(name = "ENDERECO", nullable = false)
     private String enderecoCentroDeCusto;
 
+    @Column(name = "VALOR_EMPREENDIDO", nullable = false)
+    private Double valorEmpreendido;
+
     public Integer getIdCentroDeCusto() {
         return idCentroDeCusto;
     }
@@ -54,5 +57,13 @@ public class CentroDeCusto {
 
     public void setEnderecoCentroDeCusto(String enderecoCentroDeCusto) {
         this.enderecoCentroDeCusto = enderecoCentroDeCusto;
+    }
+
+    public String getValorEmpreendido() {
+        return valorEmpreendido;
+    }
+
+    public void setValorEmpreendido(String valorEmpreendido) {
+        this.valorEmpreendido = valorEmpreendido;
     }
 }

@@ -23,6 +23,7 @@ import { CadastroServicoComponent } from './cadastro-servico/cadastro-servico.co
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
+import { ServicoHomeComponent } from './servico-home/servico-home.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -34,6 +35,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     LayoutComponent,
     CadastroServicoComponent,
     CentroCustoComponent,
+    ServicoHomeComponent,
   ],
   imports: [
     BrowserModule,

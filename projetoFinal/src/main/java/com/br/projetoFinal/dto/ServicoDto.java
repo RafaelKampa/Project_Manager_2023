@@ -8,6 +8,7 @@ public class ServicoDto extends Servico {
     public String tipoServico;
     public Double valorUnitario;
     public Double dimensao;
+    public String unidadeMedida;
     public String centroDeCusto;
     public String localExecucao;
     public String executor;
@@ -20,12 +21,13 @@ public class ServicoDto extends Servico {
     public ServicoDto() {
     }
 
-    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto,
+    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto,
                       String localExecucao, String executor, String conferente, Date dataInicio, Date dataFinal, Double valorTotal, String obs) {
         this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
+        this.unidadeMedida = unidadeMedida;
         this.centroDeCusto = centroDeCusto;
         this.localExecucao = localExecucao;
         this.executor = executor;
@@ -36,11 +38,12 @@ public class ServicoDto extends Servico {
         this.obs = obs;
     }
 
-    public ServicoDto(String tipoServico, Double valorUnitario, Double dimensao, String centroDeCusto, String localExecucao,
+    public ServicoDto(String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto, String localExecucao,
                       String executor, String conferente, Date dataInicio) {
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
         this.dimensao = dimensao;
+        this.unidadeMedida = unidadeMedida;
         this.centroDeCusto = centroDeCusto;
         this.localExecucao = localExecucao;
         this.executor = executor;
@@ -74,6 +77,16 @@ public class ServicoDto extends Servico {
 
     public Double getDimensao() {
         return dimensao;
+    }
+
+    @Override
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    @Override
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
     public void setDimensao(Double dimensao) {
@@ -132,8 +145,8 @@ public class ServicoDto extends Servico {
         return valorTotal;
     }
 
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotal() {
+        this.valorTotal = this.getDimensao() * this.getValorUnitario();
     }
 
     public String getObs() {

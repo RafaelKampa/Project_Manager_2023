@@ -15,6 +15,7 @@ import java.util.Date;
                         @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
                         @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
                         @ColumnResult(name = "DIMENSAO", type = Double.class),
+                        @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
                         @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
                         @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
                         @ColumnResult(name = "EXECUTOR", type = String.class),
@@ -46,6 +47,9 @@ public class Servico {
 
     @Column(name = "DIMENSAO", nullable = false)
     private Double dimensao;
+
+    @Column(name = "UNIDADE_MEDIDA", nullable = false)
+    private String unidadeMedida;
 
     @Column(name = "CENTRO_DE_CUSTO", nullable = false)
     private String centroDeCusto;
@@ -98,6 +102,14 @@ public class Servico {
 
     public void setDimensao(Double dimensao) {
         this.dimensao = dimensao;
+    }
+
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
     public String getCentroDeCusto() {
@@ -165,11 +177,11 @@ public class Servico {
     }
 
     public Double getValorTotal() {
-        return valorUnitario * dimensao;
+        return valorTotal;
     }
 
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorUnitario * dimensao;
+    public void setValorTotal() {
+        this.valorTotal = this.getDimensao() * this.getValorUnitario();
     }
 
     public String getObs() {

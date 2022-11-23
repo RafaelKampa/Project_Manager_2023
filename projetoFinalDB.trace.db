@@ -2041,3 +2041,11 @@ ORDER BY NOME [42122-214]
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Alvenaria' (SERVICO: ""TIPO_SERVICO"" INTEGER NOT NULL)"; SQL statement:
 INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, OBS) 
  VALUES (0, 'Alvenaria', 20, 10, 'Edifício Fortaleza', 'Cozinha, Apartamento 03', 'Marcelo Victor Cardoso', 'Rafael Gilberto Kampa', '2022-01-11', '2022-10-01', 'Serviço sem problemas de execução') [22018-214]
+2022-11-22 20:11:39 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Alvenaria' (SERVICO: ""TIPO_SERVICO"" INTEGER NOT NULL)"; SQL statement:
+INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, OBS) 
+ VALUES (0, 'Alvenaria', 20, 10, 'Edifício Fortaleza', 'Cozinha, Apartamento 03', 'Marcelo Victor Cardoso', 'Rafael Gilberto Kampa', '2022-01-11', '2022-10-01', 'Serviço sem problemas de execução') [22018-214]
+2022-11-22 20:43:10 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, UNIDADE_MEDIDA [*]CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, OBS) \000d\000a VALUES (0, 'Alvenaria', 20, 10, 'Edifício Fortaleza', 'Cozinha, Apartamento 03', 'm2',  'Marcelo Victor Cardoso', 'Rafael Gilberto Kampa', '2022-01-11', '2022-10-01', 'Serviço sem problemas de execução')"; expected ",, )"; SQL statement:
+INSERT INTO SERVICO (ID_SERVICO, TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, UNIDADE_MEDIDA CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, OBS) 
+ VALUES (0, 'Alvenaria', 20, 10, 'Edifício Fortaleza', 'Cozinha, Apartamento 03', 'm2',  'Marcelo Victor Cardoso', 'Rafael Gilberto Kampa', '2022-01-11', '2022-10-01', 'Serviço sem problemas de execução') [42001-214]
