@@ -62,6 +62,16 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
+    public List<Servico> listarAguardandoAvaliacao() {
+        return servicoRepository.listarAguardandoAvaliacao();
+    }
+
+    @Override
+    public List<Servico> listarAvaliados() {
+        return servicoRepository.listarAvaliados();
+    }
+
+    @Override
     public Servico buscarPorId(Integer idServico) {
         return servicoRepository.buscarPorId(idServico);
     }

@@ -1,0 +1,9 @@
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin-top: 40px;
+    margin-right: 50px;
+}

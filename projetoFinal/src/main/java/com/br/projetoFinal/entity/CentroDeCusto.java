@@ -10,15 +10,16 @@ import javax.persistence.*;
         @SqlResultSetMapping(name = "CentroDeCusto.dtoMapping", classes = {
                 @ConstructorResult(targetClass = AvaliacaoDto.class,
                         columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "ID_CENTRO_DE_CUSTO", type = Integer.class),
                                 @ColumnResult(name = "NOME_CENTRO_DE_CUSTO", type = String.class),
-                                @ColumnResult(name = "ENDERECO", type = String.class)
+                                @ColumnResult(name = "ENDERECO", type = String.class),
+                                @ColumnResult(name = "VALOR_EMPREENDIDO", type = String.class)
                         }
                 )
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="CentroDeCusto.buscarPorId", query = "SELECT * FROM CENTRO_DE_CUSTO WHERE ID = :ID", resultSetMapping = "CentroDeCusto.dtoMapping"),
+        @NamedNativeQuery(name="CentroDeCusto.buscarPorId", query = "SELECT * FROM CENTRO_DE_CUSTO WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO", resultSetMapping = "CentroDeCusto.dtoMapping"),
 })
 public class CentroDeCusto {
 
@@ -32,7 +33,7 @@ public class CentroDeCusto {
     @Column(name = "ENDERECO", nullable = false)
     private String enderecoCentroDeCusto;
 
-    @Column(name = "VALOR_EMPREENDIDO", nullable = false)
+    @Column(name = "VALOR_EMPREENDIDO")
     private Double valorEmpreendido;
 
     public Integer getIdCentroDeCusto() {
@@ -59,11 +60,11 @@ public class CentroDeCusto {
         this.enderecoCentroDeCusto = enderecoCentroDeCusto;
     }
 
-    public String getValorEmpreendido() {
+    public Double getValorEmpreendido() {
         return valorEmpreendido;
     }
 
-    public void setValorEmpreendido(String valorEmpreendido) {
+    public void setValorEmpreendido(Double valorEmpreendido) {
         this.valorEmpreendido = valorEmpreendido;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
         @SqlResultSetMapping(name = "Servico.dtoMapping", classes = {
                 @ConstructorResult(targetClass = ServicoDto.class,
                         columns ={
-                        @ColumnResult(name = "ID", type = Integer.class),
+                        @ColumnResult(name = "ID_SERVICO", type = Integer.class),
                         @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
                         @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
                         @ColumnResult(name = "DIMENSAO", type = Double.class),
@@ -30,8 +30,8 @@ import java.util.Date;
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID = :ID", resultSetMapping = "Servico.dtoMapping"),
-        @NamedNativeQuery(name="Servico.buscarPorServico", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY ID", resultSetMapping = "Servico.dtoMapping")
+        @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.buscarPorServico", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping")
 })
 public class Servico {
 

@@ -32,9 +32,19 @@ public class ServicoController {
         return new ResponseEntity<>(servicoDto, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/listarServicos")
     public List<Servico> listar() {
         return servicoService.listar();
+    }
+
+    @GetMapping("/listarAguardandoAvaliacao")
+    public List<Servico> listarAguardandoAvaliacao() {
+        return servicoService.listarAguardandoAvaliacao();
+    }
+
+    @GetMapping("/listarAvaliados")
+    public List<Servico> listarAvaliados() {
+        return servicoService.listarAvaliados();
     }
 
     @GetMapping("/{ID}")

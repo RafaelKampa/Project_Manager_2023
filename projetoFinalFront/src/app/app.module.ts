@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ServicoHomeComponent } from './servico-home/servico-home.component';
+import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -36,6 +37,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     CadastroServicoComponent,
     CentroCustoComponent,
     ServicoHomeComponent,
+    ListarServicosComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     MatTableModule,
     NgxMaskModule.forRoot(), //npm install --save ngx-mask
     MatSelectModule,
-    CommonModule
+    CommonModule,
+    
   ],
   providers: [
   ],

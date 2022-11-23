@@ -23,8 +23,8 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
 
     @Override
     public void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) {
-        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (NOME_CENTRO_DE_CUSTO, ENDERECO) \n " +
-                        "VALUES (:NOME_CENTRO_DE_CUSTO, :ENDERECO)")
+        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (ID_CENTRO_DE_CUSTO, NOME_CENTRO_DE_CUSTO, ENDERECO) \n " +
+                        "VALUES (SELECT MAX(ID_CENTRO_DE_CUSTO) FROM CENTRO_DE_CUSTO + 1, :NOME_CENTRO_DE_CUSTO, :ENDERECO)")
                 .setParameter("NOME_CENTRO_DE_CUSTO", centroDeCustoDto.getNomeCentroDeCusto())
                 .setParameter("ENDERECO", centroDeCustoDto.getEnderecoCentroDeCusto())
                 .executeUpdate();
@@ -40,7 +40,7 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     @Override
     public CentroDeCusto buscarPorId(Integer idCentroDeCusto) {
         TypedQuery<CentroDeCusto> query = getEntityManager().createNamedQuery("CentroDeCusto.buscarPorId", CentroDeCusto.class)
-                .setParameter("ID", idCentroDeCusto);
+                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
         return query.getSingleResult();
     }
 
@@ -54,7 +54,7 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     @Override
     public void excluir(Integer idCentroDeCusto) {
         em.createNativeQuery("DELETE FROM CENTRO_DE_CUSTO \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idCentroDeCusto);
+                        "WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO")
+                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
     }
 }

@@ -45,22 +45,38 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     @Override
     public List<Servico> listar() {
         Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
-                "ORDER BY ID");
+                "ORDER BY ID_SERVICO");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Servico> listarAguardandoAvaliacao() {
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
+                "WHERE DATA_FINAL IS NULL \n" +
+                "ORDER BY ID_SERVICO");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Servico> listarAvaliados() {
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
+                "WHERE DATA_FINAL IS NOT NULL \n" +
+                "ORDER BY ID_SERVICO");
         return query.getResultList();
     }
 
     @Override
     public Servico buscarPorId(Integer idServico) {
         TypedQuery<Servico> query = getEntityManager().createNamedQuery("Servico.buscarPorId", Servico.class)
-                .setParameter("ID", idServico);
+                .setParameter("ID_SERVICO", idServico);
         return query.getSingleResult();
     }
 
     @Override
     public void excluirPorId(Integer idServico) {
         em.createNativeQuery("DELETE FROM SERVICO \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idServico);
+                        "WHERE ID_SERVICO = :ID_SERVICO")
+                .setParameter("ID_SERVICO", idServico);
     }
 
     @Override

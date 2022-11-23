@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    
+    localStorage.clear();
   }
 
   public logar() {
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService.login(autenticacao).subscribe(retorno => {
         localStorage.setItem('token', retorno.token);
+        alert("Usuário autenticado!\nRedirecionando...")
         this.router.navigate(['/api/servico-home']);
       },
       (err) => {alert("Usuário ou senha incorreto!")});

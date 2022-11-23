@@ -7,6 +7,7 @@ public class CentroDeCustoDto extends CentroDeCusto {
     public Integer idCentroDeCusto;
     public String nomeCentroDeCusto;
     public String enderecoCentroDeCusto;
+    public Double valorEmpreendido;
 
     public CentroDeCustoDto() {
     }
@@ -15,6 +16,13 @@ public class CentroDeCustoDto extends CentroDeCusto {
         this.idCentroDeCusto = idCentroDeCusto;
         this.nomeCentroDeCusto = nomeCentroDeCusto;
         this.enderecoCentroDeCusto = enderecoCentroDeCusto;
+    }
+
+    public CentroDeCustoDto(Integer idCentroDeCusto, String nomeCentroDeCusto, String enderecoCentroDeCusto, Double valorEmpreendido) {
+        this.idCentroDeCusto = idCentroDeCusto;
+        this.nomeCentroDeCusto = nomeCentroDeCusto;
+        this.enderecoCentroDeCusto = enderecoCentroDeCusto;
+        this.valorEmpreendido = valorEmpreendido;
     }
 
     @Override
@@ -45,5 +53,15 @@ public class CentroDeCustoDto extends CentroDeCusto {
     @Override
     public void setEnderecoCentroDeCusto(String enderecoCentroDeCusto) {
         this.enderecoCentroDeCusto = enderecoCentroDeCusto;
+    }
+
+    @Override
+    public Double getValorEmpreendido() {
+        return valorEmpreendido;
+    }
+
+    @Override
+    public void setValorEmpreendido(Double valorEmpreendido) {
+        this.valorEmpreendido = valorEmpreendido;
     }
 }
