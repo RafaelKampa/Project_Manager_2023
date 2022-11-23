@@ -30,7 +30,6 @@ import java.util.Date;
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.buscarPorServico", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping")
 })
 public class Servico {

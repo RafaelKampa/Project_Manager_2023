@@ -12,7 +12,7 @@ public interface ServicoService {
     List<Servico> listar();
     List<Servico> listarAguardandoAvaliacao();
     List<Servico> listarAvaliados();
-    Servico buscarPorId(Integer idServico);
+    List<Servico> buscarPorId(Integer idServico, String tipoServico);
     List<Servico> buscarPorServico(String tipoServico);
     void excluir(Integer idServico);
 }

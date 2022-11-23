@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class AvaliacaoDto extends Avaliacao {
     public Integer idAvaliacao;
-    public Integer tipoServico;
+    public String tipoServico;
     public Integer idServico;
-    public Integer idUsuExect;
-    public Integer idUsuConf;
+    public String usuExect;
+    public String usuConf;
     public Boolean resultado;
     public Date dataAvaliacao;
     public Date dataReavaliacao;
@@ -19,21 +19,21 @@ public class AvaliacaoDto extends Avaliacao {
     public AvaliacaoDto() {
     }
 
-    public AvaliacaoDto(Integer tipoServico, Integer idServico, Integer idUsuExect, Integer idUsuConf, Boolean resultado, Date dataAvaliacao) {
+    public AvaliacaoDto(String tipoServico, Integer idServico, String usuExect, String usuConf, Boolean resultado, Date dataAvaliacao) {
         this.tipoServico = tipoServico;
         this.idServico = idServico;
-        this.idUsuExect = idUsuExect;
-        this.idUsuConf = idUsuConf;
+        this.usuExect = usuExect;
+        this.usuConf = usuConf;
         this.resultado = resultado;
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public AvaliacaoDto(Integer id, Integer tipoServico, Integer idServico, Integer idUsuExect, Integer idUsuConf, Boolean resultado, Date dataAvaliacao, Date dataReavaliacao, Boolean resultReaval, String obs) {
+    public AvaliacaoDto(Integer id, String tipoServico, Integer idServico, String usuExect, String usuConf, Boolean resultado, Date dataAvaliacao, Date dataReavaliacao, Boolean resultReaval, String obs) {
         this.idAvaliacao = id;
         this.tipoServico = tipoServico;
         this.idServico = idServico;
-        this.idUsuExect = idUsuExect;
-        this.idUsuConf = idUsuConf;
+        this.usuExect = usuExect;
+        this.usuConf = usuConf;
         this.resultado = resultado;
         this.dataAvaliacao = dataAvaliacao;
         this.dataReavaliacao = dataReavaliacao;
@@ -52,12 +52,12 @@ public class AvaliacaoDto extends Avaliacao {
     }
 
     @Override
-    public Integer getTipoServico() {
+    public String getTipoServico() {
         return tipoServico;
     }
 
     @Override
-    public void setTipoServico(Integer tipoServico) {
+    public void setTipoServico(String tipoServico) {
         this.tipoServico = tipoServico;
     }
 
@@ -72,23 +72,23 @@ public class AvaliacaoDto extends Avaliacao {
     }
 
     @Override
-    public Integer getIdUsuExect() {
-        return idUsuExect;
+    public String getUsuExect() {
+        return usuExect;
     }
 
     @Override
-    public void setIdUsuExect(Integer idUsuExect) {
-        this.idUsuExect = idUsuExect;
+    public void setUsuExect(String usuExect) {
+        this.usuExect = usuExect;
     }
 
     @Override
-    public Integer getIdUsuConf() {
-        return idUsuConf;
+    public String getUsuConf() {
+        return usuConf;
     }
 
     @Override
-    public void setIdUsuConf(Integer idUsuConf) {
-        this.idUsuConf = idUsuConf;
+    public void setUsuConf(String usuConf) {
+        this.usuConf = usuConf;
     }
 
     @Override

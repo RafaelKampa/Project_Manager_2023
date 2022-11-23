@@ -7,3 +7,12 @@
     margin-top: 40px;
     margin-right: 50px;
 }
+
+.mat-button.mat-brown {
+    color: brown;
+ }
+ 
+ .mat-raised-button.mat-brown, .mat-flat-button.mat-brown{
+    background-color: brown;
+    color: white;
+ }

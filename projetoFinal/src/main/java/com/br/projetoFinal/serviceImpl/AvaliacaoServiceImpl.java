@@ -33,13 +33,13 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
         Avaliacao avaliacao = mapper.map(avaliacaoDto, Avaliacao.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
             utx.begin();
-            if (avaliacaoDto.getTipoServico() == 0) {
+            if (avaliacaoDto.getTipoServico().equals(null)) {
                 throw new ExcecaoExemplo("ERR201", "É necessário informar o tipo de serviço.");
             } else if (avaliacaoDto.getIdServico() == 0) {
                 throw new ExcecaoExemplo("ERR202", "É necessário informar o serviço a ser avaliado.");
-            } else if (avaliacaoDto.getIdUsuExect() == 0) {
+            } else if (avaliacaoDto.getUsuExect().equals(null)) {
                 throw new ExcecaoExemplo("ERR203", "É necessário informar o funcionário a ser avaliado");
-            } else if (avaliacaoDto.getIdUsuConf() == 0) {
+            } else if (avaliacaoDto.getUsuConf().equals(null)) {
                 throw new ExcecaoExemplo("ERR204", "É necessário informar o avaliador do serviço");
             } else if (avaliacaoDto.getDataAvaliacao().equals(null)) {
                 throw new ExcecaoExemplo("ERR205", "É necessário informar a data da avaliação");

@@ -19,7 +19,7 @@ public class ParametrosAlvenariaController {
     @Autowired
     ParametrosAlvenariaService parametrosAlvenariaService;
 
-    @PostMapping
+    @PostMapping("/salvarNovosParametros")
     public void salvarParametrosAvaliados(@RequestBody ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException, SystemException {
         parametrosAlvenariaService.salvarParametrosAvaliados(parametrosAlvenariaDto);
     }

@@ -47,14 +47,9 @@ public class ServicoController {
         return servicoService.listarAvaliados();
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<Servico> buscarPorId(@PathVariable("ID") Integer idServico) {
-        try {
-            Servico servico = servicoService.buscarPorId(idServico);
-            return new ResponseEntity<>(servico, HttpStatus.OK);
-        } catch (NoSuchElementException ex) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/buscarPorId/{ID_SERVICO}/{TIPO_SERVICO}")
+    public List<Servico> buscarPorId(@PathVariable("ID_SERVICO") Integer idServico,@PathVariable("TIPO_SERVICO") String tipoServico) {
+        return servicoService.buscarPorId(idServico, tipoServico);
     }
 
     @DeleteMapping("/{ID}")

@@ -66,10 +66,12 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
-    public Servico buscarPorId(Integer idServico) {
-        TypedQuery<Servico> query = getEntityManager().createNamedQuery("Servico.buscarPorId", Servico.class)
-                .setParameter("ID_SERVICO", idServico);
-        return query.getSingleResult();
+    public  List<Servico> buscarPorId(Integer idServico, String tipoServico) {
+        Query query = (Query) getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
+                "WHERE ID_SERVICO = :ID_SERVICO AND TIPO_SERVICO = :TIPO_SERVICO")
+                .setParameter("ID_SERVICO", idServico)
+                .setParameter("TIPO_SERVICO", tipoServico);
+        return query.getResultList();
     }
 
     @Override

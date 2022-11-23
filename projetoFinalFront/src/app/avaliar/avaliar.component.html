@@ -1,0 +1,221 @@
+<h1 class="center">Avaliar Serviços</h1>
+<div class="center" *ngIf="tabela==1" >
+    <p>Serviços aguardando avaliação</p>
+</div>
+<div class="center" *ngIf="tabela==1">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+        <ng-container matColumnDef="tipoServico">
+            <th mat-header-cell *matHeaderCellDef> Serviço </th>
+            <td mat-cell *matCellDef="let element"> {{element[10]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorUnitario">
+            <th mat-header-cell *matHeaderCellDef> Valor Unitário </th>
+            <td mat-cell *matCellDef="let element"> {{element[13] | currency: 'R$'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dimensao">
+            <th mat-header-cell *matHeaderCellDef> Dimensões </th>
+            <td mat-cell *matCellDef="let element"> {{element[5]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unidadeMedida">
+            <th mat-header-cell *matHeaderCellDef> Und. </th>
+            <td mat-cell *matCellDef="let element"> {{element[11]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="centroDeCusto">
+            <th mat-header-cell *matHeaderCellDef> Centro de Custo </th>
+            <td mat-cell *matCellDef="let element"> {{element[1]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="localExecucao">
+            <th mat-header-cell *matHeaderCellDef> Local de Execução </th>
+            <td mat-cell *matCellDef="let element"> {{element[7]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="executor">
+            <th mat-header-cell *matHeaderCellDef> Funcionário </th>
+            <td mat-cell *matCellDef="let element"> {{element[6]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="conferente">
+            <th mat-header-cell *matHeaderCellDef> Conferente </th>
+            <td mat-cell *matCellDef="let element"> {{element[2]}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataInicio">
+            <th mat-header-cell *matHeaderCellDef> Data de Início </th>
+            <td mat-cell *matCellDef="let element"> {{element[4] | date : 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="previsaoTermino">
+            <th mat-header-cell *matHeaderCellDef> Previsão de Término </th>
+            <td mat-cell *matCellDef="let element"> {{element[9] | date : 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorTotal">
+            <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+            <td mat-cell *matCellDef="let element"> {{element[12] | currency: 'R$'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="avaliar">
+            <th mat-header-cell *matHeaderCellDef> Avaliar </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-flat-button color="primary" (click)="avaliar(element[0], element[10], element[6], element[2], element[12], element[5], element[11])">Avaliar</button> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsSemAval"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsSemAval;"></tr>
+        
+    </table>
+</div>
+<ng-container *ngIf="tipoServicoSelecionado === 'Alvenaria'">
+    <h1 class="center">Avaliação de Serviços de Alvenaria</h1>
+    <form [formGroup]="avaliarAlvenariaForm" (ngSubmit)="avaliarAlvenaria()">
+    
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Serviço</mat-label>
+                <input class="inputs" matInput placeholder="Serviço" name="tipoServico" formControlName ="tipoServico" 
+                [value]="avaliacao.tipoServico" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Dimensões</mat-label>
+                <input class="inputs" matInput placeholder="Dimensões" name="dimensoes" formControlName ="dimensoes" 
+                [value]="dimensaoSelecionada" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Unidade de Medida</mat-label>
+                <input class="inputs" matInput placeholder="Unidade de Medida" name="dimensoes" formControlName ="dimensoes" 
+                [value]="unidadeMedidaSelecionada" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+    
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Funcionário</mat-label>
+                <input class="inputs" matInput placeholder="Funcionário" name="executor" formControlName ="executor" 
+                [value]="executorSelecionado" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Conferente</mat-label>
+                <input class="inputs" matInput placeholder="Conferente" name="conferente" formControlName ="conferente" 
+                [value]="conferenteSelecionado" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Valor total do Serviço</mat-label>
+                <input class="inputs" matInput placeholder="Valor Total" name="valorTotal" formControlName ="valorTotal" 
+                [value]="valorTotalSelecionado" required/>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+    
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Prumo</mat-label>
+                <mat-select [(value)]="prumo" name="prumo">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width inputs" appearance="fill">    
+                <mat-label>Nível</mat-label>
+                <mat-select [(value)]="nivel" name="nivel">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width inputs" appearance="fill">    
+                <mat-label>Alinhamento</mat-label>
+                <mat-select [(value)]="alinhamento" name="alinhamento">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+       
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">    
+                <mat-label>Integridade</mat-label>
+                <mat-select [(value)]="integridade" name="integridade">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width inputs" appearance="fill">    
+                <mat-label>Limpeza</mat-label>
+                <mat-select [(value)]="limpeza" name="limpeza">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">    
+                <mat-label>Resultado</mat-label>
+                <mat-select [(value)]="resultado" name="resultado">
+                    <mat-option class="inputs" [value]="true">
+                        {{'Aprovado'}}
+                    </mat-option>
+                    <mat-option class="inputs" [value]="false">
+                        {{'Reprovado'}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+        </div>
+    
+        <div class="center">
+            <mat-form-field class="example-full-width inputs" appearance="fill">
+                <mat-label>Observações</mat-label>
+                <input class="inputs" matInput placeholder="Observações" name="obs" formControlName="obs"/>
+            </mat-form-field>
+        </div>
+    
+        <div class="center">
+            <button class="button" mat-flat-button color="primary">Salvar novo Serviço</button>
+        </div>
+        <div class="center">
+            <button class="button" mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>
+        </div>      
+    </form>
+</ng-container>

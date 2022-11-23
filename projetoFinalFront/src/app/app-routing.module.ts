@@ -9,6 +9,7 @@ import { ServicoHomeComponent } from './servico-home/servico-home.component';
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
+import { AvaliarComponent } from './avaliar/avaliar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'centro-custo', component: CentroCustoComponent, canActivate: [AuthGuard]},
       { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard]},
       { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard]},
+      { path: 'avaliar', component: AvaliarComponent, canActivate: [AuthGuard]},
     ]
   }
 ];

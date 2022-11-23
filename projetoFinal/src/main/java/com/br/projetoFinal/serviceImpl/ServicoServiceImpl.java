@@ -72,8 +72,8 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public Servico buscarPorId(Integer idServico) {
-        return servicoRepository.buscarPorId(idServico);
+    public List<Servico> buscarPorId(Integer idServico, String tipoServico) {
+        return servicoRepository.buscarPorId(idServico, tipoServico);
     }
 
     @Override

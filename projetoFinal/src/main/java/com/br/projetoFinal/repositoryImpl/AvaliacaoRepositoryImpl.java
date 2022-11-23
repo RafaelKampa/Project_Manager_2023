@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -22,13 +23,14 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void avaliar(AvaliacaoDto avaliacaoDto) {
-        em.createNativeQuery("INSERT INTO AVALIACAO (TIPO_SERVICO, ID_SERVICO, ID_USU_EXECT, ID_USU_CONF, RESULTADO, DATA_AVALIACAO, OBS)\n" +
-                "\tVALUES (:TIPO_SERVICO, :ID_SERVICO, :ID_USU_EXECT, :ID_USU_CONF, :RESULTADO, :DATA_AVALIACAO, :OBS)")
+        em.createNativeQuery("INSERT INTO AVALIACAO (ID_AVALIACAO, TIPO_SERVICO, ID_SERVICO, USU_EXECT, USU_CONF, RESULTADO, DATA_AVALIACAO, OBS)\n" +
+                "\tVALUES (SELECT MAX(ID_AVALIACAO) FROM AVALIACAO + 1, :TIPO_SERVICO, :ID_SERVICO, :USU_EXECT, :USU_CONF, :RESULTADO, :DATA_AVALIACAO, :OBS)")
                 .setParameter("TIPO_SERVICO", avaliacaoDto.getTipoServico())
                 .setParameter("ID_SERVICO", avaliacaoDto.getIdServico())
-                .setParameter("ID_USU_EXECT", avaliacaoDto.getIdUsuExect())
-                .setParameter("ID_USU_CONF", avaliacaoDto.getIdUsuConf())
+                .setParameter("USU_EXECT", avaliacaoDto.getUsuExect())
+                .setParameter("USU_CONF", avaliacaoDto.getUsuConf())
                 .setParameter("RESULTADO", avaliacaoDto.getResultado())
                 .setParameter("DATA_AVALIACAO", avaliacaoDto.getDataAvaliacao())
                 .setParameter("OBS", avaliacaoDto.getObs())

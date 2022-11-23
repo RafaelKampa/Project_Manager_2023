@@ -10,11 +10,11 @@ import java.util.Date;
         @SqlResultSetMapping(name = "Avaliacao.dtoMapping", classes = {
                 @ConstructorResult(targetClass = AvaliacaoDto.class,
                         columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
                                 @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
                                 @ColumnResult(name = "ID_SERVICO", type = Integer.class),
-                                @ColumnResult(name = "ID_USU_EXECT", type = Integer.class),
-                                @ColumnResult(name = "ID_USU_CONF", type = Integer.class),
+                                @ColumnResult(name = "USU_EXECT", type = Integer.class),
+                                @ColumnResult(name = "USU_CONF", type = Integer.class),
                                 @ColumnResult(name = "RESULTADO", type = Boolean.class),
                                 @ColumnResult(name = "DATA_AVALIACAO", type = Date.class),
                                 @ColumnResult(name = "DATA_REAVALIACAO", type = Date.class),
@@ -37,16 +37,16 @@ public class Avaliacao {
     private Integer idAvaliacao;
 
     @Column(name = "TIPO_SERVICO", nullable = false)
-    private Integer tipoServico;
+    private String tipoServico;
 
     @Column(name = "ID_SERVICO", nullable = false)
     private Integer idServico;
 
-    @Column(name = "ID_USU_EXECT", nullable = false)
-    private Integer idUsuExect;
+    @Column(name = "USU_EXECT", nullable = false)
+    private String usuExect;
 
-    @Column(name = "ID_USU_CONF", nullable = false)//Deve pegar o usuário que está logado realizando a avaliação
-    private Integer idUsuConf;
+    @Column(name = "USU_CONF", nullable = false)//Deve pegar o usuário que está logado realizando a avaliação
+    private String usuConf;
 
     @Column(name = "RESULTADO", nullable = false)
     private Boolean resultado;
@@ -71,11 +71,11 @@ public class Avaliacao {
         this.idAvaliacao = idAvaliacao;
     }
 
-    public Integer getTipoServico() {
+    public String getTipoServico() {
         return tipoServico;
     }
 
-    public void setTipoServico(Integer tipoServico) {
+    public void setTipoServico(String tipoServico) {
         this.tipoServico = tipoServico;
     }
 
@@ -87,20 +87,20 @@ public class Avaliacao {
         this.idServico = idServico;
     }
 
-    public Integer getIdUsuExect() {
-        return idUsuExect;
+    public String getUsuExect() {
+        return usuExect;
     }
 
-    public void setIdUsuExect(Integer idUsuExect) {
-        this.idUsuExect = idUsuExect;
+    public void setUsuExect(String usuExect) {
+        this.usuExect = usuExect;
     }
 
-    public Integer getIdUsuConf() {
-        return idUsuConf;
+    public String getUsuConf() {
+        return usuConf;
     }
 
-    public void setIdUsuConf(Integer idUsuConf) {
-        this.idUsuConf = idUsuConf;
+    public void setUsuConf(String usuConf) {
+        this.usuConf = usuConf;
     }
 
     public Boolean getResultado() {

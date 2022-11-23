@@ -27,5 +27,14 @@ export class ServicoHomeComponent implements OnInit {
 
   listarCentros() {
     this.router.navigate(['/api/listar-centros']);
- }
+  }
+
+  avaliarServicos() {
+    this.router.navigate(['/api/avaliar']);
+  }
+
+  reavaliarServicos() {
+    this.router.navigate(['/api/reavaliar']);
+  }
+
 }

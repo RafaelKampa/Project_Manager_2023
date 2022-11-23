@@ -26,6 +26,7 @@ import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ServicoHomeComponent } from './servico-home/servico-home.component';
 import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
+import { AvaliarComponent } from './avaliar/avaliar.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -40,6 +41,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     ServicoHomeComponent,
     ListarServicosComponent,
     ListarCentrosComponent,
+    AvaliarComponent,
   ],
   imports: [
     BrowserModule,

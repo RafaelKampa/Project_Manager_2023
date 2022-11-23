@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @Repository
 public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRepository {
@@ -20,9 +21,10 @@ public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRep
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) {
-        em.createNativeQuery("ISERT INTO PARAMETROS_ALVENARIA (ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
-                "VALUES (:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, : DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
+        em.createNativeQuery("ISERT INTO PARAMETROS_ALVENARIA (ID_PARAMETROS_ALVENARIA, ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
+                "VALUES (SELECT MAX(ID_PARAMETROS_ALVENARIA) FROM PARAMETROS_ALVENARIA + 1,:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, : DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
                 .setParameter("ID_AVALIACAO", parametrosAlvenariaDto.getIdAvaliacao())
                 .setParameter("PRUMO", parametrosAlvenariaDto.getPrumo())
                 .setParameter("NIVEL", parametrosAlvenariaDto.getNivel())
