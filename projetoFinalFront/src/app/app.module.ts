@@ -25,6 +25,7 @@ import { CommonModule } from '@angular/common';
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ServicoHomeComponent } from './servico-home/servico-home.component';
 import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
+import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -38,6 +39,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     CentroCustoComponent,
     ServicoHomeComponent,
     ListarServicosComponent,
+    ListarCentrosComponent,
   ],
   imports: [
     BrowserModule,

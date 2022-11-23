@@ -25,4 +25,7 @@ export class ServicoHomeComponent implements OnInit {
     this.router.navigate(['/api/centro-custo']);
   }
 
+  listarCentros() {
+    this.router.navigate(['/api/listar-centros']);
+ }
 }

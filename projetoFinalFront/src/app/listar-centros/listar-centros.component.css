@@ -1,0 +1,39 @@
+table {
+    width: 80%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.inputs {
+    width: 250px;
+}
+
+.mat-button.mat-gray {
+    color: gray;
+ }
+ 
+ .mat-raised-button.mat-gray, .mat-flat-button.mat-gray{
+    background-color: gray;
+    color: white;
+ }
+
+ .mat-button.mat-brown {
+    color: gray;
+ }
+ 
+ .mat-raised-button.mat-brown, .mat-flat-button.mat-brown{
+    background-color: brown;
+    color: white;
+ }

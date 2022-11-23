@@ -25,8 +25,8 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) {
-        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (ID_CENTRO_DE_CUSTO, NOME_CENTRO_DE_CUSTO, ENDERECO) \n " +
-                        "VALUES (SELECT MAX(ID_CENTRO_DE_CUSTO) FROM CENTRO_DE_CUSTO + 1, :NOME_CENTRO_DE_CUSTO, :ENDERECO)")
+        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (ID_CENTRO_DE_CUSTO, NOME_CENTRO_DE_CUSTO, ENDERECO, VALOR_EMPREENDIDO) \n " +
+                        "VALUES (SELECT MAX(ID_CENTRO_DE_CUSTO) FROM CENTRO_DE_CUSTO + 1, :NOME_CENTRO_DE_CUSTO, :ENDERECO, 0)")
                 .setParameter("NOME_CENTRO_DE_CUSTO", centroDeCustoDto.getNomeCentroDeCusto())
                 .setParameter("ENDERECO", centroDeCustoDto.getEnderecoCentroDeCusto())
                 .executeUpdate();

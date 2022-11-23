@@ -2469,3 +2469,13 @@ Caused by: java.lang.StringIndexOutOfBoundsException: Index 0 out of bounds for 
 	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:338)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
 	... 101 more
+2022-11-23 14:13:28 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE CENTRO_DE_CUSTO \000d\000aSET VALOR_EMPREENDIDO\000d\000a[*]WHERE ID_CENTRO_DE_CUSTO < 4"; expected "., ="; SQL statement:
+UPDATE CENTRO_DE_CUSTO 
+SET VALOR_EMPREENDIDO
+WHERE ID_CENTRO_DE_CUSTO < 4 [42001-214]
+2022-11-23 14:13:43 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE CENTRO_DE_CUSTO \000d\000aSET VALOR_EMPREENDIDO\000d\000a[*]WHERE ID_CENTRO_DE_CUSTO = 1"; expected "., ="; SQL statement:
+UPDATE CENTRO_DE_CUSTO 
+SET VALOR_EMPREENDIDO
+WHERE ID_CENTRO_DE_CUSTO = 1 [42001-214]
