@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CadastroServicoModel } from 'src/app/cadastro-servico/model/cadastro-servico.model';
-import { AvaliacaoAlvenariaModel } from '../model/avaliar.model';
+import { AvaliacaoAlvenariaModel } from '../model/avaliar-alvenaria.model';
 
 @Injectable({
   providedIn: 'root'

@@ -4,7 +4,7 @@ import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { ListarServicosModel } from '../listar-servicos/model/listar-servicos.model';
 import { ListarServicosService } from '../listar-servicos/service/listar-servicos.service';
-import { AvaliacaoAlvenariaModel } from './model/avaliar.model';
+import { AvaliacaoAlvenariaModel } from './model/avaliar-alvenaria.model';
 import { AvaliarService } from './service/avaliar.service';
 
 @Component({
@@ -87,36 +87,35 @@ export class AvaliarComponent implements OnInit {
 
   public avaliacao = new AvaliacaoAlvenariaModel();
   avaliar(id: number, tipoServico: string, executor: string, conferente: string, valorTotal: number, dimensao: number, unidadeMedida: string){
-    this.idServicoSelecionado = id;
-    this.tipoServicoSelecionado = tipoServico;
-    this.executorSelecionado = executor;
-    this.conferenteSelecionado = conferente;
-    this.valorTotalSelecionado = valorTotal;
-    this.dimensaoSelecionada = dimensao;
-    this.unidadeMedidaSelecionada = unidadeMedida;
-
-    this.avaliacao.tipoServico = this.tipoServicoSelecionado[1];
-    this.avaliacao.idServico = this.idServicoSelecionado;
-    this.avaliacao.valorUnitario = this.valorUnitarioSelecionado;
-    this.avaliacao.dimensao = this.dimensaoSelecionada;
-    this.avaliacao.unidadeMedida = this.unidadeMedidaSelecionada;
-    this.avaliacao.centroDeCusto = this.centroDeCustoSelecionado;
-    this.avaliacao.localExecucao = this.localExecucaoSelecionado;
-    this.avaliacao.executor = this.executorSelecionado;
-    this.avaliacao.conferente = this.conferenteSelecionado;
-    this.avaliacao.dataAvaliacao = new Date();
-    this.avaliacao.obs = this.avaliarAlvenariaForm.get('obs')?.value;
-    this.avaliacao.prumo = this.avaliarAlvenariaForm.get('prumo')?.value;
-    this.avaliacao.nivel = this.avaliarAlvenariaForm.get('nivel')?.value;
-    this.avaliacao.alinhamento = this.avaliarAlvenariaForm.get('alinhamento')?.value;
-    this.avaliacao.integridade = this.avaliarAlvenariaForm.get('integridade')?.value;
-    this.avaliacao.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value;
-    this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value;
-    this.avaliacao.valorTotal = this.valorTotalSelecionado;
 
     this.avaliarService.buscarServicoPorId(id,tipoServico).subscribe(servico => {
       this.servicoSelecionado = servico;
       this.tabela = 0;
+      this.idServicoSelecionado = id;
+      this.tipoServicoSelecionado = tipoServico;
+      this.executorSelecionado = executor;
+      this.conferenteSelecionado = conferente;
+      this.valorTotalSelecionado = valorTotal;
+      this.dimensaoSelecionada = dimensao;
+      this.unidadeMedidaSelecionada = unidadeMedida;
+      this.avaliacao.tipoServico = this.tipoServicoSelecionado;
+      this.avaliacao.idServico = this.idServicoSelecionado;
+      this.avaliacao.valorUnitario = this.valorUnitarioSelecionado;
+      this.avaliacao.dimensao = this.dimensaoSelecionada;
+      this.avaliacao.unidadeMedida = this.unidadeMedidaSelecionada;
+      this.avaliacao.centroDeCusto = this.centroDeCustoSelecionado;
+      this.avaliacao.localExecucao = this.localExecucaoSelecionado;
+      this.avaliacao.executor = this.executorSelecionado;
+      this.avaliacao.conferente = this.conferenteSelecionado;
+      this.avaliacao.dataAvaliacao = new Date();
+      this.avaliacao.obs = this.avaliarAlvenariaForm.get('obs')?.value;
+      this.avaliacao.prumo = this.avaliarAlvenariaForm.get('prumo')?.value;
+      this.avaliacao.nivel = this.avaliarAlvenariaForm.get('nivel')?.value;
+      this.avaliacao.alinhamento = this.avaliarAlvenariaForm.get('alinhamento')?.value;
+      this.avaliacao.integridade = this.avaliarAlvenariaForm.get('integridade')?.value;
+      this.avaliacao.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value;
+      this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value;
+      this.avaliacao.valorTotal = this.valorTotalSelecionado;
     })
   }
   

@@ -4,7 +4,7 @@
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Tipo de Serviço</mat-label>
-            <mat-select class="inputs" [(value)]="tipoServicoSelecionado" name="tipoServico" formControlName="tipoServico">
+            <mat-select class="inputs" [(value)]="tipoServicoSelecionado[1]" name="tipoServico" formControlName="tipoServico">
                 <mat-option *ngFor="let tipo of tiposServicos" [value]="tipo">
                     {{tipo[1]}}
                 </mat-option>
