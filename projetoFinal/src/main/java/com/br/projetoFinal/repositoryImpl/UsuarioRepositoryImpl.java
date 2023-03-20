@@ -33,8 +33,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     @Transactional(value = TxType.REQUIRES_NEW)
     public void salvarUsuario(UsuarioDto usuarioDto) {
-            em.createNativeQuery("INSERT INTO USUARIO (ID_USUARIO, CARGO, CONTRATANTE, CPF, DATA_ADMISSAO, DATA_NASCIMENTO, EMAIL, ENDERECO_RESIDENCIAL, LOGIN, NOME, REMUNERACAO, SENHA, TELEFONE, TIPO_USUARIO)\n" +
-                            "VALUES(SELECT MAX(ID_USUARIO) FROM USUARIO + 1, :CARGO, :CONTRATANTE, :CPF, :DATA_ADMISSAO, :DATA_NASCIMENTO, :EMAIL, :ENDERECO_RESIDENCIAL, :LOGIN, :NOME, :REMUNERACAO, :SENHA, :TELEFONE, :TIPO_USUARIO)")
+            em.createNativeQuery("INSERT INTO USUARIO (CARGO, CONTRATANTE, CPF, DATA_ADMISSAO, DATA_NASCIMENTO, EMAIL, ENDERECO_RESIDENCIAL, LOGIN, NOME, REMUNERACAO, SENHA, TELEFONE, TIPO_USUARIO)\n" +
+                            "VALUES(:CARGO, :CONTRATANTE, :CPF, :DATA_ADMISSAO, :DATA_NASCIMENTO, :EMAIL, :ENDERECO_RESIDENCIAL, :LOGIN, :NOME, :REMUNERACAO, :SENHA, :TELEFONE, :TIPO_USUARIO)")
                     .setParameter("LOGIN", usuarioDto.getUsername())
                     .setParameter("SENHA", usuarioDto.getSenha())
                     .setParameter("TIPO_USUARIO", usuarioDto.getTipoUsuario())

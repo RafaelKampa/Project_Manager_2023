@@ -37,7 +37,7 @@ public class Usuario {
 
     //Dados de login
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
     @Column(name = "LOGIN", nullable = false, unique = true)
