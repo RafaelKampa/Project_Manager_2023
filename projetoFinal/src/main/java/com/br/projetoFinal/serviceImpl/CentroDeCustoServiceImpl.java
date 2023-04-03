@@ -51,8 +51,8 @@ public class CentroDeCustoServiceImpl implements CentroDeCustoService {
     }
 
     @Override
-    public CentroDeCusto buscarPorId(Integer idCentroDeCusto) {
-        return centroDeCustoRepository.buscarPorId(idCentroDeCusto);
+    public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
+        return centroDeCustoRepository.buscarCentroPorId(idCentroDeCusto);
     }
 
     @Override

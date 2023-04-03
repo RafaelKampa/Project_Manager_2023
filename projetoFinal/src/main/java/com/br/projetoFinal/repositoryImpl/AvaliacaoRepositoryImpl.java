@@ -25,8 +25,8 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void avaliar(AvaliacaoDto avaliacaoDto) {
-        em.createNativeQuery("INSERT INTO AVALIACAO (ID_AVALIACAO, TIPO_SERVICO, ID_SERVICO, USU_EXECT, USU_CONF, RESULTADO, DATA_AVALIACAO, OBS)\n" +
-                "\tVALUES (SELECT MAX(ID_AVALIACAO) FROM AVALIACAO + 1, :TIPO_SERVICO, :ID_SERVICO, :USU_EXECT, :USU_CONF, :RESULTADO, :DATA_AVALIACAO, :OBS)")
+        em.createNativeQuery("INSERT INTO AVALIACAO (TIPO_SERVICO, ID_SERVICO, USU_EXECT, USU_CONF, RESULTADO, DATA_AVALIACAO, OBS)\n" +
+                "\tVALUES (:TIPO_SERVICO, :ID_SERVICO, :USU_EXECT, :USU_CONF, :RESULTADO, :DATA_AVALIACAO, :OBS)")
                 .setParameter("TIPO_SERVICO", avaliacaoDto.getTipoServico())
                 .setParameter("ID_SERVICO", avaliacaoDto.getIdServico())
                 .setParameter("USU_EXECT", avaliacaoDto.getUsuExect())
@@ -58,9 +58,9 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
     @Override
     public Avaliacao buscarPorId(Integer idAvaliacao) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorId", Avaliacao.class)
-                .setParameter("ID", idAvaliacao);
-        return query.getSingleResult();
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM AVALIACAO WHERE ID_AVALIACAO = :ID_AVALIACAO")
+                .setParameter("ID_AVALIACAO", idAvaliacao);
+        return (Avaliacao) query.getSingleResult();
     }
 
     @Override

@@ -1,30 +1,21 @@
 package com.br.projetoFinal.entity;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
+import com.br.projetoFinal.dto.CentroDeCustoDto;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "CENTRO_DE_CUSTO")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "CentroDeCusto.dtoMapping", classes = {
-                @ConstructorResult(targetClass = AvaliacaoDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID_CENTRO_DE_CUSTO", type = Integer.class),
-                                @ColumnResult(name = "NOME_CENTRO_DE_CUSTO", type = String.class),
-                                @ColumnResult(name = "ENDERECO", type = String.class),
-                                @ColumnResult(name = "VALOR_EMPREENDIDO", type = String.class)
-                        }
-                )
-        })
+@NamedQueries({
+        @NamedQuery(name = "CentroDeCusto.buscarCentroPorId", query = "SELECT c FROM com.br.projetoFinal.entity.CentroDeCusto c WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO"),
+        @NamedQuery(name = "CentroDeCusto.listarCentrosDeCusto", query = "SELECT c FROM com.br.projetoFinal.entity.CentroDeCusto c ORDER BY NOME_CENTRO_DE_CUSTO ")
 })
-@NamedNativeQueries({
-        @NamedNativeQuery(name="CentroDeCusto.buscarPorId", query = "SELECT * FROM CENTRO_DE_CUSTO WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO", resultSetMapping = "CentroDeCusto.dtoMapping"),
-})
+
 public class CentroDeCusto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCentroDeCusto;
 
     @Column(name = "NOME_CENTRO_DE_CUSTO", nullable = false)

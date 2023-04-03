@@ -6,9 +6,7 @@ import com.br.projetoFinal.repository.CentroDeCustoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -25,25 +23,30 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) {
-        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (ID_CENTRO_DE_CUSTO, NOME_CENTRO_DE_CUSTO, ENDERECO, VALOR_EMPREENDIDO) \n " +
-                        "VALUES (SELECT MAX(ID_CENTRO_DE_CUSTO) FROM CENTRO_DE_CUSTO + 1, :NOME_CENTRO_DE_CUSTO, :ENDERECO, 0)")
+        em.createNativeQuery("INSERT INTO CENTRO_DE_CUSTO (NOME_CENTRO_DE_CUSTO, ENDERECO, VALOR_EMPREENDIDO) \n " +
+                        "VALUES (:NOME_CENTRO_DE_CUSTO, :ENDERECO, :VALOR_EMPREENDIDO)")
                 .setParameter("NOME_CENTRO_DE_CUSTO", centroDeCustoDto.getNomeCentroDeCusto())
                 .setParameter("ENDERECO", centroDeCustoDto.getEnderecoCentroDeCusto())
+                .setParameter("VALOR_EMPREENDIDO", 0.0)
                 .executeUpdate();
     }
 
     @Override
     public List<CentroDeCusto> listarCentrosDeCusto() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO \n" +
-                "ORDER BY NOME_CENTRO_DE_CUSTO ");
-        return query.getResultList();
+//        Query query = getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO \n" +
+//                "ORDER BY NOME_CENTRO_DE_CUSTO ");
+//        return query.getResultList();
+        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.listarCentrosDeCusto", CentroDeCusto.class);
+        List<CentroDeCusto> centro = query.getResultList();
+        return centro;
     }
 
     @Override
-    public CentroDeCusto buscarPorId(Integer idCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = getEntityManager().createNamedQuery("CentroDeCusto.buscarPorId", CentroDeCusto.class)
+    public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
+        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCusto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
-        return query.getSingleResult();
+        CentroDeCusto centro = query.getSingleResult();
+        return centro;
     }
 
     @Override

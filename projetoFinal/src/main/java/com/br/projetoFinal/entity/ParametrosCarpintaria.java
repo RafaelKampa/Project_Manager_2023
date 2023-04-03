@@ -6,31 +6,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PARAMETROS_CARPINTARIA")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "ParametrosCarpintaria.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ParametrosCarpintariaDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
-                                @ColumnResult(name = "TIPO_CARPINTARIA", type = String.class),
-                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
-                                @ColumnResult(name = "DIMENSOES", type = Double.class),
-                                @ColumnResult(name = "NIVEL_OU_PRUMO", type = Boolean.class),
-                                @ColumnResult(name = "ESTANQUEIDADE", type = Boolean.class),
-                                @ColumnResult(name = "OBS", type = String.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "ParametrosCarpintaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosCarpintaria.dtoMapping"),
-        @NamedNativeQuery(name = "ParametrosCarpintaria.buscarPorId", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID = :ID", resultSetMapping = "ParametrosCarpintaria.dtoMapping")
-})
-
-
 public class ParametrosCarpintaria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idParametrosCarpintaria;
 
     @Column(name = "TIPO_CARPINTARIA", nullable = false)

@@ -6,34 +6,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "AVALIACAO")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "Avaliacao.dtoMapping", classes = {
-                @ConstructorResult(targetClass = AvaliacaoDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
-                                @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
-                                @ColumnResult(name = "ID_SERVICO", type = Integer.class),
-                                @ColumnResult(name = "USU_EXECT", type = Integer.class),
-                                @ColumnResult(name = "USU_CONF", type = Integer.class),
-                                @ColumnResult(name = "RESULTADO", type = Boolean.class),
-                                @ColumnResult(name = "DATA_AVALIACAO", type = Date.class),
-                                @ColumnResult(name = "DATA_REAVALIACAO", type = Date.class),
-                                @ColumnResult(name = "RESULT_REAVAL", type = Boolean.class),
-                                @ColumnResult(name = "OBS", type = String.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name="Avaliacao.buscarPorId", query = "SELECT * FROM AVALIACAO WHERE ID = :ID", resultSetMapping = "Avaliacao.dtoMapping"),
-        @NamedNativeQuery(name="Avaliacao.buscarPorExecutor", query = "SELECT * FROM AVALIACAO WHERE ID_USU_EXECT = :ID_USU_EXECT ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
-        @NamedNativeQuery(name="Avaliacao.buscarPorConferente", query = "SELECT * FROM AVALIACAO WHERE ID_USU_CONF = :ID_USU_CONF ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
-        @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_SERVICO = s.ID WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping")
-})
 public class Avaliacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAvaliacao;
 
     @Column(name = "TIPO_SERVICO", nullable = false)

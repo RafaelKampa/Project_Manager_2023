@@ -22,7 +22,7 @@ public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintari
     @Override
     public void salvarParametrosAvaliados(ParametrosCarpintariaDto parametrosCarpintariaDto) {
         em.createNativeQuery("INSERT INTO PARAMETROS_CARPINTARIA (TIPO_CARPINTARIA, ID_AVALIACAO, DIMENSOES, NIVEL_OU_PRUMO, ESTANQUEIDADE, OBS) \n" +
-                    "VALUES ( :TIPO_CARPINTARIA, :ID_AVALIACAO, :DIMENSOES, :NIVEL_OU_PRUMO, :ESTANQUEIDADE, :OBS)")
+                    "VALUES (:TIPO_CARPINTARIA, :ID_AVALIACAO, :DIMENSOES, :NIVEL_OU_PRUMO, :ESTANQUEIDADE, :OBS)")
                 .setParameter("TIPO_CARPINTARIA", parametrosCarpintariaDto.getTipoCarpintaria())
                 .setParameter("ID_AVALIACAO", parametrosCarpintariaDto.getIdAvaliacao())
                 .setParameter("DIMENSOES", parametrosCarpintariaDto.getDimensoes())

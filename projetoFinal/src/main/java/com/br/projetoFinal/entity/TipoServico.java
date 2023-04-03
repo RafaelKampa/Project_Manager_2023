@@ -6,26 +6,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TIPO_SERVICO_TABLE")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "TipoServico.dtoMapping", classes = {
-                @ConstructorResult(targetClass = TipoServicoDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
-                                @ColumnResult(name = "NOME_SERVICO", type = String.class),
-                                @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
-                                @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name="TipoServico.buscarPorId", query = "SELECT * FROM TIPO_SERVICO_TABLE WHERE ID = :ID", resultSetMapping = "TipoServico.dtoMapping"),
-        @NamedNativeQuery(name="TipoServico.buscarPorNome", query = "SELECT * FROM TIPO_SERVICO_TABLE WHERE NOME_SERVICO = :NOME_SERVICO ORDER BY ID", resultSetMapping = "TipoServico.dtoMapping")
-})
 public class TipoServico {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTipoServico;
 
     @Column(name = "NOME_SERVICO", nullable = false)

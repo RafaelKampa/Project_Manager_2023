@@ -8,28 +8,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PARAMETROS_FERRAGEM")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "ParametrosFerragem.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ParametrosFerragemDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
-                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
-                                @ColumnResult(name = "ESPACAMENTO", type = Boolean.class),
-                                @ColumnResult(name = "QTDE_ACO", type = Double.class),
-                                @ColumnResult(name = "DISTRIBUICAO", type = Boolean.class),
-                                @ColumnResult(name = "OBS", type = String.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "ParametrosFerragem.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_FERRAGEM WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosFerragem.dtoMapping"),
-        @NamedNativeQuery(name = "ParametrosFerragem.buscarPorId", query = "SELECT * FROM PARAMETROS_FERRAGEM WHERE ID = :ID", resultSetMapping = "ParametrosFerragem.dtoMapping")
-})
 public class ParametrosFerragem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idParametrosFerragem;
 
     @Column(name = "ID_AVALIACAO", nullable = false)

@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/CentroDeCusto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/CentroDeCusto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosAcabamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosAcabamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosAlvenaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosAlvenaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosCarpintaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosCarpintaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosFerragem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosFerragem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/TipoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/TipoServico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/CentroDeCustoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/CentroDeCustoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/CentroDeCustoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/CentroDeCustoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/CentroDeCustoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/CentroDeCustoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/CentroDeCustoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/CentroDeCustoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Avaliacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Avaliacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/CentroDeCusto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/CentroDeCusto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosAcabamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosAcabamento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosAlvenaria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosAlvenaria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosCarpintaria.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosCarpintaria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosFerragem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ParametrosFerragem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/TipoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/TipoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/CentroDeCustoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/CentroDeCustoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/CentroDeCustoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/CentroDeCustoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/CentroDeCustoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/CentroDeCustoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalDB.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalDB.trace.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +74,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/rafae/IdeaProjects/Project_Manager_2023/projetoFinal",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rafae/IdeaProjects/Project_Manager_2023/projetoFinal&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ProjetoFinalApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.br.projetoFinal.ProjetoFinalApplication" />
@@ -71,5 +115,46 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

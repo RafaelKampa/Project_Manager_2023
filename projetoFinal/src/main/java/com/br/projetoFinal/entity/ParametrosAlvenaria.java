@@ -6,31 +6,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PARAMETROS_ALVENARIA")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "ParametrosAlvenaria.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ParametrosAlvenariaDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
-                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
-                                @ColumnResult(name = "PRUMO", type = Boolean.class),
-                                @ColumnResult(name = "NIVEL", type = Boolean.class),
-                                @ColumnResult(name = "ALINHAMENTO", type = Boolean.class),
-                                @ColumnResult(name = "DIMENSOES", type = Boolean.class),
-                                @ColumnResult(name = "INTEGRIDADE", type = Boolean.class),
-                                @ColumnResult(name = "LIMPEZA", type = Boolean.class),
-                                @ColumnResult(name = "OBS", type = String.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosAlvenaria.dtoMapping"),
-        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorId", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID = :ID", resultSetMapping = "ParametrosAlvenaria.dtoMapping")
-})
 public class ParametrosAlvenaria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idParametrosAlvenaria;
 
     @Column(name = "ID_AVALIACAO", nullable = false)
