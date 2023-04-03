@@ -32,12 +32,9 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     }
 
     @Override
-    public List<CentroDeCusto> listarCentrosDeCusto() {
-//        Query query = getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO \n" +
-//                "ORDER BY NOME_CENTRO_DE_CUSTO ");
-//        return query.getResultList();
-        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.listarCentrosDeCusto", CentroDeCusto.class);
-        List<CentroDeCusto> centro = query.getResultList();
+    public List<CentroDeCustoDto> listarCentrosDeCusto() {
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.listarCentrosDeCusto", CentroDeCustoDto.class);
+        List<CentroDeCustoDto> centro = query.getResultList();
         return centro;
     }
 

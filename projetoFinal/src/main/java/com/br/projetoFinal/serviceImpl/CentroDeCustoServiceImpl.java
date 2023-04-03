@@ -46,7 +46,7 @@ public class CentroDeCustoServiceImpl implements CentroDeCustoService {
     }
 
     @Override
-    public List<CentroDeCusto> listarCentrosDeCusto() {
+    public List<CentroDeCustoDto> listarCentrosDeCusto() {
         return centroDeCustoRepository.listarCentrosDeCusto();
     }
 

@@ -28,7 +28,7 @@ public class CentroDeCustoController {
     }
 
     @GetMapping("/listarCentrosDeCusto")
-    public List<CentroDeCusto> listarCentrosDeCusto() {
+    public List<CentroDeCustoDto> listarCentrosDeCusto() {
         return centroDeCustoService.listarCentrosDeCusto();
     }
 

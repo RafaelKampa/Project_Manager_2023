@@ -12,5 +12,5 @@ public interface CentroDeCustoRepository {
     CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto);
     CentroDeCusto buscarPorNome(String nomeCentroDeCusto);
     void excluir(Integer idCentroDeCusto);
-    List<CentroDeCusto> listarCentrosDeCusto();
+    List<CentroDeCustoDto> listarCentrosDeCusto();
 }
