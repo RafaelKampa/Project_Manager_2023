@@ -7,34 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "USUARIO")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "Usuario.dtoMapping", classes = {
-                @ConstructorResult(targetClass = UsuarioDto.class,
-                        columns ={
-                                @ColumnResult(name = "ID_USUARIO", type = Integer.class),
-                                @ColumnResult(name = "LOGIN", type = String.class),
-                                @ColumnResult(name = "SENHA", type = String.class),
-                                @ColumnResult(name = "TIPO_USUARIO", type = Integer.class),
-                                @ColumnResult(name = "NOME", type = String.class),
-                                @ColumnResult(name = "DATA_NASCIMENTO", type = Date.class),
-                                @ColumnResult(name = "CPF", type = String.class),
-                                @ColumnResult(name = "ENDERECO_RESIDENCIAL", type = String.class),
-                                @ColumnResult(name = "TELEFONE", type = String.class),
-                                @ColumnResult(name = "EMAIL", type = String.class),
-                                @ColumnResult(name = "CONTRATANTE", type = String.class),
-                                @ColumnResult(name = "DATA_ADMISSAO", type = Date.class),
-                                @ColumnResult(name = "DATA_DESLIGAMENTO", type = Date.class),
-                                @ColumnResult(name = "CARGO", type = String.class),
-                                @ColumnResult(name = "REMUNERACAO", type = Double.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name="Usuario.buscarPorId", query = "SELECT * FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO", resultSetMapping = "Usuario.dtoMapping"),
-})
 public class Usuario {
-
     //Dados de login
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

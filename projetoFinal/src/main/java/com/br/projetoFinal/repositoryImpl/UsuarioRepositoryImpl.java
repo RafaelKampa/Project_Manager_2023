@@ -76,9 +76,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public Usuario buscarPorId(Integer idUsuario) {
-        TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.buscarPorId", Usuario.class)
+        Query query = getEntityManager().createNamedQuery("SELECT * FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO")
                 .setParameter("ID_USUARIO", idUsuario);
-        return query.getSingleResult();
+        return (Usuario) query.getSingleResult();
     }
 
     @Override

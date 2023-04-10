@@ -7,35 +7,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "SERVICO")
-@SqlResultSetMappings({
-        @SqlResultSetMapping(name = "Servico.dtoMapping", classes = {
-                @ConstructorResult(targetClass = ServicoDto.class,
-                        columns ={
-                        @ColumnResult(name = "ID_SERVICO", type = Integer.class),
-                        @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
-                        @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
-                        @ColumnResult(name = "DIMENSAO", type = Double.class),
-                        @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
-                        @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
-                        @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
-                        @ColumnResult(name = "EXECUTOR", type = String.class),
-                        @ColumnResult(name = "CONFERENTE", type = String.class),
-                        @ColumnResult(name = "DATA_INICIO", type = Date.class),
-                        @ColumnResult(name = "PREV_TERMINO", type = Date.class),
-                        @ColumnResult(name = "DATA_FINAL", type = Date.class),
-                        @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
-                        @ColumnResult(name = "OBS", type = String.class)
-                        }
-                )
-        })
-})
-@NamedNativeQueries({
-        @NamedNativeQuery(name="Servico.buscarPorServico", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO = :TIPO_SERVICO ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping")
-})
 public class Servico {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idServico;
 
     @Column(name = "TIPO_SERVICO", nullable = false)

@@ -1,0 +1,30 @@
+2023-04-03 19:13:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:14:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:17:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:19:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:20:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:22:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:24:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:36:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:36:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]
+2023-04-03 19:37:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]CentroDeCusto.listarCentrosDeCusto"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+CentroDeCusto.listarCentrosDeCusto [42001-214]

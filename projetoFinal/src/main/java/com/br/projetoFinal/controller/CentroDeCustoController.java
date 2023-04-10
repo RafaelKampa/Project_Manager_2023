@@ -28,18 +28,19 @@ public class CentroDeCustoController {
     }
 
     @GetMapping("/listarCentrosDeCusto")
-    public List<CentroDeCusto> listarCentrosDeCusto() {
+    public List<CentroDeCustoDto> listarCentrosDeCusto() {
         return centroDeCustoService.listarCentrosDeCusto();
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<CentroDeCusto> buscarPorId(@PathVariable("ID") Integer idCentroDeCusto) {
-        try {
-            CentroDeCusto centroDeCusto = centroDeCustoService.buscarPorId(idCentroDeCusto);
-            return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
-        } catch (NoSuchElementException ex) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
+    @GetMapping("/buscarCentroPorId/{ID_CENTRO_DE_CUSTO}")
+    public CentroDeCusto buscarCentroPorId(@PathVariable("ID_CENTRO_DE_CUSTO") Integer idCentroDeCusto) {
+           return centroDeCustoService.buscarCentroPorId(idCentroDeCusto);
+//        try {
+//            CentroDeCusto centroDeCusto = centroDeCustoService.buscarCentroPorId(idCentroDeCusto);
+//            return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
+//        } catch (NoSuchElementException ex) {
+//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//        }
     }
 
     @GetMapping("/{NOME_CENTRO_DE_CUSTO}")
