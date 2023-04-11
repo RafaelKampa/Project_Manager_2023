@@ -42,21 +42,22 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
         TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCusto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
-        CentroDeCusto centro = query.getSingleResult();
-        return centro;
+        return query.getSingleResult();
     }
 
     @Override
     public CentroDeCusto buscarPorNome(String nomeCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = (TypedQuery<CentroDeCusto>) getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO WHERE NOME_CENTRO_DE_CUSTO = :NOME_CENTRO_DE_CUSTO")
+        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarPorNome", CentroDeCusto.class)
                 .setParameter("NOME_CENTRO_DE_CUSTO", nomeCentroDeCusto);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluir(Integer idCentroDeCusto) {
         em.createNativeQuery("DELETE FROM CENTRO_DE_CUSTO \n" +
                         "WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO")
-                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
+                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto)
+                .executeUpdate();;
     }
 }

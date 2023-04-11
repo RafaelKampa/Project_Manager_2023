@@ -36,8 +36,8 @@ public class AvaliacaoController {
         return avaliacaoService.listar();
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<Avaliacao> buscarPorId(@PathVariable("ID") Integer idAvaliacao) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Avaliacao> buscarPorId(@PathVariable("id") Integer idAvaliacao) {
         try {
             Avaliacao avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
             return new ResponseEntity<>(avaliacao, HttpStatus.OK);
@@ -46,18 +46,18 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping("/{TIPO_SERVICO}")
-    public List<Avaliacao> buscarPorServico(@PathVariable("TIPO_SERVICO") Integer tipoServico) {
+    @GetMapping("/{tipo_servico}")
+    public List<Avaliacao> buscarPorServico(@PathVariable("tipo_servico") Integer tipoServico) {
         return avaliacaoService.buscarPorServico(tipoServico);
     }
 
-    @GetMapping("/{ID_USU_EXECT}")
-    public List<Avaliacao> buscarPorExecutor(@PathVariable("ID_USU_EXECT") Integer idUsuExect) {
+    @GetMapping("/{id_usu_exect}")
+    public List<Avaliacao> buscarPorExecutor(@PathVariable("id_usu_exect") Integer idUsuExect) {
         return avaliacaoService.buscarPorExecutor(idUsuExect);
     }
 
-    @GetMapping("/{ID_USU_CONF}")
-    public List<Avaliacao> buscarPorConferente(@PathVariable("ID_USU_CONF") Integer idUsuConf) {
+    @GetMapping("/{id_usu_conf}")
+    public List<Avaliacao> buscarPorConferente(@PathVariable("id_usu_conf") Integer idUsuConf) {
         return avaliacaoService.buscarPorConferente(idUsuConf);
     }
 

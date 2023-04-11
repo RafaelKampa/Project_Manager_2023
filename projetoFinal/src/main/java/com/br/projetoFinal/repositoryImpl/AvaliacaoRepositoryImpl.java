@@ -51,35 +51,35 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
     @Override
     public List<Avaliacao> listar() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM AVALIACAO \n" +
+        Query query = em.createNativeQuery("SELECT * FROM AVALIACAO \n" +
                 "ODER BY ID");
         return query.getResultList();
     }
 
     @Override
     public Avaliacao buscarPorId(Integer idAvaliacao) {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM AVALIACAO WHERE ID_AVALIACAO = :ID_AVALIACAO")
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.buscarPorId", Avaliacao.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
-        return (Avaliacao) query.getSingleResult();
+        return query.getSingleResult();
     }
 
     @Override
     public List<Avaliacao> buscarPorServico(Integer tipoServico) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorServico", Avaliacao.class)
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.buscarPorServico", Avaliacao.class)
                 .setParameter("TIPO_SERVICO", tipoServico);
         return query.getResultList();
     }
 
     @Override
     public List<Avaliacao> buscarPorExecutor(Integer idUsuExect) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorExecutor", Avaliacao.class)
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.buscarPorExecutor", Avaliacao.class)
                 .setParameter("ID_USU_EXECT", idUsuExect);
         return query.getResultList();
     }
 
     @Override
     public List<Avaliacao> buscarPorConferente(Integer idUsuConf) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorConferente", Avaliacao.class)
+        TypedQuery<Avaliacao> query = em.createNamedQuery("Avaliacao.buscarPorConferente", Avaliacao.class)
                 .setParameter("ID_USU_CONF", idUsuConf);
         return query.getResultList();
     }
