@@ -23,8 +23,12 @@ public class CentroDeCustoController {
 
     @PostMapping("/salvarNovoCentroDeCusto")
     public ResponseEntity<?> salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
-        centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
-        return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);
+        try {
+            centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
+            return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarCentrosDeCusto")
@@ -32,19 +36,13 @@ public class CentroDeCustoController {
         return centroDeCustoService.listarCentrosDeCusto();
     }
 
-    @GetMapping("/buscarCentroPorId/{ID_CENTRO_DE_CUSTO}")
-    public CentroDeCusto buscarCentroPorId(@PathVariable("ID_CENTRO_DE_CUSTO") Integer idCentroDeCusto) {
+    @GetMapping("/buscarCentroPorId/{id_centro_de_custo}")
+    public CentroDeCusto buscarCentroPorId(@PathVariable("id_centro_de_custo") Integer idCentroDeCusto) {
            return centroDeCustoService.buscarCentroPorId(idCentroDeCusto);
-//        try {
-//            CentroDeCusto centroDeCusto = centroDeCustoService.buscarCentroPorId(idCentroDeCusto);
-//            return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
-//        } catch (NoSuchElementException ex) {
-//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//        }
     }
 
-    @GetMapping("/{NOME_CENTRO_DE_CUSTO}")
-    public ResponseEntity<CentroDeCusto> buscarPorNome(@PathVariable("NOME_CENTRO_DE_CUSTO") String nomeCentroDeCusto) {
+    @GetMapping("/{nome_centro_de_custo}")
+    public ResponseEntity<CentroDeCusto> buscarPorNome(@PathVariable("nome_centro_de_custo") String nomeCentroDeCusto) {
         try {
             CentroDeCusto centroDeCusto = centroDeCustoService.buscarPorNome(nomeCentroDeCusto);
             return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
@@ -53,8 +51,8 @@ public class CentroDeCustoController {
         }
     }
 
-    @DeleteMapping("/{ID}")
-    public void excluir(@PathVariable("ID") Integer idCentroDeCusto) {
+    @DeleteMapping("/{id}")
+    public void excluir(@PathVariable("id") Integer idCentroDeCusto) {
         centroDeCustoService.excluir(idCentroDeCusto);
     }
 }

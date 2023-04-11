@@ -33,8 +33,8 @@ export class CentroCustoComponent implements OnInit {
   salvar() {
     let centro = new CentroCustoModel();
       if (this.cadastroCentroForm.valid){
-      centro.nomeCentroDeCusto = this.cadastroCentroForm.get('nomeCentroDeCusto')?.value;
-      centro.enderecoCentroDeCusto = this.cadastroCentroForm.get('enderecoCentroDeCusto')?.value;
+      centro.nomeCentroDeCusto = this.cadastroCentroForm.get('nomeCentroDeCusto')?.value || "";
+      centro.enderecoCentroDeCusto = this.cadastroCentroForm.get('enderecoCentroDeCusto')?.value || "";
 
       this.centroCustoServ.salvarNovoCentro(centro).subscribe(centroRetorno => {
         alert("Centro de custo Cadastrado");
