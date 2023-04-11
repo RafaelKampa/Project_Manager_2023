@@ -7,23 +7,31 @@
         <input  formControlName="login" matInput placeholder="Nome de usuário" required>    
         </mat-form-field>
     </div>
-    <div class="center">
-        <mat-form-field appearance="fill">
-        <mat-label>Digite sua senha</mat-label>
-        <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
-            [attr.aria-pressed]="hide" required>
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-        </mat-form-field>
+    <div>
+        <ul class="center">
+            <mat-form-field appearance="fill">            
+            <mat-label>Digite sua senha</mat-label>
+            <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">
+            </mat-form-field>
+            <div>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
+                [attr.aria-pressed]="hide" required>
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>  
+            </div>    
+        </ul>
+        <a class="center" href="esqueciSenha()">Esqueci minha senha</a>  
+        <br><br>           
     </div>
+
     <div class="center">
         <button mat-flat-button color="primary">Entrar</button>
     </div>
 </form>
-<div class="center">
-    <button class="button" mat-flat-button color="warn" (click)="esqueciSenha()">Esqueci minha senha</button>
-</div>
+
+<!-- <div class="center"> 
+    <div class="button" mat-flat-button color="warn" (click)="esqueciSenha()">Esqueci minha senha</div>
+</div> -->
 <div class="center">
     <button class="button" mat-flat-button color="primary" (click)="cadastrar()">Cadastrar novo usuário</button>
 </div>
