@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosAcabamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosAcabamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosAlvenariaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosAlvenariaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosFerragemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ParametrosFerragemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosFerragem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ParametrosFerragem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ParametrosFerragemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ParametrosFerragemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosFerragemRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosFerragemRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ParametrosFerragemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ParametrosFerragemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ParametrosFerragemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ParametrosFerragemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663802448840</updated>
       <workItem from="1663802455912" duration="74000" />
-      <workItem from="1681673428366" duration="10487000" />
+      <workItem from="1681673428366" duration="13075000" />
     </task>
     <servers />
   </component>

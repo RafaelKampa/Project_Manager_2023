@@ -43,48 +43,41 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
-    public List<Servico> listar() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
-                "ORDER BY ID_SERVICO");
+    public List<ServicoDto> listar() {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.listarTodosServicos", ServicoDto.class);
         return query.getResultList();
     }
 
     @Override
-    public List<Servico> listarAguardandoAvaliacao() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
-                "WHERE DATA_FINAL IS NULL \n" +
-                "ORDER BY ID_SERVICO");
+    public List<ServicoDto> listarAguardandoAvaliacao() {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.servicosAguardandoAval", ServicoDto.class);
         return query.getResultList();
     }
 
     @Override
-    public List<Servico> listarAvaliados() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
-                "WHERE DATA_FINAL IS NOT NULL \n" +
-                "ORDER BY ID_SERVICO");
+    public List<ServicoDto> listarAvaliados() {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.servicosAvaliados", ServicoDto.class);
         return query.getResultList();
     }
 
     @Override
-    public  List<Servico> buscarPorId(Integer idServico, String tipoServico) {
-        Query query = (Query) getEntityManager().createNativeQuery("SELECT * FROM SERVICO \n" +
-                "WHERE ID_SERVICO = :ID_SERVICO AND TIPO_SERVICO = :TIPO_SERVICO")
-                .setParameter("ID_SERVICO", idServico)
-                .setParameter("TIPO_SERVICO", tipoServico);
-        return query.getResultList();
-    }
-
-    @Override
-    public void excluirPorId(Integer idServico) {
-        em.createNativeQuery("DELETE FROM SERVICO \n" +
-                        "WHERE ID_SERVICO = :ID_SERVICO")
+    public  List<ServicoDto> buscarPorId(Integer idServico) {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.buscarPorId", ServicoDto.class)
                 .setParameter("ID_SERVICO", idServico);
+        return query.getResultList();
     }
 
     @Override
-    public List<Servico> buscarPorServico(String tipoServico) {
-        TypedQuery<Servico> query = getEntityManager().createNamedQuery("Servico.buscarPorServico", Servico.class)
+    public List<ServicoDto> buscarPorServico(String tipoServico) {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.buscarPorTipo", ServicoDto.class)
                 .setParameter("TIPO_SERVICO", tipoServico);
         return query.getResultList();
+    }
+
+    @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void excluirPorId(Integer idServico) {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.excluirPorId", ServicoDto.class)
+                .setParameter("ID_SERVICO", idServico);
     }
 }

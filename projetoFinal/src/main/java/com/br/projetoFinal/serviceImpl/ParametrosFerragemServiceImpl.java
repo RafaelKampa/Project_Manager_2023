@@ -49,17 +49,24 @@ public class ParametrosFerragemServiceImpl implements ParametrosFerragemService 
     }
 
     @Override
-    public ParametrosFerragem buscarPorId(Integer idParametrosFerragem) {
+    public ParametrosFerragemDto buscarPorId(Integer idParametrosFerragem) {
         return parametrosFerragemRepository.buscarPorId(idParametrosFerragem);
     }
 
     @Override
-    public ParametrosFerragem buscarPorAvaliacao(Integer idAvaliacao) {
+    public ParametrosFerragemDto buscarPorAvaliacao(Integer idAvaliacao) {
         return parametrosFerragemRepository.buscarPorAvaliacao(idAvaliacao);
     }
 
     @Override
-    public void excluir(Integer idParametrosFerragem) {
-        parametrosFerragemRepository.excluirPorId(idParametrosFerragem);
+    public void excluir(Integer idParametrosFerragem) throws SystemException {
+        try {
+            utx.begin();
+            parametrosFerragemRepository.excluirPorId(idParametrosFerragem);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 }

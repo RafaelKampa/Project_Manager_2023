@@ -5,8 +5,45 @@ import com.br.projetoFinal.dto.ServicoDto;
 import javax.persistence.*;
 import java.util.Date;
 
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "Servico.dtoMapping", classes = {
+                @ConstructorResult(targetClass = ServicoDto.class,
+                        columns ={
+                                @ColumnResult(name = "ID_SERVICO", type = Integer.class),
+                                @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
+                                @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
+                                @ColumnResult(name = "DIMENSAO", type = Double.class),
+                                @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
+                                @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
+                                @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
+                                @ColumnResult(name = "EXECUTOR", type = String.class),
+                                @ColumnResult(name = "CONFERENTE", type = String.class),
+                                @ColumnResult(name = "DATA_INICIO", type = Date.class),
+                                @ColumnResult(name = "PREV_TERMINO", type = Date.class),
+                                @ColumnResult(name = "DATA_FINAL", type = Date.class),
+                                @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
+                                @ColumnResult(name = "OBS", type = String.class)
+                        }
+                )
+        })
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name="Servico.buscarPorTipo", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO LIKE CONCAT('%', :TIPO_SERVICO, '%') ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.listarTodosServicos", query = "SELECT * FROM SERVICO ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.servicosAguardandoAval", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.servicosAvaliados", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NOT NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+
+
+
+
+
+})
+
 @Entity
 @Table(name = "SERVICO")
+
 public class Servico {
 
     @Id

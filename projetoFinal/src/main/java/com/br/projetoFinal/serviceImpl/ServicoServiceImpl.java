@@ -57,27 +57,27 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public List<Servico> listar() {
+    public List<ServicoDto> listar() {
         return servicoRepository.listar();
     }
 
     @Override
-    public List<Servico> listarAguardandoAvaliacao() {
+    public List<ServicoDto> listarAguardandoAvaliacao() {
         return servicoRepository.listarAguardandoAvaliacao();
     }
 
     @Override
-    public List<Servico> listarAvaliados() {
+    public List<ServicoDto> listarAvaliados() {
         return servicoRepository.listarAvaliados();
     }
 
     @Override
-    public List<Servico> buscarPorId(Integer idServico, String tipoServico) {
-        return servicoRepository.buscarPorId(idServico, tipoServico);
+    public List<ServicoDto> buscarPorId(Integer idServico) {
+        return servicoRepository.buscarPorId(idServico);
     }
 
     @Override
-    public List<Servico> buscarPorServico(String tipoServico){
+    public List<ServicoDto> buscarPorServico(String tipoServico){
         return servicoRepository.buscarPorServico(tipoServico);
     }
 
