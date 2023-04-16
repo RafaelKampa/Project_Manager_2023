@@ -50,7 +50,7 @@ public class ParametrosAcabamentoController {
     }
 
     @DeleteMapping("/{id_parametros_acabamento}")
-    public ResponseEntity<?> excluir(@PathVariable("id_parametros_acabamento") Integer idParametrosAcabamento) {
+    public ResponseEntity<?> excluir(@PathVariable("id_parametros_acabamento") Integer idParametrosAcabamento) throws SystemException {
         try {
             parametrosAcabamentoService.excluir(idParametrosAcabamento);
             return new ResponseEntity<>(idParametrosAcabamento, HttpStatus.OK);

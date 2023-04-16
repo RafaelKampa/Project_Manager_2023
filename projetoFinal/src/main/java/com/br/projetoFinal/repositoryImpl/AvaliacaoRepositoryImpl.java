@@ -52,8 +52,7 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
     @Override
     public List<AvaliacaoDto> listar() {
-        Query query = em.createNativeQuery("SELECT * FROM AVALIACAO \n" +
-                "ODER BY ID");
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.listarAvaliacoes", AvaliacaoDto.class);
         return query.getResultList();
     }
 
