@@ -41,8 +41,8 @@ public class UsuarioController {
         return usuarioService.buscarExecutores();
     }
 
-    @GetMapping("/buscarPorId/{ID_USUARIO}")
-    public ResponseEntity buscarPorId(@PathVariable("ID_USUARIO") Integer idUsuario) {
+    @GetMapping("/buscarPorId/{id_usuario}")
+    public ResponseEntity buscarPorId(@PathVariable("id_usuario") Integer idUsuario) {
         try {
             Usuario usuario = usuarioService.buscarPorId(idUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
@@ -51,8 +51,8 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/buscarPorNome/{LOGIN}")
-    public ResponseEntity buscarPorNome(@PathVariable("LOGIN") String login) {
+    @GetMapping("/buscarPorNome/{login}")
+    public ResponseEntity buscarPorNome(@PathVariable("login") String login) {
         try {
             Usuario usuario = usuarioService.buscarPorNome(login);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
@@ -61,8 +61,8 @@ public class UsuarioController {
         }
     }
 
-    @DeleteMapping("/excluir/{ID_USUARIO}")
-    public void excluir(@PathVariable("ID_USUARIO") Integer idUsuario) {
+    @DeleteMapping("/excluir/{id_usuario}")
+    public void excluir(@PathVariable("id_usuario") Integer idUsuario) {
         usuarioService.excluir(idUsuario);
     }
 

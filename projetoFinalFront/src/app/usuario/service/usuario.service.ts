@@ -32,8 +32,8 @@ export class UsuarioService {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarExecutores", this.httpOptions);
   }
 
-  buscarPorNome(NOME: string) {
-    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{NOME}", this.httpOptions);
+  buscarPorNome(nome: string) {
+    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{nome}", this.httpOptions);
   }
 
 }

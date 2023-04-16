@@ -76,12 +76,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public Usuario buscarPorId(Integer idUsuario) {
-        Query query = getEntityManager().createNamedQuery("SELECT * FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO")
+        Query query = getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO")
                 .setParameter("ID_USUARIO", idUsuario);
         return (Usuario) query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idUsuario) {
         em.createNativeQuery("DELETE FROM USUARIO \n" +
                         "WHERE ID_USUARIO = :ID_USUARIO")

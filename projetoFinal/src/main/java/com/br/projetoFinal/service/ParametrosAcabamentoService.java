@@ -9,7 +9,7 @@ import javax.transaction.SystemException;
 public interface ParametrosAcabamentoService {
 
     void salvarParametrosAvaliados(ParametrosAcabamentoDto parametrosAcabamentoDto) throws ExcecaoExemplo, SystemException;
-    ParametrosAcabamento buscarPorId(Integer idParametrosAcabamento);
-    ParametrosAcabamento buscarPorAvaliacao(Integer idAvaliacao);
-    void excluir(Integer idParametrosAcabamento);
+    ParametrosAcabamentoDto buscarPorId(Integer idParametrosAcabamento);
+    ParametrosAcabamentoDto buscarPorAvaliacao(Integer idAvaliacao);
+    void excluir(Integer idParametrosAcabamento) throws SystemException;
 }

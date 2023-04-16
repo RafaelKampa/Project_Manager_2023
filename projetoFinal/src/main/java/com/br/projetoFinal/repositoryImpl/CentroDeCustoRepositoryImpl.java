@@ -39,15 +39,15 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     }
 
     @Override
-    public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCusto.class)
+    public CentroDeCustoDto buscarCentroPorId(Integer idCentroDeCusto) {
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCustoDto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
         return query.getSingleResult();
     }
 
     @Override
-    public CentroDeCusto buscarPorNome(String nomeCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarPorNome", CentroDeCusto.class)
+    public CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto) {
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.buscarPorNome", CentroDeCustoDto.class)
                 .setParameter("NOME_CENTRO_DE_CUSTO", nomeCentroDeCusto);
         return query.getSingleResult();
     }
@@ -55,9 +55,7 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluir(Integer idCentroDeCusto) {
-        em.createNativeQuery("DELETE FROM CENTRO_DE_CUSTO \n" +
-                        "WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO")
-                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto)
-                .executeUpdate();;
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.excluirPorId", CentroDeCustoDto.class)
+                .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
     }
 }

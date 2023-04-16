@@ -22,24 +22,37 @@ public class AvaliacaoController {
     AvaliacaoService avaliacaoService;
 
     @PostMapping("/avaliar")
-    public void avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
-        avaliacaoService.avaliar(avaliacaoDto);
+    public ResponseEntity<?> avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+        try {
+            avaliacaoService.avaliar(avaliacaoDto);
+            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/reavaliar")
-    public void reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
-        avaliacaoService.reavaliar(avaliacaoDto);
+    public ResponseEntity<?> reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+        try {
+            avaliacaoService.reavaliar(avaliacaoDto);
+            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping
-    public List<Avaliacao> listar() {
-        return avaliacaoService.listar();
+    public ResponseEntity<List<AvaliacaoDto>> listar() {
+        try {
+            return new ResponseEntity<>(avaliacaoService.listar(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>((List<AvaliacaoDto>) null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Avaliacao> buscarPorId(@PathVariable("id") Integer idAvaliacao) {
+    public ResponseEntity<AvaliacaoDto> buscarPorId(@PathVariable("id_avaliacao") Integer idAvaliacao) {
         try {
-            Avaliacao avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
+            AvaliacaoDto avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
             return new ResponseEntity<>(avaliacao, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -47,18 +60,30 @@ public class AvaliacaoController {
     }
 
     @GetMapping("/{tipo_servico}")
-    public List<Avaliacao> buscarPorServico(@PathVariable("tipo_servico") Integer tipoServico) {
-        return avaliacaoService.buscarPorServico(tipoServico);
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorServico(@PathVariable("tipo_servico") Integer tipoServico) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorServico(tipoServico), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/{id_usu_exect}")
-    public List<Avaliacao> buscarPorExecutor(@PathVariable("id_usu_exect") Integer idUsuExect) {
-        return avaliacaoService.buscarPorExecutor(idUsuExect);
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorExecutor(@PathVariable("id_usu_exect") Integer idUsuExect) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorExecutor(idUsuExect), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/{id_usu_conf}")
-    public List<Avaliacao> buscarPorConferente(@PathVariable("id_usu_conf") Integer idUsuConf) {
-        return avaliacaoService.buscarPorConferente(idUsuConf);
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorConferente(@PathVariable("id_usu_conf") Integer idUsuConf) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorConferente(idUsuConf), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 }

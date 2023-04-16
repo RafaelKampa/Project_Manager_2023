@@ -4,6 +4,26 @@ import com.br.projetoFinal.dto.ParametrosAcabamentoDto;
 
 import javax.persistence.*;
 
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "ParametrosAcabamento.dtoMapping", classes = {
+                @ConstructorResult(targetClass = ParametrosAcabamentoDto.class,
+                        columns ={
+                                @ColumnResult(name = "ID_PARAMETROS_ACABAMENTO", type = Integer.class),
+                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
+                                @ColumnResult(name = "DIMENSOES", type = Double.class),
+                                @ColumnResult(name = "REGUAMENTO", type = Boolean.class),
+                                @ColumnResult(name = "ALISAMENTO", type = Boolean.class),
+                                @ColumnResult(name = "OBS", type = String.class)
+                        }
+                )
+        })
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "ParametrosAcabamento.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_ACABAMENTO WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosAcabamento.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosAcabamento.buscarPorId", query = "SELECT * FROM PARAMETROS_ACABAMENTO WHERE ID_PARAMETROS_ACABAMENTO = :ID_PARAMETROS_ACABAMENTO", resultSetMapping = "ParametrosAcabamento.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosAcabamento.excluirPorId", query = "DELETE FROM PARAMETROS_ACABAMENTO WHERE ID_PARAMETROS_ACABAMENTO = :ID_PARAMETROS_ACABAMENTO", resultSetMapping = "ParametrosAcabamento.dtoMapping"),
+})
+
 @Entity
 @Table(name = "PARAMETROS_ACABAMENTO")
 public class ParametrosAcabamento {

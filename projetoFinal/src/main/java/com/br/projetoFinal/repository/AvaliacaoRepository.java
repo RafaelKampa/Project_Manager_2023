@@ -8,9 +8,9 @@ import java.util.List;
 public interface AvaliacaoRepository {
     void avaliar(AvaliacaoDto avaliacaoDto);
     void reavaliar(AvaliacaoDto avaliacaoDto);
-    List<Avaliacao> listar();
-    Avaliacao buscarPorId(Integer idAvaliacao);
-    List<Avaliacao> buscarPorServico(Integer tipoServico);
-    List<Avaliacao> buscarPorExecutor(Integer idUsuExect);
-    List<Avaliacao> buscarPorConferente(Integer idUsuConf);
+    List<AvaliacaoDto> listar();
+    AvaliacaoDto buscarPorId(Integer idAvaliacao);
+    List<AvaliacaoDto> buscarPorServico(Integer tipoServico);
+    List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect);
+    List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf);
 }

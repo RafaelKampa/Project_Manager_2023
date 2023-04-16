@@ -77,27 +77,27 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
     }
 
     @Override
-    public List<Avaliacao> listar() {
+    public List<AvaliacaoDto> listar() {
         return avaliacaoRepository.listar();
     }
 
     @Override
-    public Avaliacao buscarPorId(Integer idAvaliacao) {
+    public AvaliacaoDto buscarPorId(Integer idAvaliacao) {
         return avaliacaoRepository.buscarPorId(idAvaliacao);
     }
 
     @Override
-    public List<Avaliacao> buscarPorServico(Integer tipoServico) {
+    public List<AvaliacaoDto> buscarPorServico(Integer tipoServico) {
         return avaliacaoRepository.buscarPorServico(tipoServico);
     }
 
     @Override
-    public List<Avaliacao> buscarPorExecutor(Integer idUsuExect) {
+    public List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect) {
         return avaliacaoRepository.buscarPorExecutor(idUsuExect);
     }
 
     @Override
-    public List<Avaliacao> buscarPorConferente(Integer idUsuConf) {
+    public List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf) {
         return avaliacaoRepository.buscarPorConferente(idUsuConf);
     }
 }
