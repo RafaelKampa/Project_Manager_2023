@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface UsuarioRepository{
 
-    Usuario buscarPorNome(String login);
+    UsuarioDto buscarPorNome(String login);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
-    List<Usuario> listar();
-    List<Usuario> buscarConferentes();
-    List<Usuario> buscarExecutores();
-    Usuario buscarPorId(Integer idUsuario);
+    List<UsuarioDto> listar();
+    List<UsuarioDto> buscarConferentes();
+    List<UsuarioDto> buscarExecutores();
+    UsuarioDto buscarPorId(Integer idUsuario);
     void excluirPorId(Integer idUsuario);
 }

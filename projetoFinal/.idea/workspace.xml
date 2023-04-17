@@ -6,14 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/CentroDeCustoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/TipoServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/TipoServicoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/TipoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/TipoServico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/TipoServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/TipoServicoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/TipoServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/TipoServicoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/TipoServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/TipoServicoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/TipoServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/TipoServicoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +104,7 @@
       <updated>1663802448840</updated>
       <workItem from="1663802455912" duration="74000" />
       <workItem from="1681673428366" duration="13075000" />
-      <workItem from="1681692559363" duration="1143000" />
+      <workItem from="1681692559363" duration="4505000" />
     </task>
     <servers />
   </component>
@@ -131,16 +135,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Aplicação de NamedQuery para Centro de Custo" />
     <option name="LAST_COMMIT_MESSAGE" value="Aplicação de NamedQuery para Centro de Custo" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

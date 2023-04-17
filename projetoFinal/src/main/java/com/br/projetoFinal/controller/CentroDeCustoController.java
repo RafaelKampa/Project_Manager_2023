@@ -36,7 +36,7 @@ public class CentroDeCustoController {
         try {
             return new ResponseEntity<>(centroDeCustoService.listarCentrosDeCusto(), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
-            return new ResponseEntity<>((List<CentroDeCustoDto>) null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 

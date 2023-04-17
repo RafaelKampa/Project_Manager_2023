@@ -34,11 +34,6 @@ import java.util.Date;
         @NamedNativeQuery(name="Servico.servicosAguardandoAval", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.servicosAvaliados", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NOT NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
-
-
-
-
-
 })
 
 @Entity

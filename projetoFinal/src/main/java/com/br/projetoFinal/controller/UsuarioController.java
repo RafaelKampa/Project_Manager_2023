@@ -1,7 +1,6 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.UsuarioDto;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,29 +21,45 @@ public class UsuarioController {
 
     @PostMapping("/salvarUsuario")
     public ResponseEntity<?> salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
-        usuarioService.salvarUsuario(usuarioDto);
-        return new ResponseEntity<>(usuarioDto, HttpStatus.CREATED);
+        try {
+            usuarioService.salvarUsuario(usuarioDto);
+            return new ResponseEntity<>(usuarioDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarUsuarios")
-    public List<Usuario> listar() {
-        return usuarioService.listar();
+    public ResponseEntity<List<UsuarioDto>> listar() {
+        try {
+            return new ResponseEntity<>(usuarioService.listar(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/buscarConferentes")
-    public List<Usuario> buscarConferentes() {
-        return usuarioService.buscarConferentes();
+    public ResponseEntity<List<UsuarioDto>> buscarConferentes() {
+        try {
+            return new ResponseEntity<>(usuarioService.buscarConferentes(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/buscarExecutores")
-    public List<Usuario> buscarExecutores() {
-        return usuarioService.buscarExecutores();
+    public ResponseEntity<List<UsuarioDto>> buscarExecutores() {
+        try {
+            return new ResponseEntity<>(usuarioService.buscarExecutores(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/buscarPorId/{id_usuario}")
     public ResponseEntity buscarPorId(@PathVariable("id_usuario") Integer idUsuario) {
         try {
-            Usuario usuario = usuarioService.buscarPorId(idUsuario);
+            UsuarioDto usuario = usuarioService.buscarPorId(idUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -54,7 +69,7 @@ public class UsuarioController {
     @GetMapping("/buscarPorNome/{login}")
     public ResponseEntity buscarPorNome(@PathVariable("login") String login) {
         try {
-            Usuario usuario = usuarioService.buscarPorNome(login);
+            UsuarioDto usuario = usuarioService.buscarPorNome(login);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -62,8 +77,13 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/excluir/{id_usuario}")
-    public void excluir(@PathVariable("id_usuario") Integer idUsuario) {
-        usuarioService.excluir(idUsuario);
+    public ResponseEntity<?> excluir(@PathVariable("id_usuario") Integer idUsuario) throws SystemException {
+        try {
+            usuarioService.excluir(idUsuario);
+            return new ResponseEntity<>(idUsuario, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 }

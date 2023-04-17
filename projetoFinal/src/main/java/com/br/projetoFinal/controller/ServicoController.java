@@ -82,7 +82,7 @@ public class ServicoController {
     }
 
     @DeleteMapping("/{id_servico}")
-    public ResponseEntity<?> excluir(@PathVariable("id_servico") Integer idServico) {
+    public ResponseEntity<?> excluir(@PathVariable("id_servico") Integer idServico) throws SystemException {
         try {
             servicoService.excluir(idServico);
             return new ResponseEntity<>(idServico, HttpStatus.OK);
