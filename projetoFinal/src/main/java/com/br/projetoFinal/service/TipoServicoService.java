@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface TipoServicoService {
     void salvarNovoServico(TipoServicoDto tipoServicoDto) throws ExcecaoExemplo, SystemException;
-    List<TipoServico> listar();
-    TipoServico buscarPorId(Integer idTipoServico);
-    void excluir(Integer idTipoServico);
-    List<TipoServico> buscarPorNome(String nomeServico);
+    List<TipoServicoDto> listar();
+    TipoServicoDto buscarPorId(Integer idTipoServico);
+    List<TipoServicoDto> buscarPorNome(String nomeServico);
+    void excluir(Integer idTipoServico) throws SystemException;
 }

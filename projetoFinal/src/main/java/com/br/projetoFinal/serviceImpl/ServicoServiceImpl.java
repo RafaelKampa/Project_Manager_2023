@@ -82,8 +82,15 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public void excluir(Integer idServico){
-        servicoRepository.excluirPorId(idServico);
+    public void excluir(Integer idServico) throws SystemException{
+        try {
+            utx.begin();
+            servicoRepository.excluirPorId(idServico);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 
 

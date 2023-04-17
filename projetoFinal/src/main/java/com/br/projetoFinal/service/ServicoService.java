@@ -14,5 +14,5 @@ public interface ServicoService {
     List<ServicoDto> listarAvaliados();
     List<ServicoDto> buscarPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);
-    void excluir(Integer idServico);
+    void excluir(Integer idServico) throws SystemException;
 }
