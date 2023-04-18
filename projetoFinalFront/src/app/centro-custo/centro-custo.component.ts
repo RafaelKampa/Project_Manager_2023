@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CentroCustoModel } from './model/centro-custo.model';
 import { CentroCustoService } from './service/centro-custo.service';
+import { CentroCustoModel } from '../shared/models/centro-custo.model';
 
 @Component({
   selector: 'app-centro-custo',

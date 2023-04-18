@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { ListarServicosModel } from '../listar-servicos/model/listar-servicos.model';
 import { ListarServicosService } from '../listar-servicos/service/listar-servicos.service';
 import { AvaliacaoAlvenariaModel } from './model/avaliar-alvenaria.model';
 import { AvaliarService } from './service/avaliar.service';
+import { ServicosModel } from '../shared/models/servico.model';
 
 @Component({
   selector: 'app-avaliar',
@@ -15,10 +15,9 @@ import { AvaliarService } from './service/avaliar.service';
 export class AvaliarComponent implements OnInit {
 
   public displayedColumnsSemAval: string[] = ['tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
-  public dataSource : ListarServicosModel[] = [];
+  public dataSource : ServicosModel[] = [];
   public tabela: number = 0;
   public servicoSelecionado: any;
-  // Model
   public idServicoSelecionado: number = 0;
   public tipoServicoSelecionado: string = "";
   public valorUnitarioSelecionado: number = 0;

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
-import { CentroCustoModel } from '../centro-custo/model/centro-custo.model';
 import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
-import { ListarCentrosModel } from './model/listar-centros.model';
+import { CentroCustoModel } from '../shared/models/centro-custo.model';
 
 @Component({
   selector: 'app-listar-centros',
@@ -24,6 +23,7 @@ export class ListarCentrosComponent implements OnInit {
 
   public async listarCentrosDeCusto() {
     this.lista = await firstValueFrom(this.centroCustoServ.listarCentrosDeCusto());
+    console.log(this.lista);
   }
 
   voltar() {

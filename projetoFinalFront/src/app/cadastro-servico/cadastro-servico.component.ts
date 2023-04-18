@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { CentroCustoModel } from '../centro-custo/model/centro-custo.model';
 import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
 import { UsuarioModel } from '../usuario/model/usuario.model';
 import { UsuarioService } from '../usuario/service/usuario.service';
 import { CadastroServicoModel } from './model/cadastro-servico.model';
 import { TipoServicoModel } from './model/tipo-servico.model';
 import { CadastroServicoService } from './servico/cadastro-servico.service';
+import { CentroCustoModel } from '../shared/models/centro-custo.model';
 
 
 @Component({

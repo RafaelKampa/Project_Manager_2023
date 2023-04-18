@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CentroCustoModel } from '../model/centro-custo.model';
+import { CentroCustoModel } from '../../shared/models/centro-custo.model';
 
 @Injectable({
   providedIn: 'root'

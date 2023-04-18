@@ -10,7 +10,7 @@ import java.util.Date;
                 @ConstructorResult(targetClass = ServicoDto.class,
                         columns ={
                                 @ColumnResult(name = "ID_SERVICO", type = Integer.class),
-                                @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
+                                @ColumnResult(name = "TIPO_SERVICO", type = String.class),
                                 @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
                                 @ColumnResult(name = "DIMENSAO", type = Double.class),
                                 @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
