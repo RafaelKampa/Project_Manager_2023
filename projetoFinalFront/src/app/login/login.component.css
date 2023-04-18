@@ -1,8 +1,23 @@
 .center{
     display: flex;
-    justify-content: center;
+    justify-content: center; 
+    margin: 0px 0px 0px 0px;
 }
 
-.button {
-    margin-top: 20px;
+.esqueciSenha{     
+    position: relative;
+    right: 32px;
+    top: -30px;
+}
+
+.olho{   
+    position: relative;
+    right: 36px;
+    top: 5px;
+}
+
+.button { 
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px;
 }

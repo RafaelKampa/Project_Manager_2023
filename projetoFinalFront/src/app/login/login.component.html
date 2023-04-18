@@ -1,37 +1,38 @@
-<form [formGroup]="loginForm" (ngSubmit)="logar()">
-    <br><br><br><br><br>
+<form [formGroup]="loginForm" (ngSubmit)="logar()">   
+    <br><br><br><br><br><br><br><br><br><br><br>
     <h1 class="center">Login de Usuário</h1>
+    
     <div class="center">
         <mat-form-field appearance="fill">
         <mat-label>Digite seu login</mat-label>
         <input  formControlName="login" matInput placeholder="Nome de usuário" required>    
-        </mat-form-field>
-    </div>
-    <div>
-        <ul class="center">
-            <mat-form-field appearance="fill">            
-            <mat-label>Digite sua senha</mat-label>
-            <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">
-            </mat-form-field>
-            <div>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" 
-                [attr.aria-pressed]="hide" required>
+        </mat-form-field> 
+    </div> 
+    <ul>
+        <div class="center">            
+            <mat-form-field appearance="fill"> 
+                <mat-label>Digite sua senha</mat-label>
+                <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">  
+            </mat-form-field> 
+            <button class="olho" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide" required> 
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>  
-            </div>    
-        </ul>
-        <a class="center" href="esqueciSenha()">Esqueci minha senha</a>  
-        <br><br>           
-    </div>
+            </button> 
+        </div>
+    </ul>
+
 
     <div class="center">
+        <a class="esqueciSenha" href="" (click)="esqueciSenha()" >Esqueci minha senha</a> 
+    </div>    
+
+    <div class="button">
         <button mat-flat-button color="primary">Entrar</button>
-    </div>
+        
+    </div>     
+    <div class="button">
+        <button mat-flat-button color="warn" (click)="cadastrar()">Cadastrar novo usuário</button>
+    </div>   
+    
+    
 </form>
 
-<!-- <div class="center"> 
-    <div class="button" mat-flat-button color="warn" (click)="esqueciSenha()">Esqueci minha senha</div>
-</div> -->
-<div class="center">
-    <button class="button" mat-flat-button color="primary" (click)="cadastrar()">Cadastrar novo usuário</button>
-</div>
