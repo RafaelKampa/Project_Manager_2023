@@ -55,17 +55,24 @@ public class ParametrosAlvenariaServiceImpl implements ParametrosAlvenariaServic
     }
 
     @Override
-    public ParametrosAlvenaria buscarPorId(Integer idParametrosAlvenaria) {
+    public ParametrosAlvenariaDto buscarPorId(Integer idParametrosAlvenaria) {
         return parametrosAlvenariaRepository.buscarPorId(idParametrosAlvenaria);
     }
 
     @Override
-    public ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao) {
+    public ParametrosAlvenariaDto buscarPorAvaliacao(Integer idAvaliacao) {
         return parametrosAlvenariaRepository.buscarPorAvaliacao(idAvaliacao);
     }
 
     @Override
-    public void excluir(Integer idParametrosAlvenaria){
-        parametrosAlvenariaRepository.excluirPorId(idParametrosAlvenaria);
+    public void excluir(Integer idParametrosAlvenaria) throws SystemException {
+        try {
+            utx.begin();
+            parametrosAlvenariaRepository.excluirPorId(idParametrosAlvenaria);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 }

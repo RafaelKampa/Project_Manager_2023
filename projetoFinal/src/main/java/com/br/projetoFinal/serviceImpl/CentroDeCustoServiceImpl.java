@@ -51,17 +51,24 @@ public class CentroDeCustoServiceImpl implements CentroDeCustoService {
     }
 
     @Override
-    public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
+    public CentroDeCustoDto buscarCentroPorId(Integer idCentroDeCusto) {
         return centroDeCustoRepository.buscarCentroPorId(idCentroDeCusto);
     }
 
     @Override
-    public CentroDeCusto buscarPorNome(String nomeCentroDeCusto) {
+    public CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto) {
         return centroDeCustoRepository.buscarPorNome(nomeCentroDeCusto);
     }
 
     @Override
-    public void excluir(Integer idCentroDeCusto) {
-        centroDeCustoRepository.excluir(idCentroDeCusto);
+    public void excluir(Integer idCentroDeCusto) throws SystemException  {
+        try {
+            utx.begin();
+            centroDeCustoRepository.excluir(idCentroDeCusto);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 }

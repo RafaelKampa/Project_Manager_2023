@@ -8,7 +8,7 @@ import javax.transaction.SystemException;
 
 public interface ParametrosAlvenariaService {
     void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) throws ExcecaoExemplo, SystemException;
-    ParametrosAlvenaria buscarPorId(Integer idParametrosAlvenaria);
-    ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao);
-    void excluir(Integer idParametrosAlvenaria);
+    ParametrosAlvenariaDto buscarPorId(Integer idParametrosAlvenaria);
+    ParametrosAlvenariaDto buscarPorAvaliacao(Integer idAvaliacao);
+    void excluir(Integer idParametrosAlvenaria) throws SystemException;
 }

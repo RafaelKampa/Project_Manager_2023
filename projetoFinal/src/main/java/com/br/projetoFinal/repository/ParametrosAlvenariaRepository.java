@@ -6,7 +6,7 @@ import com.br.projetoFinal.entity.ParametrosAlvenaria;
 public interface ParametrosAlvenariaRepository {
 
     void salvarParametrosAvaliados (ParametrosAlvenariaDto parametrosAlvenariaDto);
-    ParametrosAlvenaria buscarPorId(Integer idParametrosAlvenaria);
-    ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao);
+    ParametrosAlvenariaDto buscarPorId(Integer idParametrosAlvenaria);
+    ParametrosAlvenariaDto buscarPorAvaliacao(Integer idAvaliacao);
     void excluirPorId(Integer idParametrosAlvenaria);
 }

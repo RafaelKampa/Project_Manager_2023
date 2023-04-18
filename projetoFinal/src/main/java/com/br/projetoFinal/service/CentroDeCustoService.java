@@ -10,8 +10,8 @@ import java.util.List;
 public interface CentroDeCustoService {
 
     void salvarNovoCentroDeCusto(CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException;
-    CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto);
-    CentroDeCusto buscarPorNome(String nomeCentroDeCusto);
-    void excluir(Integer idCentroDeCusto);
+    CentroDeCustoDto buscarCentroPorId(Integer idCentroDeCusto);
+    CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto);
+    void excluir(Integer idCentroDeCusto) throws SystemException;
     List<CentroDeCustoDto> listarCentrosDeCusto();
 }

@@ -20,32 +20,42 @@ public class ParametrosFerragemController {
     ParametrosFerragemService parametrosFerragemService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosFerragemDto parametrosFerragemServiceDto) throws ExcecaoExemplo, SystemException {
-        parametrosFerragemService.salvarParametrosAvaliados(parametrosFerragemServiceDto);
+    public ResponseEntity<?> salvarParametrosAvaliados(@RequestBody ParametrosFerragemDto parametrosFerragemServiceDto) throws ExcecaoExemplo, SystemException {
+        try {
+            parametrosFerragemService.salvarParametrosAvaliados(parametrosFerragemServiceDto);
+            return new ResponseEntity<>(parametrosFerragemServiceDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<ParametrosFerragem> buscarPorId(@PathVariable("ID") Integer idParametrosFerragem) {
+    @GetMapping("/{id_parametros_ferragem}")
+    public ResponseEntity<ParametrosFerragemDto> buscarPorId(@PathVariable("id_parametros_ferragem") Integer idParametrosFerragem) {
         try {
-            ParametrosFerragem parametrosFerragem = parametrosFerragemService.buscarPorId(idParametrosFerragem);
+            ParametrosFerragemDto parametrosFerragem = parametrosFerragemService.buscarPorId(idParametrosFerragem);
             return new ResponseEntity<>(parametrosFerragem, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{ID_AVALIACAO}")
-    public ResponseEntity<ParametrosFerragem> buscarPorAvaliacao(@PathVariable("ID_AVALIACAO") Integer idAvaliacao) {
+    @GetMapping("/{id_avaliacao}")
+    public ResponseEntity<ParametrosFerragemDto> buscarPorAvaliacao(@PathVariable("id_avaliacao") Integer idAvaliacao) {
         try {
-            ParametrosFerragem parametrosFerragem = parametrosFerragemService.buscarPorAvaliacao(idAvaliacao);
+            ParametrosFerragemDto parametrosFerragem = parametrosFerragemService.buscarPorAvaliacao(idAvaliacao);
             return new ResponseEntity<>(parametrosFerragem, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{ID}")
-    public void excluir(@PathVariable("ID") Integer idParametrosFerragem) {
-        parametrosFerragemService.excluir(idParametrosFerragem);
+    @DeleteMapping("/{id_parametros_ferragem}")
+    public ResponseEntity<?> excluir(@PathVariable("id_parametros_ferragem") Integer idParametrosFerragem) throws SystemException {
+        try {
+            parametrosFerragemService.excluir(idParametrosFerragem);
+            return new ResponseEntity<>(idParametrosFerragem, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

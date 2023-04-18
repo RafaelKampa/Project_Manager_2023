@@ -39,24 +39,23 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     }
 
     @Override
-    public CentroDeCusto buscarCentroPorId(Integer idCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCusto.class)
+    public CentroDeCustoDto buscarCentroPorId(Integer idCentroDeCusto) {
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.buscarCentroPorId", CentroDeCustoDto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
-        CentroDeCusto centro = query.getSingleResult();
-        return centro;
+        return query.getSingleResult();
     }
 
     @Override
-    public CentroDeCusto buscarPorNome(String nomeCentroDeCusto) {
-        TypedQuery<CentroDeCusto> query = (TypedQuery<CentroDeCusto>) getEntityManager().createNativeQuery("SELECT * FROM CENTRO_DE_CUSTO WHERE NOME_CENTRO_DE_CUSTO = :NOME_CENTRO_DE_CUSTO")
+    public CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto) {
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.buscarPorNome", CentroDeCustoDto.class)
                 .setParameter("NOME_CENTRO_DE_CUSTO", nomeCentroDeCusto);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluir(Integer idCentroDeCusto) {
-        em.createNativeQuery("DELETE FROM CENTRO_DE_CUSTO \n" +
-                        "WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO")
+        TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.excluirPorId", CentroDeCustoDto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
     }
 }

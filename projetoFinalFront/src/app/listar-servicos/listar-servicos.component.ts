@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ListarServicosModel } from './model/listar-servicos.model';
 import { ListarServicosService } from './service/listar-servicos.service';
+import { ServicosModel } from '../shared/models/servico.model';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-listar-servicos',
@@ -10,10 +11,10 @@ import { ListarServicosService } from './service/listar-servicos.service';
 })
 export class ListarServicosComponent implements OnInit {
 
-  displayedColumns: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'dataFinal', 'valorTotal'];
-  displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal'];
-  dataSource : ListarServicosModel[] = [];
-  cabecalho: number = 0;
+  public displayedColumns: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'dataFinal', 'valorTotal'];
+  public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal'];
+  public cabecalho: number = 0;
+  public lista: ServicosModel[] = [];
 
   constructor(private listarServicosService: ListarServicosService,
     private router: Router) { }
@@ -21,25 +22,19 @@ export class ListarServicosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  listarTodosServicos () {
-    this.listarServicosService.listarServicos().subscribe(servicos => {
-      this.dataSource = servicos;
-      this.cabecalho = 1;
-    });
+  public async listarTodosServicos () {
+    this.cabecalho = 1;
+    this.lista = await firstValueFrom(this.listarServicosService.listarServicos());
   }
 
-  listarServicosAguardandoAvaliacao () {
-    this.listarServicosService.listarServicosAguardandoAvaliacao().subscribe(servicos => {
-      this.dataSource = servicos;
-      this.cabecalho = 2;
-    });
+  public async listarServicosAguardandoAvaliacao () {
+    this.cabecalho = 2;
+    this.lista = await firstValueFrom(this.listarServicosService.listarServicosAguardandoAvaliacao());
   }
 
-  listarServicosAvaliados () {
-    this.listarServicosService.listarServicosAvaliados().subscribe(servicos => {
-      this.dataSource = servicos;
-      this.cabecalho = 1;
-    });
+  public async listarServicosAvaliados () {
+    this.cabecalho = 1;
+    this.lista = await firstValueFrom(this.listarServicosService.listarServicosAvaliados());
   }
 
   limpar() {

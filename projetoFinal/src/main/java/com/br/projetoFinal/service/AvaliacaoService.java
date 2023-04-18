@@ -11,10 +11,10 @@ public interface AvaliacaoService {
 
     void avaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException;
     void reavaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException;
-    List<Avaliacao> listar();
-    Avaliacao buscarPorId(Integer idAvaliacao);
-    List<Avaliacao> buscarPorServico(Integer tipoServico);
-    List<Avaliacao> buscarPorExecutor(Integer idUsuExect);
-    List<Avaliacao> buscarPorConferente(Integer idUsuConf);
+    List<AvaliacaoDto> listar();
+    AvaliacaoDto buscarPorId(Integer idAvaliacao);
+    List<AvaliacaoDto> buscarPorServico(Integer tipoServico);
+    List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect);
+    List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf);
 
 }

@@ -22,43 +22,68 @@ public class AvaliacaoController {
     AvaliacaoService avaliacaoService;
 
     @PostMapping("/avaliar")
-    public void avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
-        avaliacaoService.avaliar(avaliacaoDto);
+    public ResponseEntity<?> avaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+        try {
+            avaliacaoService.avaliar(avaliacaoDto);
+            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/reavaliar")
-    public void reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
-        avaliacaoService.reavaliar(avaliacaoDto);
+    public ResponseEntity<?> reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+        try {
+            avaliacaoService.reavaliar(avaliacaoDto);
+            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping
-    public List<Avaliacao> listar() {
-        return avaliacaoService.listar();
+    public ResponseEntity<List<AvaliacaoDto>> listar() {
+        try {
+            return new ResponseEntity<>(avaliacaoService.listar(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>((List<AvaliacaoDto>) null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<Avaliacao> buscarPorId(@PathVariable("ID") Integer idAvaliacao) {
+    public ResponseEntity<AvaliacaoDto> buscarPorId(@PathVariable("id_avaliacao") Integer idAvaliacao) {
         try {
-            Avaliacao avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
+            AvaliacaoDto avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
             return new ResponseEntity<>(avaliacao, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{TIPO_SERVICO}")
-    public List<Avaliacao> buscarPorServico(@PathVariable("TIPO_SERVICO") Integer tipoServico) {
-        return avaliacaoService.buscarPorServico(tipoServico);
+    @GetMapping("/{tipo_servico}")
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorServico(@PathVariable("tipo_servico") Integer tipoServico) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorServico(tipoServico), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{ID_USU_EXECT}")
-    public List<Avaliacao> buscarPorExecutor(@PathVariable("ID_USU_EXECT") Integer idUsuExect) {
-        return avaliacaoService.buscarPorExecutor(idUsuExect);
+    @GetMapping("/{id_usu_exect}")
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorExecutor(@PathVariable("id_usu_exect") Integer idUsuExect) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorExecutor(idUsuExect), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{ID_USU_CONF}")
-    public List<Avaliacao> buscarPorConferente(@PathVariable("ID_USU_CONF") Integer idUsuConf) {
-        return avaliacaoService.buscarPorConferente(idUsuConf);
+    @GetMapping("/{id_usu_conf}")
+    public ResponseEntity<List<AvaliacaoDto>> buscarPorConferente(@PathVariable("id_usu_conf") Integer idUsuConf) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.buscarPorConferente(idUsuConf), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 }

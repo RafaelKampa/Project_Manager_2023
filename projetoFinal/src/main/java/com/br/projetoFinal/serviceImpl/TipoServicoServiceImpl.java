@@ -49,23 +49,29 @@ public class TipoServicoServiceImpl implements TipoServicoService {
     }
 
     @Override
-    public List<TipoServico> listar() {
+    public List<TipoServicoDto> listar() {
         return tipoServicoRepository.listar();
     }
 
     @Override
-    public TipoServico buscarPorId(Integer idTipoServico) {
+    public TipoServicoDto buscarPorId(Integer idTipoServico) {
         return tipoServicoRepository.buscarPorid(idTipoServico);
     }
 
     @Override
-    public void excluir(Integer idTipoServico) {
-        tipoServicoRepository.excluirServico(idTipoServico);
-    }
-
-    @Override
-    public List<TipoServico> buscarPorNome(String nomeServico) {
+    public List<TipoServicoDto> buscarPorNome(String nomeServico) {
         return tipoServicoRepository.buscarPorNome(nomeServico);
     }
 
+    @Override
+    public void excluir(Integer idTipoServico) throws SystemException {
+        try {
+            utx.begin();
+            tipoServicoRepository.excluirServico(idTipoServico);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
+    }
 }

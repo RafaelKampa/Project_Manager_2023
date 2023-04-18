@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @Repository
 public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintariaRepository {
@@ -20,6 +21,7 @@ public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintari
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosCarpintariaDto parametrosCarpintariaDto) {
         em.createNativeQuery("INSERT INTO PARAMETROS_CARPINTARIA (TIPO_CARPINTARIA, ID_AVALIACAO, DIMENSOES, NIVEL_OU_PRUMO, ESTANQUEIDADE, OBS) \n" +
                     "VALUES (:TIPO_CARPINTARIA, :ID_AVALIACAO, :DIMENSOES, :NIVEL_OU_PRUMO, :ESTANQUEIDADE, :OBS)")
@@ -33,23 +35,23 @@ public class ParametrosCarpintariaRepositoryImpl implements ParametrosCarpintari
     }
 
     @Override
-    public ParametrosCarpintaria buscarPorId(Integer idParametrosCarpintaria) {
-        TypedQuery<ParametrosCarpintaria> query = getEntityManager().createNamedQuery("ParametrosCarpintaria.buscarPorId", ParametrosCarpintaria.class)
-                .setParameter("ID", idParametrosCarpintaria);
+    public ParametrosCarpintariaDto buscarPorId(Integer idParametrosCarpintaria) {
+        TypedQuery<ParametrosCarpintariaDto> query = em.createNamedQuery("ParametrosCarpintaria.buscarPorId", ParametrosCarpintariaDto.class)
+                .setParameter("ID_PARAMETROS_CARPINTARIA", idParametrosCarpintaria);
         return query.getSingleResult();
     }
 
     @Override
-    public ParametrosCarpintaria buscarPorAvaliacao(Integer idAvaliacao) {
-        TypedQuery<ParametrosCarpintaria> query = getEntityManager().createNamedQuery("ParametrosCarpintaria.buscarPorAvaliacao", ParametrosCarpintaria.class)
+    public ParametrosCarpintariaDto buscarPorAvaliacao(Integer idAvaliacao) {
+        TypedQuery<ParametrosCarpintariaDto> query = em.createNamedQuery("ParametrosCarpintaria.buscarPorAvaliacao", ParametrosCarpintariaDto.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idParametrosCarpintaria) {
-        em.createNativeQuery("DELETE FROM PARAMETROS_CARPINTARIA \n" +
-                "WHERE ID = :ID")
-                .setParameter("ID", idParametrosCarpintaria);
+        TypedQuery<ParametrosCarpintariaDto> query = em.createNamedQuery("ParametrosCarpintaria.excluirPorId", ParametrosCarpintariaDto.class)
+                .setParameter("ID_PARAMETROS_CARPINTARIA", idParametrosCarpintaria);
     }
 }

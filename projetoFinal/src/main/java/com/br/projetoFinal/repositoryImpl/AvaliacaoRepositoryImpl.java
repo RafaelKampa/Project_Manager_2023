@@ -38,6 +38,7 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void reavaliar(AvaliacaoDto avaliacaoDto) {
         em.createNativeQuery("UPDATE AVALIACAO \n" +
                         "SET RESULT_REAVAL = :RESULT_REAVAL, DATA_REAVALIACAO = :DATA_REAVALIACAO, OBS = :OBS \n" +
@@ -50,36 +51,35 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     }
 
     @Override
-    public List<Avaliacao> listar() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM AVALIACAO \n" +
-                "ODER BY ID");
+    public List<AvaliacaoDto> listar() {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.listarAvaliacoes", AvaliacaoDto.class);
         return query.getResultList();
     }
 
     @Override
-    public Avaliacao buscarPorId(Integer idAvaliacao) {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM AVALIACAO WHERE ID_AVALIACAO = :ID_AVALIACAO")
+    public AvaliacaoDto buscarPorId(Integer idAvaliacao) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.buscarPorId", AvaliacaoDto.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
-        return (Avaliacao) query.getSingleResult();
+        return query.getSingleResult();
     }
 
     @Override
-    public List<Avaliacao> buscarPorServico(Integer tipoServico) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorServico", Avaliacao.class)
+    public List<AvaliacaoDto> buscarPorServico(Integer tipoServico) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.buscarPorServico", AvaliacaoDto.class)
                 .setParameter("TIPO_SERVICO", tipoServico);
         return query.getResultList();
     }
 
     @Override
-    public List<Avaliacao> buscarPorExecutor(Integer idUsuExect) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorExecutor", Avaliacao.class)
+    public List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.buscarPorExecutor", AvaliacaoDto.class)
                 .setParameter("ID_USU_EXECT", idUsuExect);
         return query.getResultList();
     }
 
     @Override
-    public List<Avaliacao> buscarPorConferente(Integer idUsuConf) {
-        TypedQuery<Avaliacao> query = getEntityManager().createNamedQuery("Avaliacao.buscarPorConferente", Avaliacao.class)
+    public List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.buscarPorConferente", AvaliacaoDto.class)
                 .setParameter("ID_USU_CONF", idUsuConf);
         return query.getResultList();
     }

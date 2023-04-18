@@ -6,8 +6,30 @@ import com.br.projetoFinal.dto.ParametrosFerragemDto;
 
 import javax.persistence.*;
 
+@SqlResultSetMappings({
+        @SqlResultSetMapping(name = "ParametrosFerragem.dtoMapping", classes = {
+                @ConstructorResult(targetClass = ParametrosFerragemDto.class,
+                        columns ={
+                                @ColumnResult(name = "ID_PARAMETROS_FERRAGEM", type = Integer.class),
+                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
+                                @ColumnResult(name = "ESPACAMENTO", type = Boolean.class),
+                                @ColumnResult(name = "QTDE_ACO", type = Double.class),
+                                @ColumnResult(name = "DISTRIBUICAO", type = Boolean.class),
+                                @ColumnResult(name = "OBS", type = String.class)
+                        }
+                )
+        })
+})
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "ParametrosFerragem.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_FERRAGEM WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosFerragem.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosFerragem.buscarPorId", query = "SELECT * FROM PARAMETROS_FERRAGEM WHERE ID_PARAMETROS_FERRAGEM = :ID_PARAMETROS_FERRAGEM", resultSetMapping = "ParametrosFerragem.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosFerragem.excluirPorId", query = "DELETE FROM PARAMETROS_FERRAGEM WHERE ID_PARAMETROS_FERRAGEM = :ID_PARAMETROS_FERRAGEM", resultSetMapping = "ParametrosFerragem.dtoMapping")
+
+})
+
 @Entity
 @Table(name = "PARAMETROS_FERRAGEM")
+
 public class ParametrosFerragem {
 
     @Id

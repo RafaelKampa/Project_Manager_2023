@@ -19,6 +19,9 @@ import javax.persistence.*;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "CentroDeCusto.listarCentrosDeCusto", query = "SELECT * FROM CENTRO_DE_CUSTO ORDER BY ID_CENTRO_DE_CUSTO ", resultSetMapping = "CentroDeCusto.dtoMapping"),
         @NamedNativeQuery(name = "CentroDeCusto.buscarCentroPorId", query = "SELECT * FROM CENTRO_DE_CUSTO WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO ", resultSetMapping = "CentroDeCusto.dtoMapping"),
+        @NamedNativeQuery(name = "CentroDeCusto.buscarPorNome", query = "SELECT * FROM CENTRO_DE_CUSTO WHERE NOME_CENTRO_DE_CUSTO = :NOME_CENTRO_DE_CUSTO", resultSetMapping = "CentroDeCusto.dtoMapping"),
+        @NamedNativeQuery(name = "CentroDeCusto.excluirPorId", query = "DELETE FROM CENTRO_DE_CUSTO WHERE ID_CENTRO_DE_CUSTO = :ID_CENTRO_DE_CUSTO", resultSetMapping = "CentroDeCusto.dtoMapping"),
+
 })
 
 @Entity
