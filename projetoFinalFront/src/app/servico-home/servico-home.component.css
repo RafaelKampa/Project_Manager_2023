@@ -1,11 +1,11 @@
-.center{
+/*.center{
     display: flex;
     justify-content: center;
 }
 
 .button {
     margin-top: 40px;
-    margin-right: 50px;
+    margin-right: 10px;
 }
 
 .mat-button.mat-brown {
@@ -15,4 +15,4 @@
  .mat-raised-button.mat-brown, .mat-flat-button.mat-brown{
     background-color: brown;
     color: white;
- }
+ }*/
