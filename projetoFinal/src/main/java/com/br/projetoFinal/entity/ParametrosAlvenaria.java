@@ -13,7 +13,7 @@ import javax.persistence.*;
                                 @ColumnResult(name = "PRUMO", type = Boolean.class),
                                 @ColumnResult(name = "NIVEL", type = Boolean.class),
                                 @ColumnResult(name = "ALINHAMENTO", type = Boolean.class),
-                                @ColumnResult(name = "DIMENSOES", type = Boolean.class),
+                                @ColumnResult(name = "DIMENSOES", type = Double.class),
                                 @ColumnResult(name = "INTEGRIDADE", type = Boolean.class),
                                 @ColumnResult(name = "LIMPEZA", type = Boolean.class),
                                 @ColumnResult(name = "OBS", type = String.class)
@@ -48,7 +48,7 @@ public class ParametrosAlvenaria {
     private Boolean alinhamento;
 
     @Column(name = "DIMENSOES", nullable = false)
-    private Boolean dimensoes;
+    private Double dimensoes;
 
     @Column(name = "INTEGRIDADE", nullable = false)
     private Boolean integridade;
@@ -99,11 +99,11 @@ public class ParametrosAlvenaria {
         this.alinhamento = alinhamento;
     }
 
-    public Boolean getDimensoes() {
+    public Double getDimensoes() {
         return dimensoes;
     }
 
-    public void setDimensoes(Boolean dimensoes) {
+    public void setDimensoes(Double dimensoes) {
         this.dimensoes = dimensoes;
     }
 
