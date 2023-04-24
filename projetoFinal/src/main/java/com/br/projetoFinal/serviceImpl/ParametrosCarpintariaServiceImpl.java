@@ -53,17 +53,25 @@ public class ParametrosCarpintariaServiceImpl implements ParametrosCarpintariaSe
     }
 
     @Override
-    public ParametrosCarpintaria buscarPorId(Integer idParametrosCarpintaria) {
+    public ParametrosCarpintariaDto buscarPorId(Integer idParametrosCarpintaria) {
         return parametrosCarpintariaRepository.buscarPorId(idParametrosCarpintaria);
     }
 
     @Override
-    public ParametrosCarpintaria buscarPorAvaliacao(Integer idAvaliacao) {
+    public ParametrosCarpintariaDto buscarPorAvaliacao(Integer idAvaliacao) {
         return parametrosCarpintariaRepository.buscarPorAvaliacao(idAvaliacao);
     }
 
     @Override
-    public void excluir(Integer idParametrosCarpintaria) {
-        parametrosCarpintariaRepository.excluirPorId(idParametrosCarpintaria);
+    public void excluir(Integer idParametrosCarpintaria) throws SystemException {
+        try {
+            utx.begin();
+            parametrosCarpintariaRepository.excluirPorId(idParametrosCarpintaria);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
+
     }
 }

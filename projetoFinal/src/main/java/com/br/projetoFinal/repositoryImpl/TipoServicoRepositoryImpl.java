@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -23,6 +24,7 @@ public class TipoServicoRepositoryImpl implements TipoServicoRepository {
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarNovoServico(TipoServicoDto tipoServicoDto) {
         em.createNativeQuery("INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO) \n" +
                         "VALUES (:NOME_SERVICO, :UNIDADE_MEDIDA, :VALOR_UNITARIO)")
@@ -33,30 +35,29 @@ public class TipoServicoRepositoryImpl implements TipoServicoRepository {
     }
 
     @Override
-    public List<TipoServico> listar() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM TIPO_SERVICO_TABLE \n" +
-                "ORDER BY ID_TIPO_SERVICO");
+    public List<TipoServicoDto> listar() {
+        TypedQuery<TipoServicoDto> query = em.createNamedQuery("TipoServico.listar", TipoServicoDto.class);
         return query.getResultList();
     }
 
     @Override
-    public TipoServico buscarPorid(Integer idTipoServico) {
-        TypedQuery<TipoServico> query = getEntityManager().createNamedQuery("TipoServico.buscarPorId", TipoServico.class)
-                .setParameter("ID", idTipoServico);
+    public TipoServicoDto buscarPorid(Integer idTipoServico) {
+        TypedQuery<TipoServicoDto> query = em.createNamedQuery("TipoServico.buscarPorId", TipoServicoDto.class)
+                .setParameter("ID_TIPO_SERVICO", idTipoServico);
         return query.getSingleResult();
     }
 
     @Override
-    public void excluirServico(Integer idTipoServico) {
-        em.createNativeQuery("DELETE FROM TIPO_SERVICO_TABLE \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idTipoServico);
+    public List<TipoServicoDto> buscarPorNome(String nomeServico) {
+        TypedQuery<TipoServicoDto> query = em.createNamedQuery("TipoServico.buscarPorNome", TipoServicoDto.class)
+                .setParameter("NOME_SERVICO", nomeServico);
+        return query.getResultList();
     }
 
     @Override
-    public List<TipoServico> buscarPorNome(String nomeServico) {
-        TypedQuery<TipoServico> query = getEntityManager().createNamedQuery("TipoServico.buscarPorNome", TipoServico.class)
-                .setParameter("NOME_SERVICO", nomeServico);
-        return query.getResultList();
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void excluirServico(Integer idTipoServico) {
+        TypedQuery<TipoServicoDto> query = em.createNamedQuery("TipoServico.excluirPorId", TipoServicoDto.class)
+                .setParameter("ID_TIPO_SERVICO", idTipoServico);
     }
 }

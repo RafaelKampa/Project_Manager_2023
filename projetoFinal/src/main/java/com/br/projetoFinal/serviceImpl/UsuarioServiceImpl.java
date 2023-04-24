@@ -57,33 +57,40 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<Usuario> listar() {
+    public List<UsuarioDto> listar() {
         return usuarioRepository.listar();
     }
 
     @Override
-    public List<Usuario> buscarConferentes() {
+    public List<UsuarioDto> buscarConferentes() {
         return usuarioRepository.buscarConferentes();
     }
 
     @Override
-    public List<Usuario> buscarExecutores() {
+    public List<UsuarioDto> buscarExecutores() {
         return usuarioRepository.buscarExecutores();
     }
 
     @Override
-    public Usuario buscarPorId(Integer idUsuario) {
+    public UsuarioDto buscarPorId(Integer idUsuario) {
         return usuarioRepository.buscarPorId(idUsuario);
     }
 
     @Override
-    public Usuario buscarPorNome(String login) {
+    public UsuarioDto buscarPorNome(String login) {
         return usuarioRepository.buscarPorNome(login);
     }
 
     @Override
-    public void excluir(Integer idUsuario) {
-        usuarioRepository.excluirPorId(idUsuario);
+    public void excluir(Integer idUsuario) throws SystemException {
+        try {
+            utx.begin();
+            usuarioRepository.excluirPorId(idUsuario);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 
 }

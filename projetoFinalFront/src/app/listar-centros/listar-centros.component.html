@@ -1,24 +1,24 @@
 <h1 class="center">Listar Centros de Custo</h1>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="lista" class="mat-elevation-z8">
 
     <ng-container matColumnDef="idCentroDeCusto">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element[0]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.idCentroDeCusto}} </td>
     </ng-container>
 
     <ng-container matColumnDef="nomeCentroDeCusto">
         <th mat-header-cell *matHeaderCellDef> Nome </th>
-        <td mat-cell *matCellDef="let element"> {{element[2]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.nomeCentroDeCusto}} </td>
     </ng-container>
 
     <ng-container matColumnDef="enderecoCentroDeCusto">
         <th mat-header-cell *matHeaderCellDef> Endereço </th>
-        <td mat-cell *matCellDef="let element"> {{element[1]}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.enderecoCentroDeCusto}} </td>
     </ng-container>
 
     <ng-container matColumnDef="valorEmpreendido">
         <th mat-header-cell *matHeaderCellDef> Valor Empreendido </th>
-        <td mat-cell *matCellDef="let element"> {{'R$ ' + element[3] + ',00'}} </td>
+        <td mat-cell *matCellDef="let element"> {{'R$ ' + element.valorEmpreendido + ',00'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

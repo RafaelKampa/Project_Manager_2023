@@ -20,32 +20,42 @@ public class ParametrosCarpintariaController {
     ParametrosCarpintariaService parametrosCarpintariaService;
 
     @PostMapping
-    public void salvarParametrosAvaliados(@RequestBody ParametrosCarpintariaDto parametrosCarpintariaDto) throws ExcecaoExemplo, SystemException{
-        parametrosCarpintariaService.salvarParametrosAvaliados(parametrosCarpintariaDto);
-    }
-
-    @GetMapping("/{ID}")
-    public ResponseEntity<ParametrosCarpintaria> buscarPorId(@PathVariable("ID") Integer idParametrosCarpintaria) {
+    public ResponseEntity<?> salvarParametrosAvaliados(@RequestBody ParametrosCarpintariaDto parametrosCarpintariaDto) throws ExcecaoExemplo, SystemException{
         try {
-            ParametrosCarpintaria parametrosCarpintaria = parametrosCarpintariaService.buscarPorId(idParametrosCarpintaria);
-            return new ResponseEntity<>(parametrosCarpintaria, HttpStatus.OK);
+            parametrosCarpintariaService.salvarParametrosAvaliados(parametrosCarpintariaDto);
+            return new ResponseEntity<>(parametrosCarpintariaDto, HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{ID_AVALIACAO}")
-    public ResponseEntity<ParametrosCarpintaria> buscarPorAvaliacao(@PathVariable("ID_AVALIACAO") Integer idAvaliacao) {
+    @GetMapping("/{id_parametros_carpintaria}")
+    public ResponseEntity<ParametrosCarpintariaDto> buscarPorId(@PathVariable("id_parametros_carpintaria") Integer idParametrosCarpintaria) {
         try {
-            ParametrosCarpintaria parametrosCarpintaria = parametrosCarpintariaService.buscarPorAvaliacao(idAvaliacao);
-            return new ResponseEntity<>(parametrosCarpintaria, HttpStatus.OK);
+            ParametrosCarpintariaDto parametrosCarpintariaDto = parametrosCarpintariaService.buscarPorId(idParametrosCarpintaria);
+            return new ResponseEntity<>(parametrosCarpintariaDto, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{ID}")
-    public void excluir(@PathVariable("ID") Integer idParametrosCarpintaria) {
-        parametrosCarpintariaService.excluir(idParametrosCarpintaria);
+    @GetMapping("/{id_avaliacao}")
+    public ResponseEntity<ParametrosCarpintariaDto> buscarPorAvaliacao(@PathVariable("id_avaliacao") Integer idAvaliacao) {
+        try {
+            ParametrosCarpintariaDto parametrosCarpintariaDto = parametrosCarpintariaService.buscarPorAvaliacao(idAvaliacao);
+            return new ResponseEntity<>(parametrosCarpintariaDto, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id_parametros_carpintaria}")
+    public ResponseEntity<?> excluir(@PathVariable("id_parametros_carpintaria") Integer idParametrosCarpintaria) throws SystemException {
+        try {
+            parametrosCarpintariaService.excluir(idParametrosCarpintaria);
+            return new ResponseEntity<>(idParametrosCarpintaria, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

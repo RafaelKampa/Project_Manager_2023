@@ -4,8 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/UsuarioDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/UsuarioDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/ServicoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/ServicoDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/UsuarioDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/UsuarioDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/centro-custo/centro-custo.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/centro-custo/centro-custo.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/centro-custo/model/centro-custo.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/centro-custo/service/centro-custo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/centro-custo/service/centro-custo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-centros/listar-centros.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-centros/listar-centros.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-centros/model/listar-centros.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/listar-servicos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/listar-servicos.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/listar-servicos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/listar-servicos.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/model/listar-servicos.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/service/listar-servicos.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-servicos/service/listar-servicos.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +32,22 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -25,19 +59,24 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2F6B0cplz88wza6WQSx2o2zarxo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "C:/Users/rafae/IdeaProjects/Project_Manager_2023/projetoFinal",
-    "settings.editor.selected.configurable": "Errors"
-  }
-}]]></component>
-  <component name="RunManager">
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rafae\IdeaProjects\Project_Manager_2023\projetoFinal" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ProjetoFinalApplication">
     <configuration name="ProjetoFinalApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.br.projetoFinal.ProjetoFinalApplication" />
       <module name="projetoFinal" />
@@ -50,6 +89,9 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="httpServer | Login" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/target/httpServer.http" requestIdentifier="Login" runType="Run single request">
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -66,10 +108,38 @@
       <option name="presentableId" value="Default" />
       <updated>1663802448840</updated>
       <workItem from="1663802455912" duration="74000" />
+      <workItem from="1681673428366" duration="13075000" />
+      <workItem from="1681692559363" duration="4505000" />
+      <workItem from="1681772909656" duration="6027000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="c476e6ae-4af1-4058-af0f-0824249de552">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="c476e6ae-4af1-4058-af0f-0824249de552" value="TOOL_WINDOW" />
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Aplicação de NamedQuery para Centro de Custo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aplicação de NamedQuery para Centro de Custo" />
   </component>
 </project>

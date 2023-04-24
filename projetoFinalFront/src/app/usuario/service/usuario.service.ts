@@ -17,14 +17,7 @@ export class UsuarioService {
   };
 
   salvarUsuario(usuarioModel: UsuarioModel) {
-    let tokenCadastro = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0ZSIsImV4cCI6MTY3MDEzNDYxOX0.kIMdcheL2ujx2nefgVZjkAcu62755eEb5A2BnPNxyY7_JF4OWPqIUjUMWNQuao7FMBTV1TMRgd4r3VrJfOkLGw';
-    let httpNewUser = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      Authorization: 'Bearer ' + tokenCadastro
-      })
-    };
-    return this.httpClient.post<UsuarioModel>("http://localhost:8082/usuario/salvarUsuario",usuarioModel, httpNewUser);
+    return this.httpClient.post<UsuarioModel>("http://localhost:8082/usuario/salvarUsuario",usuarioModel);
   }
 
   listar() {
@@ -39,8 +32,8 @@ export class UsuarioService {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarExecutores", this.httpOptions);
   }
 
-  buscarPorNome(NOME: string) {
-    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{NOME}", this.httpOptions);
+  buscarPorNome(nome: string) {
+    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{nome}", this.httpOptions);
   }
 
 }

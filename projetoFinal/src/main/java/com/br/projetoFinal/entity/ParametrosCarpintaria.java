@@ -4,13 +4,11 @@ import com.br.projetoFinal.dto.ParametrosCarpintariaDto;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "PARAMETROS_CARPINTARIA")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "ParametrosCarpintaria.dtoMapping", classes = {
                 @ConstructorResult(targetClass = ParametrosCarpintariaDto.class,
                         columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "ID_PARAMETROS_CARPINTARIA", type = Integer.class),
                                 @ColumnResult(name = "TIPO_CARPINTARIA", type = String.class),
                                 @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
                                 @ColumnResult(name = "DIMENSOES", type = Double.class),
@@ -23,14 +21,16 @@ import javax.persistence.*;
 })
 @NamedNativeQueries({
         @NamedNativeQuery(name = "ParametrosCarpintaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosCarpintaria.dtoMapping"),
-        @NamedNativeQuery(name = "ParametrosCarpintaria.buscarPorId", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID = :ID", resultSetMapping = "ParametrosCarpintaria.dtoMapping")
+        @NamedNativeQuery(name = "ParametrosCarpintaria.buscarPorId", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID_PARAMETROS_CARPINTARIA = :ID_PARAMETROS_CARPINTARIA", resultSetMapping = "ParametrosCarpintaria.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosCarpintaria.excluirPorId", query = "SELECT * FROM PARAMETROS_CARPINTARIA WHERE ID_PARAMETROS_CARPINTARIA = :ID_PARAMETROS_CARPINTARIA", resultSetMapping = "ParametrosCarpintaria.dtoMapping"),
 })
 
-
+@Entity
+@Table(name = "PARAMETROS_CARPINTARIA")
 public class ParametrosCarpintaria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idParametrosCarpintaria;
 
     @Column(name = "TIPO_CARPINTARIA", nullable = false)

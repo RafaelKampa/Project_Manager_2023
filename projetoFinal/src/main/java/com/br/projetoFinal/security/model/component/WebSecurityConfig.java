@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/public/projetoFinal/autenticacao").permitAll()
+                .antMatchers(HttpMethod.POST, "/usuario/salvarUsuario").permitAll()
                 .anyRequest().authenticated().and()
 
                 // filtra requisições de login

@@ -23,37 +23,49 @@ public class CentroDeCustoController {
 
     @PostMapping("/salvarNovoCentroDeCusto")
     public ResponseEntity<?> salvarNovoCentroDeCusto(@RequestBody CentroDeCustoDto centroDeCustoDto) throws ExcecaoExemplo, SystemException {
-        centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
-        return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);
+        try {
+            centroDeCustoService.salvarNovoCentroDeCusto(centroDeCustoDto);
+            return new ResponseEntity<>(centroDeCustoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarCentrosDeCusto")
-    public List<CentroDeCusto> listarCentrosDeCusto() {
-        return centroDeCustoService.listarCentrosDeCusto();
+    public ResponseEntity<List<CentroDeCustoDto>> listarCentrosDeCusto() {
+        try {
+            return new ResponseEntity<>(centroDeCustoService.listarCentrosDeCusto(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{ID}")
-    public ResponseEntity<CentroDeCusto> buscarPorId(@PathVariable("ID") Integer idCentroDeCusto) {
+    @GetMapping("/buscarCentroPorId/{id_centro_de_custo}")
+    public ResponseEntity<CentroDeCustoDto> buscarCentroPorId(@PathVariable("id_centro_de_custo") Integer idCentroDeCusto) {
         try {
-            CentroDeCusto centroDeCusto = centroDeCustoService.buscarPorId(idCentroDeCusto);
+            return new ResponseEntity<>(centroDeCustoService.buscarCentroPorId(idCentroDeCusto), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/{nome_centro_de_custo}")
+    public ResponseEntity<CentroDeCustoDto> buscarPorNome(@PathVariable("nome_centro_de_custo") String nomeCentroDeCusto) {
+        try {
+            CentroDeCustoDto centroDeCusto = centroDeCustoService.buscarPorNome(nomeCentroDeCusto);
             return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{NOME_CENTRO_DE_CUSTO}")
-    public ResponseEntity<CentroDeCusto> buscarPorNome(@PathVariable("NOME_CENTRO_DE_CUSTO") String nomeCentroDeCusto) {
+    @DeleteMapping("/{id_centro_de_custo}")
+    public ResponseEntity<?> excluir(@PathVariable("id_centro_de_custo") Integer idCentroDeCusto) throws SystemException {
         try {
-            CentroDeCusto centroDeCusto = centroDeCustoService.buscarPorNome(nomeCentroDeCusto);
-            return new ResponseEntity<>(centroDeCusto, HttpStatus.OK);
+            centroDeCustoService.excluir(idCentroDeCusto);
+            return new ResponseEntity<>(idCentroDeCusto, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-    }
-
-    @DeleteMapping("/{ID}")
-    public void excluir(@PathVariable("ID") Integer idCentroDeCusto) {
-        centroDeCustoService.excluir(idCentroDeCusto);
     }
 }

@@ -3,20 +3,16 @@ package com.br.projetoFinal.repository;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.transaction.NotSupportedException;
 import javax.transaction.SystemException;
 import java.util.List;
-import java.util.Map;
 
 public interface UsuarioRepository{
 
-    Usuario buscarPorNome(String login);
+    UsuarioDto buscarPorNome(String login);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
-    List<Usuario> listar();
-    List<Usuario> buscarConferentes();
-    List<Usuario> buscarExecutores();
-    Usuario buscarPorId(Integer idUsuario);
+    List<UsuarioDto> listar();
+    List<UsuarioDto> buscarConferentes();
+    List<UsuarioDto> buscarExecutores();
+    UsuarioDto buscarPorId(Integer idUsuario);
     void excluirPorId(Integer idUsuario);
 }

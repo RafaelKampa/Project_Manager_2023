@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CentroCustoModel } from '../model/listar-centros.model';
+import { CentroCustoModel } from '../../centro-custo/model/centro-custo.model';
 
 @Injectable({
   providedIn: 'root'

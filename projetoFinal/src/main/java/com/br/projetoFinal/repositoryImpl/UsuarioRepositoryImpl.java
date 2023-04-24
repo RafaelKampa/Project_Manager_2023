@@ -1,5 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
+import com.br.projetoFinal.dto.TipoServicoDto;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
@@ -24,8 +25,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public Usuario buscarPorNome(String login) {
-        TypedQuery<Usuario> query = (TypedQuery<Usuario>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN")
+    public UsuarioDto buscarPorNome(String login) {
+        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN")
             .setParameter("LOGIN", login);
         return query.getSingleResult();
     }
@@ -52,39 +53,34 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public List<Usuario> listar() {
-        Query query = getEntityManager().createNativeQuery("SELECT * FROM USUARIO \n" +
-                "ORDER BY NOME");
+    public List<UsuarioDto> listar() {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.listar", UsuarioDto.class);
         return query.getResultList();
     }
 
     @Override
-    public List<Usuario> buscarConferentes() {
-        Query query = getEntityManager().createNativeQuery("SELECT NOME FROM USUARIO \n" +
-                "WHERE TIPO_USUARIO = 1 \n" +
-                "ORDER BY NOME");
+    public List<UsuarioDto> buscarConferentes() {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarConferentes", UsuarioDto.class);
         return query.getResultList();
     }
 
     @Override
-    public List<Usuario> buscarExecutores() {
-        Query query = getEntityManager().createNativeQuery("SELECT NOME FROM USUARIO \n" +
-                "WHERE TIPO_USUARIO = 2 \n" +
-                "ORDER BY NOME");
+    public List<UsuarioDto> buscarExecutores() {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarExecutores", UsuarioDto.class);
         return query.getResultList();
     }
 
     @Override
-    public Usuario buscarPorId(Integer idUsuario) {
-        TypedQuery<Usuario> query = getEntityManager().createNamedQuery("Usuario.buscarPorId", Usuario.class)
+    public UsuarioDto buscarPorId(Integer idUsuario) {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarPorId", UsuarioDto.class)
                 .setParameter("ID_USUARIO", idUsuario);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idUsuario) {
-        em.createNativeQuery("DELETE FROM USUARIO \n" +
-                        "WHERE ID_USUARIO = :ID_USUARIO")
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.excluirPorid", UsuarioDto.class)
                 .setParameter("ID_USUARIO", idUsuario);
     }
 

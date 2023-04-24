@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CentroCustoModel } from '../model/centro-custo.model';
+import { Observable } from 'rxjs';
+import { CentroCustoModel } from '../../shared/models/centro-custo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class CentroCustoService {
   salvarNovoCentro(centroModel: CentroCustoModel) {
     return this.httpClient.post<CentroCustoModel>("http://localhost:8082/centroDeCusto/salvarNovoCentroDeCusto",centroModel, this.httpOptions);
   }
-  listarCentrosDeCusto() {
+  listarCentrosDeCusto(): Observable<CentroCustoModel[]> {
     return this.httpClient.get<CentroCustoModel[]>("http://localhost:8082/centroDeCusto/listarCentrosDeCusto", this.httpOptions);
   }
 

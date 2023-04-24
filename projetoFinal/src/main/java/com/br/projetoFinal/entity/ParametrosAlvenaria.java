@@ -4,13 +4,11 @@ import com.br.projetoFinal.dto.ParametrosAlvenariaDto;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "PARAMETROS_ALVENARIA")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "ParametrosAlvenaria.dtoMapping", classes = {
                 @ConstructorResult(targetClass = ParametrosAlvenariaDto.class,
                         columns ={
-                                @ColumnResult(name = "ID", type = Integer.class),
+                                @ColumnResult(name = "ID_PARAMETROS_ALVENARIA", type = Integer.class),
                                 @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
                                 @ColumnResult(name = "PRUMO", type = Boolean.class),
                                 @ColumnResult(name = "NIVEL", type = Boolean.class),
@@ -25,12 +23,16 @@ import javax.persistence.*;
 })
 @NamedNativeQueries({
         @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorAvaliacao", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "ParametrosAlvenaria.dtoMapping"),
-        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorId", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID = :ID", resultSetMapping = "ParametrosAlvenaria.dtoMapping")
+        @NamedNativeQuery(name = "ParametrosAlvenaria.buscarPorId", query = "SELECT * FROM PARAMETROS_ALVENARIA WHERE ID_PARAMETROS_ALVENARIA  = :ID_PARAMETROS_ALVENARIA ", resultSetMapping = "ParametrosAlvenaria.dtoMapping"),
+        @NamedNativeQuery(name = "ParametrosAlvenaria.excluirPorId", query = "DELETE FROM PARAMETROS_ALVENARIA WHERE :ID_PARAMETROS_ALVENARIA = :ID_PARAMETROS_ALVENARIA", resultSetMapping = "ParametrosAlvenaria.dtoMapping"),
 })
+
+@Entity
+@Table(name = "PARAMETROS_ALVENARIA")
 public class ParametrosAlvenaria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idParametrosAlvenaria;
 
     @Column(name = "ID_AVALIACAO", nullable = false)

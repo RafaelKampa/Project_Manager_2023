@@ -28,37 +28,66 @@ public class ServicoController {
 
     @PostMapping("/salvarServico")
     public ResponseEntity<?> salvarNovoServico(@RequestBody ServicoDto servicoDto) throws ExcecaoExemplo, SystemException {
-        servicoService.salvarNovoServico(servicoDto);
-        return new ResponseEntity<>(servicoDto, HttpStatus.CREATED);
+        try {
+            servicoService.salvarNovoServico(servicoDto);
+            return new ResponseEntity<>(servicoDto, HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarServicos")
-    public List<Servico> listar() {
-        return servicoService.listar();
+    public ResponseEntity<List<ServicoDto>> listar() {
+        try {
+            return new ResponseEntity<>(servicoService.listar(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarAguardandoAvaliacao")
-    public List<Servico> listarAguardandoAvaliacao() {
-        return servicoService.listarAguardandoAvaliacao();
+    public ResponseEntity<List<ServicoDto>> listarAguardandoAvaliacao() {
+        try {
+            return new ResponseEntity<>(servicoService.listarAguardandoAvaliacao(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/listarAvaliados")
-    public List<Servico> listarAvaliados() {
-        return servicoService.listarAvaliados();
+    public ResponseEntity<List<ServicoDto>> listarAvaliados() {
+        try {
+            return new ResponseEntity<>(servicoService.listarAvaliados(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/buscarPorId/{ID_SERVICO}/{TIPO_SERVICO}")
-    public List<Servico> buscarPorId(@PathVariable("ID_SERVICO") Integer idServico,@PathVariable("TIPO_SERVICO") String tipoServico) {
-        return servicoService.buscarPorId(idServico, tipoServico);
+    @GetMapping("/buscarPorId/{id_servico}")
+    public ResponseEntity<List<ServicoDto>> buscarPorId(@PathVariable("id_servico") Integer idServico) {
+        try {
+            return new ResponseEntity<>(servicoService.buscarPorId(idServico), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @DeleteMapping("/{ID}")
-    public void excluir(@PathVariable("ID") Integer idServico) {
-        servicoService.excluir(idServico);
+    @GetMapping("/{tipo_servico}")
+    public ResponseEntity<List<ServicoDto>> buscarPorNome(@PathVariable("tipo_servico") String tipoServico) {
+        try {
+            return new ResponseEntity<>(servicoService.buscarPorServico(tipoServico), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("/{TIPO_SERVICO}")
-    public List<Servico> buscarPorNome(@PathVariable("TIPO_SERVICO") String tipoServico) {
-        return servicoService.buscarPorServico(tipoServico);
+    @DeleteMapping("/{id_servico}")
+    public ResponseEntity<?> excluir(@PathVariable("id_servico") Integer idServico) throws SystemException {
+        try {
+            servicoService.excluir(idServico);
+            return new ResponseEntity<>(idServico, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

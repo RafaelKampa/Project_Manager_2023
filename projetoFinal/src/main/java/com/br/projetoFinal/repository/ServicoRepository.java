@@ -10,10 +10,10 @@ import java.util.List;
 
 public interface ServicoRepository {
     void salvarNovoServico(ServicoDto servicoDto) throws ExcecaoExemplo, SystemException;
-    List<Servico> listar();
-    List<Servico> listarAguardandoAvaliacao();
-    List<Servico> listarAvaliados();
-    List<Servico> buscarPorId(Integer idServico, String tipoServico);
+    List<ServicoDto> listar();
+    List<ServicoDto> listarAguardandoAvaliacao();
+    List<ServicoDto> listarAvaliados();
+    List<ServicoDto> buscarPorId(Integer idServico);
     void excluirPorId(Integer idServico);
-    List<Servico> buscarPorServico(String tipoServico);
+    List<ServicoDto> buscarPorServico(String tipoServico);
 }

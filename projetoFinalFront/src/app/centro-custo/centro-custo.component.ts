@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CentroCustoModel } from './model/centro-custo.model';
 import { CentroCustoService } from './service/centro-custo.service';
+import { CentroCustoModel } from '../shared/models/centro-custo.model';
 
 @Component({
   selector: 'app-centro-custo',
@@ -33,8 +33,8 @@ export class CentroCustoComponent implements OnInit {
   salvar() {
     let centro = new CentroCustoModel();
       if (this.cadastroCentroForm.valid){
-      centro.nomeCentroDeCusto = this.cadastroCentroForm.get('nomeCentroDeCusto')?.value;
-      centro.enderecoCentroDeCusto = this.cadastroCentroForm.get('enderecoCentroDeCusto')?.value;
+      centro.nomeCentroDeCusto = this.cadastroCentroForm.get('nomeCentroDeCusto')?.value || "";
+      centro.enderecoCentroDeCusto = this.cadastroCentroForm.get('enderecoCentroDeCusto')?.value || "";
 
       this.centroCustoServ.salvarNovoCentro(centro).subscribe(centroRetorno => {
         alert("Centro de custo Cadastrado");

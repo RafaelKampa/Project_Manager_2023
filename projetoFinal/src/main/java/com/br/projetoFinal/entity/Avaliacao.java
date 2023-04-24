@@ -4,8 +4,6 @@ import com.br.projetoFinal.dto.AvaliacaoDto;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "AVALIACAO")
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "Avaliacao.dtoMapping", classes = {
                 @ConstructorResult(targetClass = AvaliacaoDto.class,
@@ -25,15 +23,18 @@ import java.util.Date;
         })
 })
 @NamedNativeQueries({
-        @NamedNativeQuery(name="Avaliacao.buscarPorId", query = "SELECT * FROM AVALIACAO WHERE ID = :ID", resultSetMapping = "Avaliacao.dtoMapping"),
+        @NamedNativeQuery(name="Avaliacao.buscarPorId", query = "SELECT * FROM AVALIACAO WHERE ID_AVALIACAO = :ID_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarPorExecutor", query = "SELECT * FROM AVALIACAO WHERE ID_USU_EXECT = :ID_USU_EXECT ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarPorConferente", query = "SELECT * FROM AVALIACAO WHERE ID_USU_CONF = :ID_USU_CONF ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
-        @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_SERVICO = s.ID WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping")
+        @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_AVALIACAO = s.ID_SERVICO WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
+        @NamedNativeQuery(name="Avaliacao.listarAvaliacoes", query = "SELECT * FROM AVALIACAO ODER BY ID_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
 })
+@Entity
+@Table(name = "AVALIACAO")
 public class Avaliacao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAvaliacao;
 
     @Column(name = "TIPO_SERVICO", nullable = false)

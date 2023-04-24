@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ListarServicosModel } from '../model/listar-servicos.model';
+import { ServicosModel } from '../../shared/models/servico.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +17,15 @@ export class ListarServicosService {
   };
 
   listarServicos() {
-    return this.httpClient.get<ListarServicosModel[]>("http://localhost:8082/servico/listarServicos", this.httpOptions);
+    return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarServicos", this.httpOptions);
   }
 
   listarServicosAguardandoAvaliacao() {
-    return this.httpClient.get<ListarServicosModel[]>("http://localhost:8082/servico/listarAguardandoAvaliacao", this.httpOptions);
+    return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarAguardandoAvaliacao", this.httpOptions);
   }
 
   listarServicosAvaliados() {
-    return this.httpClient.get<ListarServicosModel[]>("http://localhost:8082/servico/listarAvaliados", this.httpOptions);
+    return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarAvaliados", this.httpOptions);
   }
 
   

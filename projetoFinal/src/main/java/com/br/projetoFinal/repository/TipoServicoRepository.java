@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface TipoServicoRepository {
     void salvarNovoServico(TipoServicoDto tipoServicoDto);
-    List<TipoServico> listar();
-    TipoServico buscarPorid(Integer idTipoServico);
+    List<TipoServicoDto> listar();
+    TipoServicoDto buscarPorid(Integer idTipoServico);
+    List<TipoServicoDto> buscarPorNome(String nomeServico);
     void excluirServico(Integer idTipoServico);
-    List<TipoServico> buscarPorNome(String nomeServico);
 }

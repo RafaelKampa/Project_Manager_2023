@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @Repository
 public class ParametrosAcabamentoRepositoryImpl implements ParametrosAcabamentoRepository {
@@ -20,6 +21,7 @@ public class ParametrosAcabamentoRepositoryImpl implements ParametrosAcabamentoR
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosAcabamentoDto parametrosAcabamentoDto) {
         em.createNativeQuery("ISERT INTO PARAMETROS_ACABAMENTO (ID_AVALIACAO, DIMENSOES, REGUAMENTO, ALISAMENTO, OBS) \n" +
                         "VALUES (:ID_AVALIACAO, :DIMENSOES, :REGUAMENTO, :ALISAMENTO, :OBS)")
@@ -32,24 +34,24 @@ public class ParametrosAcabamentoRepositoryImpl implements ParametrosAcabamentoR
     }
 
     @Override
-    public ParametrosAcabamento buscarPorId(Integer idParametrosAcabamento) {
-        TypedQuery<ParametrosAcabamento> query = getEntityManager().createNamedQuery("ParametrosAcabamento.buscarPorId", ParametrosAcabamento.class)
-                .setParameter("ID", idParametrosAcabamento);
+    public ParametrosAcabamentoDto buscarPorId(Integer idParametrosAcabamento) {
+        TypedQuery<ParametrosAcabamentoDto> query = em.createNamedQuery("ParametrosAcabamento.buscarPorId", ParametrosAcabamentoDto.class)
+                .setParameter("ID_PARAMETROS_ACABAMENTO", idParametrosAcabamento);
         return query.getSingleResult();
     }
 
     @Override
-    public ParametrosAcabamento buscarPorAvaliacao(Integer idAvaliacao) {
-        TypedQuery<ParametrosAcabamento> query = getEntityManager().createNamedQuery("ParametrosAcabamento.buscarPorAvaliacao", ParametrosAcabamento.class)
+    public ParametrosAcabamentoDto buscarPorAvaliacao(Integer idAvaliacao) {
+        TypedQuery<ParametrosAcabamentoDto> query = em.createNamedQuery("ParametrosAcabamento.buscarPorAvaliacao", ParametrosAcabamentoDto.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idParametrosAcabamento) {
-        em.createNativeQuery("DELETE FROM PARAMETROS_ACABAMENTO \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idParametrosAcabamento);
+        em.createNamedQuery("ParametrosAcabamento.excluirPorId", ParametrosAcabamentoDto.class)
+                .setParameter("ID_PARAMETROS_ACABAMENTO", idParametrosAcabamento);
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 @Repository
 public class ParametrosFerragemRepositoryImpl implements ParametrosFerragemRepository {
@@ -20,6 +21,7 @@ public class ParametrosFerragemRepositoryImpl implements ParametrosFerragemRepos
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosFerragemDto parametrosFerragemDto) {
         em.createNativeQuery("INSERT INTO PARAMETROS_FERRAGEM (ID_AVALIACAO, ESPACAMENTO, QTDE_ACO, DISTRIBUICAO, OBS) \n" +
                         "VALUES (:ID_AVALIACAO, :ESPACAMENTO, :QTDE_ACO, :DISTRIBUICAO, :OBS)")
@@ -32,23 +34,23 @@ public class ParametrosFerragemRepositoryImpl implements ParametrosFerragemRepos
     }
 
     @Override
-    public ParametrosFerragem buscarPorId(Integer idParametrosFerragem) {
-        TypedQuery<ParametrosFerragem> query = getEntityManager().createNamedQuery("ParametrosFerragem.buscarPorId", ParametrosFerragem.class)
-                .setParameter("ID", idParametrosFerragem);
+    public ParametrosFerragemDto buscarPorId(Integer idParametrosFerragem) {
+        TypedQuery<ParametrosFerragemDto> query = em.createNamedQuery("ParametrosFerragem.buscarPorId", ParametrosFerragemDto.class)
+                .setParameter("ID_PARAMETROS_FERRAGEM", idParametrosFerragem);
         return query.getSingleResult();
     }
 
     @Override
-    public ParametrosFerragem buscarPorAvaliacao(Integer idAvaliacao) {
-        TypedQuery<ParametrosFerragem> query = getEntityManager().createNamedQuery("ParametrosFerragem.buscarPorAvaliacao", ParametrosFerragem.class)
+    public ParametrosFerragemDto buscarPorAvaliacao(Integer idAvaliacao) {
+        TypedQuery<ParametrosFerragemDto> query = getEntityManager().createNamedQuery("ParametrosFerragem.buscarPorAvaliacao", ParametrosFerragemDto.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idParametrosFerragem) {
-        em.createNativeQuery("DELETE FROM PARAMETROS_FERRAGEM \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idParametrosFerragem);
+        TypedQuery<ParametrosFerragemDto> query = getEntityManager().createNamedQuery("ParametrosFerragem.excluirPorId", ParametrosFerragemDto.class)
+                .setParameter("ID_PARAMETROS_FERRAGEM", idParametrosFerragem);
     }
 }

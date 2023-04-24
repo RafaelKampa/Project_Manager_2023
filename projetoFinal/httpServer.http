@@ -1,0 +1,55 @@
+### Login
+POST http://localhost:8082/projetoFinal/autenticacao
+Content-Type: application/json
+
+{
+  "login": "rafael",
+  "senha": "1234"
+}
+> {%
+    client.global.set("id", response.body.id);
+    client.global.set("token", response.body.token);
+%}
+
+<> 2023-04-03T201509.200.json
+<> 2023-04-03T201229.200.json
+<> 2023-04-03T193450.200.json
+<> 2023-03-26T220521.200.json
+<> 2023-03-26T220112.200.json
+<> 2023-03-26T215724.200.json
+<> 2023-03-26T215151.200.json
+
+### Salvar
+POST http://localhost:8082/usuario
+Content-Type: application/json
+
+{
+  "nome": "vinicius",
+  "login": "vinigodoy",
+  "senha": "senhasecreta"
+}
+
+<> 2023-04-03T201218.201.json
+<> 2023-04-03T194347.400.txt
+<> 2023-04-03T193704.400.json
+<> 2023-04-03T193418.201.json
+<> 2023-03-26T220505.200.json
+<> 2023-03-26T220103.200.json
+<> 2023-03-26T215722.200.json
+
+### Listar
+GET http://localhost:8080/usuario
+Authorization: Bearer {{token}}
+
+<> 2023-04-03T201513.200.json
+<> 2023-04-03T201324.200.json
+<> 2023-04-03T201256.401.json
+<> 2023-04-03T201255.401.json
+<> 2023-04-03T192900.500.html
+<> 2023-03-26T220614.200.json
+<> 2023-03-26T220602.404.json
+<> 2023-03-26T215837.500.html
+<> 2023-03-26T215658.500.html
+<> 2023-03-26T215235.500.html
+<> 2023-03-26T215112.200.json
+<> 2023-03-26T214802.200.json

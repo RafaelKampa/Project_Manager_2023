@@ -49,17 +49,24 @@ public class ParametrosAcabamentoServiceImpl implements ParametrosAcabamentoServ
     }
 
     @Override
-    public ParametrosAcabamento buscarPorId(Integer idParametrosAcabamento) {
+    public ParametrosAcabamentoDto buscarPorId(Integer idParametrosAcabamento) {
         return parametrosAcabamentoRepository.buscarPorId(idParametrosAcabamento);
     }
 
     @Override
-    public ParametrosAcabamento buscarPorAvaliacao(Integer idAvaliacao) {
+    public ParametrosAcabamentoDto buscarPorAvaliacao(Integer idAvaliacao) {
         return parametrosAcabamentoRepository.buscarPorAvaliacao(idAvaliacao);
     }
 
     @Override
-    public void excluir(Integer idParametrosAcabamento){
-        parametrosAcabamentoRepository.excluirPorId(idParametrosAcabamento);
+    public void excluir(Integer idParametrosAcabamento) throws SystemException{
+        try {
+            utx.begin();
+            parametrosAcabamentoRepository.excluirPorId(idParametrosAcabamento);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
     }
 }

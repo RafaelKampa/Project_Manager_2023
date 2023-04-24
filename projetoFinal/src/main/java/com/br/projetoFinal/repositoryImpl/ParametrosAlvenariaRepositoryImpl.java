@@ -23,8 +23,8 @@ public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRep
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) {
-        em.createNativeQuery("ISERT INTO PARAMETROS_ALVENARIA (ID_PARAMETROS_ALVENARIA, ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
-                "VALUES (SELECT MAX(ID_PARAMETROS_ALVENARIA) FROM PARAMETROS_ALVENARIA + 1,:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, : DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
+        em.createNativeQuery("ISERT INTO PARAMETROS_ALVENARIA (ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
+                "VALUES (:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, : DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
                 .setParameter("ID_AVALIACAO", parametrosAlvenariaDto.getIdAvaliacao())
                 .setParameter("PRUMO", parametrosAlvenariaDto.getPrumo())
                 .setParameter("NIVEL", parametrosAlvenariaDto.getNivel())
@@ -37,24 +37,23 @@ public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRep
     }
 
     @Override
-    public ParametrosAlvenaria buscarPorId(Integer idParametrosAlvenaria) {
-        TypedQuery<ParametrosAlvenaria> query = getEntityManager().createNamedQuery("ParametrosAlvenaria.buscarPorId", ParametrosAlvenaria.class)
-                .setParameter("ID", idParametrosAlvenaria);
+    public ParametrosAlvenariaDto buscarPorId(Integer idParametrosAlvenaria) {
+        TypedQuery<ParametrosAlvenariaDto> query = em.createNamedQuery("ParametrosAlvenaria.buscarPorId", ParametrosAlvenariaDto.class)
+                .setParameter("ID_PARAMETROS_ALVENARIA", idParametrosAlvenaria);
         return query.getSingleResult();
     }
 
     @Override
-    public ParametrosAlvenaria buscarPorAvaliacao(Integer idAvaliacao) {
-        TypedQuery<ParametrosAlvenaria> query = getEntityManager().createNamedQuery("ParametrosAlvenaria.buscarPorAvaliacao", ParametrosAlvenaria.class)
+    public ParametrosAlvenariaDto buscarPorAvaliacao(Integer idAvaliacao) {
+        TypedQuery<ParametrosAlvenariaDto> query = em.createNamedQuery("ParametrosAlvenaria.buscarPorAvaliacao", ParametrosAlvenariaDto.class)
                 .setParameter("ID_AVALIACAO", idAvaliacao);
         return query.getSingleResult();
     }
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void excluirPorId(Integer idParametrosAlvenaria) {
-        em.createNativeQuery("DELETE FROM PARAMETROS_ALVENARIA \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", idParametrosAlvenaria);
+        TypedQuery<ParametrosAlvenariaDto> query = em.createNamedQuery("ParametrosAlvenaria.excluirPorId", ParametrosAlvenariaDto.class)
+                .setParameter("ID_PARAMETROS_ALVENARIA", idParametrosAlvenaria);
     }
-
 }
