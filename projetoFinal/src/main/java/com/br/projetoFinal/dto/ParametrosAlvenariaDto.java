@@ -9,7 +9,7 @@ public class ParametrosAlvenariaDto extends ParametrosAlvenaria {
     public Boolean prumo;
     public Boolean nivel;
     public Boolean alinhamento;
-    public Boolean dimensoes;
+    public Double dimensoes;
     public Boolean integridade;
     public Boolean limpeza;
     public String obs;
@@ -18,7 +18,7 @@ public class ParametrosAlvenariaDto extends ParametrosAlvenaria {
     }
 
     public ParametrosAlvenariaDto(Integer idParametrosAlvenaria, Integer idAvaliacao, Boolean prumo, Boolean nivel, Boolean alinhamento,
-                                  Boolean dimensoes, Boolean integridade, Boolean limpeza, String obs) {
+                                  Double dimensoes, Boolean integridade, Boolean limpeza, String obs) {
         this.idParametrosAlvenaria = idParametrosAlvenaria;
         this.idAvaliacao = idAvaliacao;
         this.prumo = prumo;
@@ -31,7 +31,7 @@ public class ParametrosAlvenariaDto extends ParametrosAlvenaria {
     }
 
     public ParametrosAlvenariaDto(Integer idParametrosAlvenaria, Integer idAvaliacao, Boolean prumo, Boolean nivel, Boolean alinhamento,
-                                  Boolean dimensoes, Boolean integridade, Boolean limpeza) {
+                                  Double dimensoes, Boolean integridade, Boolean limpeza) {
         this.idParametrosAlvenaria = idParametrosAlvenaria;
         this.idAvaliacao = idAvaliacao;
         this.prumo = prumo;
@@ -93,12 +93,12 @@ public class ParametrosAlvenariaDto extends ParametrosAlvenaria {
     }
 
     @Override
-    public Boolean getDimensoes() {
+    public Double getDimensoes() {
         return dimensoes;
     }
 
     @Override
-    public void setDimensoes(Boolean dimensoes) {
+    public void setDimensoes(Double dimensoes) {
         this.dimensoes = dimensoes;
     }
 

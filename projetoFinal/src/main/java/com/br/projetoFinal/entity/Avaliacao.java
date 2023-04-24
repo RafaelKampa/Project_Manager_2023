@@ -9,10 +9,10 @@ import java.util.Date;
                 @ConstructorResult(targetClass = AvaliacaoDto.class,
                         columns ={
                                 @ColumnResult(name = "ID_AVALIACAO", type = Integer.class),
-                                @ColumnResult(name = "TIPO_SERVICO", type = Integer.class),
+                                @ColumnResult(name = "TIPO_SERVICO", type = String.class),
                                 @ColumnResult(name = "ID_SERVICO", type = Integer.class),
-                                @ColumnResult(name = "USU_EXECT", type = Integer.class),
-                                @ColumnResult(name = "USU_CONF", type = Integer.class),
+                                @ColumnResult(name = "USU_EXECT", type = String.class),
+                                @ColumnResult(name = "USU_CONF", type = String.class),
                                 @ColumnResult(name = "RESULTADO", type = Boolean.class),
                                 @ColumnResult(name = "DATA_AVALIACAO", type = Date.class),
                                 @ColumnResult(name = "DATA_REAVALIACAO", type = Date.class),
