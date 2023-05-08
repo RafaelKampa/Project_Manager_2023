@@ -13,6 +13,9 @@ export class AppComponent {
 
 
   public get mostrarSidebar(): boolean {
+    if (this.router.isActive('api/home', true)) {
+      return false;
+      } 
     if (this.router.isActive('api/login', true)) {
     return false;
     } 

@@ -18,7 +18,16 @@
     position: fixed;
     left: 0;
     right: 0;
-  }
+}
+
+.bring-to-front {
+    z-index: 101;
+}
+.buttons-right {
+    z-index: 101;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 a {
     text-decoration: none !important;

@@ -28,7 +28,9 @@ import { ListarCentrosComponent } from './listar-centros/listar-centros.componen
 import { AvaliarComponent } from './avaliar/avaliar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
+import { HomeComponent } from './home/home.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -45,6 +47,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     ListarServicosComponent,
     ListarCentrosComponent,
     AvaliarComponent,
+    HomeComponent,
+    ImageSliderComponent,
   ],
   imports: [
     BrowserModule,

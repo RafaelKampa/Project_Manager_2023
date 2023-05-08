@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinal.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/navbar/navbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/assets/background.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +39,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -61,7 +63,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
