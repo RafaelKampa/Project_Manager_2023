@@ -30,7 +30,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
-import { ImageSliderComponent } from './image-slider/image-slider.component'; 
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { LayoutComponent } from './layout/layout.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -49,6 +50,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     AvaliarComponent,
     HomeComponent,
     ImageSliderComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

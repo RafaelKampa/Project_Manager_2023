@@ -1,0 +1,15 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidenav {
+    width: 200px;
+    min-height: 100%;
+  }
+  
+  .main-content {
+    padding-top: 64px;
+    height: 100vh;
+  }
+  
