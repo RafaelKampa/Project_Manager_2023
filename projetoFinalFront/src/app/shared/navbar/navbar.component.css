@@ -1,0 +1,39 @@
+.custom-navbar {
+    background-color: #6495ED;
+    color: #00008B;
+    position: fixed;
+    top: 0;
+    z-index: 100; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.bring-to-front {
+    z-index: 101;
+}
+.buttons-right {
+    z-index: 101;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a {
+    text-decoration: none !important;
+    font-size: medium;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #00008B;
+    align-items: center;
+}

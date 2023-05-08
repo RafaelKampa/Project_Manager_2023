@@ -1,0 +1,32 @@
+<div>
+  <mat-toolbar class="mat-toolbar custom-navbar">
+    <div class="bring-to-front">
+      <button mat-icon-button (click)="home()">
+        <mat-icon>home</mat-icon>
+        <!-- <mat-menu #home="matMenu">
+          <a href="/api/usuario" mat-menu-item>Cadastro de Usuário</a>
+          <a href="/api/servico-home" mat-menu-item>Serviços</a>
+          <a href="/api/login" mat-menu-item>Login</a>
+        </mat-menu> -->
+      </button>
+    </div>
+    <div class="center">
+      <span>Project Manager</span>
+    </div>
+    <div class="bring-to-front" *ngIf="opcoesLogin; else opcoesGerais">
+      <a href="/api/login">Entrar</a>
+      |
+      <a href="/api/usuario">Cadastrar-se</a>
+    </div>
+    <ng-template #opcoesGerais>
+      <div>
+        <button class="buttons-right" mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+        <button class="buttons-right" mat-icon-button (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+  </mat-toolbar>
+</div>

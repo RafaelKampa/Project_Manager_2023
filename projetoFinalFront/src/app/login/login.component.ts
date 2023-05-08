@@ -13,7 +13,7 @@ import { LoginService } from './service/login.service';
 export class LoginComponent implements OnInit {
   usuarioLogado: UsuarioModel = new UsuarioModel();
   listaUsuarios: UsuarioModel[] = [];
-  hide: any;
+  hide: boolean = true;
   email: any;
   invalid: any;
 

@@ -12,7 +12,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
-import { LayoutComponent } from './layout/layout.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule, MatOption } from '@angular/material/core';
@@ -27,21 +26,29 @@ import { ServicoHomeComponent } from './servico-home/servico-home.component';
 import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
 import { AvaliarComponent } from './avaliar/avaliar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
+import { HomeComponent } from './home/home.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
+    SidebarComponent,
     UsuarioComponent,
     LoginComponent,
-    LayoutComponent,
     CadastroServicoComponent,
     CentroCustoComponent,
     ServicoHomeComponent,
     ListarServicosComponent,
     ListarCentrosComponent,
     AvaliarComponent,
+    HomeComponent,
+    ImageSliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +58,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     MatInputModule,
     HttpClientModule,
     MatToolbarModule,
+    MatSidenavModule,
     MatIconModule,
     MatMenuModule,
     ReactiveFormsModule,
