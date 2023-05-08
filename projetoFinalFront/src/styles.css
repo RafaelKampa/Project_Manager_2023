@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 .example-spacer {
     flex: 1 1 auto;
   }
@@ -22,6 +24,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
-background-image: url("src\assets\background.jpg");
-color: darkblue; 
+/* background-image: url("src\assets\background.jpg"); */
+color: #00008B; 
 ;}

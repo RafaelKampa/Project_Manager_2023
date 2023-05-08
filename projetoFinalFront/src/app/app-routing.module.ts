@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
-import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './shared/authguard.guard';
 import { CadastroServicoComponent } from './cadastro-servico/cadastro-servico.component';
 import { ServicoHomeComponent } from './servico-home/servico-home.component';
@@ -10,6 +9,7 @@ import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ListarServicosComponent } from './listar-servicos/listar-servicos.component';
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
 import { AvaliarComponent } from './avaliar/avaliar.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +20,6 @@ const routes: Routes = [
   },
   {
     path: 'api',
-    component: LayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },

@@ -1,0 +1,22 @@
+<div>
+  <mat-toolbar class="mat-toolbar custom-navbar">
+    <div>
+      <button mat-icon-button>
+        <mat-icon [matMenuTriggerFor]="home">home</mat-icon>
+        <mat-menu #home="matMenu">
+          <a href="/api/usuario" mat-menu-item>Cadastro de Usuário</a>
+          <a href="/api/servico-home" mat-menu-item>Serviços</a>
+          <a href="/api/login" mat-menu-item>Login</a>
+        </mat-menu>
+      </button>
+    </div>
+    <div class="center">
+      <span>Project Manager</span>
+    </div>
+    <div>
+      <a href="/api/login">Entrar</a>
+      |
+      <a href="/api/usuario">Cadastrar-se</a>
+    </div>
+  </mat-toolbar>
+</div>
