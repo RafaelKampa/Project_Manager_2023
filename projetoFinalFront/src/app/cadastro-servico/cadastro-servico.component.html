@@ -4,9 +4,9 @@
     <div class="center">
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Tipo de Serviço</mat-label>
-            <mat-select class="inputs" [(value)]="tipoServicoSelecionado[1]" name="tipoServico" formControlName="tipoServico">
+            <mat-select class="inputs" [(value)]="tipoServicoSelecionado.nomeServico" name="tipoServico" formControlName="tipoServico">
                 <mat-option *ngFor="let tipo of tiposServicos" [value]="tipo">
-                    {{tipo[1]}}
+                    {{tipo.nomeServico}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -14,7 +14,7 @@
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Valor Unitário</mat-label>
             <input class="inputs" matInput placeholder="Digite o nome" name="valorUnitario" formControlName="valorUnitario" 
-            [value]="'R$ ' + tipoServicoSelecionado[3] + ',00'" required/>
+            [value]="'R$ ' + tipoServicoSelecionado.valorUnitario + ',00'" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
@@ -30,7 +30,7 @@
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Unidade de Medida</mat-label>
             <input class="inputs" matInput placeholder="Unidade de Medida" name="unidadeMedida" formControlName ="unidadeMedida" 
-            [value]="tipoServicoSelecionado[2]" required/>
+            [value]="tipoServicoSelecionado.unidadeMedida" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
@@ -40,7 +40,7 @@
             <mat-label>Centro de Custo</mat-label>
             <mat-select [(value)]="centroSelecionado" name="centrosDeCusto">
                 <mat-option class="inputs" *ngFor="let centro of centrosDeCusto" [value]="centro">
-                    {{centro[2]}}
+                    {{centro.nomeCentroDeCusto}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
@@ -58,7 +58,7 @@
             <mat-label>Executor do serviço</mat-label>
             <mat-select class="inputs" [(value)]="executorSelecionado" name="conferente">
                 <mat-option *ngFor="let executor of executores" [value]="executor">
-                    {{executor}}
+                    {{executor.nome}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
@@ -68,7 +68,7 @@
             <mat-label>Conferente</mat-label>
             <mat-select class="inputs" [(value)]="conferenteSelecionado" name="conferente">
                 <mat-option *ngFor="let conferente of conferentes" [value]="conferente">
-                    {{conferente}}
+                    {{conferente.nome}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>

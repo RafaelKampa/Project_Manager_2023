@@ -5,11 +5,27 @@
   }
   .sidenav {
     width: 200px;
-    min-height: 100%;
+    padding-top: 64px;
+    background-color: #191970;
+    color: white;
+    position: fixed;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
-  .main-content {
+  .main-content-navbar {
     padding-top: 64px;
     height: 100vh;
+    position: relative;
+    float: right;
+    width: calc(100% - 200px);
+  }
+
+  .main-content-sem-navbar {
+    padding-top: 64px;
+    height: 100vh;
+    position: relative;
+    float: right;
+    width: 100%;
   }
   

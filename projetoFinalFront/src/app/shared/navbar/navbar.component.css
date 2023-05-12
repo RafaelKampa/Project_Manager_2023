@@ -11,20 +11,13 @@
     width: 100%;
 }
 
-.center {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+.title {
+    display: inline;
+    padding-top: 5px;
     position: fixed;
-    left: 0;
-    right: 0;
 }
 
-.bring-to-front {
-    z-index: 101;
-}
 .buttons-right {
-    z-index: 101;
     padding-left: 10px;
     padding-right: 10px;
 }

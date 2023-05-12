@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioModel } from '../model/usuario.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,11 @@ export class UsuarioService {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/listarUsuarios", this.httpOptions);
   }
   
-  buscarConferentes() {
+  buscarConferentes(): Observable<UsuarioModel[]> {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarConferentes", this.httpOptions);
   }
 
-  buscarExecutores() {
+  buscarExecutores(): Observable<UsuarioModel[]> {
     return this.httpClient.get<UsuarioModel[]>("http://localhost:8082/usuario/buscarExecutores", this.httpOptions);
   }
 

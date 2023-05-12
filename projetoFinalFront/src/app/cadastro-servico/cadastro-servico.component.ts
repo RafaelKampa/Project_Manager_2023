@@ -9,6 +9,7 @@ import { CadastroServicoModel } from './model/cadastro-servico.model';
 import { TipoServicoModel } from './model/tipo-servico.model';
 import { CadastroServicoService } from './servico/cadastro-servico.service';
 import { CentroCustoModel } from '../shared/models/centro-custo.model';
+import { lastValueFrom } from 'rxjs';
 
 
 @Component({
@@ -41,13 +42,13 @@ export class CadastroServicoComponent implements OnInit {
       this.dateAdapter.setLocale('pt-BR')
     }
 
-    public tiposServicos: any;
-    public tipoServicoSelecionado: TipoServicoModel[] = [];
+    public tiposServicos: TipoServicoModel[] = [];
+    public tipoServicoSelecionado: TipoServicoModel = new TipoServicoModel();
     public conferenteSelecionado: UsuarioModel[] = [];
-    public conferentes: any;
+    public conferentes: UsuarioModel[] = [];
     public executorSelecionado: UsuarioModel[] = [];
-    public executores: any;
-    public centrosDeCusto: any;
+    public executores: UsuarioModel[] = [];
+    public centrosDeCusto: CentroCustoModel[] = [];
     public centroSelecionado: CentroCustoModel[] = [];
 
 
@@ -68,35 +69,27 @@ export class CadastroServicoComponent implements OnInit {
   }
 
   public async listarTipos() {
-    this.cadastroServicosService.listarTipos().subscribe(tipos => {
-      this.tiposServicos = tipos
-    });
+    this.tiposServicos = await lastValueFrom(this.cadastroServicosService.listarTipos())
   }
 
-  public buscarConferentes() {
-    this.usuarioService.buscarConferentes().subscribe(conferentes => {
-      this.conferentes = conferentes
-    });
+  public async buscarConferentes() {
+    this.conferentes = await lastValueFrom(this.usuarioService.buscarConferentes())
   }
 
-  public buscarExecutores() {
-    this.usuarioService.buscarExecutores().subscribe(executores => {
-      this.executores = executores
-    });
+  public async buscarExecutores() {
+    this.executores = await lastValueFrom(this.usuarioService.buscarExecutores());
   }
 
-  public buscarCentrosDeCusto() {
-    this.centroCustoServ.listarCentrosDeCusto().subscribe(centros => {
-      this.centrosDeCusto = centros
-    });
+  public async buscarCentrosDeCusto() {
+    this.centrosDeCusto = await lastValueFrom(this.centroCustoServ.listarCentrosDeCusto());
   }
 
   salvar() {
     let servico = new CadastroServicoModel();
-      servico.tipoServico = this.tipoServicoSelecionado[1];
-      servico.valorUnitario = this.tipoServicoSelecionado[3];
+      servico.tipoServico = this.tipoServicoSelecionado.nomeServico;
+      servico.valorUnitario = this.tipoServicoSelecionado.valorUnitario;
       servico.dimensao = this.cadastroServicoForm.get('dimensao')?.value;
-      servico.unidadeMedida = this.tipoServicoSelecionado[2];
+      servico.unidadeMedida = this.tipoServicoSelecionado.unidadeMedida;
       servico.centroDeCusto = this.centroSelecionado[2];
       servico.localExecucao = this.cadastroServicoForm.get('localExecucao')?.value;
       servico.executor = this.executorSelecionado;

@@ -1,11 +1,7 @@
 <div>
     <app-navbar></app-navbar>
+    <app-sidebar *ngIf="mostrarSidebar" mode="side" opened class="sidenav"></app-sidebar>
 </div>
-<mat-drawer-container class="main-content">
-  <mat-drawer *ngIf="mostrarSidebar" mode="side" opened class="sidenav">
-    <app-sidebar></app-sidebar>
-  </mat-drawer>
-  <mat-drawer-content>
-      <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div [ngClass]="[!mostrarSidebar ? 'main-content-sem-navbar' : 'main-content-navbar']">
+  <router-outlet></router-outlet>
+</div>

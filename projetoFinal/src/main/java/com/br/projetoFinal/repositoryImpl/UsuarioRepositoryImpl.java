@@ -67,7 +67,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Override
     public List<UsuarioDto> buscarExecutores() {
         TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarExecutores", UsuarioDto.class);
-        return query.getResultList();
+        List<UsuarioDto> executores = query.getResultList();
+        return executores;
     }
 
     @Override
