@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from './model/usuario.model';
 import { UsuarioService } from './service/usuario.service';
-import { DateAdapter } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -42,9 +41,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   constructor(private usuarioService: UsuarioService,
-    private dateAdapter: DateAdapter<Date>,
     private router: Router) {
-      this.dateAdapter.setLocale('pt-BR')
     }
 
   ngOnInit(): void {

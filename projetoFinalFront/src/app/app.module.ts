@@ -14,7 +14,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
-import { MatNativeDateModule, MatOption } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatOption } from '@angular/material/core';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {MatTable, MatTableModule} from '@angular/material/table';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -75,6 +75,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     
   ],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
   bootstrap: [AppComponent]
 })

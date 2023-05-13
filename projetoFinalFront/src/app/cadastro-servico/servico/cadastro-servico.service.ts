@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CadastroServicoModel } from '../model/cadastro-servico.model';
-import { TipoServicoModel } from '../model/tipo-servico.model';
+import { ServicosModel } from '../../shared/models/servico.model';
+import { TipoServicoModel } from '../../shared/models/tipo-servico-model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class CadastroServicoService {
     })
   };
 
-  salvarNovoServico(servicoModel: CadastroServicoModel) {
-    return this.httpClient.post<CadastroServicoModel>("http://localhost:8082/servico/salvarServico",servicoModel, this.httpOptions);
+  salvarNovoServico(servicoModel: ServicosModel) {
+    return this.httpClient.post<ServicosModel>("http://localhost:8082/servico/salvarServico",servicoModel, this.httpOptions);
   }
 
   listarTipos() {
