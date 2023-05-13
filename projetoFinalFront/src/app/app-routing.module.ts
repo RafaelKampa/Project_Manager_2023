@@ -10,6 +10,7 @@ import { ListarServicosComponent } from './listar-servicos/listar-servicos.compo
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
 import { AvaliarComponent } from './avaliar/avaliar.component';
 import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'api',
+    component: LayoutComponent,
     children: [
       {path: 'home', component: HomeComponent},
       { path: 'login', component: LoginComponent },

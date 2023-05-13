@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CadastroServicoModel } from 'src/app/cadastro-servico/model/cadastro-servico.model';
 import { AvaliacaoAlvenariaModel } from '../model/avaliar-alvenaria.model';
+import { ServicosModel } from '../../shared/models/servico.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AvaliarService {
   };
 
   buscarServicoPorId(idServico: number, tipoServico: string) {
-    return this.httpClient.get<CadastroServicoModel>("http://localhost:8082/servico/buscarPorId/"+ idServico + "/" + tipoServico, this.httpOptions);
+    return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/"+ idServico + "/" + tipoServico, this.httpOptions);
   }
 
   avaliarAlvenaria(avaliacaoModel: AvaliacaoAlvenariaModel) {

@@ -14,7 +14,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker'
-import { MatNativeDateModule, MatOption } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatOption } from '@angular/material/core';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {MatTable, MatTableModule} from '@angular/material/table';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -30,7 +30,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
-import { ImageSliderComponent } from './image-slider/image-slider.component'; 
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { LayoutComponent } from './layout/layout.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -49,6 +50,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     AvaliarComponent,
     HomeComponent,
     ImageSliderComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     
   ],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
   ],
   bootstrap: [AppComponent]
 })
