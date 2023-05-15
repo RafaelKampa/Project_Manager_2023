@@ -30,9 +30,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/api-docs/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/public/projetoFinal/home").permitAll()
                 .antMatchers(HttpMethod.POST, "/public/projetoFinal/autenticacao").permitAll()
                 .antMatchers(HttpMethod.POST, "/usuario/salvarUsuario").permitAll()
+                .antMatchers(HttpMethod.GET, "/usuario/listarUsuarios").permitAll()
                 .anyRequest().authenticated().and()
 
                 // filtra requisições de login

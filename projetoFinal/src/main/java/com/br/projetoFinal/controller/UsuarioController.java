@@ -3,6 +3,8 @@ package com.br.projetoFinal.controller;
 import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
+    @Operation(summary = "QUALQUER COISA") //TODO: COrrigir Swagger
     @PostMapping("/salvarUsuario")
     public ResponseEntity<?> salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         try {
