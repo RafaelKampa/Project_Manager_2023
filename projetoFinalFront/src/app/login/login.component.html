@@ -1,35 +1,38 @@
 <form [formGroup]="loginForm" (ngSubmit)="logar()">   
-    <h1 class="center">Login de Usuário</h1>
+    <h1 class="tittle">Login de Usuário</h1>
     
     <div class="center">
         <mat-form-field appearance="fill">
-        <mat-label>Digite seu login</mat-label>
+        <mat-label class="fontStyle">Digite seu login</mat-label>
         <input  formControlName="login" matInput placeholder="Nome de usuário" required>    
         </mat-form-field> 
     </div> 
-    <ul>
-        <div class="center">            
-            <mat-form-field appearance="fill"> 
-                <mat-label>Digite sua senha</mat-label>
-                <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">  
-            </mat-form-field> 
-            <button class="olho" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide" required> 
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button> 
-        </div>
-    </ul>
+
+    <div class="center">            
+        <mat-form-field appearance="fill"> 
+            <mat-label class="fontStyle">Digite sua senha</mat-label>
+            <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">  
+        </mat-form-field> 
+    </div>
+
+    <div class="center">
+        <button class="olho" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide" required> 
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button> 
+    </div>
 
 
     <div class="center">
         <a class="esqueciSenha" href="" (click)="esqueciSenha()" >Esqueci minha senha</a> 
     </div>    
 
+
     <div class="button">
-        <button mat-flat-button color="primary">Entrar</button>
-        
+        <button class="fontStyle" mat-raised-button color="">Entrar</button>
     </div>     
+
     <div class="button">
-        <button mat-flat-button color="warn" (click)="cadastrar()">Cadastrar novo usuário</button>
+        <button class="fontStyle" mat-raised-button color="" (click)="cadastrar()">Cadastrar novo usuário</button>
     </div>   
     
     

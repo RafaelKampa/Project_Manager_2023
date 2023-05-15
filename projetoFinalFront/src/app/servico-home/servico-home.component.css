@@ -1,4 +1,4 @@
-/*.center{
+ .center{
     display: flex;
     justify-content: center;
 }
@@ -15,4 +15,4 @@
  .mat-raised-button.mat-brown, .mat-flat-button.mat-brown{
     background-color: brown;
     color: white;
- }*/
+ }
