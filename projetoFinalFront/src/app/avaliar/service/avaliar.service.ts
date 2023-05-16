@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AvaliacaoAlvenariaModel } from '../model/avaliar-alvenaria.model';
 import { ServicosModel } from '../../shared/models/servico.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class AvaliarService {
     })
   };
 
-  buscarServicoPorId(idServico: number, tipoServico: string) {
-    return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/"+ idServico + "/" + tipoServico, this.httpOptions);
+  buscarServicoPorId(idServico: number): Observable<ServicosModel> {
+    return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/" + idServico, this.httpOptions);
   }
 
   avaliarAlvenaria(avaliacaoModel: AvaliacaoAlvenariaModel) {

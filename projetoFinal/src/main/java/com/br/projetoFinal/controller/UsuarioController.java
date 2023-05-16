@@ -21,7 +21,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @Operation(summary = "QUALQUER COISA") //TODO: COrrigir Swagger
+    @Operation(summary = "QUALQUER COISA") //TODO: Corrigir Swagger
     @PostMapping("/salvarUsuario")
     public ResponseEntity<?> salvarUsuario(@RequestBody UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException {
         try {

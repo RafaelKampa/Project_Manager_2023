@@ -64,7 +64,7 @@ public class ServicoController {
     }
 
     @GetMapping("/buscarPorId/{id_servico}")
-    public ResponseEntity<List<ServicoDto>> buscarPorId(@PathVariable("id_servico") Integer idServico) {
+    public ResponseEntity<ServicoDto> buscarPorId(@PathVariable("id_servico") Integer idServico) {
         try {
             return new ResponseEntity<>(servicoService.buscarPorId(idServico), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
