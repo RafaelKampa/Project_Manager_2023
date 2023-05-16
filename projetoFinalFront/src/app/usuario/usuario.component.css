@@ -10,3 +10,8 @@
 .inputs {
     width: 250px;
 }
+
+.fontStyle{
+    font-weight: bolder;
+    font-style: italic;
+}
