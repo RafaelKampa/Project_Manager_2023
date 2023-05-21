@@ -7,7 +7,7 @@
 .esqueciSenha{     
     position: relative;
     right: 32px;
-    bottom: 50px;  
+    bottom: 57px;  
 }
 
 .tittle{
@@ -16,8 +16,8 @@
     font-weight: bolder;
     font-style: italic;
     color: rgb(56, 48, 33);
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .olho{      
@@ -30,7 +30,7 @@
 .button { 
     display: flex;
     justify-content: center; 
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .fontStyle{
@@ -38,3 +38,17 @@
     font-style: italic;
     color: rgb(56, 48, 33);
 }
+
+.buttonColorEntrar{
+    background-color: rgb(22, 73, 88);
+    color: rgb(255, 255, 255);
+ }
+
+ .buttonColorCadastro{
+    background-color: rgb(77, 17, 17);
+    color: rgb(255, 255, 255);
+ }
+
+ .background-color{
+    background-color: rgb(209, 244, 255);
+ }
