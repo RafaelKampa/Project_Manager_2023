@@ -111,7 +111,7 @@
         <div class="center">
             <mat-form-field class="example-full-width inputs" appearance="fill">
                 <mat-label>Prumo</mat-label>
-                <mat-select [(value)]="prumo" name="prumo">
+                <mat-select formControlName="prumo" name="prumo">
                     <mat-option class="inputs" [value]="true">
                         {{'Aprovado'}}
                     </mat-option>
@@ -124,7 +124,7 @@
 
             <mat-form-field class="example-full-width inputs" appearance="fill">    
                 <mat-label>Nível</mat-label>
-                <mat-select [(value)]="nivel" name="nivel">
+                <mat-select formControlName="nivel" name="nivel">
                     <mat-option class="inputs" [value]="true">
                         {{'Aprovado'}}
                     </mat-option>
@@ -137,7 +137,7 @@
 
             <mat-form-field class="example-full-width inputs" appearance="fill">    
                 <mat-label>Alinhamento</mat-label>
-                <mat-select [(value)]="alinhamento" name="alinhamento">
+                <mat-select formControlName="alinhamento" name="alinhamento">
                     <mat-option class="inputs" [value]="true">
                         {{'Aprovado'}}
                     </mat-option>
@@ -152,7 +152,7 @@
         <div class="center">
             <mat-form-field class="example-full-width inputs" appearance="fill">    
                 <mat-label>Integridade</mat-label>
-                <mat-select [(value)]="integridade" name="integridade">
+                <mat-select formControlName="integridade" name="integridade">
                     <mat-option class="inputs" [value]="true">
                         {{'Aprovado'}}
                     </mat-option>
@@ -165,7 +165,7 @@
     
             <mat-form-field class="example-full-width inputs" appearance="fill">    
                 <mat-label>Limpeza</mat-label>
-                <mat-select [(value)]="limpeza" name="limpeza">
+                <mat-select formControlName="limpeza" name="limpeza">
                     <mat-option class="inputs" [value]="true">
                         {{'Aprovado'}}
                     </mat-option>
@@ -180,12 +180,12 @@
         <div class="center">
             <mat-form-field class="example-full-width inputs" appearance="fill">    
                 <mat-label>Resultado</mat-label>
-                <mat-select [(value)]="resultado" name="resultado">
+                <mat-select formControlName="resultado" name="resultado">
                     <mat-option class="inputs" [value]="true">
-                        {{'Aprovado'}}
+                        {{"Aprovado"}}
                     </mat-option>
                     <mat-option class="inputs" [value]="false">
-                        {{'Reprovado'}}
+                        {{"Reprovado"}}
                     </mat-option>
                 </mat-select>
                 <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
@@ -200,7 +200,7 @@
         </div>
     
         <div class="center">
-            <button class="button" mat-flat-button color="primary">Salvar novo Serviço</button>
+            <button class="button" mat-flat-button color="primary">Avaliar</button>
         </div>
         <div class="center">
             <button class="button" mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>

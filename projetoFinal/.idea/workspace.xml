@@ -7,17 +7,22 @@
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/ServicoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/ServicoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/ServicoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/ServicoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/ServicoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/ServicoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/model/avaliar-alvenaria.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-centros/listar-centros.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/listar-centros/listar-centros.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +99,13 @@
     <configuration name="httpServer | Login" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/target/httpServer.http" requestIdentifier="Login" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="ProjetoFinalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="projetoFinal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.br.projetoFinal.ProjetoFinalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ProjetoFinalApplication" />
@@ -114,6 +126,8 @@
       <workItem from="1681772909656" duration="6027000" />
       <workItem from="1683429643725" duration="1718000" />
       <workItem from="1683486470001" duration="2959000" />
+      <workItem from="1684627082488" duration="4612000" />
+      <workItem from="1684698538883" duration="8229000" />
     </task>
     <servers />
   </component>

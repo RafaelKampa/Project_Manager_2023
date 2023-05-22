@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -79,5 +80,13 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     public void excluirPorId(Integer idServico) {
         TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.excluirPorId", ServicoDto.class)
                 .setParameter("ID_SERVICO", idServico);
+    }
+
+    @Override
+    public void concluirServico(Integer idServico, Date dataFinal) {
+        em.createNativeQuery("UPDATE SERVICO SET DATA_FINAL = :DATA_FINAL WHERE ID_SERVICO = :ID_SERVICO")
+                .setParameter("ID_SERVICO", idServico)
+                .setParameter("DATA_FINAL", dataFinal)
+                .executeUpdate();
     }
 }

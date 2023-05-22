@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.SystemException;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -72,7 +73,7 @@ public class ServicoController {
         }
     }
 
-    @GetMapping("/{tipo_servico}")
+    @GetMapping("/buscarPorNome/{tipo_servico}")
     public ResponseEntity<List<ServicoDto>> buscarPorNome(@PathVariable("tipo_servico") String tipoServico) {
         try {
             return new ResponseEntity<>(servicoService.buscarPorServico(tipoServico), HttpStatus.OK);
@@ -81,11 +82,21 @@ public class ServicoController {
         }
     }
 
-    @DeleteMapping("/{id_servico}")
+    @DeleteMapping("/excluir/{id_servico}")
     public ResponseEntity<?> excluir(@PathVariable("id_servico") Integer idServico) throws SystemException {
         try {
             servicoService.excluir(idServico);
             return new ResponseEntity<>(idServico, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/concluirServico/{id_servico}/{data_final}")
+    public ResponseEntity<?> concluirServico(@PathVariable("id_servico") Integer idServico, @PathVariable("data_final") Date dataFinal) throws ExcecaoExemplo, SystemException {
+        try {
+            servicoService.concluirServico(idServico, dataFinal);
+            return new ResponseEntity<>(idServico, HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

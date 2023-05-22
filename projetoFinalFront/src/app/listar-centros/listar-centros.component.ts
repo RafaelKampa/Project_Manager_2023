@@ -23,7 +23,6 @@ export class ListarCentrosComponent implements OnInit {
 
   public async listarCentrosDeCusto() {
     this.lista = await firstValueFrom(this.centroCustoServ.listarCentrosDeCusto());
-    console.log(this.lista);
   }
 
   voltar() {

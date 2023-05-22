@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -86,6 +87,18 @@ public class ServicoServiceImpl implements ServicoService{
         try {
             utx.begin();
             servicoRepository.excluirPorId(idServico);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void concluirServico(Integer idServico, Date dataFinal) throws ExcecaoExemplo, SystemException {
+        try {
+            utx.begin();
+            servicoRepository.concluirServico(idServico, dataFinal);
             utx.commit();
         } catch (Exception e) {
             utx.rollback();
