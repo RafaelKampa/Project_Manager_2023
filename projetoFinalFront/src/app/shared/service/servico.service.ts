@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ServicosModel } from '../../shared/models/servico.model';
 import { TipoServicoModel } from '../models/tipo-servico-model';
 
@@ -17,28 +18,28 @@ export class ServicosService {
     })
   };
 
-  listarServicos() {
+  public listarServicos() {
     return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarServicos", this.httpOptions);
   }
 
-  listarServicosAguardandoAvaliacao() {
+  public listarServicosAguardandoAvaliacao() {
     return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarAguardandoAvaliacao", this.httpOptions);
   }
 
-  listarServicosAvaliados() {
+  public listarServicosAvaliados() {
     return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/listarAvaliados", this.httpOptions);
   }
 
-  salvarNovoServico(servicoModel: ServicosModel) {
+  public salvarNovoServico(servicoModel: ServicosModel) {
     return this.httpClient.post<ServicosModel>("http://localhost:8082/servico/salvarServico",servicoModel, this.httpOptions);
   }
 
-  listarTipos() {
+  public listarTipos() {
     return this.httpClient.get<TipoServicoModel[]>("http://localhost:8082/tipo-servico-table/listarTiposServicos", this.httpOptions);
   }
 
-  concluirServico(id_servico: number, data_final: Date) {
-    return this.httpClient.post("http://localhost:8082/servico/concluirServico/" + id_servico + "/" + data_final, this.httpOptions);
+  public concluirServico(idServico: number) {
+    return this.httpClient.put("http://localhost:8082/servico/concluirServico/" + idServico, null, this.httpOptions);
   }
   
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
-import { Router } from '@angular/router';
 import { AvaliarService } from './service/avaliar.service';
 import { ServicosModel } from '../shared/models/servico.model';
 import { lastValueFrom } from 'rxjs';
@@ -9,6 +7,9 @@ import { AvaliacaoModel } from '../shared/models/avaliacao.model';
 import { ParametrosAlvenariaModel } from '../shared/models/parametros-alvenaria.model';
 import { ParamAlvenariaService } from '../shared/service/param-alvenaria.service';
 import { ServicosService } from '../shared/service/servico.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-avaliar',
@@ -32,6 +33,7 @@ export class AvaliarComponent implements OnInit {
   constructor(private servicosService: ServicosService,
     private avaliarService: AvaliarService,
     private paramAlvenariaService: ParamAlvenariaService,
+    private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
@@ -113,10 +115,12 @@ export class AvaliarComponent implements OnInit {
       await lastValueFrom(this.avaliarService.avaliarAlvenaria(this.avaliacao));
       this.paramAlvenaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
       await lastValueFrom(this.paramAlvenariaService.salvarParametrosAvaliados(this.paramAlvenaria));
-      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, new Date()));
+      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
       alert("Serviço Avaliado com Sucesso!");
+      this.router.navigate(['/api/servico-home']);
     } catch{
-      alert("Serviço não cadastrado!\nContate o Administrador");
+      alert("Serviço não avaliado!\nContate o Administrador");
     }
   }
 

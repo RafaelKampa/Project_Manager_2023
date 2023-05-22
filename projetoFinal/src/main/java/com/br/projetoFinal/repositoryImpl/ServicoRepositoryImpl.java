@@ -83,10 +83,11 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
-    public void concluirServico(Integer idServico, Date dataFinal) {
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void concluirServico(Integer idServico) {
         em.createNativeQuery("UPDATE SERVICO SET DATA_FINAL = :DATA_FINAL WHERE ID_SERVICO = :ID_SERVICO")
+                .setParameter("DATA_FINAL", new Date())
                 .setParameter("ID_SERVICO", idServico)
-                .setParameter("DATA_FINAL", dataFinal)
                 .executeUpdate();
     }
 }

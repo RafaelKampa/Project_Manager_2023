@@ -49,7 +49,7 @@ public class CentroDeCustoController {
         }
     }
 
-    @GetMapping("/{nome_centro_de_custo}")
+    @GetMapping("/buscarPorNome/{nome_centro_de_custo}")
     public ResponseEntity<CentroDeCustoDto> buscarPorNome(@PathVariable("nome_centro_de_custo") String nomeCentroDeCusto) {
         try {
             CentroDeCustoDto centroDeCusto = centroDeCustoService.buscarPorNome(nomeCentroDeCusto);
@@ -59,11 +59,21 @@ public class CentroDeCustoController {
         }
     }
 
-    @DeleteMapping("/{id_centro_de_custo}")
+    @DeleteMapping("/excluir/{id_centro_de_custo}")
     public ResponseEntity<?> excluir(@PathVariable("id_centro_de_custo") Integer idCentroDeCusto) throws SystemException {
         try {
             centroDeCustoService.excluir(idCentroDeCusto);
             return new ResponseEntity<>(idCentroDeCusto, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/incluirValor/{centro_de_custo}/{valor_total}")
+    public ResponseEntity<?> incluirValor(@PathVariable("centro_de_custo") String centroDeCusto, @PathVariable("valor_total") Double valorIncremento ) throws ExcecaoExemplo, SystemException {
+        try {
+            centroDeCustoService.incluirValor(centroDeCusto, valorIncremento);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

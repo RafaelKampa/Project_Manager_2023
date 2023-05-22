@@ -26,7 +26,7 @@ export class CadastroServicoService {
     return this.httpClient.get<TipoServicoModel[]>("http://localhost:8082/tipo-servico-table/listarTiposServicos", this.httpOptions);
   }
 
-  concluirServico(id_servico: number, data_final: Date) {
-    return this.httpClient.post("http://localhost:8082/servico/concluirServico/" + id_servico + "/" + data_final, this.httpOptions);
+  public concluirServico(id_servico: number): Observable<any> {
+    return this.httpClient.put<any>("http://localhost:8082/servico/concluirServico/" + id_servico, this.httpOptions);
   }
 }

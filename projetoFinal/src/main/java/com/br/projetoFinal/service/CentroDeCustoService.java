@@ -14,4 +14,5 @@ public interface CentroDeCustoService {
     CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto);
     void excluir(Integer idCentroDeCusto) throws SystemException;
     List<CentroDeCustoDto> listarCentrosDeCusto();
+    void incluirValor(String centroDeCusto, Double valorIncremento) throws ExcecaoExemplo, SystemException ;
 }

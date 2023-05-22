@@ -95,10 +95,10 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public void concluirServico(Integer idServico, Date dataFinal) throws ExcecaoExemplo, SystemException {
+    public void concluirServico(Integer idServico) throws ExcecaoExemplo, SystemException {
         try {
             utx.begin();
-            servicoRepository.concluirServico(idServico, dataFinal);
+            servicoRepository.concluirServico(idServico);
             utx.commit();
         } catch (Exception e) {
             utx.rollback();

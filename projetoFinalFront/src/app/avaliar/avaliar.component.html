@@ -104,7 +104,7 @@
 
             <mat-form-field class="example-full-width inputs" appearance="fill">
                 <mat-label>Valor total do Serviço</mat-label>
-                <input class="inputs" matInput [value]="'R$ ' + servicoSelecionado.valorTotal + ',00'" required disabled/>
+                <input class="inputs" matInput [value]="servicoSelecionado.valorTotal  | currency: 'R$'" required disabled/>
             </mat-form-field>
         </div>
     
