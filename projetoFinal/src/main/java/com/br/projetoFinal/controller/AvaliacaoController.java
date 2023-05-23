@@ -41,7 +41,7 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<AvaliacaoDto>> listar() {
         try {
             return new ResponseEntity<>(avaliacaoService.listar(), HttpStatus.OK);
@@ -50,6 +50,7 @@ public class AvaliacaoController {
         }
     }
 
+    @GetMapping("/buscarPorId/{id_avaliacao}")
     public ResponseEntity<AvaliacaoDto> buscarPorId(@PathVariable("id_avaliacao") Integer idAvaliacao) {
         try {
             AvaliacaoDto avaliacao = avaliacaoService.buscarPorId(idAvaliacao);
@@ -59,7 +60,7 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping("/{tipo_servico}")
+    @GetMapping("/buscarPorServico/{tipo_servico}")
     public ResponseEntity<List<AvaliacaoDto>> buscarPorServico(@PathVariable("tipo_servico") Integer tipoServico) {
         try {
             return new ResponseEntity<>(avaliacaoService.buscarPorServico(tipoServico), HttpStatus.OK);
@@ -68,7 +69,7 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping("/{id_usu_exect}")
+    @GetMapping("/buscarPorExecutor/{id_usu_exect}")
     public ResponseEntity<List<AvaliacaoDto>> buscarPorExecutor(@PathVariable("id_usu_exect") Integer idUsuExect) {
         try {
             return new ResponseEntity<>(avaliacaoService.buscarPorExecutor(idUsuExect), HttpStatus.OK);
@@ -77,10 +78,20 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping("/{id_usu_conf}")
+    @GetMapping("/buscarPorConferente/{id_usu_conf}")
     public ResponseEntity<List<AvaliacaoDto>> buscarPorConferente(@PathVariable("id_usu_conf") Integer idUsuConf) {
         try {
             return new ResponseEntity<>(avaliacaoService.buscarPorConferente(idUsuConf), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarUltimoId")
+    public ResponseEntity<Integer> buscarUltimoId() {
+        try {
+            Integer ultimoId = avaliacaoService.buscarUltimoId();
+            return new ResponseEntity<>(ultimoId, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.persistence.*;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -57,5 +58,14 @@ public class CentroDeCustoRepositoryImpl implements CentroDeCustoRepository {
     public void excluir(Integer idCentroDeCusto) {
         TypedQuery<CentroDeCustoDto> query = em.createNamedQuery("CentroDeCusto.excluirPorId", CentroDeCustoDto.class)
                 .setParameter("ID_CENTRO_DE_CUSTO", idCentroDeCusto);
+    }
+
+    @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void incluirValor(String centroDeCusto, Double valorIncremento) {
+        em.createNativeQuery("UPDATE CENTRO_DE_CUSTO SET VALOR_EMPREENDIDO = VALOR_EMPREENDIDO + :VALOR_EMPREENDIDO WHERE NOME_CENTRO_DE_CUSTO = :NOME_CENTRO_DE_CUSTO")
+                .setParameter("VALOR_EMPREENDIDO", valorIncremento)
+                .setParameter("NOME_CENTRO_DE_CUSTO", centroDeCusto)
+                .executeUpdate();
     }
 }

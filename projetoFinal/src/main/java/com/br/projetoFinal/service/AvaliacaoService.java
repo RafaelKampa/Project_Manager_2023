@@ -16,5 +16,5 @@ public interface AvaliacaoService {
     List<AvaliacaoDto> buscarPorServico(Integer tipoServico);
     List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect);
     List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf);
-
+    Integer buscarUltimoId();
 }

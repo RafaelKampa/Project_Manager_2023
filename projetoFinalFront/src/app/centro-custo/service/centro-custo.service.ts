@@ -17,11 +17,15 @@ export class CentroCustoService {
     })
   };
 
-  salvarNovoCentro(centroModel: CentroCustoModel) {
+  public salvarNovoCentro(centroModel: CentroCustoModel) {
     return this.httpClient.post<CentroCustoModel>("http://localhost:8082/centroDeCusto/salvarNovoCentroDeCusto",centroModel, this.httpOptions);
   }
-  listarCentrosDeCusto(): Observable<CentroCustoModel[]> {
+  public listarCentrosDeCusto(): Observable<CentroCustoModel[]> {
     return this.httpClient.get<CentroCustoModel[]>("http://localhost:8082/centroDeCusto/listarCentrosDeCusto", this.httpOptions);
+  }
+
+  public incluirValor(centroDeCusto: string, valorIncremento: number) {
+    return this.httpClient.put("http://localhost:8082/centroDeCusto/incluirValor/" + centroDeCusto + "/" + valorIncremento, null, this.httpOptions);
   }
 
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -61,10 +62,10 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
-    public  List<ServicoDto> buscarPorId(Integer idServico) {
+    public ServicoDto buscarPorId(Integer idServico) {
         TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.buscarPorId", ServicoDto.class)
                 .setParameter("ID_SERVICO", idServico);
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
     @Override
@@ -79,5 +80,14 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     public void excluirPorId(Integer idServico) {
         TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.excluirPorId", ServicoDto.class)
                 .setParameter("ID_SERVICO", idServico);
+    }
+
+    @Override
+    @Transactional(value = Transactional.TxType.REQUIRES_NEW)
+    public void concluirServico(Integer idServico) {
+        em.createNativeQuery("UPDATE SERVICO SET DATA_FINAL = :DATA_FINAL WHERE ID_SERVICO = :ID_SERVICO")
+                .setParameter("DATA_FINAL", new Date())
+                .setParameter("ID_SERVICO", idServico)
+                .executeUpdate();
     }
 }

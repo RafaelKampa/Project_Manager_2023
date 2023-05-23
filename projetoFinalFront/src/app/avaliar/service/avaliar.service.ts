@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AvaliacaoAlvenariaModel } from '../model/avaliar-alvenaria.model';
 import { ServicosModel } from '../../shared/models/servico.model';
+import { Observable } from 'rxjs';
+import { AvaliacaoModel } from 'src/app/shared/models/avaliacao.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,17 +18,15 @@ export class AvaliarService {
     })
   };
 
-  buscarServicoPorId(idServico: number, tipoServico: string) {
-    return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/"+ idServico + "/" + tipoServico, this.httpOptions);
+  buscarServicoPorId(idServico: number): Observable<ServicosModel> {
+    return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/" + idServico, this.httpOptions);
   }
 
-  avaliarAlvenaria(avaliacaoModel: AvaliacaoAlvenariaModel) {
-    return this.httpClient.post<AvaliacaoAlvenariaModel>("http://localhost:8082/avaliacao/avaliar", this.httpOptions);
+  avaliarAlvenaria(avaliacaoModel: AvaliacaoModel): Observable<AvaliacaoModel> {
+    return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/avaliar", avaliacaoModel, this.httpOptions);
   }
 
-  salvarParametrosAlvenaria(avaliacaoModel: AvaliacaoAlvenariaModel) {
-    return this.httpClient.post<AvaliacaoAlvenariaModel>("http://localhost:8082/parametros-alvenaria/salvarNovosParametros", this.httpOptions);
+  buscarUltimoId(): Observable<number> {
+    return this.httpClient.get<number>("http://localhost:8082/avaliacao/buscarUltimoId", this.httpOptions);
   }
-
-  
 }

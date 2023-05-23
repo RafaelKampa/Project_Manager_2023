@@ -18,7 +18,7 @@
 
     <ng-container matColumnDef="valorEmpreendido">
         <th mat-header-cell *matHeaderCellDef> Valor Empreendido </th>
-        <td mat-cell *matCellDef="let element"> {{'R$ ' + element.valorEmpreendido + ',00'}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.valorEmpreendido | currency: 'R$'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

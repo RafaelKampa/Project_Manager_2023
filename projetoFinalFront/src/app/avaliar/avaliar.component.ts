@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
-import { Router } from '@angular/router';
-import { ListarServicosService } from '../listar-servicos/service/listar-servicos.service';
-import { AvaliacaoAlvenariaModel } from './model/avaliar-alvenaria.model';
 import { AvaliarService } from './service/avaliar.service';
 import { ServicosModel } from '../shared/models/servico.model';
+import { lastValueFrom } from 'rxjs';
+import { AvaliacaoModel } from '../shared/models/avaliacao.model';
+import { ParametrosAlvenariaModel } from '../shared/models/parametros-alvenaria.model';
+import { ParamAlvenariaService } from '../shared/service/param-alvenaria.service';
+import { ServicosService } from '../shared/service/servico.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-avaliar',
@@ -17,20 +21,7 @@ export class AvaliarComponent implements OnInit {
   public displayedColumnsSemAval: string[] = ['tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
   public dataSource : ServicosModel[] = [];
   public tabela: number = 0;
-  public servicoSelecionado: any;
-  public idServicoSelecionado: number = 0;
-  public tipoServicoSelecionado: string = "";
-  public valorUnitarioSelecionado: number = 0;
-  public dimensaoSelecionada: number = 0;
-  public unidadeMedidaSelecionada: string = "";
-  public centroDeCustoSelecionado: string = "";
-  public localExecucaoSelecionado: string = "";
-  public executorSelecionado: string = "";
-  public conferenteSelecionado: string = "";
-  public dataInicioSelecionada: Date = new Date();
-  public previsaoTerminoSelecionado: Date = new Date();
-  public dataFinalSelecionada: Date = new Date();
-  public valorTotalSelecionado: number = 0;
+  public servicoSelecionado: ServicosModel = new ServicosModel();
 
   public prumo?: Boolean;
   public nivel?: Boolean;
@@ -39,26 +30,10 @@ export class AvaliarComponent implements OnInit {
   public limpeza?: Boolean;
   public resultado?: Boolean;
 
-  avaliarAlvenariaForm = new FormGroup({
-    tipoServico: new FormControl('',Validators.required),
-    idServico: new FormControl('',Validators.required),
-    executor: new FormControl('', Validators.required),
-    conferente: new FormControl('',Validators.required),
-    resultado: new FormControl('',Validators.required),
-    dataAvaliacao: new FormControl('',Validators.required),
-    obs: new FormControl(''),
-    idAvaliacao: new FormControl('',Validators.required),
-    prumo: new FormControl('',Validators.required),
-    nivel: new FormControl('',Validators.required),
-    alinhamento: new FormControl('',Validators.required),
-    integridade: new FormControl('',Validators.required),
-    limpeza: new FormControl('',Validators.required),
-    valorTotal: new FormControl('',Validators.required),
-    dimensoes: new FormControl('',Validators.required),
-  });
-  
-  constructor(private listarServicosService: ListarServicosService,
+  constructor(private servicosService: ServicosService,
     private avaliarService: AvaliarService,
+    private paramAlvenariaService: ParamAlvenariaService,
+    private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
@@ -67,6 +42,24 @@ export class AvaliarComponent implements OnInit {
   ngOnInit(): void {
     this.listarServicosAguardandoAvaliacao();
   }
+
+  avaliarAlvenariaForm = new FormGroup({
+    tipoServico: new FormControl('', Validators.required),
+    idServico: new FormControl('',Validators.required),
+    usuExect: new FormControl('', Validators.required),
+    usuConf: new FormControl('', Validators.required),
+    resultado: new FormControl(null, Validators.required),
+    dataAvaliacao: new FormControl('', Validators.required),
+    obs: new FormControl(''),
+    idAvaliacao: new FormControl('',Validators.required),
+    prumo: new FormControl(null, Validators.required),
+    nivel: new FormControl(null, Validators.required),
+    alinhamento: new FormControl(null, Validators.required),
+    dimensoes: new FormControl('', Validators.required),
+    integridade: new FormControl(null, Validators.required),
+    limpeza: new FormControl(null, Validators.required),
+    valorTotal: new FormControl('', Validators.required),
+  });
 
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
@@ -78,65 +71,57 @@ export class AvaliarComponent implements OnInit {
   }
 
   listarServicosAguardandoAvaliacao() {
-    this.listarServicosService.listarServicosAguardandoAvaliacao().subscribe(servicos => {
+    this.servicosService.listarServicosAguardandoAvaliacao().subscribe(servicos => {
       this.dataSource = servicos;
       this.tabela = 1;
     });
   }
 
-  public avaliacao = new AvaliacaoAlvenariaModel();
-  avaliar(id: number, tipoServico: string, executor: string, conferente: string, valorTotal: number, dimensao: number, unidadeMedida: string){
+  public avaliacao = new AvaliacaoModel();
+  public paramAlvenaria = new ParametrosAlvenariaModel();
 
-    this.avaliarService.buscarServicoPorId(id,tipoServico).subscribe(servico => {
-      this.servicoSelecionado = servico;
-      this.tabela = 0;
-      this.idServicoSelecionado = id;
-      this.tipoServicoSelecionado = tipoServico;
-      this.executorSelecionado = executor;
-      this.conferenteSelecionado = conferente;
-      this.valorTotalSelecionado = valorTotal;
-      this.dimensaoSelecionada = dimensao;
-      this.unidadeMedidaSelecionada = unidadeMedida;
-      this.avaliacao.tipoServico = this.tipoServicoSelecionado;
-      this.avaliacao.idServico = this.idServicoSelecionado;
-      this.avaliacao.valorUnitario = this.valorUnitarioSelecionado;
-      this.avaliacao.dimensao = this.dimensaoSelecionada;
-      this.avaliacao.unidadeMedida = this.unidadeMedidaSelecionada;
-      this.avaliacao.centroDeCusto = this.centroDeCustoSelecionado;
-      this.avaliacao.localExecucao = this.localExecucaoSelecionado;
-      this.avaliacao.executor = this.executorSelecionado;
-      this.avaliacao.conferente = this.conferenteSelecionado;
-      this.avaliacao.dataAvaliacao = new Date();
-      this.avaliacao.obs = this.avaliarAlvenariaForm.get('obs')?.value;
-      this.avaliacao.prumo = this.avaliarAlvenariaForm.get('prumo')?.value;
-      this.avaliacao.nivel = this.avaliarAlvenariaForm.get('nivel')?.value;
-      this.avaliacao.alinhamento = this.avaliarAlvenariaForm.get('alinhamento')?.value;
-      this.avaliacao.integridade = this.avaliarAlvenariaForm.get('integridade')?.value;
-      this.avaliacao.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value;
-      this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value;
-      this.avaliacao.valorTotal = this.valorTotalSelecionado;
-    })
+  async avaliar(id: number){
+    this.servicoSelecionado = await lastValueFrom(this.avaliarService.buscarServicoPorId(id));
+    this.tabela = 0;
+    this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
+    this.avaliacao.idServico = this.servicoSelecionado.idServico;
+    this.avaliacao.usuExect = this.servicoSelecionado.executor;
+    this.avaliacao.usuConf = this.servicoSelecionado.conferente;
+    this.paramAlvenaria.dimensoes = this.servicoSelecionado.dimensao;
+    this.avaliacao.dataAvaliacao = new Date();
   }
   
-
-  avaliarAlvenaria() {
-
-
-      this.avaliarService.avaliarAlvenaria(this.avaliacao).subscribe(aval => {
-        alert("Serviço Avaliado com Sucesso!");
-        this.router.navigate(['/api/servico-home']);
-      }, (err) => {
-        alert("Serviço não cadastrado!\nContate o Administrador");
+  public async avaliarAlvenaria() {
+    try {
+      if (
+        !this.avaliarAlvenariaForm.get('prumo')?.value ||
+        !this.avaliarAlvenariaForm.get('nivel')?.value ||
+        !this.avaliarAlvenariaForm.get('alinhamento')?.value ||
+        !this.avaliarAlvenariaForm.get('integridade')?.value ||
+        !this.avaliarAlvenariaForm.get('limpeza')?.value ||
+        !this.avaliarAlvenariaForm.get('resultado')?.value
+      ) {
+        alert("Preencha todos os campos antes de avaliar.");
         return;
-      });
-
-      this.avaliarService.salvarParametrosAlvenaria(this.avaliacao).subscribe(alvenaria => {
-        alert("Serviço Avaliado com Sucesso!");
-        this.router.navigate(['/api/servico-home']);
-      }, (err) => {
-        alert("Serviço não cadastrado!\nContate o Administrador");
-        return;
-      });
+      }
+      this.avaliacao.obs = this.avaliarAlvenariaForm.get('obs')?.value ?? "";
+      this.paramAlvenaria.obs = this.avaliarAlvenariaForm.get('obs')?.value ?? "";
+      this.paramAlvenaria.prumo = this.avaliarAlvenariaForm.get('prumo')?.value ?? false;
+      this.paramAlvenaria.nivel = this.avaliarAlvenariaForm.get('nivel')?.value ?? false;
+      this.paramAlvenaria.alinhamento = this.avaliarAlvenariaForm.get('alinhamento')?.value ?? false;
+      this.paramAlvenaria.integridade = this.avaliarAlvenariaForm.get('integridade')?.value ?? false;
+      this.paramAlvenaria.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value ?? false;
+      this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value ?? false;
+      await lastValueFrom(this.avaliarService.avaliarAlvenaria(this.avaliacao));
+      this.paramAlvenaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+      await lastValueFrom(this.paramAlvenariaService.salvarParametrosAvaliados(this.paramAlvenaria));
+      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+      alert("Serviço Avaliado com Sucesso!");
+      this.router.navigate(['/api/servico-home']);
+    } catch{
+      alert("Serviço não avaliado!\nContate o Administrador");
+    }
   }
 
   cancelar() {

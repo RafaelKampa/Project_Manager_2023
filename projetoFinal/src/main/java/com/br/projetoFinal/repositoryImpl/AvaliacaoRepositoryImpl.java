@@ -42,8 +42,8 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     public void reavaliar(AvaliacaoDto avaliacaoDto) {
         em.createNativeQuery("UPDATE AVALIACAO \n" +
                         "SET RESULT_REAVAL = :RESULT_REAVAL, DATA_REAVALIACAO = :DATA_REAVALIACAO, OBS = :OBS \n" +
-                        "WHERE ID = :ID")
-                .setParameter("ID", avaliacaoDto.getIdAvaliacao())
+                        "WHERE ID_AVALIACAO = :ID_AVALIACAO")
+                .setParameter("ID_AVALIACAO", avaliacaoDto.getIdAvaliacao())
                 .setParameter("RESULT_REAVAL", avaliacaoDto.getResultReaval())
                 .setParameter("DATA_REAVALIACAO", avaliacaoDto.getDataReavaliacao())
                 .setParameter("OBS", avaliacaoDto.getObs())
@@ -82,5 +82,11 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
         TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.buscarPorConferente", AvaliacaoDto.class)
                 .setParameter("ID_USU_CONF", idUsuConf);
         return query.getResultList();
+    }
+
+    @Override
+    public Integer buscarUltimoId() {
+        TypedQuery<Integer> query = em.createQuery("SELECT MAX(a.idAvaliacao) FROM Avaliacao a", Integer.class);
+        return query.getSingleResult();
     }
 }

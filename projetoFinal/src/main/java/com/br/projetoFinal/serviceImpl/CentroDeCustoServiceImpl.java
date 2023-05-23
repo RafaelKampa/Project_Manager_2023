@@ -71,4 +71,16 @@ public class CentroDeCustoServiceImpl implements CentroDeCustoService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void incluirValor(String centroDeCusto, Double valorIncremento) throws ExcecaoExemplo, SystemException {
+        try {
+            utx.begin();
+            centroDeCustoRepository.incluirValor(centroDeCusto, valorIncremento);
+            utx.commit();
+        } catch (Exception e) {
+            utx.rollback();
+            e.printStackTrace();
+        }
+    }
 }

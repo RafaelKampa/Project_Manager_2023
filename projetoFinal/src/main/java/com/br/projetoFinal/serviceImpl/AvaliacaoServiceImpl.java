@@ -100,4 +100,9 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
     public List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf) {
         return avaliacaoRepository.buscarPorConferente(idUsuConf);
     }
+
+    @Override
+    public Integer buscarUltimoId() {
+        return avaliacaoRepository.buscarUltimoId();
+    }
 }

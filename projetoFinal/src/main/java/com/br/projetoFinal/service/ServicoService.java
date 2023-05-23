@@ -5,6 +5,7 @@ import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import javax.transaction.SystemException;
+import java.util.Date;
 import java.util.List;
 
 public interface ServicoService {
@@ -12,7 +13,8 @@ public interface ServicoService {
     List<ServicoDto> listar();
     List<ServicoDto> listarAguardandoAvaliacao();
     List<ServicoDto> listarAvaliados();
-    List<ServicoDto> buscarPorId(Integer idServico);
+    ServicoDto buscarPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);
     void excluir(Integer idServico) throws SystemException;
+    void concluirServico(Integer idServico) throws ExcecaoExemplo, SystemException;
 }

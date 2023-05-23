@@ -7,15 +7,10 @@ import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -64,7 +59,7 @@ public class ServicoController {
     }
 
     @GetMapping("/buscarPorId/{id_servico}")
-    public ResponseEntity<List<ServicoDto>> buscarPorId(@PathVariable("id_servico") Integer idServico) {
+    public ResponseEntity<ServicoDto> buscarPorId(@PathVariable("id_servico") Integer idServico) {
         try {
             return new ResponseEntity<>(servicoService.buscarPorId(idServico), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
@@ -72,7 +67,7 @@ public class ServicoController {
         }
     }
 
-    @GetMapping("/{tipo_servico}")
+    @GetMapping("/buscarPorNome/{tipo_servico}")
     public ResponseEntity<List<ServicoDto>> buscarPorNome(@PathVariable("tipo_servico") String tipoServico) {
         try {
             return new ResponseEntity<>(servicoService.buscarPorServico(tipoServico), HttpStatus.OK);
@@ -81,11 +76,21 @@ public class ServicoController {
         }
     }
 
-    @DeleteMapping("/{id_servico}")
+    @DeleteMapping("/excluir/{id_servico}")
     public ResponseEntity<?> excluir(@PathVariable("id_servico") Integer idServico) throws SystemException {
         try {
             servicoService.excluir(idServico);
             return new ResponseEntity<>(idServico, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/concluirServico/{idServico}")
+    public ResponseEntity<?> concluirServico(@PathVariable("idServico") Integer idServico) throws ExcecaoExemplo, SystemException {
+        try {
+            servicoService.concluirServico(idServico);
+            return new ResponseEntity<>(idServico, HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

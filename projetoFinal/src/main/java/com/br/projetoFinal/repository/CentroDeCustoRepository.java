@@ -13,4 +13,5 @@ public interface CentroDeCustoRepository {
     CentroDeCustoDto buscarPorNome(String nomeCentroDeCusto);
     void excluir(Integer idCentroDeCusto);
     List<CentroDeCustoDto> listarCentrosDeCusto();
+    void incluirValor(String centroDeCusto, Double valorIncremento);
 }

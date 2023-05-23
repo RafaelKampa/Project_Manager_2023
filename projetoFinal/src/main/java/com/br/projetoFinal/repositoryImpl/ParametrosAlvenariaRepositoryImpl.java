@@ -23,8 +23,8 @@ public class ParametrosAlvenariaRepositoryImpl implements ParametrosAlvenariaRep
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosAlvenariaDto parametrosAlvenariaDto) {
-        em.createNativeQuery("ISERT INTO PARAMETROS_ALVENARIA (ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
-                "VALUES (:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, : DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
+        em.createNativeQuery("INSERT INTO PARAMETROS_ALVENARIA (ID_AVALIACAO, PRUMO, NIVEL, ALINHAMENTO, DIMENSOES, INTEGRIDADE, LIMPEZA, OBS) \n" +
+                "VALUES (:ID_AVALIACAO, :PRUMO, :NIVEL, :ALINHAMENTO, :DIMENSOES, :INTEGRIDADE, :LIMPEZA, :OBS)")
                 .setParameter("ID_AVALIACAO", parametrosAlvenariaDto.getIdAvaliacao())
                 .setParameter("PRUMO", parametrosAlvenariaDto.getPrumo())
                 .setParameter("NIVEL", parametrosAlvenariaDto.getNivel())
