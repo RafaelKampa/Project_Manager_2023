@@ -31,7 +31,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
-import { LayoutComponent } from './layout/layout.component'; 
+import { LayoutComponent } from './layout/layout.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -51,6 +52,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     HomeComponent,
     ImageSliderComponent,
     LayoutComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
