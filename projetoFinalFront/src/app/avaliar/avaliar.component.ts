@@ -12,6 +12,8 @@ import { CentroCustoService } from '../centro-custo/service/centro-custo.service
 import { Router } from '@angular/router';
 import { ParametrosFerragemModel } from '../shared/models/parametros-ferragem.model';
 import { ParamFerragemService } from '../shared/service/param-ferragem.service';
+import { ParametrosCarpintariaModel } from '../shared/models/parametros-carpintaria.model';
+import { ParamCarpintariaService } from '../shared/service/param-carpintaria.service';
 
 @Component({
   selector: 'app-avaliar',
@@ -35,6 +37,10 @@ export class AvaliarComponent implements OnInit {
   public espacamento?: Boolean;
   public distribuicao?: Boolean;
 
+  //Parâmetros de Carpintaria
+  public nivelOuPrumo?: boolean;
+  public estanqueidade?: boolean;
+
   //Parâmetros comuns
   public limpeza?: Boolean;
   public resultado?: Boolean;
@@ -43,6 +49,7 @@ export class AvaliarComponent implements OnInit {
     private avaliarService: AvaliarService,
     private paramAlvenariaService: ParamAlvenariaService,
     private paramFerragemService: ParamFerragemService,
+    private paramCapintariaService: ParamCarpintariaService,
     private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
@@ -86,6 +93,22 @@ export class AvaliarComponent implements OnInit {
     valorTotal: new FormControl('', Validators.required),
   });
 
+  avaliarCarpintariaForm = new FormGroup({
+    tipoServico: new FormControl('', Validators.required),
+    idServico: new FormControl('',Validators.required),
+    usuExect: new FormControl('', Validators.required),
+    usuConf: new FormControl('', Validators.required),
+    resultado: new FormControl(null, Validators.required),
+    dataAvaliacao: new FormControl('', Validators.required),
+    obs: new FormControl(''),
+    tipoCarpintaria: new FormControl('', Validators.required),
+    idAvaliacao: new FormControl('',Validators.required),
+    nivelOuPrumo: new FormControl(null, Validators.required),
+    estanqueidade: new FormControl(null, Validators.required),
+    dimensoes: new FormControl('', Validators.required),
+    valorTotal: new FormControl('', Validators.required),
+  });
+
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
     if (this.erroCampoVazio.hasError('required')) {
@@ -105,6 +128,7 @@ export class AvaliarComponent implements OnInit {
   public avaliacao = new AvaliacaoModel();
   public paramAlvenaria = new ParametrosAlvenariaModel();
   public paramFerragem = new ParametrosFerragemModel();
+  public paramCarpintaria = new ParametrosCarpintariaModel();
 
   async avaliar(id: number){
     this.servicoSelecionado = await lastValueFrom(this.avaliarService.buscarServicoPorId(id));
@@ -113,7 +137,6 @@ export class AvaliarComponent implements OnInit {
     this.avaliacao.idServico = this.servicoSelecionado.idServico;
     this.avaliacao.usuExect = this.servicoSelecionado.executor;
     this.avaliacao.usuConf = this.servicoSelecionado.conferente;
-    this.paramAlvenaria.dimensoes = this.servicoSelecionado.dimensao;
     this.avaliacao.dataAvaliacao = new Date();
   }
   
@@ -137,6 +160,7 @@ export class AvaliarComponent implements OnInit {
       this.paramAlvenaria.alinhamento = this.avaliarAlvenariaForm.get('alinhamento')?.value ?? false;
       this.paramAlvenaria.integridade = this.avaliarAlvenariaForm.get('integridade')?.value ?? false;
       this.paramAlvenaria.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value ?? false;
+      this.paramAlvenaria.dimensoes = this.servicoSelecionado.dimensao;
       this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value ?? false;
       await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
       this.paramAlvenaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
@@ -164,10 +188,41 @@ export class AvaliarComponent implements OnInit {
       this.paramFerragem.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
       this.paramFerragem.distribuicao = this.avaliarFerragemForm.get('distribuicao')?.value ?? false;
       this.paramFerragem.espacamento = this.avaliarFerragemForm.get('espacamento')?.value ?? false;
+      this.paramFerragem.qtdeAco = this.servicoSelecionado.dimensao;
       this.avaliacao.resultado = this.avaliarFerragemForm.get('resultado')?.value ?? false;
       await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
       this.paramFerragem.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
       await lastValueFrom(this.paramFerragemService.salvarParametrosAvaliados(this.paramFerragem));
+      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+      alert("Serviço Avaliado com Sucesso!");
+      this.router.navigate(['/api/servico-home']);
+    } catch{
+      alert("Serviço não avaliado!\nContate o Administrador");
+    }
+  }
+
+  public async avaliarCarpintaria() {
+    try {
+      if (
+        !this.avaliarCarpintariaForm.get('tipoCarpintaria')?.value ||
+        !this.avaliarCarpintariaForm.get('nivelOuPrumo')?.value ||
+        !this.avaliarCarpintariaForm.get('estanqueidade')?.value ||
+        !this.avaliarCarpintariaForm.get('resultado')?.value
+      ) {
+        alert("Preencha todos os campos antes de avaliar.");
+        return;
+      }
+      this.avaliacao.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
+      this.paramCarpintaria.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
+      this.paramCarpintaria.estanqueidade = this.avaliarCarpintariaForm.get('estanqueidade')?.value ?? false;
+      this.paramCarpintaria.nivelOuPrumo = this.avaliarCarpintariaForm.get('nivelOuPrumo')?.value ?? false;
+      this.paramCarpintaria.dimensoes = this.servicoSelecionado.dimensao;
+      this.paramCarpintaria.tipoCarpintaria = this.avaliarCarpintariaForm.get('tipoCarpintaria')?.value ?? "";
+      this.avaliacao.resultado = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
+      await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
+      this.paramCarpintaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+      await lastValueFrom(this.paramCapintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
       await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
       await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
       alert("Serviço Avaliado com Sucesso!");
