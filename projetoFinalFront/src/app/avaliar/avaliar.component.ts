@@ -10,6 +10,8 @@ import { ServicosService } from '../shared/service/servico.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
 import { Router } from '@angular/router';
+import { ParametrosFerragemModel } from '../shared/models/parametros-ferragem.model';
+import { ParamFerragemService } from '../shared/service/param-ferragem.service';
 
 @Component({
   selector: 'app-avaliar',
@@ -18,21 +20,29 @@ import { Router } from '@angular/router';
 })
 export class AvaliarComponent implements OnInit {
 
-  public displayedColumnsSemAval: string[] = ['tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
+  public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
   public dataSource : ServicosModel[] = [];
   public tabela: number = 0;
   public servicoSelecionado: ServicosModel = new ServicosModel();
 
+  //Parâmetros de Alvenaria
   public prumo?: Boolean;
   public nivel?: Boolean;
   public alinhamento?: Boolean;
   public integridade?: Boolean;
+
+  //Parâmetros de Ferragem
+  public espacamento?: Boolean;
+  public distribuicao?: Boolean;
+
+  //Parâmetros comuns
   public limpeza?: Boolean;
   public resultado?: Boolean;
 
   constructor(private servicosService: ServicosService,
     private avaliarService: AvaliarService,
     private paramAlvenariaService: ParamAlvenariaService,
+    private paramFerragemService: ParamFerragemService,
     private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
@@ -61,6 +71,21 @@ export class AvaliarComponent implements OnInit {
     valorTotal: new FormControl('', Validators.required),
   });
 
+  avaliarFerragemForm = new FormGroup({
+    tipoServico: new FormControl('', Validators.required),
+    idServico: new FormControl('',Validators.required),
+    usuExect: new FormControl('', Validators.required),
+    usuConf: new FormControl('', Validators.required),
+    resultado: new FormControl(null, Validators.required),
+    dataAvaliacao: new FormControl('', Validators.required),
+    obs: new FormControl(''),
+    idAvaliacao: new FormControl('',Validators.required),
+    espacamento: new FormControl(null, Validators.required),
+    distribuicao: new FormControl(null, Validators.required),
+    qtdeAco: new FormControl('', Validators.required),
+    valorTotal: new FormControl('', Validators.required),
+  });
+
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
     if (this.erroCampoVazio.hasError('required')) {
@@ -79,6 +104,7 @@ export class AvaliarComponent implements OnInit {
 
   public avaliacao = new AvaliacaoModel();
   public paramAlvenaria = new ParametrosAlvenariaModel();
+  public paramFerragem = new ParametrosFerragemModel();
 
   async avaliar(id: number){
     this.servicoSelecionado = await lastValueFrom(this.avaliarService.buscarServicoPorId(id));
@@ -112,9 +138,36 @@ export class AvaliarComponent implements OnInit {
       this.paramAlvenaria.integridade = this.avaliarAlvenariaForm.get('integridade')?.value ?? false;
       this.paramAlvenaria.limpeza = this.avaliarAlvenariaForm.get('limpeza')?.value ?? false;
       this.avaliacao.resultado = this.avaliarAlvenariaForm.get('resultado')?.value ?? false;
-      await lastValueFrom(this.avaliarService.avaliarAlvenaria(this.avaliacao));
+      await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
       this.paramAlvenaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
       await lastValueFrom(this.paramAlvenariaService.salvarParametrosAvaliados(this.paramAlvenaria));
+      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+      alert("Serviço Avaliado com Sucesso!");
+      this.router.navigate(['/api/servico-home']);
+    } catch{
+      alert("Serviço não avaliado!\nContate o Administrador");
+    }
+  }
+
+  public async avaliarFerragem() {
+    try {
+      if (
+        !this.avaliarFerragemForm.get('espacamento')?.value ||
+        !this.avaliarFerragemForm.get('distribuicao')?.value ||
+        !this.avaliarFerragemForm.get('resultado')?.value
+      ) {
+        alert("Preencha todos os campos antes de avaliar.");
+        return;
+      }
+      this.avaliacao.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
+      this.paramFerragem.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
+      this.paramFerragem.distribuicao = this.avaliarFerragemForm.get('distribuicao')?.value ?? false;
+      this.paramFerragem.espacamento = this.avaliarFerragemForm.get('espacamento')?.value ?? false;
+      this.avaliacao.resultado = this.avaliarFerragemForm.get('resultado')?.value ?? false;
+      await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
+      this.paramFerragem.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+      await lastValueFrom(this.paramFerragemService.salvarParametrosAvaliados(this.paramFerragem));
       await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
       await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
       alert("Serviço Avaliado com Sucesso!");

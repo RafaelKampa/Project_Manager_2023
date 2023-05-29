@@ -22,7 +22,7 @@ export class AvaliarService {
     return this.httpClient.get<ServicosModel>("http://localhost:8082/servico/buscarPorId/" + idServico, this.httpOptions);
   }
 
-  avaliarAlvenaria(avaliacaoModel: AvaliacaoModel): Observable<AvaliacaoModel> {
+  avaliar(avaliacaoModel: AvaliacaoModel): Observable<AvaliacaoModel> {
     return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/avaliar", avaliacaoModel, this.httpOptions);
   }
 
