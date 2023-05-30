@@ -1,15 +1,10 @@
 <div>
     <h1 class="center">Bem vindo!</h1>
-    <div class="center">
-        <button class="button" mat-flat-button color="primary" padding="10px" (click)="cadastrarNovoServico()">Cadastrar novo Serviço</button>
-        <button class="button" mat-flat-button color="primary" padding="10px" (click)="listarServicos()">Listar Serviços</button>
-    </div>  
-    <div class="center">
-        <button class="button" mat-flat-button color="warn" padding="10px" (click)="cadastrarCentros()">Cadastrar Centro de Custo</button>
-        <button class="button" mat-flat-button color="warn" padding="10px" (click)="listarCentros()">Listar Centro de Custo</button>
-    </div>
-    <div class="center">
-        <button class="button" mat-flat-button color="brown" padding="10px" (click)="avaliarServicos()">Avaliar Serviços</button>
-        <button class="button" mat-flat-button color="brown" padding="10px" (click)="reavaliarServicos()">Reavaliar Serviços</button>
-    </div>
+
+    <app-novo-servico></app-novo-servico>
+
+    <app-centro-de-custo></app-centro-de-custo>
+
+    <app-avaliacao> </app-avaliacao> 
+    
 </div>
