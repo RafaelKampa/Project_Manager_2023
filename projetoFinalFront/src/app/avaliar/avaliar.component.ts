@@ -14,6 +14,8 @@ import { ParametrosFerragemModel } from '../shared/models/parametros-ferragem.mo
 import { ParamFerragemService } from '../shared/service/param-ferragem.service';
 import { ParametrosCarpintariaModel } from '../shared/models/parametros-carpintaria.model';
 import { ParamCarpintariaService } from '../shared/service/param-carpintaria.service';
+import { ParamAcabamentoService } from '../shared/service/param-acabamento.service';
+import { ParametrosAcabamentoModel } from '../shared/models/parametros-acabamento.model';
 
 @Component({
   selector: 'app-avaliar',
@@ -41,6 +43,10 @@ export class AvaliarComponent implements OnInit {
   public nivelOuPrumo?: boolean;
   public estanqueidade?: boolean;
 
+  //Parâmetros de Acabamento
+  public reguamento?: boolean;
+  public alisamento?: boolean;
+
   //Parâmetros comuns
   public limpeza?: Boolean;
   public resultado?: Boolean;
@@ -50,6 +56,7 @@ export class AvaliarComponent implements OnInit {
     private paramAlvenariaService: ParamAlvenariaService,
     private paramFerragemService: ParamFerragemService,
     private paramCapintariaService: ParamCarpintariaService,
+    private paramAcabamentoService: ParamAcabamentoService,
     private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
@@ -109,6 +116,21 @@ export class AvaliarComponent implements OnInit {
     valorTotal: new FormControl('', Validators.required),
   });
 
+  avaliarAcabamentoForm = new FormGroup({
+    tipoServico: new FormControl('', Validators.required),
+    idServico: new FormControl('',Validators.required),
+    usuExect: new FormControl('', Validators.required),
+    usuConf: new FormControl('', Validators.required),
+    resultado: new FormControl(null, Validators.required),
+    dataAvaliacao: new FormControl('', Validators.required),
+    obs: new FormControl(''),
+    idAvaliacao: new FormControl('',Validators.required),
+    reguamento: new FormControl(null, Validators.required),
+    alisamento: new FormControl(null, Validators.required),
+    dimensoes: new FormControl('', Validators.required),
+    valorTotal: new FormControl('', Validators.required),
+  });
+
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
     if (this.erroCampoVazio.hasError('required')) {
@@ -129,6 +151,7 @@ export class AvaliarComponent implements OnInit {
   public paramAlvenaria = new ParametrosAlvenariaModel();
   public paramFerragem = new ParametrosFerragemModel();
   public paramCarpintaria = new ParametrosCarpintariaModel();
+  public paramAcabamento = new ParametrosAcabamentoModel();
 
   async avaliar(id: number){
     this.servicoSelecionado = await lastValueFrom(this.avaliarService.buscarServicoPorId(id));
@@ -223,6 +246,34 @@ export class AvaliarComponent implements OnInit {
       await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
       this.paramCarpintaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
       await lastValueFrom(this.paramCapintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
+      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+      alert("Serviço Avaliado com Sucesso!");
+      this.router.navigate(['/api/servico-home']);
+    } catch{
+      alert("Serviço não avaliado!\nContate o Administrador");
+    }
+  }
+
+  public async avaliarAcabamento() {
+    try {
+      if (
+        !this.avaliarAcabamentoForm.get('reguamento')?.value ||
+        !this.avaliarAcabamentoForm.get('alisamento')?.value ||
+        !this.avaliarAcabamentoForm.get('resultado')?.value
+      ) {
+        alert("Preencha todos os campos antes de avaliar.");
+        return;
+      }
+      this.avaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+      this.paramAcabamento.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+      this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
+      this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
+      this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
+      this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
+      await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
+      this.paramAcabamento.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+      await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
       await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
       await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
       alert("Serviço Avaliado com Sucesso!");
