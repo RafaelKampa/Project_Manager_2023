@@ -32,8 +32,6 @@ import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material
 import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { LayoutComponent } from './layout/layout.component';
-import { NovoServicoComponent } from './servico-home/novo-servico/novo-servico.component';
-import { CentroDeCustoComponent } from './servico-home/centro-de-custo/centro-de-custo.component';
 import { AvaliarAlvenariaComponent } from './avaliar/avaliar-alvenaria/avaliar-alvenaria.component';
 import { AvaliarAcabamentoComponent } from './avaliar/avaliar-acabamento/avaliar-acabamento.component';
 import { AvaliarFerragemComponent } from './avaliar/avaliar-ferragem/avaliar-ferragem.component';
@@ -57,9 +55,6 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     HomeComponent,
     ImageSliderComponent,
     LayoutComponent,
-    NovoServicoComponent,
-    CentroDeCustoComponent,
-    AvaliacaoComponent,
     AvaliarAlvenariaComponent,
     AvaliarAcabamentoComponent,
     AvaliarFerragemComponent,

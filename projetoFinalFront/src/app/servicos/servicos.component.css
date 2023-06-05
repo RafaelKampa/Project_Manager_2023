@@ -21,3 +21,11 @@
     color: rgb(255, 255, 255);
 }
 
+.mat-button.mat-brown {
+    color: brown;
+ }
+ 
+ .mat-raised-button.mat-brown, .mat-flat-button.mat-brown{
+    background-color: brown;
+    color: white;
+ }
