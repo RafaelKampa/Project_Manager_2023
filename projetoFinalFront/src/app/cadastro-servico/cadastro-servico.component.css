@@ -7,6 +7,27 @@
     margin-top: 20px;
 }
 
+.tittle{
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+    font-style: italic;
+    color: rgb(56, 48, 33);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button1{
+    background-color: rgb(22, 73, 88);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+ }
+
+ .button2{
+    background-color: rgb(77, 17, 17);
+    color: rgb(255, 255, 255);
+ }
+
 .inputs {
     width: 250px;
     padding-left: 5px;
