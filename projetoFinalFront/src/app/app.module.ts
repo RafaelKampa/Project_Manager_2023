@@ -34,7 +34,11 @@ import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NovoServicoComponent } from './servico-home/novo-servico/novo-servico.component';
 import { CentroDeCustoComponent } from './servico-home/centro-de-custo/centro-de-custo.component';
-import { AvaliacaoComponent } from './servico-home/avaliacao/avaliacao.component'; 
+import { AvaliacaoComponent } from './servico-home/avaliacao/avaliacao.component';
+import { AvaliarAlvenariaComponent } from './avaliar/avaliar-alvenaria/avaliar-alvenaria.component';
+import { AvaliarAcabamentoComponent } from './avaliar/avaliar-acabamento/avaliar-acabamento.component';
+import { AvaliarFerragemComponent } from './avaliar/avaliar-ferragem/avaliar-ferragem.component';
+import { AvaliarCarpintariaComponent } from './avaliar/avaliar-carpintaria/avaliar-carpintaria.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -57,6 +61,10 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     NovoServicoComponent,
     CentroDeCustoComponent,
     AvaliacaoComponent,
+    AvaliarAlvenariaComponent,
+    AvaliarAcabamentoComponent,
+    AvaliarFerragemComponent,
+    AvaliarCarpintariaComponent,
   ],
   imports: [
     BrowserModule,
