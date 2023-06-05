@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-novo-servico',
-  templateUrl: './novo-servico.component.html',
-  styleUrls: ['./novo-servico.component.css']
+  selector: 'app-servicos',
+  templateUrl: './servicos.component.html',
+  styleUrls: ['./servicos.component.css']
 })
-export class NovoServicoComponent implements OnInit {
+export class ServicosComponent implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -15,7 +15,6 @@ export class NovoServicoComponent implements OnInit {
   cadastrarNovoServico() {
     this.router.navigate(['/api/cadastro-servico']);
   }
-
   listarServicos() {
     this.router.navigate(['/api/listar-servicos']);
   }

@@ -32,9 +32,9 @@ import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material
 import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { LayoutComponent } from './layout/layout.component';
-import { NovoServicoComponent } from './servico-home/novo-servico/novo-servico.component';
-import { CentroDeCustoComponent } from './servico-home/centro-de-custo/centro-de-custo.component';
-import { AvaliacaoComponent } from './servico-home/avaliacao/avaliacao.component'; 
+import { ServicosComponent } from './servicos/servicos.component';
+import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
+import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component'; 
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -53,10 +53,10 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     AvaliarComponent,
     HomeComponent,
     ImageSliderComponent,
-    LayoutComponent,
-    NovoServicoComponent,
-    CentroDeCustoComponent,
-    AvaliacaoComponent,
+    LayoutComponent, 
+    ServicosComponent,
+    CentroDeCustosComponent,
+    HomeAvaliarComponent,
   ],
   imports: [
     BrowserModule,
