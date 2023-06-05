@@ -49,13 +49,13 @@
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Alisamento</mat-label>
             <mat-select formControlName="alisamento" name="alisamento">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
@@ -64,20 +64,20 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width obs" appearance="fill">
+        <mat-form-field class="obs" appearance="fill">
             <mat-label>Observações</mat-label>
             <textarea matInput placeholder="Observações" name="obs" formControlName="obs"></textarea>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Resultado</mat-label>
             <mat-select formControlName="resultado" name="resultado">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{"Aprovado"}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{"Reprovado"}}
                 </mat-option>
             </mat-select>

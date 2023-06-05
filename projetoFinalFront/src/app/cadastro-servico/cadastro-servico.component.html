@@ -2,61 +2,61 @@
 <form [formGroup]="cadastroServicoForm" (ngSubmit)="salvar()">
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Tipo de Serviço</mat-label>
-            <mat-select class="inputs" formControlName="tipoServico" (selectionChange)="selecionarTipo($event)">
+            <mat-select formControlName="tipoServico" (selectionChange)="selecionarTipo($event)">
                 <mat-option *ngFor="let tipo of tiposServicos" [value]="tipo">
                     {{tipo.nomeServico}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Valor Unitário</mat-label>
-            <input class="inputs" matInput placeholder="Digite o nome" formControlName="valorUnitario" 
+            <input matInput placeholder="Digite o nome" formControlName="valorUnitario" 
             [value]="tipoServicoSelecionado.valorUnitario  | currency: 'R$'" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Dimensões</mat-label>
-            <input class="inputs" matInput placeholder="Usar '.' como separador decimal"
+            <input matInput placeholder="Usar '.' como separador decimal"
                 formControlName="dimensao" (keypress)="numbersOnly($event)" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Unidade de Medida</mat-label>
-            <input class="inputs" matInput placeholder="Unidade de Medida" name="unidadeMedida" formControlName ="unidadeMedida" 
+            <input matInput placeholder="Unidade de Medida" name="unidadeMedida" formControlName ="unidadeMedida" 
             [value]="tipoServicoSelecionado.unidadeMedida" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Centro de Custo</mat-label>
             <mat-select formControlName="centroDeCusto" (selectionChange)="selecionarCentro($event)">
-                <mat-option class="inputs" *ngFor="let centro of centrosDeCusto" [value]="centro">
+                <mat-option *ngFor="let centro of centrosDeCusto" [value]="centro">
                     {{centro.nomeCentroDeCusto}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Local de Execução</mat-label>
-            <input class="inputs" matInput placeholder="Digite o local da execução" formControlName="localExecucao" required/>
+            <input matInput placeholder="Digite o local da execução" formControlName="localExecucao" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
     </div>
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Executor do serviço</mat-label>
-            <mat-select class="inputs" [(value)]="executorSelecionado">
+            <mat-select [(value)]="executorSelecionado">
                 <mat-option *ngFor="let executor of executores" [value]="executor">
                     {{executor.nome}}
                 </mat-option>
@@ -64,9 +64,9 @@
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Conferente</mat-label>
-            <mat-select class="inputs" [(value)]="conferenteSelecionado">
+            <mat-select [(value)]="conferenteSelecionado">
                 <mat-option *ngFor="let conferente of conferentes" [value]="conferente">
                     {{conferente.nome}}
                 </mat-option>
@@ -76,24 +76,24 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Data de Início</mat-label>
-            <input class="inputs" matInput [matDatepicker]="dataInicio" formControlName="dataInicio" required/>
+            <input matInput [matDatepicker]="dataInicio" formControlName="dataInicio" required/>
             <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
             <mat-datepicker #dataInicio></mat-datepicker>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Previsão de Término do Serviço</mat-label>
-            <input class="inputs" matInput [matDatepicker]="previsaoTermino" formControlName="previsaoTermino" required/>
+            <input matInput [matDatepicker]="previsaoTermino" formControlName="previsaoTermino" required/>
             <mat-datepicker-toggle matSuffix [for]="previsaoTermino"></mat-datepicker-toggle>
             <mat-datepicker #previsaoTermino></mat-datepicker>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
     <div class="center">
-        <mat-form-field class="example-full-width obs" appearance="fill">
+        <mat-form-field class="obs" appearance="fill">
             <mat-label>Observações</mat-label>
             <textarea matInput placeholder="Observações" rows="4" formControlName="obs"></textarea>
         </mat-form-field>

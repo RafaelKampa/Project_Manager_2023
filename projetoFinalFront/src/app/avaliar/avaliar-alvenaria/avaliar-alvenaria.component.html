@@ -2,73 +2,73 @@
 <form [formGroup]="avaliarAlvenariaForm">
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Serviço</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.tipoServico" required disabled/>
+            <input matInput [value]="servicoSelecionado.tipoServico" required disabled/>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Dimensões</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.dimensao" required disabled/>
+            <input matInput [value]="servicoSelecionado.dimensao" required disabled/>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Unidade de Medida</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.unidadeMedida" required disabled/>
+            <input matInput [value]="servicoSelecionado.unidadeMedida" required disabled/>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Funcionário</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.executor" required disabled/>
+            <input matInput [value]="servicoSelecionado.executor" required disabled/>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Conferente</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.conferente" required disabled/>
+            <input matInput [value]="servicoSelecionado.conferente" required disabled/>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Valor total do Serviço</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.valorTotal  | currency: 'R$'" required disabled/>
+            <input matInput [value]="servicoSelecionado.valorTotal  | currency: 'R$'" required disabled/>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Prumo</mat-label>
             <mat-select formControlName="prumo" name="prumo">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Nível</mat-label>
             <mat-select formControlName="nivel" name="nivel">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Alinhamento</mat-label>
             <mat-select formControlName="alinhamento" name="alinhamento">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
@@ -77,26 +77,26 @@
     </div>
    
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Integridade</mat-label>
             <mat-select formControlName="integridade" name="integridade">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Limpeza</mat-label>
             <mat-select formControlName="limpeza" name="limpeza">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{'Aprovado'}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{'Reprovado'}}
                 </mat-option>
             </mat-select>
@@ -105,20 +105,20 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width obs" appearance="fill">
+        <mat-form-field class="obs" appearance="fill">
             <mat-label>Observações</mat-label>
             <textarea matInput placeholder="Observações" name="obs" formControlName="obs"></textarea>
         </mat-form-field>
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">    
+        <mat-form-field class="inputs" appearance="fill">    
             <mat-label>Resultado</mat-label>
             <mat-select formControlName="resultado" name="resultado">
-                <mat-option class="inputs" [value]="true">
+                <mat-option [value]="true">
                     {{"Aprovado"}}
                 </mat-option>
-                <mat-option class="inputs" [value]="false">
+                <mat-option [value]="false">
                     {{"Reprovado"}}
                 </mat-option>
             </mat-select>

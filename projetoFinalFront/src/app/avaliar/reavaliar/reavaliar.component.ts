@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
-import { AvaliarService } from './service/avaliar.service';
-import { ServicosModel } from '../shared/models/servico.model';
-import { lastValueFrom } from 'rxjs';
-import { AvaliacaoModel } from '../shared/models/avaliacao.model';
-import { ServicosService } from '../shared/service/servico.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
+import { CentroCustoService } from 'src/app/centro-custo/service/centro-custo.service';
+import { AvaliacaoModel } from 'src/app/shared/models/avaliacao.model';
+import { ServicosModel } from 'src/app/shared/models/servico.model';
+import { ServicosService } from 'src/app/shared/service/servico.service';
+import { AvaliarService } from '../service/avaliar.service';
 
 @Component({
-  selector: 'app-avaliar',
-  templateUrl: './avaliar.component.html',
-  styleUrls: ['./avaliar.component.css']
+  selector: 'app-reavaliar',
+  templateUrl: './reavaliar.component.html',
+  styleUrls: ['./reavaliar.component.css']
 })
-export class AvaliarComponent implements OnInit {
+export class ReavaliarComponent implements OnInit {
 
   public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
   public dataSource : ServicosModel[] = [];
@@ -31,7 +31,7 @@ export class AvaliarComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.listarServicosAguardandoAvaliacao();
+    this.listarServicosReprovados();
   }
 
   public erroCampoVazio = new FormControl('', Validators.required);
@@ -43,7 +43,8 @@ export class AvaliarComponent implements OnInit {
     }
   }
 
-  listarServicosAguardandoAvaliacao() {
+  listarServicosReprovados() {
+    //TODO: Criar método de busca de serviços reprovados
     this.servicosService.listarServicosAguardandoAvaliacao().subscribe(servicos => {
       this.dataSource = servicos;
     });

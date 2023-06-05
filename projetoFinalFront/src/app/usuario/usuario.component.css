@@ -9,6 +9,8 @@
 
 .inputs {
     width: 250px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .fontStyle{

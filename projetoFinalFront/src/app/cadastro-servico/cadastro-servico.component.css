@@ -16,3 +16,7 @@
 .obs {
     width: 500px;
 }
+
+::ng-deep .mat-select-arrow {
+    font-size: 16px !important; 
+  }
