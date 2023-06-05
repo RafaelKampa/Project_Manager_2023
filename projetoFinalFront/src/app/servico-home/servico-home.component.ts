@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servico-home',
@@ -8,33 +7,8 @@ import { Router } from '@angular/router';
 })
 export class ServicoHomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
-  cadastrarNovoServico() {
-    this.router.navigate(['/api/cadastro-servico']);
-  }
-
-  listarServicos() {
-    this.router.navigate(['/api/listar-servicos']);
-  }
-
-  cadastrarCentros() {
-    this.router.navigate(['/api/centro-custo']);
-  }
-
-  listarCentros() {
-    this.router.navigate(['/api/listar-centros']);
-  }
-
-  avaliarServicos() {
-    this.router.navigate(['/api/avaliar']);
-  }
-
-  reavaliarServicos() {
-    this.router.navigate(['/api/reavaliar']);
-  }
-
 }

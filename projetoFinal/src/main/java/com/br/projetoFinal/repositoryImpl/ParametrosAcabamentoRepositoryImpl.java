@@ -23,12 +23,12 @@ public class ParametrosAcabamentoRepositoryImpl implements ParametrosAcabamentoR
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarParametrosAvaliados(ParametrosAcabamentoDto parametrosAcabamentoDto) {
-        em.createNativeQuery("ISERT INTO PARAMETROS_ACABAMENTO (ID_AVALIACAO, DIMENSOES, REGUAMENTO, ALISAMENTO, OBS) \n" +
+        em.createNativeQuery("INSERT INTO PARAMETROS_ACABAMENTO (ID_AVALIACAO, DIMENSOES, REGUAMENTO, ALISAMENTO, OBS) \n" +
                         "VALUES (:ID_AVALIACAO, :DIMENSOES, :REGUAMENTO, :ALISAMENTO, :OBS)")
                 .setParameter("ID_AVALIACAO", parametrosAcabamentoDto.getIdAvaliacao())
-                .setParameter("PRUMO", parametrosAcabamentoDto.getDimensoes())
-                .setParameter("NIVEL", parametrosAcabamentoDto.getReguamento())
-                .setParameter("ALINHAMENTO", parametrosAcabamentoDto.getAlisamento())
+                .setParameter("DIMENSOES", parametrosAcabamentoDto.getDimensoes())
+                .setParameter("REGUAMENTO", parametrosAcabamentoDto.getReguamento())
+                .setParameter("ALISAMENTO", parametrosAcabamentoDto.getAlisamento())
                 .setParameter("OBS", parametrosAcabamentoDto.getObs())
                 .executeUpdate();
     }
