@@ -62,6 +62,12 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     }
 
     @Override
+    public List<ServicoDto> servicosAguardandoReaval() {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.servicosAguardandoReaval", ServicoDto.class);
+        return query.getResultList();
+    }
+
+    @Override
     public ServicoDto buscarPorId(Integer idServico) {
         TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.buscarPorId", ServicoDto.class)
                 .setParameter("ID_SERVICO", idServico);

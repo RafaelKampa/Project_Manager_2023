@@ -26,6 +26,10 @@ export class AvaliarService {
     return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/avaliar", avaliacaoModel, this.httpOptions);
   }
 
+  reavaliar(avaliacaoModel: AvaliacaoModel): Observable<AvaliacaoModel> {
+    return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/reavaliar/", avaliacaoModel, this.httpOptions);
+  }
+
   buscarUltimoId(): Observable<number> {
     return this.httpClient.get<number>("http://localhost:8082/avaliacao/buscarUltimoId", this.httpOptions);
   }

@@ -73,6 +73,11 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
+    public List<ServicoDto> servicosAguardandoReaval() {
+        return servicoRepository.servicosAguardandoReaval();
+    }
+
+    @Override
     public ServicoDto buscarPorId(Integer idServico) {
         return servicoRepository.buscarPorId(idServico);
     }

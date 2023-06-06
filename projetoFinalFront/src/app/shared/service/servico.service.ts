@@ -42,4 +42,8 @@ export class ServicosService {
     return this.httpClient.put("http://localhost:8082/servico/concluirServico/" + idServico, null, this.httpOptions);
   }
   
+  public listarServicosAguardandoReaval() {
+    return this.httpClient.get<ServicosModel[]>("http://localhost:8082/servico/servicosAguardandoReaval", this.httpOptions);
+  }
+  
 }

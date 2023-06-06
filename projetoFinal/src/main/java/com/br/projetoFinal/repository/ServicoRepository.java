@@ -14,6 +14,7 @@ public interface ServicoRepository {
     List<ServicoDto> listar();
     List<ServicoDto> listarAguardandoAvaliacao();
     List<ServicoDto> listarAvaliados();
+    List<ServicoDto> servicosAguardandoReaval();
     ServicoDto buscarPorId(Integer idServico);
     void excluirPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);

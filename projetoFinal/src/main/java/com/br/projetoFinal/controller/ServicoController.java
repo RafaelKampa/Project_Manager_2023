@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -53,6 +54,15 @@ public class ServicoController {
     public ResponseEntity<List<ServicoDto>> listarAvaliados() {
         try {
             return new ResponseEntity<>(servicoService.listarAvaliados(), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/servicosAguardandoReaval")
+    public ResponseEntity<List<ServicoDto>> servicosAguardandoReaval() {
+        try {
+            return new ResponseEntity<>(servicoService.servicosAguardandoReaval(), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

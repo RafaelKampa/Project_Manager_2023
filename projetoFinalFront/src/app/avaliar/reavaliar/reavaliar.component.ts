@@ -16,7 +16,7 @@ import { AvaliarService } from '../service/avaliar.service';
 })
 export class ReavaliarComponent implements OnInit {
 
-  public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
+  public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'reavaliar'];
   public dataSource : ServicosModel[] = [];
   public showTabela: boolean = true;
   public servicoSelecionado: ServicosModel = new ServicosModel();
@@ -44,14 +44,14 @@ export class ReavaliarComponent implements OnInit {
   }
 
   listarServicosReprovados() {
-    //TODO: Criar método de busca de serviços reprovados
-    this.servicosService.listarServicosAguardandoAvaliacao().subscribe(servicos => {
+    this.servicosService.listarServicosAguardandoReaval().subscribe(servicos => {
       this.dataSource = servicos;
     });
   }
 
-  async avaliar(id: number){
+  async reavaliar(id: number, idAvaliacao: number){
     this.servicoSelecionado = await lastValueFrom(this.avaliarService.buscarServicoPorId(id));
+    this.servicoSelecionado.idAvaliacao = idAvaliacao;
     this.showTabela = false;
     this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
     this.avaliacao.idServico = this.servicoSelecionado.idServico;

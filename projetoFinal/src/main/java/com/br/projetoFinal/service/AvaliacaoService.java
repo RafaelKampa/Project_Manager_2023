@@ -3,8 +3,10 @@ package com.br.projetoFinal.service;
 import com.br.projetoFinal.dto.AvaliacaoDto;
 import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.SystemException;
+import java.util.Date;
 import java.util.List;
 
 public interface AvaliacaoService {

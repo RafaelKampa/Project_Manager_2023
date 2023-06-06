@@ -13,6 +13,7 @@ public interface ServicoService {
     List<ServicoDto> listar();
     List<ServicoDto> listarAguardandoAvaliacao();
     List<ServicoDto> listarAvaliados();
+    List<ServicoDto> servicosAguardandoReaval();
     ServicoDto buscarPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);
     void excluir(Integer idServico) throws SystemException;

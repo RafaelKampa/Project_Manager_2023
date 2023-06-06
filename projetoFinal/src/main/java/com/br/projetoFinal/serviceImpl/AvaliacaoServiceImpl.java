@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -57,17 +58,22 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
 
     @Override
     public void reavaliar(AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
-        Avaliacao avaliacao = mapper.map(avaliacaoDto, Avaliacao.class);//Utilizado para mapear um DTO para Entity e vice versa
         try {
             utx.begin();
-            if (avaliacaoDto.getIdServico() == 0) {
-                throw new ExcecaoExemplo("ERR207", "É necessário informar o serviço a ser avaliado.");
-            } else if (avaliacaoDto.getDataReavaliacao().equals(null)) {
-                throw new ExcecaoExemplo("ERR208", "É necessário informar a data da reavaliação");
-            } else if (avaliacaoDto.getResultReaval().equals(null)) {
-                throw new ExcecaoExemplo("ERR209", "É necessário informar o resultado da reavaliação");
+            if (avaliacaoDto.getTipoServico().equals(null)) {
+                throw new ExcecaoExemplo("ERR201", "É necessário informar o tipo de serviço.");
+            } else if (avaliacaoDto.getIdServico() == 0) {
+                throw new ExcecaoExemplo("ERR202", "É necessário informar o serviço a ser avaliado.");
+            } else if (avaliacaoDto.getUsuExect().equals(null)) {
+                throw new ExcecaoExemplo("ERR203", "É necessário informar o funcionário a ser avaliado");
+            } else if (avaliacaoDto.getUsuConf().equals(null)) {
+                throw new ExcecaoExemplo("ERR204", "É necessário informar o avaliador do serviço");
+            } else if (avaliacaoDto.getDataAvaliacao().equals(null)) {
+                throw new ExcecaoExemplo("ERR205", "É necessário informar a data da avaliação");
+            } else if (avaliacaoDto.getResultado().equals(null)) {
+                throw new ExcecaoExemplo("ERR206", "É necessário informar o resultado da avaliação");
             } else {
-                avaliacaoRepository.reavaliar((AvaliacaoDto) avaliacao);
+                avaliacaoRepository.reavaliar(avaliacaoDto);
                 utx.commit();
             }
         } catch (Exception e) {

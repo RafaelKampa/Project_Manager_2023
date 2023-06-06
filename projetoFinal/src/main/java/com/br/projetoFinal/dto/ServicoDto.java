@@ -17,7 +17,10 @@ public class ServicoDto extends Servico {
     public Date previsaoTermino;
     public Date dataFinal;
     public Double valorTotal;
+
     public String obs;
+
+    public Integer idAvaliacao;
 
     public ServicoDto() {
     }
@@ -39,6 +42,24 @@ public class ServicoDto extends Servico {
         this.dataFinal = dataFinal;
         this.valorTotal = valorTotal;
         this.obs = obs;
+    }
+
+    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto, String localExecucao, String executor, String conferente, Date dataInicio, Date previsaoTermino, Date dataFinal, Double valorTotal, String obs, Integer idAvaliacao) {
+        this.idServico = idServico;
+        this.tipoServico = tipoServico;
+        this.valorUnitario = valorUnitario;
+        this.dimensao = dimensao;
+        this.unidadeMedida = unidadeMedida;
+        this.centroDeCusto = centroDeCusto;
+        this.localExecucao = localExecucao;
+        this.executor = executor;
+        this.conferente = conferente;
+        this.dataInicio = dataInicio;
+        this.previsaoTermino = previsaoTermino;
+        this.dataFinal = dataFinal;
+        this.valorTotal = valorTotal;
+        this.obs = obs;
+        this.idAvaliacao = idAvaliacao;
     }
 
     @Override
@@ -179,5 +200,9 @@ public class ServicoDto extends Servico {
     @Override
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public Integer getIdAvaliacao() {
+        return idAvaliacao;
     }
 }

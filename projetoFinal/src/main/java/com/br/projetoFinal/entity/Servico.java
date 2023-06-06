@@ -25,6 +25,27 @@ import java.util.Date;
                                 @ColumnResult(name = "OBS", type = String.class)
                         }
                 )
+        }),
+        @SqlResultSetMapping(name = "Servico.dtoMappingAlvenaria", classes = {
+                @ConstructorResult(targetClass = ServicoDto.class,
+                        columns ={
+                                @ColumnResult(name = "ID_SERVICO", type = Integer.class),
+                                @ColumnResult(name = "TIPO_SERVICO", type = String.class),
+                                @ColumnResult(name = "VALOR_UNITARIO", type = Double.class),
+                                @ColumnResult(name = "DIMENSAO", type = Double.class),
+                                @ColumnResult(name = "UNIDADE_MEDIDA", type = String.class),
+                                @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
+                                @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
+                                @ColumnResult(name = "EXECUTOR", type = String.class),
+                                @ColumnResult(name = "CONFERENTE", type = String.class),
+                                @ColumnResult(name = "DATA_INICIO", type = Date.class),
+                                @ColumnResult(name = "PREV_TERMINO", type = Date.class),
+                                @ColumnResult(name = "DATA_FINAL", type = Date.class),
+                                @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
+                                @ColumnResult(name = "OBS", type = String.class),
+                                @ColumnResult(name = "ID_AVALIACAO", type = Integer.class)
+                        }
+                )
         })
 })
 @NamedNativeQueries({
@@ -34,6 +55,8 @@ import java.util.Date;
         @NamedNativeQuery(name="Servico.servicosAguardandoAval", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.servicosAvaliados", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NOT NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.servicosAguardandoReaval", query = "SELECT S.ID_SERVICO, S.CENTRO_DE_CUSTO, S.CONFERENTE, S.DATA_FINAL, S.DATA_INICIO, S.DIMENSAO, S.EXECUTOR, S.LOCAL_EXECUCAO, S.OBS, S.PREV_TERMINO, S.TIPO_SERVICO, S.UNIDADE_MEDIDA, S.VALOR_TOTAL, S.VALOR_UNITARIO, A.ID_AVALIACAO\n" +
+                "FROM SERVICO S INNER JOIN AVALIACAO A ON S.ID_SERVICO = A.ID_SERVICO WHERE A.RESULTADO = FALSE AND A.RESULT_REAVAL IS NULL", resultSetMapping = "Servico.dtoMappingAlvenaria"),
 })
 
 @Entity

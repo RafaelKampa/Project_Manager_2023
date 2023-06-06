@@ -11,6 +11,7 @@ import { ListarCentrosComponent } from './listar-centros/listar-centros.componen
 import { AvaliarComponent } from './avaliar/avaliar.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard]},
       { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard]},
       { path: 'avaliar', component: AvaliarComponent, canActivate: [AuthGuard]},
+      { path: 'reavaliar', component: ReavaliarComponent, canActivate: [AuthGuard]},
       { path: '**', redirectTo: 'home' }
     ]
   }

@@ -84,7 +84,8 @@
 
 <ng-container *ngIf="servicoSelecionado.tipoServico === 'Alvenaria'">
     <app-avaliar-alvenaria #avaliarAlvenaria
-    [servicoSelecionado]="servicoSelecionado">
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "false">
     </app-avaliar-alvenaria>
 </ng-container>
 
