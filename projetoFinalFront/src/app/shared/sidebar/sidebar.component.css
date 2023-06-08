@@ -1,4 +1,17 @@
 a {
   color: white !important;
-  text-decoration: none !important;
+  text-decoration: none !important;  
+}
+
+.fontStyle{    
+  color: rgb(56, 48, 33);
+}
+
+.buttonStyle {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.margeTop{
+  margin-top: 20px;
 }
