@@ -56,7 +56,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Servico.servicosAvaliados", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NOT NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.servicosAguardandoReaval", query = "SELECT S.ID_SERVICO, S.CENTRO_DE_CUSTO, S.CONFERENTE, S.DATA_FINAL, S.DATA_INICIO, S.DIMENSAO, S.EXECUTOR, S.LOCAL_EXECUCAO, S.OBS, S.PREV_TERMINO, S.TIPO_SERVICO, S.UNIDADE_MEDIDA, S.VALOR_TOTAL, S.VALOR_UNITARIO, A.ID_AVALIACAO\n" +
-                "FROM SERVICO S INNER JOIN AVALIACAO A ON S.ID_SERVICO = A.ID_SERVICO WHERE A.RESULTADO = FALSE AND A.RESULT_REAVAL IS NULL", resultSetMapping = "Servico.dtoMappingAlvenaria"),
+                "FROM SERVICO S INNER JOIN AVALIACAO A ON S.ID_SERVICO = A.ID_SERVICO WHERE A.RESULTADO = FALSE AND (A.RESULT_REAVAL IS NULL OR A.RESULT_REAVAL = FALSE)", resultSetMapping = "Servico.dtoMappingAlvenaria"),
 })
 
 @Entity

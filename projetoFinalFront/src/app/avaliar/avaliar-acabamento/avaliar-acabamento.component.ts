@@ -10,6 +10,7 @@ import { ServicosModel } from '../../shared/models/servico.model';
 import { ServicosService } from '../../shared/service/servico.service';
 import { AvaliarService } from '../service/avaliar.service';
 import { ParamAcabamentoService } from '../../shared/service/param-acabamento.service';
+import { ReavaliacaoModel } from '../reavaliar/model/reavaliacao.model';
 
 @Component({
   selector: 'app-avaliar-acabamento',
@@ -21,8 +22,12 @@ export class AvaliarAcabamentoComponent {
   @Input()
   public servicoSelecionado: ServicosModel = new ServicosModel();
 
+  @Input()
+  public indReavaliacao: Boolean = false;
+
   public paramAcabamento = new ParametrosAcabamentoModel();
   public avaliacao = new AvaliacaoModel();
+  public reavaliacao = new ReavaliacaoModel(); 
   public dataSource : ServicosModel[] = [];
   public prumo?: Boolean;
   public nivel?: Boolean;
@@ -68,32 +73,58 @@ export class AvaliarAcabamentoComponent {
   public async avaliarAcabamento() {
     try {
       if (
-        !this.avaliarAcabamentoForm.get('reguamento')?.value ||
-        !this.avaliarAcabamentoForm.get('alisamento')?.value ||
-        !this.avaliarAcabamentoForm.get('resultado')?.value
+        this.avaliarAcabamentoForm.get('reguamento')?.value == null ||
+        this.avaliarAcabamentoForm.get('alisamento')?.value == null ||
+        this.avaliarAcabamentoForm.get('resultado')?.value == null
       ) {
         alert("Preencha todos os campos antes de avaliar.");
         return;
       }
-      this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
-      this.avaliacao.idServico = this.servicoSelecionado.idServico;
-      this.avaliacao.usuExect = this.servicoSelecionado.executor;
-      this.avaliacao.usuConf = this.servicoSelecionado.conferente;
-      this.avaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
-      this.avaliacao.dataAvaliacao = new Date();
-      this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
-
-      this.paramAcabamento.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
-      this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
-      this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
-      this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
-      this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
-      await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
-      this.paramAcabamento.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
-      await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
-      await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
-      await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
-      alert("Serviço Avaliado com Sucesso!");
+      if (!this.indReavaliacao){ //Avaliação inicial
+        this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
+        this.avaliacao.idServico = this.servicoSelecionado.idServico;
+        this.avaliacao.usuExect = this.servicoSelecionado.executor;
+        this.avaliacao.usuConf = this.servicoSelecionado.conferente;
+        this.avaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+        this.avaliacao.dataAvaliacao = new Date();
+        this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
+  
+        this.paramAcabamento.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+        this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
+        this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
+        this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
+        this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
+        await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
+        this.paramAcabamento.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+        await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
+        await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+        if (this.avaliacao.resultado) {
+          await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+        }
+      
+      } else { //Reavaliação
+        if (this.servicoSelecionado.idAvaliacao) {
+          this.reavaliacao.dataReavaliacao = new Date();
+          this.reavaliacao.resultReaval = this.avaliarAcabamentoForm.get('resultado')?.value;
+          this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
+          this.reavaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+          await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
+          this.paramAcabamento.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+          await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
+          if (this.reavaliacao.resultReaval) {
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+            await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+          }
+        } else {
+          alert("Serviço não avaliado!\nContate o Administrador");
+        }
+      }
+      
+      if (!this.indReavaliacao) {
+        alert("Serviço Avaliado com Sucesso!");
+      } else {
+        alert("Serviço Reavaliado com Sucesso!");
+      }
       this.router.navigate(['/api/servico-home']);
     } catch{
       alert("Serviço não avaliado!\nContate o Administrador");

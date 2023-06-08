@@ -1,6 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
+import com.br.projetoFinal.dto.ReavaliacaoDto;
 import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.service.AvaliacaoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -32,11 +33,11 @@ public class AvaliacaoController {
         }
     }
 
-    @PostMapping("/reavaliar")
-    public ResponseEntity<?> reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    @PutMapping("/reavaliar")
+    public ResponseEntity<?> reavaliar(@RequestBody ReavaliacaoDto reavaliacaoDto) throws ExcecaoExemplo, SystemException {
         try {
-            avaliacaoService.reavaliar(avaliacaoDto);
-            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+            avaliacaoService.reavaliar(reavaliacaoDto);
+            return new ResponseEntity<>(reavaliacaoDto, HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

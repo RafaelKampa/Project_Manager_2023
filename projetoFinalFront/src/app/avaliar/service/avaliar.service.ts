@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ServicosModel } from '../../shared/models/servico.model';
 import { Observable } from 'rxjs';
-import { AvaliacaoModel } from 'src/app/shared/models/avaliacao.model';
+import { AvaliacaoModel } from '../../shared/models/avaliacao.model';
+import { ReavaliacaoModel } from '../reavaliar/model/reavaliacao.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class AvaliarService {
     return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/avaliar", avaliacaoModel, this.httpOptions);
   }
 
-  reavaliar(avaliacaoModel: AvaliacaoModel): Observable<AvaliacaoModel> {
-    return this.httpClient.post<AvaliacaoModel>("http://localhost:8082/avaliacao/reavaliar/", avaliacaoModel, this.httpOptions);
+  reavaliar(avaliacaoModel: ReavaliacaoModel): Observable<ReavaliacaoModel> {
+    return this.httpClient.put<ReavaliacaoModel>("http://localhost:8082/avaliacao/reavaliar/", avaliacaoModel, this.httpOptions);
   }
 
   buscarUltimoId(): Observable<number> {

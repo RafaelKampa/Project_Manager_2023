@@ -1,6 +1,7 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
+import com.br.projetoFinal.dto.ReavaliacaoDto;
 import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.repository.AvaliacaoRepository;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -42,14 +43,14 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
-    public void reavaliar(AvaliacaoDto avaliacaoDto) {
+    public void reavaliar(ReavaliacaoDto reavaliacaoDto) {
         em.createNativeQuery("UPDATE AVALIACAO \n" +
                         "SET RESULT_REAVAL = :RESULT_REAVAL, DATA_REAVALIACAO = :DATA_REAVALIACAO, OBS = :OBS \n" +
                         "WHERE ID_AVALIACAO = :ID_AVALIACAO")
-                .setParameter("ID_AVALIACAO", avaliacaoDto.getIdAvaliacao())
-                .setParameter("RESULT_REAVAL", avaliacaoDto.getResultReaval())
-                .setParameter("DATA_REAVALIACAO", avaliacaoDto.getDataReavaliacao())
-                .setParameter("OBS", avaliacaoDto.getObs())
+                .setParameter("ID_AVALIACAO", reavaliacaoDto.getIdAvaliacao())
+                .setParameter("RESULT_REAVAL", reavaliacaoDto.getResultReaval())
+                .setParameter("DATA_REAVALIACAO", reavaliacaoDto.getDataReavaliacao())
+                .setParameter("OBS", reavaliacaoDto.getObs())
                 .executeUpdate();
     }
 

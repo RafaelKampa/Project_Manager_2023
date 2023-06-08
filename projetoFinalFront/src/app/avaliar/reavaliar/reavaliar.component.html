@@ -76,28 +76,31 @@
     </table>
 </div>
 
-<ng-container *ngIf="servicoSelecionado.tipoServico === 'Acabamento'">
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Acabamento' && showQuestionario == true">
     <app-avaliar-acabamento  #avaliarAcabamento
-    [servicoSelecionado]="servicoSelecionado">
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
     </app-avaliar-acabamento>
 </ng-container>
 
-<ng-container *ngIf="servicoSelecionado.tipoServico === 'Alvenaria'">
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Alvenaria' && showQuestionario == true">
     <app-avaliar-alvenaria #avaliarAlvenaria
     [servicoSelecionado]="servicoSelecionado"
     [indReavaliacao] = "true">
     </app-avaliar-alvenaria>
 </ng-container>
 
-<ng-container *ngIf="servicoSelecionado.tipoServico === 'Carpintaria'">
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Carpintaria' && showQuestionario == true">
     <app-avaliar-carpintaria  #avaliarCarpintaria
-    [servicoSelecionado]="servicoSelecionado">
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
     </app-avaliar-carpintaria>
 </ng-container>
 
-<ng-container *ngIf="servicoSelecionado.tipoServico === 'Ferragem'">
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Ferragem' && showQuestionario == true">
     <app-avaliar-ferragem #avaliarFerragem
-    [servicoSelecionado]="servicoSelecionado">
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
     </app-avaliar-ferragem>
 </ng-container>
 

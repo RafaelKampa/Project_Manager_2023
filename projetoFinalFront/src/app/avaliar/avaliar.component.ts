@@ -19,6 +19,7 @@ export class AvaliarComponent implements OnInit {
   public displayedColumnsSemAval: string[] = ['idServico', 'tipoServico', 'valorUnitario', 'dimensao', 'unidadeMedida', 'centroDeCusto', 'localExecucao', 'executor', 'conferente', 'dataInicio', 'previsaoTermino', 'valorTotal', 'avaliar'];
   public dataSource : ServicosModel[] = [];
   public showTabela: boolean = true;
+  public showQuestionario: boolean = false;
   public servicoSelecionado: ServicosModel = new ServicosModel();
   public avaliacao = new AvaliacaoModel();
 
@@ -57,10 +58,16 @@ export class AvaliarComponent implements OnInit {
     this.avaliacao.usuExect = this.servicoSelecionado.executor;
     this.avaliacao.usuConf = this.servicoSelecionado.conferente;
     this.avaliacao.dataAvaliacao = new Date();
+    this.showQuestionario = true;
   }
 
   cancelar() {
-    this.router.navigate(['/api/servico-home']);
+    if (this.showQuestionario) {
+      this.showTabela = true;
+      this.showQuestionario = false;
+    } else {
+      this.router.navigate(['/api/servico-home']);
+    }
   }
 
 }
