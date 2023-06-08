@@ -36,6 +36,9 @@ import { AvaliarAcabamentoComponent } from './avaliar/avaliar-acabamento/avaliar
 import { AvaliarFerragemComponent } from './avaliar/avaliar-ferragem/avaliar-ferragem.component';
 import { AvaliarCarpintariaComponent } from './avaliar/avaliar-carpintaria/avaliar-carpintaria.component';
 import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component'; 
+import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
+import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
+import { ServicosComponent } from './servicos/servicos.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -60,6 +63,9 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     AvaliarFerragemComponent,
     AvaliarCarpintariaComponent,
     ReavaliarComponent,
+    CentroDeCustosComponent,
+    HomeAvaliarComponent,
+    ServicosComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,13 +11,10 @@ import { ListarCentrosComponent } from './listar-centros/listar-centros.componen
 import { AvaliarComponent } from './avaliar/avaliar.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
-<<<<<<< HEAD
 import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component';
-=======
 import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
-import { ServicosComponent } from './servicos/servicos.component';
 import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
->>>>>>> adaptação-layout
+import { ServicosComponent } from './servicos/servicos.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,13 +36,10 @@ const routes: Routes = [
       { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard]},
       { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard]},
       { path: 'avaliar', component: AvaliarComponent, canActivate: [AuthGuard]},
-<<<<<<< HEAD
       { path: 'reavaliar', component: ReavaliarComponent, canActivate: [AuthGuard]},
-=======
       { path: 'centro-de-custos', component: CentroDeCustosComponent, canActivate: [AuthGuard]},
       { path: 'home-avaliar', component: HomeAvaliarComponent, canActivate: [AuthGuard]},
       { path: 'servicos', component: ServicosComponent, canActivate: [AuthGuard]},
->>>>>>> adaptação-layout
       { path: '**', redirectTo: 'home' }
     ]
   }

@@ -7,9 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-centro-de-custos',
   templateUrl: './centro-de-custos.component.html',
-  styleUrls: ['./centro-de-custos.component.css'],
-  standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule],
+  styleUrls: ['./centro-de-custos.component.css']
 })
 export class CentroDeCustosComponent implements OnInit {
 

@@ -7,9 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-home-avaliar',
   templateUrl: './home-avaliar.component.html',
-  styleUrls: ['./home-avaliar.component.css'],
-  standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule],
+  styleUrls: ['./home-avaliar.component.css']
 })
 export class HomeAvaliarComponent implements OnInit {
 

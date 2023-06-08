@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
-<<<<<<< HEAD
+    <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ReavaliacaoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" afterDir="false" />
@@ -20,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/AvaliacaoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/AvaliacaoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" afterDir="false" />
@@ -37,11 +38,6 @@
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.css" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
->>>>>>> adaptação-layout
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +66,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
   </component>
@@ -95,16 +91,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/lucas.vecino/Documents/GitHub/Project_Manager_2023/projetoFinal",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\rafae\IdeaProjects\Project_Manager_2023\projetoFinal" />

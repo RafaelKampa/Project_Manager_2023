@@ -7,9 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-servicos',
   templateUrl: './servicos.component.html',
-  styleUrls: ['./servicos.component.css'],
-  standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule],
+  styleUrls: ['./servicos.component.css']
 })
 export class ServicosComponent implements OnInit {
 
