@@ -37,9 +37,7 @@ table {
 
  .tittle{
     display: flex;
-    justify-content: center;
-    font-weight: bolder;
-    font-style: italic;
+    justify-content: center;    
     color: rgb(56, 48, 33);
     margin-top: 60px;
     margin-bottom: 60px;
@@ -62,3 +60,9 @@ table {
     color: rgb(255, 255, 255);
     margin-right: 5px;
  }
+
+ .button4{
+   background-color: rgb(161, 161, 161);
+   color: rgb(255, 255, 255);
+   margin-top: 5px;
+}

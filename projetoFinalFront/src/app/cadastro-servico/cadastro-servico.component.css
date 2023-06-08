@@ -9,9 +9,7 @@
 
 .tittle{
     display: flex;
-    justify-content: center;
-    font-weight: bolder;
-    font-style: italic;
+    justify-content: center;    
     color: rgb(56, 48, 33);
     margin-top: 20px;
     margin-bottom: 20px;

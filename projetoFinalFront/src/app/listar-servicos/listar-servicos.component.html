@@ -2,7 +2,7 @@
 <div class="button">
     <button class="button1" mat-flat-button color="" (click)="listarTodosServicos()">Listar todos os serviços</button>
     <button class="button2" mat-flat-button color="" (click)="listarServicosAguardandoAvaliacao()">Listar serviços não avaliados</button>
-    <button class="button3" mat-flat-button color=""  (click)="listarServicosAvaliados()">Listar serviços avaliados</button>
+    <button class="button3" mat-flat-button color="" (click)="listarServicosAvaliados()">Listar serviços avaliados</button>
 </div>
 
 <!-- Tabela para listar Todos os Serviços -->
@@ -152,8 +152,9 @@
 </div>
 
 <div *ngIf="cabecalho != 0" class="center">
-    <button class="button" mat-flat-button color="gray" padding="10px" (click)="limpar()">Limpar</button>
+    <button class="button4" mat-flat-button color="gray" padding="10px" (click)="limpar()">Limpar</button>
 </div>
+
 <div class="center">
-    <button class="button" mat-flat-button color="gray" padding="10px" (click)="voltar()">Voltar</button>
+    <button class="button4" mat-flat-button color="gray" padding="10px" (click)="voltar()">Voltar</button>
 </div>

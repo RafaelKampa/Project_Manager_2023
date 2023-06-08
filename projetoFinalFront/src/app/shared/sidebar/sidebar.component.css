@@ -3,9 +3,7 @@ a {
   text-decoration: none !important;  
 }
 
-.fontStyle{  
-  font-weight: bolder;
-  font-style: italic;
+.fontStyle{    
   color: rgb(56, 48, 33);
 }
 
