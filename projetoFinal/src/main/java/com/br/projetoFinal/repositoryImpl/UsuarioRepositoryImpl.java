@@ -1,8 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
-import com.br.projetoFinal.dto.TipoServicoDto;
 import com.br.projetoFinal.dto.UsuarioDto;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 import org.springframework.stereotype.Repository;
 
@@ -83,6 +81,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public void excluirPorId(Integer idUsuario) {
         TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.excluirPorid", UsuarioDto.class)
                 .setParameter("ID_USUARIO", idUsuario);
+    }
+
+    @Override
+    public Integer buscarUltimoId() {
+        TypedQuery<Integer> query = em.createQuery("SELECT MAX(u.idUsuario) FROM Usuario u", Integer.class);
+        return query.getSingleResult();
     }
 
 }

@@ -1183,3 +1183,65 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-06-08 23:25:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Conferente, 1, 5, 5000);\000d\000a\000d\000ainsert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)\000d\000avalues ('[*]Conferente', 'PUCPR', '00000000000', '2023-01-01', '1991-01-02', 'bernardo.diniz@pucpr.edu.br', 'Rua Imaculada Conceição', 'Bernardo Zeni Diniz', 5000, '1234', 2, 'bernardo');\000d\000a\000d\000ainsert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Conferente, 2, 5, 5000)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente, 1, 5, 5000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Conferente', 'PUCPR', '00000000000', '2023-01-01', '1991-01-02', 'bernardo.diniz@pucpr.edu.br', 'Rua Imaculada Conceição', 'Bernardo Zeni Diniz', 5000, '1234', 2, 'bernardo');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente, 2, 5, 5000) [42001-214]
+2023-06-08 23:25:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Conferente, 3, 5, 5000);\000d\000a\000d\000ainsert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)\000d\000avalues ('[*]Carpinteiro', 'Autônomo', '11111111111', '2023-01-01', '1990-01-01', 'heitor@gmail.com', 'Rua Tefé, 150', 'Heitor Kubis', 2000, '1234', 1, 'heitor');\000d\000a\000d\000ainsert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Carpinteiro, 4, 5, 2000)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente, 3, 5, 5000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Carpinteiro', 'Autônomo', '11111111111', '2023-01-01', '1990-01-01', 'heitor@gmail.com', 'Rua Tefé, 150', 'Heitor Kubis', 2000, '1234', 1, 'heitor');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Carpinteiro, 4, 5, 2000) [42001-214]
+2023-06-08 23:25:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Armador, 5, 5, 2000);\000d\000a\000d\000ainsert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)\000d\000avalues ('Pedreiro', 'Autônomo', '33333333333', '2023-01-01', '1990-01-01', 'julian@gmail.com', 'Rua das Árvores, 200', 'Julian Almeida', 2000, '1234', 1, 'julian');\000d\000a\000d\000ainsert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Pedreiro', 6, 5, 2000);\000d\000a\000d\000ainsert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)\000d\000avalues ('Azuleijista', 'Autônomo', '44444444444', '2023-01-01', '1990-01-01', 'jonathan@gmail.com', 'Rua da PQP, 1', 'Jonathan Gugu', 2000, '1234', 1, 'jonathan');\000d\000a\000d\000ainsert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)\000d\000avalues(2023, 'Azuleijista', 7, 5, 2000);\000d\000a\000d\000aINSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)\000d\000aVALUES('Alvenaria', 'm[*]²', 15);\000d\000a\000d\000aINSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)\000d\000aVALUES('Carpintaria', 'm²', 9);\000d\000a\000d\000aINSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)\000d\000aVALUES('Acabamento', 'm²', 40);\000d\000a\000d\000aINSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)\000d\000aVALUES('Ferragem', 'kg', 10);\000d\000a\000d\000aINSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)\000d\000aVALUES('Rua Milano, 1', 'Edifício Milano', 0);\000d\000a\000d\000aINSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)\000d\000aVALUES('Rua Elias Stainsack, 139', 'Edifício Elias', 0);"; SQL statement:
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Armador, 5, 5, 2000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Pedreiro', 'Autônomo', '33333333333', '2023-01-01', '1990-01-01', 'julian@gmail.com', 'Rua das Árvores, 200', 'Julian Almeida', 2000, '1234', 1, 'julian');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Pedreiro', 6, 5, 2000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Azuleijista', 'Autônomo', '44444444444', '2023-01-01', '1990-01-01', 'jonathan@gmail.com', 'Rua da PQP, 1', 'Jonathan Gugu', 2000, '1234', 1, 'jonathan');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Azuleijista', 7, 5, 2000);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Alvenaria', 'm²', 15);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Carpintaria', 'm²', 9);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Acabamento', 'm²', 40);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Ferragem', 'kg', 10);
+
+INSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Milano, 1', 'Edifício Milano', 0);
+
+INSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Elias Stainsack, 139', 'Edifício Elias', 0); [42000-214]
+2023-06-08 23:27:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CENTRO_CUSTO" not found; SQL statement:
+INSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Milano, 1', 'Edifício Milano', 0) [42102-214]
+2023-06-08 23:27:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CENTRO_CUSTO" not found; SQL statement:
+INSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Elias Stainsack, 139', 'Edifício Elias', 0) [42102-214]

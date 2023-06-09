@@ -5,39 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ReavaliacaoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/RemuneracaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ValorProducaoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/RemuneracaoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ValorProducaoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Remuneracao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ValorProducao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/RemuneracaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ValorProducaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/RemuneracaoRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ValorProducaoRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/RemuneracaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ValorProducaoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/RemuneracaoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/AvaliacaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/AvaliacaoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/AvaliacaoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/AvaliacaoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/AvaliacaoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/AvaliacaoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-alvenaria/avaliar-alvenaria.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-carpintaria/avaliar-carpintaria.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-carpintaria/avaliar-carpintaria.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-carpintaria/avaliar-carpintaria.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-carpintaria/avaliar-carpintaria.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-ferragem/avaliar-ferragem.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/reavaliar/reavaliar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/service/avaliar.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/cadastro-servico/cadastro-servico.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/ProjetoFinalApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/ProjetoFinalApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/UsuarioServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +41,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -66,7 +69,7 @@
       <map>
         <entry key="com.haulmont.jpb.jpaInspector" value="false" />
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -81,7 +84,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2F6B0cplz88wza6WQSx2o2zarxo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

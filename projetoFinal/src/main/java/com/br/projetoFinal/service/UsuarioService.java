@@ -1,7 +1,6 @@
 package com.br.projetoFinal.service;
 
 import com.br.projetoFinal.dto.UsuarioDto;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 
 import javax.transaction.SystemException;
@@ -15,4 +14,5 @@ public interface UsuarioService {
     UsuarioDto buscarPorId(Integer idUsuario);
     UsuarioDto buscarPorNome(String login);
     void excluir(Integer idUsuario) throws SystemException;
+    Integer buscarUltimoId();
 }

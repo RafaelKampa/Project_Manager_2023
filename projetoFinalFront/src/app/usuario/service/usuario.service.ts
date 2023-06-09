@@ -17,7 +17,7 @@ export class UsuarioService {
     })
   };
 
-  salvarUsuario(usuarioModel: UsuarioModel) {
+  salvarUsuario(usuarioModel: UsuarioModel): Observable<UsuarioModel> {
     return this.httpClient.post<UsuarioModel>("http://localhost:8082/usuario/salvarUsuario",usuarioModel);
   }
 
@@ -35,6 +35,10 @@ export class UsuarioService {
 
   buscarPorNome(nome: string) {
     return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{nome}", this.httpOptions);
+  }
+
+  buscarUltimoId() {
+    return this.httpClient.get("http://localhost:8082/usuario/buscarUltimoId");
   }
 
 }

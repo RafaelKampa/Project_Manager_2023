@@ -17,9 +17,7 @@ public class ServicoDto extends Servico {
     public Date previsaoTermino;
     public Date dataFinal;
     public Double valorTotal;
-
     public String obs;
-
     public Integer idAvaliacao;
 
     public ServicoDto() {

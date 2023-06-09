@@ -4,7 +4,6 @@ import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -84,6 +83,16 @@ public class UsuarioController {
         try {
             usuarioService.excluir(idUsuario);
             return new ResponseEntity<>(idUsuario, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarUltimoId")
+    public ResponseEntity<Integer> buscarUltimoId() {
+        try {
+            Integer ultimoId = usuarioService.buscarUltimoId();
+            return new ResponseEntity<>(ultimoId, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

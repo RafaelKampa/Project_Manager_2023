@@ -28,6 +28,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Avaliacao.buscarPorConferente", query = "SELECT * FROM AVALIACAO WHERE ID_USU_CONF = :ID_USU_CONF ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_AVALIACAO = s.ID_SERVICO WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.listarAvaliacoes", query = "SELECT * FROM AVALIACAO ODER BY ID_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
+        @NamedNativeQuery(name="Avaliacao.buscarUltimoId", query = "SELECT MAX(ID_AVALIACAO) FROM AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
 })
 @Entity
 @Table(name = "AVALIACAO")

@@ -93,4 +93,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
+    @Override
+    public Integer buscarUltimoId() {
+        return usuarioRepository.buscarUltimoId();
+    }
 }
