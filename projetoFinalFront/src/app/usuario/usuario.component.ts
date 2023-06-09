@@ -58,18 +58,27 @@ export class UsuarioComponent implements OnInit {
   public async salvar() {
     try {
         this.usuario.tipoUsuario = 2; 
-        this.usuario.username = this.cadastroUserForm.get('username')?.value;
-        this.usuario.nome = this.cadastroUserForm.get('nome')?.value;
-        this.usuario.dataNascimento = this.cadastroUserForm.get('dataNascimento')?.value;
-        this.usuario.cpf = this.cadastroUserForm.get('cpf')?.value;
-        this.usuario.enderecoResidencial = this.cadastroUserForm.get('enderecoResidencial')?.value;
-        this.usuario.email = this.cadastroUserForm.get('email')?.value;
-        this.usuario.contratante = this.cadastroUserForm.get('contratante')?.value;
-        this.usuario.dataAdmissao = this.cadastroUserForm.get('dataAdmissao')?.value;
-        this.usuario.cargo = this.cadastroUserForm.get('cargo')?.value;
-        this.usuario.remuneracao = this.cadastroUserForm.get('remuneracao')?.value
-        this.usuario.telefone = this.cadastroUserForm.get('telefone')?.value;
-        this.usuario.senha = this.cadastroUserForm.get('senha')?.value;
+        this.usuario.username = this.cadastroUserForm.get('username')?.value ?? "";
+        this.usuario.nome = this.cadastroUserForm.get('nome')?.value ?? "";
+        const dataNascimento = this.cadastroUserForm.get('dataNascimento')?.value;
+        if (dataNascimento) {
+        this.usuario.dataNascimento = new Date(dataNascimento);
+        }
+        this.usuario.cpf = this.cadastroUserForm.get('cpf')?.value ?? "";
+        this.usuario.enderecoResidencial = this.cadastroUserForm.get('enderecoResidencial')?.value ?? "";
+        this.usuario.email = this.cadastroUserForm.get('email')?.value ?? "";
+        this.usuario.contratante = this.cadastroUserForm.get('contratante')?.value ?? "";
+        const dataAdmissao = this.cadastroUserForm.get('dataAdmissao')?.value;
+        if (dataAdmissao) {
+        this.usuario.dataAdmissao = new Date(dataAdmissao);
+        }
+        this.usuario.cargo = this.cadastroUserForm.get('cargo')?.value ?? "";
+        const remuneracao = this.cadastroUserForm.get('remuneracao')?.value;
+        if (remuneracao) {
+          this.usuario.remuneracao = parseFloat(remuneracao);
+        }
+        this.usuario.telefone = this.cadastroUserForm.get('telefone')?.value ?? "";
+        this.usuario.senha = this.cadastroUserForm.get('senha')?.value ?? "";
         await lastValueFrom(this.usuarioService.salvarUsuario(this.usuario));
         this.remuneracaoModel.idUsuario = +await lastValueFrom(this.usuarioService.buscarUltimoId())
         console.log(this.remuneracaoModel.idUsuario);

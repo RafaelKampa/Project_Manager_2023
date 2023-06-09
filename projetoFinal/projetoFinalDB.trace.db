@@ -1245,3 +1245,8 @@ VALUES('Rua Milano, 1', 'Edifício Milano', 0) [42102-214]
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CENTRO_CUSTO" not found; SQL statement:
 INSERT INTO CENTRO_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
 VALUES('Rua Elias Stainsack, 139', 'Edifício Elias', 0) [42102-214]
+2023-06-09 00:48:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USUARIO update [*]usuario\000d\000aset tipo_usuario = 2\000d\000awhere cargo <> 'Conferente'"; SQL statement:
+SELECT * FROM USUARIO update usuario
+set tipo_usuario = 2
+where cargo <> 'Conferente' [42000-214]

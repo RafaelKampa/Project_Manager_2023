@@ -12,7 +12,7 @@ public interface UsuarioService {
     List<UsuarioDto> buscarConferentes();
     List<UsuarioDto> buscarExecutores();
     UsuarioDto buscarPorId(Integer idUsuario);
-    UsuarioDto buscarPorNome(String login);
+    UsuarioDto buscarPorNome(String nomeUsuario);
     void excluir(Integer idUsuario) throws SystemException;
     Integer buscarUltimoId();
 }

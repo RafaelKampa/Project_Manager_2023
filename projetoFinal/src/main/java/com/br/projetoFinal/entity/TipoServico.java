@@ -19,7 +19,7 @@ import javax.persistence.*;
 @NamedNativeQueries({
         @NamedNativeQuery(name="TipoServico.buscarPorId", query = "SELECT * FROM TIPO_SERVICO_TABLE WHERE ID_TIPO_SERVICO = :ID_TIPO_SERVICO", resultSetMapping = "TipoServico.dtoMapping"),
         @NamedNativeQuery(name="TipoServico.buscarPorNome", query = "SELECT * FROM TIPO_SERVICO_TABLE WHERE NOME_SERVICO LIKE CONCAT('%', :NOME_SERVICO, '%') ORDER BY ID_TIPO_SERVICO", resultSetMapping = "TipoServico.dtoMapping"),
-        @NamedNativeQuery(name="TipoServico.listar", query = "SELECT * FROM TIPO_SERVICO_TABLE ORDER BY ID_TIPO_SERVICO", resultSetMapping = "TipoServico.dtoMapping"),
+        @NamedNativeQuery(name="TipoServico.listar", query = "SELECT * FROM TIPO_SERVICO_TABLE ORDER BY NOME_SERVICO", resultSetMapping = "TipoServico.dtoMapping"),
         @NamedNativeQuery(name="TipoServico.excluirPorId", query = "DELETE FROM TIPO_SERVICO_TABLE WHERE ID_TIPO_SERVICO = :ID_TIPO_SERVICO", resultSetMapping = "TipoServico.dtoMapping"),
 })
 

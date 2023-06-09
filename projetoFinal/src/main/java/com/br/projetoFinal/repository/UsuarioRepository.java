@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UsuarioRepository{
 
-    UsuarioDto buscarPorNome(String login);
+    UsuarioDto buscarPorNome(String nomeUsuario);
     void salvarUsuario(UsuarioDto usuarioDto) throws ExcecaoExemplo, SystemException;
     List<UsuarioDto> listar();
     List<UsuarioDto> buscarConferentes();

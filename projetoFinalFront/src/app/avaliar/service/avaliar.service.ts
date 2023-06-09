@@ -34,4 +34,8 @@ export class AvaliarService {
   buscarUltimoId(): Observable<number> {
     return this.httpClient.get<number>("http://localhost:8082/avaliacao/buscarUltimoId", this.httpOptions);
   }
+
+  buscarPorId(idAvaliacao: number): Observable<AvaliacaoModel> {
+    return this.httpClient.get<AvaliacaoModel>("http://localhost:8082/avaliacao/buscarPorId/" + idAvaliacao, this.httpOptions);
+  }
 }

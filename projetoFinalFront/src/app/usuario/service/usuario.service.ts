@@ -34,7 +34,7 @@ export class UsuarioService {
   }
 
   buscarPorNome(nome: string) {
-    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/{nome}", this.httpOptions);
+    return this.httpClient.get<UsuarioModel>("http://localhost:8082/usuario/buscarPorNome/" + nome, this.httpOptions);
   }
 
   buscarUltimoId() {

@@ -98,5 +98,4 @@ public class AvaliacaoController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
-
 }

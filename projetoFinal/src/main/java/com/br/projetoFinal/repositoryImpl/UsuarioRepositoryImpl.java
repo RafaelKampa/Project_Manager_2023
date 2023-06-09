@@ -1,6 +1,7 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.UsuarioDto;
+import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,9 +24,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDto buscarPorNome(String login) {
-        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN")
-            .setParameter("LOGIN", login);
+    public UsuarioDto buscarPorNome(String nomeUsuario) {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarPorNome", UsuarioDto.class)
+                .setParameter("NOME", nomeUsuario);
         return query.getSingleResult();
     }
 

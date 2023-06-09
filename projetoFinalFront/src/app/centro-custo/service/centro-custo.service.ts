@@ -28,4 +28,8 @@ export class CentroCustoService {
     return this.httpClient.put("http://localhost:8082/centroDeCusto/incluirValor/" + centroDeCusto + "/" + valorIncremento, null, this.httpOptions);
   }
 
+  public buscarPorNome(nomeCentroDeCusto: string): Observable<CentroCustoModel> {
+    return this.httpClient.get<CentroCustoModel>("http://localhost:8082/centroDeCusto/buscarPorNome/" + nomeCentroDeCusto, this.httpOptions);
+  }
+
 }

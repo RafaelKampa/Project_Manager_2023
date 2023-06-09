@@ -68,10 +68,10 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/buscarPorNome/{login}")
-    public ResponseEntity buscarPorNome(@PathVariable("login") String login) {
+    @GetMapping("/buscarPorNome/{nomeUsuario}")
+    public ResponseEntity buscarPorNome(@PathVariable("nomeUsuario") String nomeUsuario) {
         try {
-            UsuarioDto usuario = usuarioService.buscarPorNome(login);
+            UsuarioDto usuario = usuarioService.buscarPorNome(nomeUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
