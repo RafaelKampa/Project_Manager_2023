@@ -11,6 +11,11 @@ import { ParamCarpintariaService } from '../../shared/service/param-carpintaria.
 import { ServicosService } from '../../shared/service/servico.service';
 import { AvaliarService } from '../service/avaliar.service';
 import { ReavaliacaoModel } from '../reavaliar/model/reavaliacao.model';
+import { ValorProducaoModel } from '../../shared/models/valor-producao.model';
+import { UsuarioModel } from '../../usuario/model/usuario.model';
+import { CentroCustoModel } from '../../shared/models/centro-custo.model';
+import { ValorProducaoService } from '../../shared/service/valor-producao.service';
+import { UsuarioService } from '../../usuario/service/usuario.service';
 
 @Component({
   selector: 'app-avaliar-carpintaria',
@@ -28,6 +33,9 @@ export class AvaliarCarpintariaComponent {
   public avaliacao = new AvaliacaoModel();
   public reavaliacao = new ReavaliacaoModel(); 
   public paramCarpintaria = new ParametrosCarpintariaModel();
+  public producaoModel: ValorProducaoModel = new ValorProducaoModel();
+  public usuarioModel: UsuarioModel = new UsuarioModel();
+  public centroDeCustoModel: CentroCustoModel = new CentroCustoModel();
   public nivelOuPrumo?: boolean;
   public estanqueidade?: boolean;
   public resultado?: Boolean;
@@ -36,6 +44,8 @@ export class AvaliarCarpintariaComponent {
     private avaliarService: AvaliarService,
     private paramCarpintariaService: ParamCarpintariaService,
     private centroService: CentroCustoService,
+    private producaoService: ValorProducaoService,
+    private usuarioService: UsuarioService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
@@ -77,6 +87,13 @@ export class AvaliarCarpintariaComponent {
         alert("Preencha todos os campos antes de avaliar.");
         return;
       }
+
+      this.paramCarpintaria.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
+      this.paramCarpintaria.estanqueidade = this.avaliarCarpintariaForm.get('estanqueidade')?.value ?? false;
+      this.paramCarpintaria.nivelOuPrumo = this.avaliarCarpintariaForm.get('nivelOuPrumo')?.value ?? false;
+      this.paramCarpintaria.dimensoes = this.servicoSelecionado.dimensao;
+      this.paramCarpintaria.tipoCarpintaria = this.avaliarCarpintariaForm.get('tipoCarpintaria')?.value ?? "";
+
       if (!this.indReavaliacao){ //Avaliação inicial
         this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
         this.avaliacao.idServico = this.servicoSelecionado.idServico;
@@ -86,18 +103,27 @@ export class AvaliarCarpintariaComponent {
         this.avaliacao.dataAvaliacao = new Date();
         this.avaliacao.resultado = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
   
-        this.paramCarpintaria.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
-        this.paramCarpintaria.estanqueidade = this.avaliarCarpintariaForm.get('estanqueidade')?.value ?? false;
-        this.paramCarpintaria.nivelOuPrumo = this.avaliarCarpintariaForm.get('nivelOuPrumo')?.value ?? false;
-        this.paramCarpintaria.dimensoes = this.servicoSelecionado.dimensao;
-        this.paramCarpintaria.tipoCarpintaria = this.avaliarCarpintariaForm.get('tipoCarpintaria')?.value ?? "";
-        this.avaliacao.resultado = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
         await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
-        this.paramCarpintaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+        let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+        this.paramCarpintaria.idAvaliacao = idAvaliacao;
         await lastValueFrom(this.paramCarpintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
-        await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+
         if (this.avaliacao.resultado) {
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
           await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+          this.producaoModel.idServico = this.servicoSelecionado.idServico;
+          this.producaoModel.idAvaliacao = idAvaliacao;
+          let centroSelecionado = await lastValueFrom(this.centroService.buscarPorNome(this.servicoSelecionado.centroDeCusto));
+          this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
+          this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
+          this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
+          this.producaoModel.mesReferencia = new Date().getMonth();
+          this.producaoModel.anoReferencia = new Date().getFullYear();
+          this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
+          await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+        
+        } else {
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
         }
       
       } else { //Reavaliação
@@ -106,13 +132,30 @@ export class AvaliarCarpintariaComponent {
           this.reavaliacao.resultReaval = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
           this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
           this.reavaliacao.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
+
           await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
-          this.paramCarpintaria.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+          let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+          this.paramCarpintaria.idAvaliacao = idAvaliacao;
           await lastValueFrom(this.paramCarpintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
+
           if (this.reavaliacao.resultReaval) {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
             await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+            this.producaoModel.idServico = this.servicoSelecionado.idServico;
+            this.producaoModel.idAvaliacao = idAvaliacao;
+            let centroSelecionado = await lastValueFrom(this.centroService.buscarPorNome(this.servicoSelecionado.centroDeCusto));
+            this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
+            this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
+            this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
+            this.producaoModel.mesReferencia = new Date().getMonth();
+            this.producaoModel.anoReferencia = new Date().getFullYear();
+            this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
+            await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+          
+          } else {
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
           }
+
         } else {
           alert("Serviço não avaliado!\nContate o Administrador");
         }

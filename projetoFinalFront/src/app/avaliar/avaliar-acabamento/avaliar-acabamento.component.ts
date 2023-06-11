@@ -90,6 +90,12 @@ export class AvaliarAcabamentoComponent {
         alert("Preencha todos os campos antes de avaliar.");
         return;
       }
+
+      this.paramAcabamento.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+      this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
+      this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
+      this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
+
       if (!this.indReavaliacao){ //Avaliação inicial
         this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
         this.avaliacao.idServico = this.servicoSelecionado.idServico;
@@ -99,17 +105,13 @@ export class AvaliarAcabamentoComponent {
         this.avaliacao.dataAvaliacao = new Date();
         this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
   
-        this.paramAcabamento.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
-        this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
-        this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
-        this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
-        this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
         await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
         let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
         this.paramAcabamento.idAvaliacao = idAvaliacao;
         await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
-        await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+
         if (this.avaliacao.resultado) {
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
           await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
           this.producaoModel.idServico = this.servicoSelecionado.idServico;
           this.producaoModel.idAvaliacao = idAvaliacao;
@@ -121,6 +123,9 @@ export class AvaliarAcabamentoComponent {
           this.producaoModel.anoReferencia = new Date().getFullYear();
           this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
           await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+
+        } else {
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
         }
       
       } else { //Reavaliação
@@ -128,16 +133,15 @@ export class AvaliarAcabamentoComponent {
           this.reavaliacao.dataReavaliacao = new Date();
           this.reavaliacao.resultReaval = this.avaliarAcabamentoForm.get('resultado')?.value;
           this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
-          this.paramAcabamento.reguamento = this.avaliarAcabamentoForm.get('reguamento')?.value ?? false;
-          this.paramAcabamento.alisamento = this.avaliarAcabamentoForm.get('alisamento')?.value ?? false;
-          this.paramAcabamento.dimensoes = this.servicoSelecionado.dimensao;
           this.reavaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+
           await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
           let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId());
           this.paramAcabamento.idAvaliacao = idAvaliacao;
           await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
+
           if (this.reavaliacao.resultReaval) {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
             await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
             this.producaoModel.idServico = this.servicoSelecionado.idServico;
             this.producaoModel.idAvaliacao = idAvaliacao;
@@ -149,6 +153,9 @@ export class AvaliarAcabamentoComponent {
             this.producaoModel.anoReferencia = new Date().getFullYear();
             this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
             await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+
+          } else {
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
           }
         } else {
           alert("Serviço não avaliado!\nContate o Administrador");

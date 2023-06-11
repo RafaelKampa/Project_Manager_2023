@@ -2,18 +2,13 @@ package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
 import com.br.projetoFinal.dto.ReavaliacaoDto;
-import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.repository.AvaliacaoRepository;
-import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.transaction.SystemException;
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
 
 @Repository

@@ -13,5 +13,6 @@ export class ServicosModel{
     public dataFinal: Date = new Date();
     public valorTotal: number = 0;
     public obs?: any;
+    public indConcluido?: Boolean;
     public idAvaliacao?: number = 0;
 }

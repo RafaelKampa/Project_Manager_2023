@@ -1,7 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.ParametrosAcabamentoDto;
-import com.br.projetoFinal.entity.ParametrosAcabamento;
 import com.br.projetoFinal.repository.ParametrosAcabamentoRepository;
 import org.springframework.stereotype.Repository;
 

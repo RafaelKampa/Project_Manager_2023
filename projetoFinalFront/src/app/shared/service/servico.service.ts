@@ -38,8 +38,8 @@ export class ServicosService {
     return this.httpClient.get<TipoServicoModel[]>("http://localhost:8082/tipo-servico-table/listarTiposServicos", this.httpOptions);
   }
 
-  public concluirServico(idServico: number) {
-    return this.httpClient.put("http://localhost:8082/servico/concluirServico/" + idServico, null, this.httpOptions);
+  public concluirServico(idServico: number, indConcluido: Boolean) {
+    return this.httpClient.put("http://localhost:8082/servico/concluirServico/" + idServico + "/" + indConcluido, null, this.httpOptions);
   }
   
   public listarServicosAguardandoReaval() {

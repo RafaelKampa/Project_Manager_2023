@@ -1,14 +1,11 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.TipoServicoDto;
-import com.br.projetoFinal.entity.Servico;
-import com.br.projetoFinal.entity.TipoServico;
 import com.br.projetoFinal.repository.TipoServicoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;

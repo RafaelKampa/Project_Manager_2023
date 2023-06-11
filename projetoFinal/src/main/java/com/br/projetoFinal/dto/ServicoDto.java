@@ -19,13 +19,14 @@ public class ServicoDto extends Servico {
     public Double valorTotal;
     public String obs;
     public Integer idAvaliacao;
+    private Boolean indConcluido;
 
     public ServicoDto() {
     }
 
     public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto,
                       String localExecucao, String executor, String conferente, Date dataInicio, Date previsaoTermino, Date dataFinal,
-                      Double valorTotal, String obs) {
+                      Double valorTotal, String obs, Boolean indConcluido) {
         this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
@@ -40,9 +41,12 @@ public class ServicoDto extends Servico {
         this.dataFinal = dataFinal;
         this.valorTotal = valorTotal;
         this.obs = obs;
+        this.indConcluido = indConcluido;
     }
 
-    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto, String localExecucao, String executor, String conferente, Date dataInicio, Date previsaoTermino, Date dataFinal, Double valorTotal, String obs, Integer idAvaliacao) {
+    public ServicoDto(Integer idServico, String tipoServico, Double valorUnitario, Double dimensao, String unidadeMedida, String centroDeCusto,
+                      String localExecucao, String executor, String conferente, Date dataInicio, Date previsaoTermino, Date dataFinal,
+                      Double valorTotal, String obs, Boolean indConcluido, Integer idAvaliacao) {
         this.idServico = idServico;
         this.tipoServico = tipoServico;
         this.valorUnitario = valorUnitario;
@@ -57,6 +61,7 @@ public class ServicoDto extends Servico {
         this.dataFinal = dataFinal;
         this.valorTotal = valorTotal;
         this.obs = obs;
+        this.indConcluido = indConcluido;
         this.idAvaliacao = idAvaliacao;
     }
 
@@ -202,5 +207,13 @@ public class ServicoDto extends Servico {
 
     public Integer getIdAvaliacao() {
         return idAvaliacao;
+    }
+
+    public Boolean getIndConcluido() {
+        return indConcluido;
+    }
+
+    public void setIndConcluido(Boolean indConcluido) {
+        this.indConcluido = indConcluido;
     }
 }

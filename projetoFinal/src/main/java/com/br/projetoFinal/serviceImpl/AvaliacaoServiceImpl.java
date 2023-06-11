@@ -2,9 +2,7 @@ package com.br.projetoFinal.serviceImpl;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
 import com.br.projetoFinal.dto.ReavaliacaoDto;
-import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.entity.Avaliacao;
-import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.repository.AvaliacaoRepository;
 import com.br.projetoFinal.service.AvaliacaoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
-import java.util.Date;
 import java.util.List;
 
 @Service

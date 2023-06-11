@@ -1,6 +1,5 @@
 package com.br.projetoFinal.serviceImpl;
 
-import com.br.projetoFinal.dto.RemuneracaoDto;
 import com.br.projetoFinal.dto.ValorProducaoDto;
 import com.br.projetoFinal.entity.ValorProducao;
 import com.br.projetoFinal.repository.ValorProducaoRepository;

@@ -11,6 +11,10 @@ import { ServicosService } from '../../shared/service/servico.service';
 import { AvaliarService } from '../service/avaliar.service';
 import { ParametrosFerragemModel } from '../../shared/models/parametros-ferragem.model';
 import { ReavaliacaoModel } from '../reavaliar/model/reavaliacao.model';
+import { ValorProducaoModel } from '../../shared/models/valor-producao.model';
+import { ValorProducaoService } from '../../shared/service/valor-producao.service';
+import { UsuarioModel } from '../../usuario/model/usuario.model';
+import { UsuarioService } from '../../usuario/service/usuario.service';
 
 @Component({
   selector: 'app-avaliar-ferragem',
@@ -26,6 +30,8 @@ export class AvaliarFerragemComponent {
   public indReavaliacao: Boolean = false;
 
   public paramFerragem = new ParametrosFerragemModel();
+  public producaoModel: ValorProducaoModel = new ValorProducaoModel();
+  public usuarioModel: UsuarioModel = new UsuarioModel();
   public avaliacao = new AvaliacaoModel();
   public reavaliacao = new ReavaliacaoModel(); 
   public dataSource : ServicosModel[] = [];
@@ -37,6 +43,8 @@ export class AvaliarFerragemComponent {
     private avaliarService: AvaliarService,
     private paramFerragemService: ParamFerragemService,
     private centroService: CentroCustoService,
+    private producaoService: ValorProducaoService,
+    private usuarioService: UsuarioService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
@@ -75,6 +83,11 @@ export class AvaliarFerragemComponent {
         alert("Preencha todos os campos antes de avaliar.");
         return;
       }
+
+      this.paramFerragem.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
+      this.paramFerragem.distribuicao = this.avaliarFerragemForm.get('distribuicao')?.value ?? false;
+      this.paramFerragem.espacamento = this.avaliarFerragemForm.get('espacamento')?.value ?? false;
+      this.paramFerragem.qtdeAco = this.servicoSelecionado.dimensao;
       
       if (!this.indReavaliacao){ //Avaliação inicial
         this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
@@ -85,17 +98,28 @@ export class AvaliarFerragemComponent {
         this.avaliacao.dataAvaliacao = new Date();
         this.avaliacao.resultado = this.avaliarFerragemForm.get('resultado')?.value ?? false;
   
-        this.paramFerragem.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
-        this.paramFerragem.distribuicao = this.avaliarFerragemForm.get('distribuicao')?.value ?? false;
-        this.paramFerragem.espacamento = this.avaliarFerragemForm.get('espacamento')?.value ?? false;
-        this.paramFerragem.qtdeAco = this.servicoSelecionado.dimensao;
-        this.avaliacao.resultado = this.avaliarFerragemForm.get('resultado')?.value ?? false;
+
         await lastValueFrom(this.avaliarService.avaliar(this.avaliacao));
-        this.paramFerragem.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+        let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+        this.paramFerragem.idAvaliacao = idAvaliacao;
         await lastValueFrom(this.paramFerragemService.salvarParametrosAvaliados(this.paramFerragem));
-        await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+
         if (this.avaliacao.resultado) {
-          await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+        await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
+        await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+        this.producaoModel.idServico = this.servicoSelecionado.idServico;
+        this.producaoModel.idAvaliacao = idAvaliacao;
+        let centroSelecionado = await lastValueFrom(this.centroService.buscarPorNome(this.servicoSelecionado.centroDeCusto));
+        this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
+        this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
+        this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
+        this.producaoModel.mesReferencia = new Date().getMonth();
+        this.producaoModel.anoReferencia = new Date().getFullYear();
+        this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
+        await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+        
+        } else {
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
         }
       
       }else { //Reavaliação
@@ -104,13 +128,30 @@ export class AvaliarFerragemComponent {
           this.reavaliacao.resultReaval = this.avaliarFerragemForm.get('resultado')?.value ?? false;
           this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
           this.reavaliacao.obs = this.avaliarFerragemForm.get('obs')?.value ?? "";
+
           await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
-          this.paramFerragem.idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+          let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
+          this.paramFerragem.idAvaliacao = idAvaliacao;
           await lastValueFrom(this.paramFerragemService.salvarParametrosAvaliados(this.paramFerragem));
+
           if (this.reavaliacao.resultReaval) {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
             await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
+            this.producaoModel.idServico = this.servicoSelecionado.idServico;
+            this.producaoModel.idAvaliacao = idAvaliacao;
+            let centroSelecionado = await lastValueFrom(this.centroService.buscarPorNome(this.servicoSelecionado.centroDeCusto));
+            this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
+            this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
+            this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
+            this.producaoModel.mesReferencia = new Date().getMonth();
+            this.producaoModel.anoReferencia = new Date().getFullYear();
+            this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
+            await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
+          
+          } else {
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
           }
+
         } else {
           alert("Serviço não avaliado!\nContate o Administrador");
         }

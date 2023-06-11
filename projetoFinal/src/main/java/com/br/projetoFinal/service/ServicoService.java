@@ -17,5 +17,5 @@ public interface ServicoService {
     ServicoDto buscarPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);
     void excluir(Integer idServico) throws SystemException;
-    void concluirServico(Integer idServico) throws ExcecaoExemplo, SystemException;
+    void concluirServico(Integer idServico, Boolean indConcluido) throws ExcecaoExemplo, SystemException;
 }

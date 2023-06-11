@@ -22,7 +22,8 @@ import java.util.Date;
                                 @ColumnResult(name = "PREV_TERMINO", type = Date.class),
                                 @ColumnResult(name = "DATA_FINAL", type = Date.class),
                                 @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
-                                @ColumnResult(name = "OBS", type = String.class)
+                                @ColumnResult(name = "OBS", type = String.class),
+                                @ColumnResult(name = "IND_CONCLUIDO", type = Boolean.class)
                         }
                 )
         }),
@@ -43,6 +44,7 @@ import java.util.Date;
                                 @ColumnResult(name = "DATA_FINAL", type = Date.class),
                                 @ColumnResult(name = "VALOR_TOTAL", type = Double.class),
                                 @ColumnResult(name = "OBS", type = String.class),
+                                @ColumnResult(name = "IND_CONCLUIDO", type = Boolean.class),
                                 @ColumnResult(name = "ID_AVALIACAO", type = Integer.class)
                         }
                 )
@@ -52,10 +54,10 @@ import java.util.Date;
         @NamedNativeQuery(name="Servico.buscarPorTipo", query = "SELECT * FROM SERVICO WHERE TIPO_SERVICO LIKE CONCAT('%', :TIPO_SERVICO, '%') ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.buscarPorId", query = "SELECT * FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.listarTodosServicos", query = "SELECT * FROM SERVICO ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
-        @NamedNativeQuery(name="Servico.servicosAguardandoAval", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
+        @NamedNativeQuery(name="Servico.servicosAguardandoAval", query = "SELECT * FROM SERVICO WHERE IND_CONCLUIDO IS NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.servicosAvaliados", query = "SELECT * FROM SERVICO WHERE DATA_FINAL IS NOT NULL ORDER BY ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
-        @NamedNativeQuery(name="Servico.servicosAguardandoReaval", query = "SELECT S.ID_SERVICO, S.CENTRO_DE_CUSTO, S.CONFERENTE, S.DATA_FINAL, S.DATA_INICIO, S.DIMENSAO, S.EXECUTOR, S.LOCAL_EXECUCAO, S.OBS, S.PREV_TERMINO, S.TIPO_SERVICO, S.UNIDADE_MEDIDA, S.VALOR_TOTAL, S.VALOR_UNITARIO, A.ID_AVALIACAO\n" +
+        @NamedNativeQuery(name="Servico.servicosAguardandoReaval", query = "SELECT S.ID_SERVICO, S.CENTRO_DE_CUSTO, S.CONFERENTE, S.DATA_FINAL, S.DATA_INICIO, S.DIMENSAO, S.EXECUTOR, S.LOCAL_EXECUCAO, S.OBS, S.PREV_TERMINO, S.TIPO_SERVICO, S.UNIDADE_MEDIDA, S.VALOR_TOTAL, S.VALOR_UNITARIO, S.IND_CONCLUIDO, A.ID_AVALIACAO\n" +
                 "FROM SERVICO S INNER JOIN AVALIACAO A ON S.ID_SERVICO = A.ID_SERVICO WHERE A.RESULTADO = FALSE AND (A.RESULT_REAVAL IS NULL OR A.RESULT_REAVAL = FALSE)", resultSetMapping = "Servico.dtoMappingAlvenaria"),
 })
 
@@ -108,6 +110,9 @@ public class Servico {
 
     @Column(name = "OBS")
     private String obs;
+
+    @Column(name = "IND_CONCLUIDO")
+    private Boolean indConcluido;
 
     public Integer getIdServico() {
         return idServico;
@@ -219,5 +224,17 @@ public class Servico {
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Boolean getIndConcluido() {
+        return indConcluido;
+    }
+
+    public void setIndConcluido(Boolean indConcluido) {
+        this.indConcluido = indConcluido;
     }
 }
