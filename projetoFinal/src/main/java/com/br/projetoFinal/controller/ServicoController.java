@@ -96,10 +96,10 @@ public class ServicoController {
         }
     }
 
-    @PutMapping("/concluirServico/{idServico}/{indConcluido}")
-    public ResponseEntity<?> concluirServico(@PathVariable("idServico") Integer idServico,@PathVariable("indConcluido") Boolean indConcluido) throws ExcecaoExemplo, SystemException {
+    @PutMapping("/concluirServico/{idServico}/{indConcluido}/{conferente}")
+    public ResponseEntity<?> concluirServico(@PathVariable("idServico") Integer idServico,@PathVariable("indConcluido") Boolean indConcluido, @PathVariable("conferente") String conferente) throws ExcecaoExemplo, SystemException {
         try {
-            servicoService.concluirServico(idServico, indConcluido);
+            servicoService.concluirServico(idServico, indConcluido, conferente);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

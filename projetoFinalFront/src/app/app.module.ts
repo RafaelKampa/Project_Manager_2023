@@ -39,6 +39,7 @@ import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component';
 import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
 import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -66,6 +67,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     CentroDeCustosComponent,
     HomeAvaliarComponent,
     ServicosComponent,
+    FinanceiroComponent,
   ],
   imports: [
     BrowserModule,

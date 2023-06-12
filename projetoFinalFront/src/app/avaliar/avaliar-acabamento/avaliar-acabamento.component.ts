@@ -22,13 +22,13 @@ import { CentroCustoModel } from 'src/app/shared/models/centro-custo.model';
   templateUrl: './avaliar-acabamento.component.html',
   styleUrls: ['./avaliar-acabamento.component.css']
 })
-export class AvaliarAcabamentoComponent {
+export class AvaliarAcabamentoComponent implements OnInit {
 
   @Input()
   public servicoSelecionado: ServicosModel = new ServicosModel();
 
   @Input()
-  public indReavaliacao: Boolean = false;
+  public indReavaliacao: boolean = false;
 
   public paramAcabamento = new ParametrosAcabamentoModel();
   public avaliacao = new AvaliacaoModel();
@@ -37,12 +37,15 @@ export class AvaliarAcabamentoComponent {
   public producaoModel: ValorProducaoModel = new ValorProducaoModel();
   public usuarioModel: UsuarioModel = new UsuarioModel();
   public centroDeCustoModel: CentroCustoModel = new CentroCustoModel();
+  public conferentesNome: string[] = [];
+  public conferenteSelecionado: string = "";
   public prumo?: Boolean;
   public nivel?: Boolean;
   public alinhamento?: Boolean;
   public integridade?: Boolean;
   public limpeza?: Boolean;
   public resultado?: Boolean;
+  public avaliarAcabamentoForm: FormGroup = new FormGroup({});
 
   constructor(private servicosService: ServicosService,
     private avaliarService: AvaliarService,
@@ -54,21 +57,23 @@ export class AvaliarAcabamentoComponent {
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
     }
-
-  avaliarAcabamentoForm = new FormGroup({
-    tipoServico: new FormControl('', Validators.required),
-    idServico: new FormControl('',Validators.required),
-    usuExect: new FormControl('', Validators.required),
-    usuConf: new FormControl('', Validators.required),
-    resultado: new FormControl(null, Validators.required),
-    dataAvaliacao: new FormControl('', Validators.required),
-    obs: new FormControl(''),
-    idAvaliacao: new FormControl('',Validators.required),
-    reguamento: new FormControl(null, Validators.required),
-    alisamento: new FormControl(null, Validators.required),
-    dimensoes: new FormControl('', Validators.required),
-    valorTotal: new FormControl('', Validators.required),
-  });
+  ngOnInit(): void {
+    this.buscarConferentes();
+    this.avaliarAcabamentoForm = new FormGroup({
+      tipoServico: new FormControl('', Validators.required),
+      idServico: new FormControl('',Validators.required),
+      usuExect: new FormControl('', Validators.required),
+      usuConf: new FormControl({value: this.servicoSelecionado.conferente.toString(), disabled: this.indReavaliacao}, Validators.required),
+      resultado: new FormControl(null, Validators.required),
+      dataAvaliacao: new FormControl('', Validators.required),
+      obs: new FormControl(''),
+      idAvaliacao: new FormControl('',Validators.required),
+      reguamento: new FormControl(null, Validators.required),
+      alisamento: new FormControl(null, Validators.required),
+      dimensoes: new FormControl('', Validators.required),
+      valorTotal: new FormControl('', Validators.required),
+    });
+  }
 
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
@@ -79,6 +84,10 @@ export class AvaliarAcabamentoComponent {
     }
   }
 
+  public async buscarConferentes() {
+    let conferentes = await lastValueFrom(this.usuarioService.buscarConferentes());
+    this.conferentesNome = conferentes.map(usuario => usuario.nome);
+  }
   
   public async avaliarAcabamento() {
     try {
@@ -100,7 +109,7 @@ export class AvaliarAcabamentoComponent {
         this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
         this.avaliacao.idServico = this.servicoSelecionado.idServico;
         this.avaliacao.usuExect = this.servicoSelecionado.executor;
-        this.avaliacao.usuConf = this.servicoSelecionado.conferente;
+        this.avaliacao.usuConf = this.avaliarAcabamentoForm.get('usuConf')?.value ?? "";
         this.avaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
         this.avaliacao.dataAvaliacao = new Date();
         this.avaliacao.resultado = this.avaliarAcabamentoForm.get('resultado')?.value ?? false;
@@ -111,7 +120,7 @@ export class AvaliarAcabamentoComponent {
         await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
 
         if (this.avaliacao.resultado) {
-          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true, this.avaliacao.usuConf));
           await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
           this.producaoModel.idServico = this.servicoSelecionado.idServico;
           this.producaoModel.idAvaliacao = idAvaliacao;
@@ -125,7 +134,7 @@ export class AvaliarAcabamentoComponent {
           await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
 
         } else {
-          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false, this.avaliacao.usuConf));
         }
       
       } else { //Reavaliação
@@ -134,6 +143,7 @@ export class AvaliarAcabamentoComponent {
           this.reavaliacao.resultReaval = this.avaliarAcabamentoForm.get('resultado')?.value;
           this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
           this.reavaliacao.obs = this.avaliarAcabamentoForm.get('obs')?.value ?? "";
+          this.reavaliacao.conferente = this.servicoSelecionado.conferente;
 
           await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
           let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId());
@@ -141,7 +151,7 @@ export class AvaliarAcabamentoComponent {
           await lastValueFrom(this.paramAcabamentoService.salvarParametrosAvaliados(this.paramAcabamento));
 
           if (this.reavaliacao.resultReaval) {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true, this.reavaliacao.conferente));
             await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
             this.producaoModel.idServico = this.servicoSelecionado.idServico;
             this.producaoModel.idAvaliacao = idAvaliacao;
@@ -155,7 +165,7 @@ export class AvaliarAcabamentoComponent {
             await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
 
           } else {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false, this.reavaliacao.conferente));
           }
         } else {
           alert("Serviço não avaliado!\nContate o Administrador");

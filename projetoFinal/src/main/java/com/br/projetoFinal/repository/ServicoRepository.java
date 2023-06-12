@@ -18,5 +18,5 @@ public interface ServicoRepository {
     ServicoDto buscarPorId(Integer idServico);
     void excluirPorId(Integer idServico);
     List<ServicoDto> buscarPorServico(String tipoServico);
-    void concluirServico(Integer idServico, Boolean indConcluido);
+    void concluirServico(Integer idServico, Boolean indConcluido, String conferente);
 }

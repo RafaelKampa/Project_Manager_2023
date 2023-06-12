@@ -25,7 +25,6 @@ export class ReavaliarComponent implements OnInit {
 
   constructor(private servicosService: ServicosService,
     private avaliarService: AvaliarService,
-    private centroService: CentroCustoService,
     private router: Router,    
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')

@@ -22,13 +22,13 @@ import { UsuarioService } from '../../usuario/service/usuario.service';
   templateUrl: './avaliar-carpintaria.component.html',
   styleUrls: ['./avaliar-carpintaria.component.css']
 })
-export class AvaliarCarpintariaComponent {
+export class AvaliarCarpintariaComponent implements OnInit{
 
   @Input()
   public servicoSelecionado: ServicosModel = new ServicosModel();
   
   @Input()
-  public indReavaliacao: Boolean = false;
+  public indReavaliacao: boolean = false;
 
   public avaliacao = new AvaliacaoModel();
   public reavaliacao = new ReavaliacaoModel(); 
@@ -36,6 +36,9 @@ export class AvaliarCarpintariaComponent {
   public producaoModel: ValorProducaoModel = new ValorProducaoModel();
   public usuarioModel: UsuarioModel = new UsuarioModel();
   public centroDeCustoModel: CentroCustoModel = new CentroCustoModel();
+  public conferentesNome: string[] = [];
+  public conferenteSelecionado: string = "";
+  public avaliarCarpintariaForm: FormGroup = new FormGroup({});
   public nivelOuPrumo?: boolean;
   public estanqueidade?: boolean;
   public resultado?: Boolean;
@@ -50,12 +53,13 @@ export class AvaliarCarpintariaComponent {
     private dateAdapter: DateAdapter<Date>) { 
       this.dateAdapter.setLocale('pt-BR')
     }
-
-    avaliarCarpintariaForm = new FormGroup({
+  ngOnInit(): void {
+    this.buscarConferentes();
+    this.avaliarCarpintariaForm = new FormGroup({
       tipoServico: new FormControl('', Validators.required),
       idServico: new FormControl('',Validators.required),
       usuExect: new FormControl('', Validators.required),
-      usuConf: new FormControl('', Validators.required),
+      usuConf: new FormControl({value: this.servicoSelecionado.conferente.toString(), disabled: this.indReavaliacao}, Validators.required),
       resultado: new FormControl(null, Validators.required),
       dataAvaliacao: new FormControl('', Validators.required),
       obs: new FormControl(''),
@@ -66,6 +70,7 @@ export class AvaliarCarpintariaComponent {
       dimensoes: new FormControl('', Validators.required),
       valorTotal: new FormControl('', Validators.required),
     });
+  }
 
   public erroCampoVazio = new FormControl('', Validators.required);
   getErrorMessage() {
@@ -75,7 +80,12 @@ export class AvaliarCarpintariaComponent {
       return;
     }
   }
- 
+
+  public async buscarConferentes() {
+    let conferentes = await lastValueFrom(this.usuarioService.buscarConferentes());
+    this.conferentesNome = conferentes.map(usuario => usuario.nome);
+  }
+  
   public async avaliarCarpintaria() {
     try {
       if (
@@ -98,7 +108,7 @@ export class AvaliarCarpintariaComponent {
         this.avaliacao.tipoServico = this.servicoSelecionado.tipoServico;
         this.avaliacao.idServico = this.servicoSelecionado.idServico;
         this.avaliacao.usuExect = this.servicoSelecionado.executor;
-        this.avaliacao.usuConf = this.servicoSelecionado.conferente;
+        this.avaliacao.usuConf = this.avaliarCarpintariaForm.get('usuConf')?.value ?? "";
         this.avaliacao.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
         this.avaliacao.dataAvaliacao = new Date();
         this.avaliacao.resultado = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
@@ -109,7 +119,7 @@ export class AvaliarCarpintariaComponent {
         await lastValueFrom(this.paramCarpintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
 
         if (this.avaliacao.resultado) {
-          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true, this.avaliacao.usuConf));
           await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
           this.producaoModel.idServico = this.servicoSelecionado.idServico;
           this.producaoModel.idAvaliacao = idAvaliacao;
@@ -123,7 +133,7 @@ export class AvaliarCarpintariaComponent {
           await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
         
         } else {
-          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
+          await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false, this.avaliacao.usuConf));
         }
       
       } else { //Reavaliação
@@ -132,6 +142,7 @@ export class AvaliarCarpintariaComponent {
           this.reavaliacao.resultReaval = this.avaliarCarpintariaForm.get('resultado')?.value ?? false;
           this.reavaliacao.idAvaliacao = this.servicoSelecionado.idAvaliacao;
           this.reavaliacao.obs = this.avaliarCarpintariaForm.get('obs')?.value ?? "";
+          this.reavaliacao.conferente = this.servicoSelecionado.conferente;
 
           await lastValueFrom(this.avaliarService.reavaliar(this.reavaliacao));
           let idAvaliacao = await lastValueFrom(this.avaliarService.buscarUltimoId())
@@ -139,7 +150,7 @@ export class AvaliarCarpintariaComponent {
           await lastValueFrom(this.paramCarpintariaService.salvarParametrosAvaliados(this.paramCarpintaria));
 
           if (this.reavaliacao.resultReaval) {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, true, this.reavaliacao.conferente));
             await lastValueFrom(this.centroService.incluirValor(this.servicoSelecionado.centroDeCusto, this.servicoSelecionado.valorTotal));
             this.producaoModel.idServico = this.servicoSelecionado.idServico;
             this.producaoModel.idAvaliacao = idAvaliacao;
@@ -153,7 +164,7 @@ export class AvaliarCarpintariaComponent {
             await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
           
           } else {
-            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false));
+            await lastValueFrom(this.servicosService.concluirServico(this.servicoSelecionado.idServico, false, this.reavaliacao.conferente));
           }
 
         } else {

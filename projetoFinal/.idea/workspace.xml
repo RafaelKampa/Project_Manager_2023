@@ -7,32 +7,15 @@
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projetoFinalDB.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.trace.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ServicoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Servico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/CentroDeCustoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAcabamentoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAcabamentoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosAlvenariaRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosCarpintariaRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosFerragemRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ParametrosFerragemRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/TipoServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/TipoServicoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/UsuarioRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/UserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/UserDetailServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/TipoServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/TipoServicoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/ServicoDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/dto/ServicoDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/Servico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalDB.mv.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/avaliar/avaliar-acabamento/avaliar-acabamento.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/models/servico.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/models/servico.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +138,8 @@
       <workItem from="1685918228727" duration="1898000" />
       <workItem from="1686092538015" duration="2598000" />
       <workItem from="1686232204785" duration="2577000" />
-      <workItem from="1686510804170" duration="5271000" />
+      <workItem from="1686510804170" duration="5897000" />
+      <workItem from="1686578146057" duration="3105000" />
     </task>
     <servers />
   </component>

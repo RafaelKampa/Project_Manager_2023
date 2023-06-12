@@ -15,6 +15,7 @@ import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component';
 import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
 import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
     path: 'api',
     component: LayoutComponent,
     children: [
-      {path: 'home', component: HomeComponent},
+      { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },
       { path: 'cadastro-servico', component: CadastroServicoComponent, canActivate: [AuthGuard] },
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'centro-de-custos', component: CentroDeCustosComponent, canActivate: [AuthGuard] },
       { path: 'home-avaliar', component: HomeAvaliarComponent, canActivate: [AuthGuard] },
       { path: 'servicos', component: ServicosComponent, canActivate: [AuthGuard] },
+      { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: 'home' }
     ]
   }

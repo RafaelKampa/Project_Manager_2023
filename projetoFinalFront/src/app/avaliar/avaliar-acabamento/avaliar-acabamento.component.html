@@ -26,7 +26,11 @@
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
             <mat-label>Conferente</mat-label>
-            <input class="inputs" matInput [value]="servicoSelecionado.conferente" required disabled/>
+            <mat-select formControlName="usuConf" required>
+                <mat-option *ngFor="let conferente of conferentesNome" [value]="conferente">
+                    {{conferente}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-full-width inputs" appearance="fill">
