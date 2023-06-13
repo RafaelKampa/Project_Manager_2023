@@ -1,1 +1,25 @@
-<p>financeiro works!</p>
+<div class="row" style="display: flex; padding-left: 5%; padding-top: 2.5%">
+    <div class="col-lg-6 col-md-12 col-sm-12">
+        Selecione o tipo de consulta desejada:
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-select [(value)]="buscaSelecionada">
+                <mat-option value="centroDeCusto">Centro de Custo</mat-option>
+                <mat-option value="funcionario">Funcionário</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12" *ngIf="buscaSelecionada == 'centroDeCusto'">
+        Informe o período de busca:
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Período</mat-label>
+            <input matInput [matDatepicker]="dp" [formControl]="date">
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp
+                            startView="multi-year"
+                            (monthSelected)="setMonthAndYear($event, dp)">
+            </mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+
+

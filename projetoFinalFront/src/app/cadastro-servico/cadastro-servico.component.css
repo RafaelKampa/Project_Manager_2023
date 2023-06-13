@@ -1,12 +1,3 @@
-.center{
-    display: flex;
-    justify-content: center;
-}
-
-.button {
-    margin-top: 20px;
-}
-
 .tittle{
     display: flex;
     justify-content: center;    
@@ -25,12 +16,6 @@
     background-color: rgb(77, 17, 17);
     color: rgb(255, 255, 255);
  }
-
-.inputs {
-    width: 250px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
 
 .obs {
     width: 490px;

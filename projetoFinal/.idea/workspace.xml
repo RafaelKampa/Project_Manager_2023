@@ -7,15 +7,13 @@
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ServicoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ServicoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ServicoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ServicoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ServicoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/layout/layout.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/financeiro/financeiro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +137,7 @@
       <workItem from="1686092538015" duration="2598000" />
       <workItem from="1686232204785" duration="2577000" />
       <workItem from="1686510804170" duration="5897000" />
-      <workItem from="1686578146057" duration="3105000" />
+      <workItem from="1686578146057" duration="4935000" />
     </task>
     <servers />
   </component>

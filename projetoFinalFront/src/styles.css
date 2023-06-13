@@ -27,3 +27,63 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 /* background-image: url("src\assets\background.jpg"); */
 color: #00008B; 
 ;}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.center2{
+  display: flex;
+  justify-content: right;
+}
+
+.title{
+  display: flex;
+  justify-content: center;    
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+.button { 
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.buttonBlue {
+  background-color: rgb(25, 107, 133) !important;
+  color: white !important;
+}
+
+.buttonRed { 
+  background-color: rgb(102, 1, 1) !important;
+  color: white !important;
+}
+
+.buttonYellow {
+  background-color: rgb(255, 176, 6) !important;
+}
+
+.buttonGreen {
+  background-color: rgb(2, 131, 9) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.inputs {
+  width: 250px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+mat-label {
+  font-size: small !important;
+}
+
+mat-option {
+  font-size: small !important;
+}
+
+.mat-mdc-select-value {
+  font-size: small !important;
+}

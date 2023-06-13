@@ -85,7 +85,7 @@
         </mat-form-field>
 
         <mat-form-field class="inputs" appearance="fill">
-            <mat-label>Previsão de Término do Serviço</mat-label>
+            <mat-label>Previsão de Término</mat-label>
             <input matInput [matDatepicker]="previsaoTermino" formControlName="previsaoTermino" required/>
             <mat-datepicker-toggle matSuffix [for]="previsaoTermino"></mat-datepicker-toggle>
             <mat-datepicker #previsaoTermino></mat-datepicker>
@@ -100,8 +100,9 @@
     </div>
 
     <div class="center">
-        <button class="button1" mat-raised-button color="">Salvar novo Serviço</button>
+        <button class="button buttonBlue" mat-raised-button>Salvar novo Serviço</button>
     </div>
     <div class="center">
-        <button class="button2" mat-raised-button color="" padding="10px" (click)="cancelar()">Cancelar</button>
-    </div>  
+        <button class="button buttonRed" mat-raised-button color="" padding="10px" (click)="cancelar()">Cancelar</button>
+    </div>
+</form>
