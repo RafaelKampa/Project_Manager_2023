@@ -10,6 +10,10 @@ import { CentroCustoService } from '../centro-custo/service/centro-custo.service
 import { lastValueFrom } from 'rxjs';
 import { ValorTotalCentroPeriodoModel } from '../shared/models/valor-total-centro-periodo.model';
 import { FinanceiroService } from './service/financeiro.service';
+import { ProducaoMensalFuncionarioModel } from '../shared/models/producao-mensal-funcionario.model';
+import { UsuarioService } from '../usuario/service/usuario.service';
+import { UsuarioModel } from '../usuario/model/usuario.model';
+import { RemuneracaoService } from '../shared/service/remuneracao.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -48,24 +52,36 @@ export class FinanceiroComponent implements OnInit {
   public periodoSelecionado: number[] = [];
   public centrosDeCusto: CentroCustoModel[] = [];
   public centroDeCustoSelecionado: CentroCustoModel = new CentroCustoModel();
+  public funcionarios: UsuarioModel[] = [];
+  public funcionarioSelecionado: UsuarioModel = new UsuarioModel();
   public valorTotalCentro: ValorTotalCentroPeriodoModel[] = [];
+  public producaoMensalFuncionario: ProducaoMensalFuncionarioModel[] = [];
+  public remuneracaoMensal: number = 0;
   public tipoTabela: string = "";
   public colunasCentro: string[] = ['tipoServico', 'valorServico'];
+  public colunasFuncionario: string[] = ['centroDeCusto', 'tipoServico', 'localExecucao', 'dataFinal', 'valorServico'];
 
   constructor(
     private centroCustoServ: CentroCustoService,
+    private usuarioServ: UsuarioService,
+    private remuneracaoServ: RemuneracaoService,
     private financeiroServ: FinanceiroService
   ) {
   }
 
   public ngOnInit() {
     this.buscarCentrosDeCusto();
+    this.buscarFuncionarios();
     this.periodoSelecionado[0] = new Date().getMonth() + 1; //Adicionado 1 pois o getMonth() inicia em 0
     this.periodoSelecionado[1] = new Date().getFullYear();
   }
 
   public buscarCentrosDeCusto() {
-    this.centroCustoServ.listarCentrosDeCusto().subscribe(centrosDeCusto => { this.centrosDeCusto = centrosDeCusto;});
+    this.centroCustoServ.listarCentrosDeCusto().subscribe(centrosDeCusto => { this.centrosDeCusto = centrosDeCusto});
+  }
+
+  public buscarFuncionarios() {
+    this.usuarioServ.buscarExecutores().subscribe(funcionarios => { this.funcionarios = funcionarios });
   }
 
   public setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
@@ -86,14 +102,32 @@ export class FinanceiroComponent implements OnInit {
         valorTotal.tipoServico = "Valor total";
         valorTotal.mesPeriodo = this.periodoSelecionado[0];
         valorTotal.anoPeriodo =  this.periodoSelecionado[1];
-        valorTotal.valorServico = this.calcularValorTotal();
+        valorTotal.valorServico = this.calcularValorTotalCentro();
         this.valorTotalCentro.push(valorTotal);
       }
       this.tipoTabela = this.buscaSelecionada;
     }
+    if (this.buscaSelecionada == "funcionario") {
+      var remuneracaoControl = await lastValueFrom(this.remuneracaoServ.buscarRemuneracaoPorMes(this.funcionarioSelecionado.idUsuario, this.periodoSelecionado[0], this.periodoSelecionado[1]));
+      this.remuneracaoMensal = Number(remuneracaoControl);
+      this.financeiroServ.buscarProducaoFuncionario(this.funcionarioSelecionado.nome, this.periodoSelecionado[0], this.periodoSelecionado[1]).subscribe(producao => {
+        this.producaoMensalFuncionario = producao;
+        var remuneracao: ProducaoMensalFuncionarioModel = new ProducaoMensalFuncionarioModel();
+        remuneracao.centroDeCusto = this.funcionarioSelecionado.contratante;
+        remuneracao.tipoServico = "Remuneração"
+        remuneracao.valorTotal = this.remuneracaoMensal;
+        this.producaoMensalFuncionario.push(remuneracao);
+        
+        var valorTotal: ProducaoMensalFuncionarioModel = new ProducaoMensalFuncionarioModel();
+        valorTotal.centroDeCusto = "Valor total";
+        valorTotal.valorTotal = this.calcularValorTotalFuncionario();
+        this.producaoMensalFuncionario.push(valorTotal);
+        this.tipoTabela = this.buscaSelecionada;
+      });
+    }
   }
 
-  public calcularValorTotal(): number {
+  public calcularValorTotalCentro(): number {
     let total = 0;
     for (const item of this.valorTotalCentro) {
       total += item.valorServico;
@@ -101,12 +135,21 @@ export class FinanceiroComponent implements OnInit {
     return total;
   }
 
-  public limpar() {
+  public calcularValorTotalFuncionario(): number {
+    let total = 0;
+    for (const item of this.producaoMensalFuncionario) {
+      total += item.valorTotal;
+    }
+    return total;
+  }
+
+  public limparDados() {
     this.periodoSelecionado[0] = new Date().getMonth() + 1; //Adicionado 1 pois o getMonth() inicia em 0
     this.periodoSelecionado[1] = new Date().getFullYear();
     this.date = new FormControl(moment());
     this.buscaSelecionada = "";
     this.centroDeCustoSelecionado = new CentroCustoModel();
+    this.funcionarioSelecionado = new UsuarioModel();
     this.valorTotalCentro = [];
     this.tipoTabela = "";
   }

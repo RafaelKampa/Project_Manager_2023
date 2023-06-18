@@ -1,5 +1,6 @@
 package com.br.projetoFinal.serviceImpl;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
@@ -116,5 +117,8 @@ public class ServicoServiceImpl implements ServicoService{
         return servicoRepository.buscarValorTotalPorCentro(centroDeCusto, mesReferencia, anoReferencia);
     }
 
-
+    @Override
+    public List<ProducaoMensalFuncionarioDto> buscarProducaoFuncionario(String executor, Integer mesReferencia, Integer anoReferencia) {
+        return servicoRepository.buscarProducaoFuncionario(executor, mesReferencia, anoReferencia);
+    }
 }

@@ -54,4 +54,9 @@ public class RemuneracaoServiceImpl implements RemuneracaoService {
     public Double buscarUltimaRemuneracaoUsuario(Integer idUsuario) {
         return remuneracaoRepository.buscarUltimaRemuneracaoUsuario(idUsuario);
     }
+
+    @Override
+    public Double buscarRemuneracaoPorMes(Integer idUsuario, Integer mesReferencia, Integer anoReferencia) {
+        return remuneracaoRepository.buscarRemuneracaoPorMes(idUsuario, mesReferencia, anoReferencia);
+    }
 }

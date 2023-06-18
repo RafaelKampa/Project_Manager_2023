@@ -24,4 +24,9 @@ export class RemuneracaoService {
   buscarUltimaRemuneracaoUsuario(id_usuario: number) {
     return this.httpClient.get("http://localhost:8082/remuneracao/buscarUltimaRemuneracaoUsuario/" + id_usuario, this.httpOptions);
   }
+
+  buscarRemuneracaoPorMes(idUsuario: number, mesReferencia: number, anoReferencia: number) {
+    return this.httpClient.get("http://localhost:8082/remuneracao/buscarRemuneracaoPorMes/" + idUsuario + "/" + mesReferencia + "/" + anoReferencia, this.httpOptions);
+
+  }
 }

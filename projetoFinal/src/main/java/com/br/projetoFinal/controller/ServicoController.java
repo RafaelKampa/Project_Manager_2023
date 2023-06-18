@@ -1,5 +1,6 @@
 package com.br.projetoFinal.controller;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
@@ -113,6 +114,17 @@ public class ServicoController {
                                                                                       @PathVariable("anoReferencia") Integer anoReferencia) throws ExcecaoExemplo, SystemException {
         try {
             return new ResponseEntity<>(servicoService.buscarValorTotalPorCentro(centroDeCusto, mesReferencia, anoReferencia), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarProducaoFuncionario/{executor}/{mesReferencia}/{anoReferencia}")
+    public ResponseEntity<List<ProducaoMensalFuncionarioDto>> buscarProducaoFuncionario(@PathVariable("executor") String executor,
+                                                                                        @PathVariable("mesReferencia") Integer mesReferencia,
+                                                                                        @PathVariable("anoReferencia") Integer anoReferencia) throws ExcecaoExemplo, SystemException {
+        try {
+            return new ResponseEntity<>(servicoService.buscarProducaoFuncionario(executor, mesReferencia, anoReferencia), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

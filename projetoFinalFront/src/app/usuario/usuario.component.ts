@@ -83,7 +83,7 @@ export class UsuarioComponent implements OnInit {
         this.remuneracaoModel.idUsuario = +await lastValueFrom(this.usuarioService.buscarUltimoId())
         console.log(this.remuneracaoModel.idUsuario);
         this.remuneracaoModel.funcao = this.usuario.cargo;
-        this.remuneracaoModel.mesReferencia = new Date().getMonth();
+        this.remuneracaoModel.mesReferencia = new Date().getMonth() + 1;
         this.remuneracaoModel.anoReferencia = new Date().getFullYear();
         this.remuneracaoModel.valor = this.usuario.remuneracao;
         await lastValueFrom(this.remuneracaoService.salvarNovaRemuneracao(this.remuneracaoModel))

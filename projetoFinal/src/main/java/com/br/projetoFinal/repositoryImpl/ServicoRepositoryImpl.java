@@ -1,5 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.repository.ServicoRepository;
@@ -108,4 +109,14 @@ public class ServicoRepositoryImpl implements ServicoRepository {
                 .setParameter("ANO_REFERENCIA", anoReferencia);
         return query.getResultList();
     }
+
+    @Override
+    public List<ProducaoMensalFuncionarioDto> buscarProducaoFuncionario(String executor, Integer mesReferencia, Integer anoReferencia) {
+        TypedQuery<ProducaoMensalFuncionarioDto> query = em.createNamedQuery("Servico.buscarProducaoFuncionario", ProducaoMensalFuncionarioDto.class)
+                .setParameter("EXECUTOR", executor)
+                .setParameter("MES_REFERENCIA", mesReferencia)
+                .setParameter("ANO_REFERENCIA", anoReferencia);
+        return query.getResultList();
+    }
+
 }

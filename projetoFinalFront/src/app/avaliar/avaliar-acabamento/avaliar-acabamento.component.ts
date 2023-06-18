@@ -128,7 +128,7 @@ export class AvaliarAcabamentoComponent implements OnInit {
           this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
           this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
           this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
-          this.producaoModel.mesReferencia = new Date().getMonth();
+          this.producaoModel.mesReferencia = new Date().getMonth() + 1;
           this.producaoModel.anoReferencia = new Date().getFullYear();
           this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
           await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));
@@ -159,7 +159,7 @@ export class AvaliarAcabamentoComponent implements OnInit {
             this.producaoModel.idCentroDeCusto = centroSelecionado.idCentroDeCusto;
             this.usuarioModel = await lastValueFrom(this.usuarioService.buscarPorNome(this.servicoSelecionado.executor));
             this.producaoModel.idUsuario = this.usuarioModel.idUsuario;
-            this.producaoModel.mesReferencia = new Date().getMonth();
+            this.producaoModel.mesReferencia = new Date().getMonth() + 1;
             this.producaoModel.anoReferencia = new Date().getFullYear();
             this.producaoModel.valorServico = this.servicoSelecionado.valorTotal;
             await lastValueFrom(this.producaoService.inserirValorProducao(this.producaoModel));

@@ -37,4 +37,16 @@ public class RemuneracaoController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/buscarRemuneracaoPorMes/{id_usuario}/{mesReferencia}/{anoReferencia}")
+    public ResponseEntity<Double> buscarRemuneracaoPorMes(@PathVariable("id_usuario") Integer idUsuario,
+                                                          @PathVariable("mesReferencia") Integer mesReferencia,
+                                                          @PathVariable("anoReferencia") Integer anoReferencia) {
+        try {
+            Double valor = remuneracaoService.buscarRemuneracaoPorMes(idUsuario, mesReferencia, anoReferencia);
+            return new ResponseEntity<>(valor, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
 }

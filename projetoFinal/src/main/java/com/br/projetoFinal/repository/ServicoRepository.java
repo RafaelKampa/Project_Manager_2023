@@ -1,5 +1,6 @@
 package com.br.projetoFinal.repository;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
 import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
@@ -22,4 +23,5 @@ public interface ServicoRepository {
     List<ServicoDto> buscarPorServico(String tipoServico);
     void concluirServico(Integer idServico, Boolean indConcluido, String conferente);
     List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia);
+    List<ProducaoMensalFuncionarioDto> buscarProducaoFuncionario(String executor, Integer mesReferencia, Integer anoReferencia);
 }

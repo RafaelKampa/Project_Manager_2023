@@ -24,7 +24,20 @@
             </mat-select>
         </mat-form-field>
     </div>
-    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" *ngIf="centroDeCustoSelecionado.nomeCentroDeCusto">
+    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" *ngIf="buscaSelecionada == 'funcionario'">
+        <div class="label-select">
+            Selecione o funcionário
+        </div>
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Funcionário</mat-label>
+            <mat-select [(value)]="funcionarioSelecionado">
+                <mat-option *ngFor="let funcionario of funcionarios" [value]="funcionario">
+                    {{funcionario.nome}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" *ngIf="centroDeCustoSelecionado.nomeCentroDeCusto || funcionarioSelecionado.nome">
         <div class="label-select">
             Selecione período de busca
         </div>
@@ -38,26 +51,56 @@
             </mat-datepicker>
         </mat-form-field>
     </div>
-    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" style="padding-top: 15px;" *ngIf="centroDeCustoSelecionado.nomeCentroDeCusto">
+    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" style="padding-top: 15px;" *ngIf="centroDeCustoSelecionado.nomeCentroDeCusto || funcionarioSelecionado.nome">
         <button class="button buttonBlue" mat-raised-button (click)="carregarBusca()">Buscar</button>
-        <button class="button buttonYellow" mat-raised-button (click)="limpar()">Limpar</button>
+        <button class="button buttonYellow" mat-raised-button (click)="limparDados()">Limpar</button>
     </div>
 </div>
 <div class="row">
-    <div class="col-12" style="margin-left: 5%;" *ngIf="valorTotalCentro.length > 0; else semResultados">
+    <div class="col-12" style="margin-left: 5%;" *ngIf="valorTotalCentro.length > 0 || producaoMensalFuncionario.length > 0; else semResultados">
         <table *ngIf="tipoTabela == 'centroDeCusto'" mat-table [dataSource]="valorTotalCentro">
             <ng-container matColumnDef="tipoServico">
-            <th mat-header-cell *matHeaderCellDef> Serviço </th>
-            <td mat-cell *matCellDef="let element"> {{element.tipoServico}} </td>
+                <th mat-header-cell *matHeaderCellDef> Serviço </th>
+                <td mat-cell *matCellDef="let element"> {{element.tipoServico}} </td>
             </ng-container>
         
             <ng-container matColumnDef="valorServico">
-            <th mat-header-cell *matHeaderCellDef> Valor por serviço </th>
-            <td mat-cell *matCellDef="let element"> {{element.valorServico | currency: 'R$'}} </td>
+                <th mat-header-cell *matHeaderCellDef> Valor por serviço </th>
+                <td mat-cell *matCellDef="let element"> {{element.valorServico | currency: 'R$'}} </td>
             </ng-container>
         
             <tr mat-header-row *matHeaderRowDef="colunasCentro"></tr>
             <tr mat-row *matRowDef="let row; columns: colunasCentro;"></tr>
+        </table>
+
+        <table *ngIf="tipoTabela == 'funcionario'" mat-table [dataSource]="producaoMensalFuncionario">
+            <ng-container matColumnDef="centroDeCusto">
+                <th mat-header-cell *matHeaderCellDef> Centro de Custo </th>
+                <td mat-cell *matCellDef="let element"> {{element.centroDeCusto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tipoServico">
+                <th mat-header-cell *matHeaderCellDef> Serviço </th>
+                <td mat-cell *matCellDef="let element"> {{element.tipoServico}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="localExecucao">
+                <th mat-header-cell *matHeaderCellDef> Local de Execução </th>
+                <td mat-cell *matCellDef="let element"> {{element.localExecucao}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="dataFinal">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let element"> {{element.dataFinal | date: 'dd/MM/yyyy' }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valorServico">
+                <th mat-header-cell *matHeaderCellDef> Valor do serviço </th>
+                <td mat-cell *matCellDef="let element"> {{element.valorTotal | currency: 'R$'}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="colunasFuncionario"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunasFuncionario;"></tr>
         </table>
     </div>
 </div>
