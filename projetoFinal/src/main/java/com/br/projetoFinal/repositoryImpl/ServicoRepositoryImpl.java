@@ -1,10 +1,12 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.repository.ServicoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import javax.persistence.ColumnResult;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
@@ -96,5 +98,14 @@ public class ServicoRepositoryImpl implements ServicoRepository {
                 .setParameter("CONFERENTE", conferente)
                 .setParameter("ID_SERVICO", idServico)
                 .executeUpdate();
+    }
+
+    @Override
+    public List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia) {
+        TypedQuery<ValorTotalCentroPeriodoDto> query = em.createNamedQuery("Servico.buscarValorTotalPorCentro", ValorTotalCentroPeriodoDto.class)
+                .setParameter("CENTRO_DE_CUSTO", centroDeCusto)
+                .setParameter("MES_REFERENCIA", mesReferencia)
+                .setParameter("ANO_REFERENCIA", anoReferencia);
+        return query.getResultList();
     }
 }

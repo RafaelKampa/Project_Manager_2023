@@ -19,7 +19,9 @@ public class ServicoDto extends Servico {
     public Double valorTotal;
     public String obs;
     public Integer idAvaliacao;
-    private Boolean indConcluido;
+    public Boolean indConcluido;
+    public Integer mesReferencia;
+    public Integer anoReferencia;
 
     public ServicoDto() {
     }
@@ -63,6 +65,14 @@ public class ServicoDto extends Servico {
         this.obs = obs;
         this.indConcluido = indConcluido;
         this.idAvaliacao = idAvaliacao;
+    }
+
+    public ServicoDto(String centroDeCusto, Integer mesReferencia, Integer anoReferencia, String tipoServico, Double valorTotal) {
+        this.centroDeCusto = centroDeCusto;
+        this.mesReferencia = mesReferencia;
+        this.anoReferencia = anoReferencia;
+        this.tipoServico = tipoServico;
+        this.valorTotal = valorTotal;
     }
 
     @Override
@@ -215,5 +225,21 @@ public class ServicoDto extends Servico {
 
     public void setIndConcluido(Boolean indConcluido) {
         this.indConcluido = indConcluido;
+    }
+
+    public Integer getMesReferencia() {
+        return mesReferencia;
+    }
+
+    public void setMesReferencia(Integer mesReferencia) {
+        this.mesReferencia = mesReferencia;
+    }
+
+    public Integer getAnoReferencia() {
+        return anoReferencia;
+    }
+
+    public void setAnoReferencia(Integer anoReferencia) {
+        this.anoReferencia = anoReferencia;
     }
 }

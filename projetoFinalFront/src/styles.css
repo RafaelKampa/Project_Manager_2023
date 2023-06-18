@@ -57,12 +57,12 @@ color: #00008B;
 }
 
 .buttonRed { 
-  background-color: rgb(102, 1, 1) !important;
+  background-color: rgb(207, 81, 81) !important;
   color: white !important;
 }
 
 .buttonYellow {
-  background-color: rgb(255, 176, 6) !important;
+  background-color: rgb(245, 190, 71) !important;
 }
 
 .buttonGreen {
@@ -86,4 +86,9 @@ mat-option {
 
 .mat-mdc-select-value {
   font-size: small !important;
+}
+
+.label-select {
+  padding-left: 10px;
+  padding-bottom: 5px;
 }

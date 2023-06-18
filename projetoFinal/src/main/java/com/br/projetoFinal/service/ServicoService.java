@@ -1,6 +1,7 @@
 package com.br.projetoFinal.service;
 
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -18,4 +19,5 @@ public interface ServicoService {
     List<ServicoDto> buscarPorServico(String tipoServico);
     void excluir(Integer idServico) throws SystemException;
     void concluirServico(Integer idServico, Boolean indConcluido, String conferente) throws ExcecaoExemplo, SystemException;
+    List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia);
 }

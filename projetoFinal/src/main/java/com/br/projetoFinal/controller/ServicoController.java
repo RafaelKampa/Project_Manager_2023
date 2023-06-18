@@ -1,6 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.service.ServicoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -101,6 +102,17 @@ public class ServicoController {
         try {
             servicoService.concluirServico(idServico, indConcluido, conferente);
             return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarValorTotalPorCentro/{centroDeCusto}/{mesReferencia}/{anoReferencia}")
+    public ResponseEntity<List<ValorTotalCentroPeriodoDto>> buscarValorTotalPorCentro(@PathVariable("centroDeCusto") String centroDeCusto,
+                                                                                      @PathVariable("mesReferencia") Integer mesReferencia,
+                                                                                      @PathVariable("anoReferencia") Integer anoReferencia) throws ExcecaoExemplo, SystemException {
+        try {
+            return new ResponseEntity<>(servicoService.buscarValorTotalPorCentro(centroDeCusto, mesReferencia, anoReferencia), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

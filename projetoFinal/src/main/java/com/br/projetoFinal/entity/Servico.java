@@ -1,6 +1,7 @@
 package com.br.projetoFinal.entity;
 
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -48,6 +49,17 @@ import java.util.Date;
                                 @ColumnResult(name = "ID_AVALIACAO", type = Integer.class)
                         }
                 )
+        }),
+        @SqlResultSetMapping(name = "Servico.dtoMappingValorPorcentro", classes = {
+                @ConstructorResult(targetClass = ValorTotalCentroPeriodoDto.class,
+                        columns ={
+                                @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
+                                @ColumnResult(name = "MES_REFERENCIA", type = Integer.class),
+                                @ColumnResult(name = "ANO_REFERENCIA", type = Integer.class),
+                                @ColumnResult(name = "TIPO_SERVICO", type = String.class),
+                                @ColumnResult(name = "VALOR_TOTAL", type = Double.class)
+                        }
+                )
         })
 })
 @NamedNativeQueries({
@@ -59,6 +71,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Servico.excluirPorId", query = "DELETE FROM SERVICO WHERE ID_SERVICO = :ID_SERVICO", resultSetMapping = "Servico.dtoMapping"),
         @NamedNativeQuery(name="Servico.servicosAguardandoReaval", query = "SELECT S.ID_SERVICO, S.CENTRO_DE_CUSTO, S.CONFERENTE, S.DATA_FINAL, S.DATA_INICIO, S.DIMENSAO, S.EXECUTOR, S.LOCAL_EXECUCAO, S.OBS, S.PREV_TERMINO, S.TIPO_SERVICO, S.UNIDADE_MEDIDA, S.VALOR_TOTAL, S.VALOR_UNITARIO, S.IND_CONCLUIDO, A.ID_AVALIACAO\n" +
                 "FROM SERVICO S INNER JOIN AVALIACAO A ON S.ID_SERVICO = A.ID_SERVICO WHERE A.RESULTADO = FALSE AND (A.RESULT_REAVAL IS NULL OR A.RESULT_REAVAL = FALSE)", resultSetMapping = "Servico.dtoMappingAlvenaria"),
+        @NamedNativeQuery(name="Servico.buscarValorTotalPorCentro", query = "SELECT CENTRO_DE_CUSTO, MONTH(DATA_FINAL) AS MES_REFERENCIA, YEAR(DATA_FINAL) AS ANO_REFERENCIA, TIPO_SERVICO, CAST(SUM(VALOR_TOTAL) AS DECIMAL(10, 2)) AS VALOR_TOTAL FROM SERVICO WHERE CENTRO_DE_CUSTO = :CENTRO_DE_CUSTO AND MONTH(DATA_FINAL) = :MES_REFERENCIA AND YEAR(DATA_FINAL) = :ANO_REFERENCIA AND IND_CONCLUIDO = TRUE GROUP BY CENTRO_DE_CUSTO, MONTH(DATA_FINAL), YEAR(DATA_FINAL), TIPO_SERVICO", resultSetMapping = "Servico.dtoMappingValorPorcentro"),
 })
 
 @Entity

@@ -1,6 +1,7 @@
 package com.br.projetoFinal.serviceImpl;
 
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.repository.ServicoRepository;
 import com.br.projetoFinal.service.ServicoService;
@@ -108,6 +109,11 @@ public class ServicoServiceImpl implements ServicoService{
             utx.rollback();
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia) {
+        return servicoRepository.buscarValorTotalPorCentro(centroDeCusto, mesReferencia, anoReferencia);
     }
 
 
