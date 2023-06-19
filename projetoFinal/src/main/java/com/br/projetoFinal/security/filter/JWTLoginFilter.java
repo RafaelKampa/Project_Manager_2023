@@ -53,7 +53,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         SecurityUser c = (SecurityUser) auth.getPrincipal();
 
 //        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), auth.getAuthorities(), c.getGuidUsuario());
-        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), auth.getAuthorities());
+        Autenticacao autenticacao = TokenAuthenticationService.getToken(response, auth.getName(), c.getAuthorities());
 
         ObjectMapper parser = new ObjectMapper();
         String json = parser.writeValueAsString(autenticacao);

@@ -40,6 +40,7 @@ import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.com
 import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -93,6 +94,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }
   ],
   bootstrap: [AppComponent]
 })
