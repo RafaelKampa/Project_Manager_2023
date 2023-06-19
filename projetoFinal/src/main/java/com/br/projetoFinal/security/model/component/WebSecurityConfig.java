@@ -36,6 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/usuario/salvarUsuario").permitAll()
                 .antMatchers(HttpMethod.GET, "/usuario/buscarUltimoId").permitAll()
                 .antMatchers(HttpMethod.POST, "/remuneracao/salvarNovaRemuneracao").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/home-avaliar").hasAuthority("1")
+
                 .anyRequest().authenticated().and()
 
                 // filtra requisições de login
