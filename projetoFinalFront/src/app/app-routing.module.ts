@@ -18,6 +18,7 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { ProducaoComponent } from './paginas-executor/producao/producao.component';
 import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
+import { DashboardUsuarioComponent } from './paginas-executor/dashboard-usuario/dashboard-usuario.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },
       { path: 'cadastro-servico', component: CadastroServicoComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
-      { path: 'servico-home', component: ServicoHomeComponent, canActivate: [AuthGuard], data: { authorities: ['1', '2'] } },
+      { path: 'servico-home', component: ServicoHomeComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'centro-custo', component: CentroCustoComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
@@ -47,6 +48,7 @@ const routes: Routes = [
       { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'producao', component: ProducaoComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
       { path: 'avaliacoes', component: AvaliacoesComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
+      { path: 'dashboard-usuario', component: DashboardUsuarioComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
       { path: '**', redirectTo: 'home' }
     ]
   }

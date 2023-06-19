@@ -42,6 +42,13 @@ public class ValorProducaoDto extends ValorProducao {
         this.valorTotal = valorTotal;
     }
 
+    public ValorProducaoDto(Integer idUsuario, Integer mesReferencia, Integer anoReferencia, Double valorTotal) {
+        this.idUsuario = idUsuario;
+        this.mesReferencia = mesReferencia;
+        this.anoReferencia = anoReferencia;
+        this.valorTotal = valorTotal;
+    }
+
     @Override
     public Integer getIdValorProducao() {
         return idValorProducao;

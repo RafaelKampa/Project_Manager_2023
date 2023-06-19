@@ -48,6 +48,12 @@
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('2')">
+        <button class="button" mat-flat-button padding="10px" href="/api/dashboard-usuario">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Dashboard</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('2')">
         <button class="button" mat-flat-button padding="10px" href="/api/producao">
           <i class="fas fa-sync-alt"></i>
           <span class="sidebar-text">Consultar produção</span>

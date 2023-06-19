@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class ValorProducaoRepositoryImpl implements ValorProducaoRepository {
@@ -41,5 +42,12 @@ public class ValorProducaoRepositoryImpl implements ValorProducaoRepository {
                 .setParameter("MES_REFERENCIA", mesReferencia)
                 .setParameter("ANO_REFERENCIA", anoReferencia);
         return query.getSingleResult();
+    }
+
+    @Override
+    public List<ValorProducaoDto> listarProducaoPorUsuario(Integer idUsuario) {
+        TypedQuery<ValorProducaoDto> query = em.createNamedQuery("ValorProducao.listarProducaoPorUsuario", ValorProducaoDto.class)
+                .setParameter("ID_USUARIO", idUsuario);
+        return query.getResultList();
     }
 }

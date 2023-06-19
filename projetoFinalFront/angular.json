@@ -19,7 +19,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": [
-              "moment"
+              "moment",
+              "@canvasjs/angular-charts"
             ],
             "assets": [
               "src/favicon.ico",
@@ -103,7 +104,8 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }

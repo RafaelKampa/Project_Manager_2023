@@ -54,20 +54,32 @@ color: #00008B;
 .buttonBlue {
   background-color: rgb(25, 107, 133) !important;
   color: white !important;
+  margin-left: 5px; 
+  margin-right: 5px; 
+  max-width: 180px;
 }
 
 .buttonRed { 
   background-color: rgb(207, 81, 81) !important;
   color: white !important;
+  margin-left: 5px; 
+  margin-right: 5px; 
+  max-width: 180px;
 }
 
 .buttonYellow {
   background-color: rgb(245, 190, 71) !important;
+  margin-left: 5px; 
+  margin-right: 5px; 
+  max-width: 180px;
 }
 
 .buttonGreen {
   background-color: rgb(2, 131, 9) !important;
   color: rgb(255, 255, 255) !important;
+  margin-left: 5px; 
+  margin-right: 5px; 
+  max-width: 180px;
 }
 
 .inputs {
