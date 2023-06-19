@@ -1,13 +1,14 @@
 package com.br.projetoFinal.repositoryImpl;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
-import com.br.projetoFinal.entity.Servico;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.repository.ServicoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import javax.persistence.ColumnResult;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -26,8 +27,8 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
     public void salvarNovoServico(ServicoDto servicoDto) {
-        em.createNativeQuery("INSERT INTO SERVICO (TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, UNIDADE_MEDIDA, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS) \n" +
-                        "VALUES (:TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :UNIDADE_MEDIDA, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS)")
+        em.createNativeQuery("INSERT INTO SERVICO (TIPO_SERVICO, VALOR_UNITARIO, DIMENSAO, UNIDADE_MEDIDA, CENTRO_DE_CUSTO, LOCAL_EXECUCAO, EXECUTOR, CONFERENTE, DATA_INICIO, PREV_TERMINO, VALOR_TOTAL, OBS, IND_CONCLUIDO) \n" +
+                        "VALUES (:TIPO_SERVICO, :VALOR_UNITARIO, :DIMENSAO, :UNIDADE_MEDIDA, :CENTRO_DE_CUSTO, :LOCAL_EXECUCAO, :EXECUTOR, :CONFERENTE, :DATA_INICIO, :PREV_TERMINO, :VALOR_TOTAL, :OBS, :IND_CONCLUIDO)")
                 .setParameter("TIPO_SERVICO", servicoDto.getTipoServico())
                 .setParameter("VALOR_UNITARIO", servicoDto.getValorUnitario())
                 .setParameter("DIMENSAO", servicoDto.getDimensao())
@@ -40,6 +41,7 @@ public class ServicoRepositoryImpl implements ServicoRepository {
                 .setParameter("PREV_TERMINO", servicoDto.getPrevisaoTermino())
                 .setParameter("VALOR_TOTAL", servicoDto.getValorUnitario() * servicoDto.getDimensao())
                 .setParameter("OBS", servicoDto.getObs())
+                .setParameter("IND_CONCLUIDO", null)
                 .executeUpdate();
     }
 
@@ -58,6 +60,12 @@ public class ServicoRepositoryImpl implements ServicoRepository {
     @Override
     public List<ServicoDto> listarAvaliados() {
         TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.servicosAvaliados", ServicoDto.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ServicoDto> servicosAguardandoReaval() {
+        TypedQuery<ServicoDto> query = em.createNamedQuery("Servico.servicosAguardandoReaval", ServicoDto.class);
         return query.getResultList();
     }
 
@@ -84,10 +92,31 @@ public class ServicoRepositoryImpl implements ServicoRepository {
 
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
-    public void concluirServico(Integer idServico) {
-        em.createNativeQuery("UPDATE SERVICO SET DATA_FINAL = :DATA_FINAL WHERE ID_SERVICO = :ID_SERVICO")
+    public void concluirServico(Integer idServico, Boolean indConcluido, String conferente) {
+        em.createNativeQuery("UPDATE SERVICO SET DATA_FINAL = :DATA_FINAL, IND_CONCLUIDO = :IND_CONCLUIDO, CONFERENTE = :CONFERENTE WHERE ID_SERVICO = :ID_SERVICO")
                 .setParameter("DATA_FINAL", new Date())
+                .setParameter("IND_CONCLUIDO", indConcluido)
+                .setParameter("CONFERENTE", conferente)
                 .setParameter("ID_SERVICO", idServico)
                 .executeUpdate();
     }
+
+    @Override
+    public List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia) {
+        TypedQuery<ValorTotalCentroPeriodoDto> query = em.createNamedQuery("Servico.buscarValorTotalPorCentro", ValorTotalCentroPeriodoDto.class)
+                .setParameter("CENTRO_DE_CUSTO", centroDeCusto)
+                .setParameter("MES_REFERENCIA", mesReferencia)
+                .setParameter("ANO_REFERENCIA", anoReferencia);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProducaoMensalFuncionarioDto> buscarProducaoFuncionario(String executor, Integer mesReferencia, Integer anoReferencia) {
+        TypedQuery<ProducaoMensalFuncionarioDto> query = em.createNamedQuery("Servico.buscarProducaoFuncionario", ProducaoMensalFuncionarioDto.class)
+                .setParameter("EXECUTOR", executor)
+                .setParameter("MES_REFERENCIA", mesReferencia)
+                .setParameter("ANO_REFERENCIA", anoReferencia);
+        return query.getResultList();
+    }
+
 }

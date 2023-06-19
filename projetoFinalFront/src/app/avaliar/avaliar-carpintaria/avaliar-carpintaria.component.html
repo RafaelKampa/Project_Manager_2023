@@ -1,0 +1,108 @@
+<h1 class="center">Avaliação de Serviços de Carpintaria</h1>
+<form [formGroup]="avaliarCarpintariaForm">
+
+    <div class="center">
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Serviço</mat-label>
+            <input matInput [value]="servicoSelecionado.tipoServico" required disabled/>
+        </mat-form-field>
+
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Quantidade</mat-label>
+            <input matInput [value]="servicoSelecionado.dimensao" required disabled/>
+        </mat-form-field>
+
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Unidade de Medida</mat-label>
+            <input matInput [value]="servicoSelecionado.unidadeMedida" required disabled/>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Funcionário</mat-label>
+            <input matInput [value]="servicoSelecionado.executor" required disabled/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width inputs" appearance="fill">
+            <mat-label>Conferente</mat-label>
+            <mat-select formControlName="usuConf" required>
+                <mat-option *ngFor="let conferente of conferentesNome" [value]="conferente">
+                    {{conferente}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Valor total do Serviço</mat-label>
+            <input matInput [value]="servicoSelecionado.valorTotal  | currency: 'R$'" required disabled/>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Tipo de Carpintaria</mat-label>
+            <mat-select formControlName="tipoCarpintaria" name="tipoCarpintaria">
+                <mat-option [value]="'Vertical'">
+                    {{'Vertical'}}
+                </mat-option>
+                <mat-option [value]="'Horizontal'">
+                    {{'Horizontal'}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputs" appearance="fill">
+            <mat-label>Nível ou Prumo</mat-label>
+            <mat-select formControlName="nivelOuPrumo" name="nivelOuPrumo">
+                <mat-option [value]="true">
+                    {{'Aprovado'}}
+                </mat-option>
+                <mat-option [value]="false">
+                    {{'Reprovado'}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputs" appearance="fill">    
+            <mat-label>Estanqueidade</mat-label>
+            <mat-select formControlName="estanqueidade" name="estanqueidade">
+                <mat-option [value]="true">
+                    {{'Aprovado'}}
+                </mat-option>
+                <mat-option [value]="false">
+                    {{'Reprovado'}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <mat-form-field class="obs" appearance="fill">
+            <mat-label>Observações</mat-label>
+            <textarea matInput placeholder="Observações" name="obs" rows="4" formControlName="obs"></textarea>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <mat-form-field class="example-full-width inputs" appearance="fill">    
+            <mat-label>Resultado</mat-label>
+            <mat-select formControlName="resultado" name="resultado">
+                <mat-option class="inputs" [value]="true">
+                    {{"Aprovado"}}
+                </mat-option>
+                <mat-option class="inputs" [value]="false">
+                    {{"Reprovado"}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="center">
+        <button class="button" mat-flat-button color="primary" (click)="avaliarCarpintaria()">Avaliar</button>
+    </div>
+</form>

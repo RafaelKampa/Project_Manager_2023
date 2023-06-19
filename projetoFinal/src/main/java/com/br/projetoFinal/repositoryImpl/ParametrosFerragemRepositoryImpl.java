@@ -1,7 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.ParametrosFerragemDto;
-import com.br.projetoFinal.entity.ParametrosFerragem;
 import com.br.projetoFinal.repository.ParametrosFerragemRepository;
 import org.springframework.stereotype.Repository;
 

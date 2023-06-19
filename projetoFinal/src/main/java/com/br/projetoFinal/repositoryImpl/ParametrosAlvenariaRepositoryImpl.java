@@ -1,7 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.ParametrosAlvenariaDto;
-import com.br.projetoFinal.entity.ParametrosAlvenaria;
 import com.br.projetoFinal.repository.ParametrosAlvenariaRepository;
 import org.springframework.stereotype.Repository;
 

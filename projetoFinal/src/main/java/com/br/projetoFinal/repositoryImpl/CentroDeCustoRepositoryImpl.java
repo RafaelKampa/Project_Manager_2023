@@ -1,14 +1,12 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.CentroDeCustoDto;
-import com.br.projetoFinal.entity.CentroDeCusto;
 import com.br.projetoFinal.repository.CentroDeCustoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.util.Date;
 import java.util.List;
 
 @Repository

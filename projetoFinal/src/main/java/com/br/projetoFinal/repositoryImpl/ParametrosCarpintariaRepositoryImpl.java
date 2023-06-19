@@ -1,7 +1,6 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.ParametrosCarpintariaDto;
-import com.br.projetoFinal.entity.ParametrosCarpintaria;
 import com.br.projetoFinal.repository.ParametrosCarpintariaRepository;
 import org.springframework.stereotype.Repository;
 

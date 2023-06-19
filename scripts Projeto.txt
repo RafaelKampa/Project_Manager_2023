@@ -1,0 +1,59 @@
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Conferente', 'PUCPR', '07611572989', '2023-01-01', '1991-01-02', 'rafael.kampa@pucpr.edu.br', 'Rua Elias Stainsack, 139', 'Rafael Gilberto Kampa', 5000, '1234', 1, 'rafael');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente', 1, 5, 5000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Conferente', 'PUCPR', '00000000000', '2023-01-01', '1991-01-02', 'bernardo.diniz@pucpr.edu.br', 'Rua Imaculada Conceição', 'Bernardo Zeni Diniz', 5000, '1234', 1, 'bernardo');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente', 2, 5, 5000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Conferente', 'PUCPR', '01234567890', '2023-01-01', '1991-01-02', 'lucas.rodrigues@pucpr.edu.br', 'Rua Imaculada Conceição', 'Lucas Vecino Rodrigues', 5000, '1234', 1, 'lucas');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Conferente', 3, 5, 5000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Carpinteiro', 'Autônomo', '11111111111', '2023-01-01', '1990-01-01', 'heitor@gmail.com', 'Rua Tefé, 150', 'Heitor Kubis', 2000, '1234', 2, 'heitor');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Carpinteiro', 4, 5, 2000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Armador', 'Autônomo', '22222222222', '2023-01-01', '1990-01-01', 'marcelo@gmail.com', 'Rua Capimbovas, 350', 'Marcelo Cardoso', 2000, '1234', 2, 'marcelo');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Armador', 5, 5, 2000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Pedreiro', 'Autônomo', '33333333333', '2023-01-01', '1990-01-01', 'julian@gmail.com', 'Rua das Árvores, 200', 'Julian Almeida', 2000, '1234', 2, 'julian');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Pedreiro', 6, 5, 2000);
+
+insert into usuario (cargo, contratante, cpf, data_admissao, data_nascimento, email, endereco_residencial, nome, remuneracao, senha, tipo_usuario, login)
+values ('Azuleijista', 'Autônomo', '44444444444', '2023-01-01', '1990-01-01', 'jonathan@gmail.com', 'Rua da PQP, 1', 'Jonathan Gugu', 2000, '1234', 2, 'jonathan');
+
+insert into remuneracao(ano_referencia, funcao, id_usuario, mes_referencia, valor)
+values(2023, 'Azuleijista', 7, 5, 2000);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Alvenaria', 'm²', 15);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Carpintaria', 'm²', 9);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Acabamento', 'm²', 40);
+
+INSERT INTO TIPO_SERVICO_TABLE (NOME_SERVICO, UNIDADE_MEDIDA, VALOR_UNITARIO)
+VALUES('Ferragem', 'kg', 10);
+
+INSERT INTO CENTRO_DE_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Milano, 1', 'Edifício Milano', 0);
+
+INSERT INTO CENTRO_DE_CUSTO(ENDERECO, NOME_CENTRO_DE_CUSTO, VALOR_EMPREENDIDO)
+VALUES('Rua Elias Stainsack, 139', 'Edifício Elias', 0); 

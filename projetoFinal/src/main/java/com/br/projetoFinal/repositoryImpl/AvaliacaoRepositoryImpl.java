@@ -1,13 +1,12 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
-import com.br.projetoFinal.entity.Avaliacao;
+import com.br.projetoFinal.dto.ReavaliacaoDto;
 import com.br.projetoFinal.repository.AvaliacaoRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -39,14 +38,14 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
 
     @Override
     @Transactional(value = Transactional.TxType.REQUIRES_NEW)
-    public void reavaliar(AvaliacaoDto avaliacaoDto) {
+    public void reavaliar(ReavaliacaoDto reavaliacaoDto) {
         em.createNativeQuery("UPDATE AVALIACAO \n" +
                         "SET RESULT_REAVAL = :RESULT_REAVAL, DATA_REAVALIACAO = :DATA_REAVALIACAO, OBS = :OBS \n" +
                         "WHERE ID_AVALIACAO = :ID_AVALIACAO")
-                .setParameter("ID_AVALIACAO", avaliacaoDto.getIdAvaliacao())
-                .setParameter("RESULT_REAVAL", avaliacaoDto.getResultReaval())
-                .setParameter("DATA_REAVALIACAO", avaliacaoDto.getDataReavaliacao())
-                .setParameter("OBS", avaliacaoDto.getObs())
+                .setParameter("ID_AVALIACAO", reavaliacaoDto.getIdAvaliacao())
+                .setParameter("RESULT_REAVAL", reavaliacaoDto.getResultReaval())
+                .setParameter("DATA_REAVALIACAO", reavaliacaoDto.getDataReavaliacao())
+                .setParameter("OBS", reavaliacaoDto.getObs())
                 .executeUpdate();
     }
 
@@ -88,5 +87,12 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
     public Integer buscarUltimoId() {
         TypedQuery<Integer> query = em.createQuery("SELECT MAX(a.idAvaliacao) FROM Avaliacao a", Integer.class);
         return query.getSingleResult();
+    }
+
+    @Override
+    public List<AvaliacaoDto> listarAvaliacoesPorUsu(String usuExect) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.listarAvaliacoesPorUsu", AvaliacaoDto.class)
+                .setParameter("USU_EXECT", usuExect);
+        return query.getResultList();
     }
 }

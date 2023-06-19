@@ -2,13 +2,13 @@
 <form [formGroup]="cadastroUserForm" (ngSubmit)="salvar()">
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Login</mat-label>
             <input matInput placeholder="Digite o login" name="username" formControlName="username" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Nome Completo</mat-label>
             <input matInput placeholder="Digite o nome" name="nome" formControlName="nome" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput [matDatepicker]="dataNascimento" name="dataNascimento" formControlName ="dataNascimento" required/>
             <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
@@ -24,7 +24,7 @@
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>CPF</mat-label>
             <input matInput placeholder="Digite o seu CPF" name="cpf" formControlName="cpf" mask="CPF_CNPJ" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
@@ -32,13 +32,13 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Endereço</mat-label>
             <input matInput placeholder="Digite o Endereço Residencial" name="enderecoResidencial" formControlName="enderecoResidencial" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>E-mail</mat-label>
             <input matInput placeholder="Digite o seu E-mail" name="email" formControlName="email" required/>
             <mat-error *ngIf="cadastroUserForm.get('email')">{{getErrorMessage()}}</mat-error>
@@ -46,13 +46,13 @@
     </div>
     
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Contratante</mat-label>
             <input matInput placeholder="Digite o Contratante" name="contratante" formControlName="contratante" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field> 
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Data de Admissão</mat-label>
             <input matInput [matDatepicker]="dataAdmissao" name="dataAdmissao" formControlName="dataAdmissao" required/>
             <mat-datepicker-toggle matSuffix [for]="dataAdmissao"></mat-datepicker-toggle>
@@ -62,13 +62,13 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Cargo</mat-label>
             <input matInput placeholder="Digite seu cargo" name="cargo" formControlName="cargo" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field> 
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Remuneração</mat-label>
             <input  matInput placeholder="Digite remuneração média" name="remuneracao" formControlName="remuneracao"
                 currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: 'false' }" required/>
@@ -77,20 +77,20 @@
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="Digite um telefone" name="telefone" formControlName="telefone" mask="(00) 0.0000-0000"/>
         </mat-form-field> 
     </div>
 
     <div class="center">
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Senha</mat-label>
             <input type="password" matInput placeholder="Digite a senha" name="senha" formControlName="senha" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width inputs" appearance="fill">
+        <mat-form-field class="inputs" appearance="fill">
             <mat-label>Confirme sua senha</mat-label>
             <input type="password" matInput placeholder="Confirme a sua senha" name="confirmarSenha" formControlName="confirmarSenha" required/>
             <mat-error *ngIf="erroCampoVazio.invalid">{{getErrorMessage()}}</mat-error>

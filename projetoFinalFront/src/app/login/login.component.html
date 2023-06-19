@@ -1,40 +1,42 @@
-<form [formGroup]="loginForm" (ngSubmit)="logar()">   
-    <h1 class="tittle">Login de Usuário</h1>
+<form [formGroup]="loginForm">   
+    <h1 class="row title center" style="margin-top: 15px;">Login de Usuário</h1>
     
-    <div class="center">
-        <mat-form-field appearance="fill">
-        <mat-label class="fontStyle">Digite seu login</mat-label>
+    <div class="row center">
+        <mat-form-field style="width: 250px;" appearance="fill">
+        <mat-label>Digite seu login</mat-label>
         <input  formControlName="login" matInput placeholder="Nome de usuário" required>    
         </mat-form-field> 
     </div> 
 
-    <div class="center">            
-        <mat-form-field appearance="fill"> 
-            <mat-label class="fontStyle">Digite sua senha</mat-label>
-            <input  formControlName="senha" matInput [type]="hide ? 'password' : 'text'">  
-        </mat-form-field> 
+    <div class="row">
+        <div class="col-12 center">
+            <mat-form-field appearance="fill" style="width: 226px;"> 
+                <mat-label>Digite sua senha</mat-label>
+                <input formControlName="senha" matInput [type]="hide ? 'password' : 'text'">  
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide" required> 
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button> 
+            </mat-form-field> 
+        </div>
     </div>
 
-    <div class="center">
-        <button class="olho" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"[attr.aria-pressed]="hide" required> 
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button> 
+    <div class="row">
+        <div class="col-12 esqueciSenha">
+            <a href="" (click)="esqueciSenha()">Esqueci minha senha</a> 
+        </div>
     </div>
 
 
-    <div class="center">
-        <a class="esqueciSenha" href="" (click)="esqueciSenha()" >Esqueci minha senha</a> 
-    </div>    
+    <div class="row">
+        <div class="col-12 center">
+            <button class="button buttonGreen" mat-raised-button (click)="logar()">Entrar</button>
+        </div>
+    </div>
 
-
-    <div class="button">
-        <button class="buttonColorEntrar" mat-raised-button color="">Entrar</button>
-    </div>     
-
-    <div class="button">
-        <button class="buttonColorCadastro" mat-raised-button color="" (click)="cadastrar()">Cadastrar novo usuário</button>
-    </div>   
-    
-    
+    <div class="row">
+        <div class="col-12 center">
+            <button class="button buttonBlue" mat-raised-button (click)="cadastrar()">Cadastrar novo usuário</button>
+        </div>
+    </div>
 </form>
 

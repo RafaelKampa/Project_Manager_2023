@@ -19,7 +19,7 @@ public class ParametrosFerragemController {
     @Autowired
     ParametrosFerragemService parametrosFerragemService;
 
-    @PostMapping
+    @PostMapping("/salvarNovosParametros")
     public ResponseEntity<?> salvarParametrosAvaliados(@RequestBody ParametrosFerragemDto parametrosFerragemServiceDto) throws ExcecaoExemplo, SystemException {
         try {
             parametrosFerragemService.salvarParametrosAvaliados(parametrosFerragemServiceDto);

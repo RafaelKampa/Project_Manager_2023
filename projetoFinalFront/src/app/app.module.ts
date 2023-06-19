@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +30,19 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import {MatSidenav, MatSidenavContent, MatSidenavModule} from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
-import { LayoutComponent } from './layout/layout.component'; 
+import { LayoutComponent } from './layout/layout.component';
+import { AvaliarAlvenariaComponent } from './avaliar/avaliar-alvenaria/avaliar-alvenaria.component';
+import { AvaliarAcabamentoComponent } from './avaliar/avaliar-acabamento/avaliar-acabamento.component';
+import { AvaliarFerragemComponent } from './avaliar/avaliar-ferragem/avaliar-ferragem.component';
+import { AvaliarCarpintariaComponent } from './avaliar/avaliar-carpintaria/avaliar-carpintaria.component';
+import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component'; 
+import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
+import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
+import { ServicosComponent } from './servicos/servicos.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { ProducaoComponent } from './paginas-executor/producao/producao.component';
+import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -51,6 +62,17 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     HomeComponent,
     ImageSliderComponent,
     LayoutComponent,
+    AvaliarAlvenariaComponent,
+    AvaliarAcabamentoComponent,
+    AvaliarFerragemComponent,
+    AvaliarCarpintariaComponent,
+    ReavaliarComponent,
+    CentroDeCustosComponent,
+    HomeAvaliarComponent,
+    ServicosComponent,
+    FinanceiroComponent,
+    ProducaoComponent,
+    AvaliacoesComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +98,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }
   ],
   bootstrap: [AppComponent]
 })

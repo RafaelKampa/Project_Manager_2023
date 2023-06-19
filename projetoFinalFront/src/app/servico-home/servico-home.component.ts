@@ -12,29 +12,22 @@ export class ServicoHomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  cadastrarNovoServico() {
-    this.router.navigate(['/api/cadastro-servico']);
-  }
-
-  listarServicos() {
-    this.router.navigate(['/api/listar-servicos']);
-  }
-
   cadastrarCentros() {
     this.router.navigate(['/api/centro-custo']);
   }
-
   listarCentros() {
     this.router.navigate(['/api/listar-centros']);
   }
-
   avaliarServicos() {
     this.router.navigate(['/api/avaliar']);
   }
-
   reavaliarServicos() {
     this.router.navigate(['/api/reavaliar']);
   }
-
+  cadastrarNovoServico() {
+    this.router.navigate(['/api/cadastro-servico']);
+  }
+  listarServicos() {
+    this.router.navigate(['/api/listar-servicos']);
+  }
 }

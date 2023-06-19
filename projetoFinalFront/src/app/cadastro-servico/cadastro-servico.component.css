@@ -1,12 +1,26 @@
-.center{
+.tittle{
     display: flex;
-    justify-content: center;
-}
-
-.button {
+    justify-content: center;    
+    color: rgb(56, 48, 33);
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.inputs {
-    width: 250px;
+.button1{
+    background-color: rgb(22, 73, 88);
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+ }
+
+ .button2{
+    background-color: rgb(77, 17, 17);
+    color: rgb(255, 255, 255);
+ }
+
+.obs {
+    width: 490px;
 }
+
+::ng-deep .mat-select-arrow {
+    font-size: 16px !important; 
+  }

@@ -1,0 +1,109 @@
+<h1 class="center">Reavaliar Serviços</h1>
+<div class="center" *ngIf="showTabela" >
+    <p>Serviços aguardando Reavaliação</p>
+</div>
+<div class="center" *ngIf="showTabela">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;">
+        <ng-container matColumnDef="idServico">
+            <th mat-header-cell *matHeaderCellDef> Serviço </th>
+            <td mat-cell *matCellDef="let element"> {{element.idServico}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipoServico">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let element"> {{element.tipoServico}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorUnitario">
+            <th mat-header-cell *matHeaderCellDef> Valor Unitário </th>
+            <td mat-cell *matCellDef="let element"> {{element.valorUnitario | currency: 'R$'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dimensao">
+            <th mat-header-cell *matHeaderCellDef> Dimensões </th>
+            <td mat-cell *matCellDef="let element"> {{element.dimensao}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unidadeMedida">
+            <th mat-header-cell *matHeaderCellDef> Und. </th>
+            <td mat-cell *matCellDef="let element"> {{element.unidadeMedida}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="centroDeCusto">
+            <th mat-header-cell *matHeaderCellDef> Centro de Custo </th>
+            <td mat-cell *matCellDef="let element"> {{element.centroDeCusto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="localExecucao">
+            <th mat-header-cell *matHeaderCellDef> Local de Execução </th>
+            <td mat-cell *matCellDef="let element"> {{element.localExecucao}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="executor">
+            <th mat-header-cell *matHeaderCellDef> Funcionário </th>
+            <td mat-cell *matCellDef="let element"> {{element.executor}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="conferente">
+            <th mat-header-cell *matHeaderCellDef> Conferente </th>
+            <td mat-cell *matCellDef="let element"> {{element.conferente}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataInicio">
+            <th mat-header-cell *matHeaderCellDef> Data de Início </th>
+            <td mat-cell *matCellDef="let element"> {{element.dataInicio | date : 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="previsaoTermino">
+            <th mat-header-cell *matHeaderCellDef> Previsão de Término </th>
+            <td mat-cell *matCellDef="let element"> {{element.previsaoTermino| date : 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="valorTotal">
+            <th mat-header-cell *matHeaderCellDef> Valor Total </th>
+            <td mat-cell *matCellDef="let element"> {{element.valorTotal | currency: 'R$'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reavaliar">
+            <th mat-header-cell *matHeaderCellDef> Reavaliar </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-flat-button color="primary" (click)="reavaliar(element.idServico, element.idAvaliacao)">Reavaliar</button> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsSemAval"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsSemAval;"></tr>
+        
+    </table>
+</div>
+
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Acabamento' && showQuestionario == true">
+    <app-avaliar-acabamento  #avaliarAcabamento
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
+    </app-avaliar-acabamento>
+</ng-container>
+
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Alvenaria' && showQuestionario == true">
+    <app-avaliar-alvenaria #avaliarAlvenaria
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
+    </app-avaliar-alvenaria>
+</ng-container>
+
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Carpintaria' && showQuestionario == true">
+    <app-avaliar-carpintaria  #avaliarCarpintaria
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
+    </app-avaliar-carpintaria>
+</ng-container>
+
+<ng-container *ngIf="servicoSelecionado.tipoServico === 'Ferragem' && showQuestionario == true">
+    <app-avaliar-ferragem #avaliarFerragem
+    [servicoSelecionado]="servicoSelecionado"
+    [indReavaliacao] = "true">
+    </app-avaliar-ferragem>
+</ng-container>
+
+<div class="center">
+    <button class="button buttonCancelar" mat-flat-button color="warn" padding="10px" (click)="cancelar()">Cancelar</button>
+</div>  

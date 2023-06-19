@@ -54,10 +54,4 @@ public class ProjetoFinalApplication {
 			}
 		};
 	}
-
-//	@Bean
-//	public JdbcTemplate jdbcTemplate() {
-//		return new JdbcTemplate();
-//	}
-
 }

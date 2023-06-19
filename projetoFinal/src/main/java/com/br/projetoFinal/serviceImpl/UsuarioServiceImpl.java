@@ -77,8 +77,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioDto buscarPorNome(String login) {
-        return usuarioRepository.buscarPorNome(login);
+    public UsuarioDto buscarPorNome(String nomeUsuario) {
+        return usuarioRepository.buscarPorNome(nomeUsuario);
     }
 
     @Override
@@ -93,4 +93,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
     }
 
+    @Override
+    public Integer buscarUltimoId() {
+        return usuarioRepository.buscarUltimoId();
+    }
+
+    @Override
+    public UsuarioDto buscarPorUsername(String username) {
+        return usuarioRepository.buscarPorUsername(username);
+    }
 }

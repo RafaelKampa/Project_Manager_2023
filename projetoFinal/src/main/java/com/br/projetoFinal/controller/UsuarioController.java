@@ -4,7 +4,6 @@ import com.br.projetoFinal.dto.UsuarioDto;
 import com.br.projetoFinal.service.UsuarioService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,10 +68,10 @@ public class UsuarioController {
         }
     }
 
-    @GetMapping("/buscarPorNome/{login}")
-    public ResponseEntity buscarPorNome(@PathVariable("login") String login) {
+    @GetMapping("/buscarPorNome/{nomeUsuario}")
+    public ResponseEntity buscarPorNome(@PathVariable("nomeUsuario") String nomeUsuario) {
         try {
-            UsuarioDto usuario = usuarioService.buscarPorNome(login);
+            UsuarioDto usuario = usuarioService.buscarPorNome(nomeUsuario);
             return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -84,6 +83,26 @@ public class UsuarioController {
         try {
             usuarioService.excluir(idUsuario);
             return new ResponseEntity<>(idUsuario, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarUltimoId")
+    public ResponseEntity<Integer> buscarUltimoId() {
+        try {
+            Integer ultimoId = usuarioService.buscarUltimoId();
+            return new ResponseEntity<>(ultimoId, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/buscarPorUsername/{username}")
+    public ResponseEntity buscarPorUsername(@PathVariable("username") String username) {
+        try {
+            UsuarioDto usuario = usuarioService.buscarPorUsername(username);
+            return new ResponseEntity<>(usuario, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

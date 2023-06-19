@@ -11,6 +11,13 @@ import { ListarCentrosComponent } from './listar-centros/listar-centros.componen
 import { AvaliarComponent } from './avaliar/avaliar.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
+import { ReavaliarComponent } from './avaliar/reavaliar/reavaliar.component';
+import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.component';
+import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
+import { ServicosComponent } from './servicos/servicos.component';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { ProducaoComponent } from './paginas-executor/producao/producao.component';
+import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
 
 
 const routes: Routes = [
@@ -24,15 +31,22 @@ const routes: Routes = [
     path: 'api',
     component: LayoutComponent,
     children: [
-      {path: 'home', component: HomeComponent},
+      { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'usuario', component: UsuarioComponent },
-      { path: 'cadastro-servico', component: CadastroServicoComponent, canActivate: [AuthGuard]},
-      { path: 'servico-home', component: ServicoHomeComponent, canActivate: [AuthGuard]},
-      { path: 'centro-custo', component: CentroCustoComponent, canActivate: [AuthGuard]},
-      { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard]},
-      { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard]},
-      { path: 'avaliar', component: AvaliarComponent, canActivate: [AuthGuard]},
+      { path: 'cadastro-servico', component: CadastroServicoComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'servico-home', component: ServicoHomeComponent, canActivate: [AuthGuard], data: { authorities: ['1', '2'] } },
+      { path: 'centro-custo', component: CentroCustoComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'listar-servicos', component: ListarServicosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'listar-centros', component: ListarCentrosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'avaliar', component: AvaliarComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'reavaliar', component: ReavaliarComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'centro-de-custos', component: CentroDeCustosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'home-avaliar', component: HomeAvaliarComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'servicos', component: ServicosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'producao', component: ProducaoComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
+      { path: 'avaliacoes', component: AvaliacoesComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
       { path: '**', redirectTo: 'home' }
     ]
   }

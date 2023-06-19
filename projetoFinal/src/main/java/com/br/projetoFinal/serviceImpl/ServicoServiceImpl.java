@@ -1,6 +1,8 @@
 package com.br.projetoFinal.serviceImpl;
 
+import com.br.projetoFinal.dto.ProducaoMensalFuncionarioDto;
 import com.br.projetoFinal.dto.ServicoDto;
+import com.br.projetoFinal.dto.ValorTotalCentroPeriodoDto;
 import com.br.projetoFinal.entity.Servico;
 import com.br.projetoFinal.repository.ServicoRepository;
 import com.br.projetoFinal.service.ServicoService;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -73,6 +74,11 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
+    public List<ServicoDto> servicosAguardandoReaval() {
+        return servicoRepository.servicosAguardandoReaval();
+    }
+
+    @Override
     public ServicoDto buscarPorId(Integer idServico) {
         return servicoRepository.buscarPorId(idServico);
     }
@@ -95,10 +101,10 @@ public class ServicoServiceImpl implements ServicoService{
     }
 
     @Override
-    public void concluirServico(Integer idServico) throws ExcecaoExemplo, SystemException {
+    public void concluirServico(Integer idServico, Boolean indConcluido, String conferente) throws ExcecaoExemplo, SystemException {
         try {
             utx.begin();
-            servicoRepository.concluirServico(idServico);
+            servicoRepository.concluirServico(idServico, indConcluido, conferente);
             utx.commit();
         } catch (Exception e) {
             utx.rollback();
@@ -106,5 +112,13 @@ public class ServicoServiceImpl implements ServicoService{
         }
     }
 
+    @Override
+    public List<ValorTotalCentroPeriodoDto> buscarValorTotalPorCentro(String centroDeCusto, Integer mesReferencia, Integer anoReferencia) {
+        return servicoRepository.buscarValorTotalPorCentro(centroDeCusto, mesReferencia, anoReferencia);
+    }
 
+    @Override
+    public List<ProducaoMensalFuncionarioDto> buscarProducaoFuncionario(String executor, Integer mesReferencia, Integer anoReferencia) {
+        return servicoRepository.buscarProducaoFuncionario(executor, mesReferencia, anoReferencia);
+    }
 }

@@ -1,14 +1,11 @@
 package com.br.projetoFinal.repositoryImpl;
 
-import com.br.projetoFinal.dto.TipoServicoDto;
 import com.br.projetoFinal.dto.UsuarioDto;
-import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.repository.UsuarioRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
@@ -25,9 +22,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDto buscarPorNome(String login) {
-        TypedQuery<UsuarioDto> query = (TypedQuery<UsuarioDto>) getEntityManager().createNativeQuery("SELECT * FROM USUARIO WHERE LOGIN = :LOGIN")
-            .setParameter("LOGIN", login);
+    public UsuarioDto buscarPorNome(String nomeUsuario) {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarPorNome", UsuarioDto.class)
+                .setParameter("NOME", nomeUsuario);
         return query.getSingleResult();
     }
 
@@ -83,6 +80,19 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     public void excluirPorId(Integer idUsuario) {
         TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.excluirPorid", UsuarioDto.class)
                 .setParameter("ID_USUARIO", idUsuario);
+    }
+
+    @Override
+    public Integer buscarUltimoId() {
+        TypedQuery<Integer> query = em.createQuery("SELECT MAX(u.idUsuario) FROM Usuario u", Integer.class);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public UsuarioDto buscarPorUsername(String username) {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarPorUsername", UsuarioDto.class)
+                .setParameter("LOGIN", username);
+        return query.getSingleResult();
     }
 
 }

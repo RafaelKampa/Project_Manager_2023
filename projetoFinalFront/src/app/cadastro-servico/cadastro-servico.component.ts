@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CentroCustoService } from '../centro-custo/service/centro-custo.service';
 import { UsuarioModel } from '../usuario/model/usuario.model';
 import { UsuarioService } from '../usuario/service/usuario.service';
-import { CadastroServicoService } from './servico/cadastro-servico.service';
 import { CentroCustoModel } from '../shared/models/centro-custo.model';
 import { lastValueFrom } from 'rxjs';
 import { ServicosModel } from '../shared/models/servico.model';
 import { TipoServicoModel } from '../shared/models/tipo-servico-model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ServicosService } from '../shared/service/servico.service';
 
 
 
@@ -34,7 +34,7 @@ export class CadastroServicoComponent implements OnInit {
     obs: new FormControl(''),
   });
 
-  constructor(private cadastroServicosService: CadastroServicoService,
+  constructor(private cadastroServicosService: ServicosService,
     private usuarioService: UsuarioService,
     private centroCustoServ: CentroCustoService,
     private router: Router) { 
@@ -94,40 +94,57 @@ export class CadastroServicoComponent implements OnInit {
     this.executorSelecionado = event.value;
   }
 
-  salvar() {
-    let servico = new ServicosModel();
-      servico.tipoServico = this.tipoServicoSelecionado.nomeServico;
-      servico.valorUnitario = this.tipoServicoSelecionado.valorUnitario;
-      var dimensaoControl = this.cadastroServicoForm.get('dimensao')?.value;
-      if (dimensaoControl) {
-        servico.dimensao = +dimensaoControl;
-      }
-      servico.unidadeMedida = this.tipoServicoSelecionado.unidadeMedida;
-      servico.centroDeCusto = this.centroSelecionado.nomeCentroDeCusto;
-      var localControl = this.cadastroServicoForm.get('localExecucao')?.value;
-      if (localControl) {
-        servico.localExecucao = localControl;
-      }
-      servico.executor = this.executorSelecionado.nome;
-      servico.conferente = this.conferenteSelecionado.nome;
-      var dataInicioControl = this.cadastroServicoForm.get('dataInicio')?.value;
-      if(dataInicioControl) {
-        servico.dataInicio = new Date(dataInicioControl);
-      }
-      var previsaoTerminoControl = this.cadastroServicoForm.get('previsaoTermino')?.value;
-      if(previsaoTerminoControl) {
-        servico.previsaoTermino = new Date(previsaoTerminoControl);
-        
-      }
-      servico.obs = this.cadastroServicoForm.get('obs')?.value;
+  public async salvar() {
+    try {
+      let servico = new ServicosModel();
+        servico.tipoServico = this.tipoServicoSelecionado.nomeServico;
+        servico.valorUnitario = this.tipoServicoSelecionado.valorUnitario;
+        var dimensaoControl = this.cadastroServicoForm.get('dimensao')?.value;
+        if (dimensaoControl) {
+          servico.dimensao = +dimensaoControl;
+        }
+        servico.unidadeMedida = this.tipoServicoSelecionado.unidadeMedida;
+        servico.centroDeCusto = this.centroSelecionado.nomeCentroDeCusto;
+        var localControl = this.cadastroServicoForm.get('localExecucao')?.value;
+        if (localControl) {
+          servico.localExecucao = localControl;
+        }
+        servico.executor = this.executorSelecionado.nome;
+        servico.conferente = this.conferenteSelecionado.nome;
+        var dataInicioControl = this.cadastroServicoForm.get('dataInicio')?.value;
+        if(dataInicioControl) {
+          servico.dataInicio = new Date(dataInicioControl);
+        }
+        var previsaoTerminoControl = this.cadastroServicoForm.get('previsaoTermino')?.value;
+        if(previsaoTerminoControl) {
+          servico.previsaoTermino = new Date(previsaoTerminoControl);
+          
+        }
+        servico.obs = this.cadastroServicoForm.get('obs')?.value;
 
-      this.cadastroServicosService.salvarNovoServico(servico).subscribe(usuarioRetorno => {
-        alert("Serviço cadastrado com Sucesso!");
+        if (!servico.tipoServico ||
+            !servico.dimensao || 
+            !servico.localExecucao ||
+            !servico.centroDeCusto ||
+            !servico.executor ||
+            !servico.conferente ||
+            !servico.dataInicio ||
+            !servico.previsaoTermino) {
+          alert("Existem campos obrigatórios em branco");
+          return;
+        }
+
+        if (servico.dataInicio > servico.previsaoTermino) {
+          alert("A data de previsão de término não pode ser anterior a data de início.");
+          return;
+        }
+
+        lastValueFrom(this.cadastroServicosService.salvarNovoServico(servico));
+        alert("Serviço cadastrado com sucesso!");
         this.router.navigate(['/api/servico-home']);
-      }, (err) => {
-        alert("Serviço não cadastrado! \n Contate o Administrador");
-        return;
-      });
+    } catch{
+      alert("Serviço não avaliado!\nContate o Administrador");
+    }
   }
 
   cancelar() {

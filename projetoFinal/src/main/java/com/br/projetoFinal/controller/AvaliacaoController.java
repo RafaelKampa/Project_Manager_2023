@@ -1,6 +1,7 @@
 package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
+import com.br.projetoFinal.dto.ReavaliacaoDto;
 import com.br.projetoFinal.entity.Avaliacao;
 import com.br.projetoFinal.service.AvaliacaoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -31,11 +33,11 @@ public class AvaliacaoController {
         }
     }
 
-    @PostMapping("/reavaliar")
-    public ResponseEntity<?> reavaliar(@RequestBody AvaliacaoDto avaliacaoDto) throws ExcecaoExemplo, SystemException {
+    @PutMapping("/reavaliar")
+    public ResponseEntity<?> reavaliar(@RequestBody ReavaliacaoDto reavaliacaoDto) throws ExcecaoExemplo, SystemException {
         try {
-            avaliacaoService.reavaliar(avaliacaoDto);
-            return new ResponseEntity<>(avaliacaoDto, HttpStatus.CREATED);
+            avaliacaoService.reavaliar(reavaliacaoDto);
+            return new ResponseEntity<>(reavaliacaoDto, HttpStatus.CREATED);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
@@ -94,6 +96,15 @@ public class AvaliacaoController {
             return new ResponseEntity<>(ultimoId, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/listarAvaliacoesPorUsu/{usuExect}")
+    public ResponseEntity<List<AvaliacaoDto>> listarAvaliacoesPorUsu(@PathVariable("usuExect") String usuExect) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.listarAvaliacoesPorUsu(usuExect), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>((List<AvaliacaoDto>) null, HttpStatus.NOT_FOUND);
         }
     }
 
