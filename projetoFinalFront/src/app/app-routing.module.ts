@@ -17,6 +17,7 @@ import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { ProducaoComponent } from './paginas-executor/producao/producao.component';
+import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'servicos', component: ServicosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'producao', component: ProducaoComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
+      { path: 'avaliacoes', component: AvaliacoesComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
       { path: '**', redirectTo: 'home' }
     ]
   }

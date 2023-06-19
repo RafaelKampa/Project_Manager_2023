@@ -1,4 +1,7 @@
-<div class="row" style="padding-left: 5%; padding-top: 2.5%">
+<div class="row" style="padding-top: 2.5%;">
+    <h1 class="center">Consultar produção mensal</h1>
+</div>
+<div class="row" style="padding-left: 5%;">
     <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12">
         <div class="label-select">
             Selecione período de busca
@@ -19,7 +22,7 @@
     </div>
 </div>
 <div class="row" *ngIf="tabela">
-    <div class="col-12" style="margin-left: 5%;" *ngIf="producao.length > 0; else semResultados">
+    <div class="col-12" *ngIf="producao.length > 0; else semResultados">
         <table mat-table [dataSource]="producao">
             <ng-container matColumnDef="centroDeCusto">
                 <th mat-header-cell *matHeaderCellDef> Centro de Custo </th>

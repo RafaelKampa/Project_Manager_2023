@@ -4,6 +4,7 @@ import { ServicosModel } from '../../shared/models/servico.model';
 import { Observable } from 'rxjs';
 import { AvaliacaoModel } from '../../shared/models/avaliacao.model';
 import { ReavaliacaoModel } from '../reavaliar/model/reavaliacao.model';
+import { AvaliacoesModel } from '../../paginas-executor/avaliacoes/model/avaliacoes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class AvaliarService {
 
   buscarPorId(idAvaliacao: number): Observable<AvaliacaoModel> {
     return this.httpClient.get<AvaliacaoModel>("http://localhost:8082/avaliacao/buscarPorId/" + idAvaliacao, this.httpOptions);
+  }
+
+  listarAvaliacoesPorUsu(usuExect: string): Observable<AvaliacoesModel[]> {
+    return this.httpClient.get<AvaliacoesModel[]>("http://localhost:8082/avaliacao/listarAvaliacoesPorUsu/" + usuExect, this.httpOptions);
   }
 }

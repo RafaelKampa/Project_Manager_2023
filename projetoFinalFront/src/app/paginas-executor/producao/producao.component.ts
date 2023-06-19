@@ -6,16 +6,10 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import * as _moment from 'moment';
 import {default as _rollupMoment, Moment} from 'moment';
 import { lastValueFrom } from 'rxjs';
-import { CentroCustoService } from '../../centro-custo/service/centro-custo.service';
 import { FinanceiroService } from '../../financeiro/service/financeiro.service';
-import { AuthguardService } from '../../shared/authguard.service';
-import { CentroCustoModel } from '../../shared/models/centro-custo.model';
 import { ProducaoMensalFuncionarioModel } from '../../shared/models/producao-mensal-funcionario.model';
 import { RemuneracaoModel } from '../../shared/models/remuneracao.model';
-import { ValorTotalCentroPeriodoModel } from '../../shared/models/valor-total-centro-periodo.model';
 import { RemuneracaoService } from '../../shared/service/remuneracao.service';
-import { UsuarioModel } from '../../usuario/model/usuario.model';
-import { UsuarioService } from '../../usuario/service/usuario.service';
 
 const moment = _rollupMoment || _moment;
 
@@ -60,8 +54,6 @@ export class ProducaoComponent implements OnInit {
   public colunasFuncionario: string[] = ['centroDeCusto', 'tipoServico', 'localExecucao', 'dataFinal', 'valorServico'];
 
   constructor(
-    private authService: AuthguardService,
-    private usuarioServ: UsuarioService,
     private remuneracaoServ: RemuneracaoService,
     private financeiroServ: FinanceiroService
   ) {

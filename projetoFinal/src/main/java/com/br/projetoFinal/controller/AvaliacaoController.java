@@ -98,4 +98,14 @@ public class AvaliacaoController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/listarAvaliacoesPorUsu/{usuExect}")
+    public ResponseEntity<List<AvaliacaoDto>> listarAvaliacoesPorUsu(@PathVariable("usuExect") String usuExect) {
+        try {
+            return new ResponseEntity<>(avaliacaoService.listarAvaliacoesPorUsu(usuExect), HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>((List<AvaliacaoDto>) null, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
