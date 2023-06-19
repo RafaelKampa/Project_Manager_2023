@@ -20,10 +20,11 @@ import { ProducaoComponent } from './paginas-executor/producao/producao.componen
 import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
 import { DashboardUsuarioComponent } from './paginas-executor/dashboard-usuario/dashboard-usuario.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
-    path: '',
+    path: '', 
     redirectTo: '/api/home',
     pathMatch: 'full',
   },
