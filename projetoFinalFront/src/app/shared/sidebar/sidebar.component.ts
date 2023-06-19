@@ -23,4 +23,36 @@ export class SidebarComponent implements OnInit {
   servicos() {
     this.router.navigate(['/api/servicos/']);
   }
+
+  isSidebarOpen = false;
+
+  publictoggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  showFiller = false;
+
+  cadastrarNovoServico() {
+    this.router.navigate(['/api/cadastro-servico']);
+  }
+
+  listarServicos() {
+    this.router.navigate(['/api/listar-servicos']);
+  }
+
+  cadastrarCentros() {
+    this.router.navigate(['/api/centro-custo']);
+  }
+
+  listarCentros() {
+    this.router.navigate(['/api/listar-centros']);
+  }
+
+  avaliarServicos() {
+    this.router.navigate(['/api/avaliar']);
+  }
+
+  reavaliarServicos() {
+    this.router.navigate(['/api/reavaliar']);
+  }
 }

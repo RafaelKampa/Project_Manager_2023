@@ -1,20 +1,64 @@
-<nav>
-  <ul *ngIf="authorities?.includes('1')">
-    <li><button mat-button class="margeTop"><a class="fontStyle" href="/api/servicos" mat-menu-item>Serviços</a></button></li>
-  </ul>
-  <ul *ngIf="authorities?.includes('1')">
-    <li><button mat-button><a class="fontStyle" href="/api/centro-de-custos" mat-menu-item>Centro de Custos</a></button></li>
-  </ul>
-  <ul *ngIf="authorities?.includes('1')">
-    <li><button mat-button><a class="fontStyle" href="/api/home-avaliar" mat-menu-item>Avaliação</a></button></li>
-  </ul>
-  <ul *ngIf="authorities?.includes('1')">
-    <li><button mat-button><a class="fontStyle" href="/api/financeiro" mat-menu-item>Financeiro</a></button></li>
-  </ul>
-  <ul *ngIf="authorities?.includes('2')">
-    <li><button mat-button><a class="fontStyle" href="/api/producao" mat-menu-item>Consultar Produção</a></button></li>
-  </ul>  
-  <ul *ngIf="authorities?.includes('2')">
-    <li><button mat-button><a class="fontStyle" href="/api/avaliacoes" mat-menu-item>Consultar Avaliações</a></button></li>
-  </ul>  
-</nav>
+<div class="sidebar-container" [ngClass]="{ 'sidebar-open': isSidebarOpen }">
+  <button class="sidebar-icon" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav></nav>
+  <div class="sidebar-content">
+    <div>
+      <div class="center margem" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="cadastrarNovoServico()">
+          <i class="fas fa-plus"></i>
+          <span class="sidebar-text">Cadastrar Serviço</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="listarServicos()">
+          <i class="fas fa-list"></i>
+          <span class="sidebar-text">Listar Serviço</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="cadastrarCentros()">
+          <i class="fas fa-building"></i>
+          <span class="sidebar-text">Cadastrar centro de custo</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="listarCentros()">
+          <i class="fas fa-list-alt"></i>
+          <span class="sidebar-text">Listar centro de custo</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="avaliarServicos()">
+          <i class="fas fa-star"></i>
+          <span class="sidebar-text">Avaliar serviços</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" (click)="reavaliarServicos()">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Reavaliar</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('1')">
+        <button class="button" mat-flat-button padding="10px" href="/api/financeiro">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Financeiro</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('2')">
+        <button class="button" mat-flat-button padding="10px" href="/api/producao">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Consultar produção</span>
+        </button>
+      </div>
+      <div class="center" *ngIf="authorities?.includes('2')">
+        <button class="button" mat-flat-button padding="10px" href="/api/avaliacoes">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Consultar avaliações</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,29 @@
-<div>
-    <h1 class="center">Bem vindo!</h1>
-    <div class="center">
-        <button class="button" mat-flat-button color="primary" padding="10px" (click)="cadastrarNovoServico()">Cadastrar novo Serviço</button>
-        <button class="button" mat-flat-button color="primary" padding="10px" (click)="listarServicos()">Listar Serviços</button>
-    </div>  
-    <div class="center">
-        <button class="button" mat-flat-button color="warn" padding="10px" (click)="cadastrarCentros()">Cadastrar Centro de Custo</button>
-        <button class="button" mat-flat-button color="warn" padding="10px" (click)="listarCentros()">Listar Centro de Custo</button>
+<header>
+  <h1>PROJECT MANAGER</h1>
+</header>
+
+<main>
+  <section class="features-section">
+    <div >
+      <h2>Bem-vindo ao nosso projeto de Controle de Qualidade</h2>
+      <p>Este é um projeto voltado para fins didáticos para a matéria de Experiência Criativa: Projetando Sistemas de Informação. </p>
+      <p>Com este sistema, os usuários podem criar e gerenciar planos de controle de serviços e questões financeiras com grande facilidade e praticidade.</p>
     </div>
-    <div class="center">
-        <button class="button" mat-flat-button color="brown" padding="10px" (click)="avaliarServicos()">Avaliar Serviços</button>
-        <button class="button" mat-flat-button color="brown" padding="10px" (click)="reavaliarServicos()">Reavaliar Serviços</button>
+  </section>
+
+  <section class="features-section">
+    <h2>Recursos do Projeto</h2>
+    <div class="feature-card">
+      <h3>Gestão de Serviços</h3>
+      <p>Você poderá cadastrar, listar, avaliar e reavaliar serviços voltados ao seu negócio.</p>
     </div>
-</div>
+    <div class="feature-card">    
+      <h3>Centro de Custo</h3>
+      <p>Você poderá cadastrar e listar o centro de custo voltado ao seu negócio.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 Projeto de Gestão de Serviços e Centro de Custo. Todos os direitos reservados. | <a href="#">Política de Privacidade</a></p>
+</footer>

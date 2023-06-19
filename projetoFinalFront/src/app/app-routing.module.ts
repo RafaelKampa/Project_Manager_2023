@@ -19,10 +19,11 @@ import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { ProducaoComponent } from './paginas-executor/producao/producao.component';
 import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
-    path: '',
+    path: '', 
     redirectTo: '/api/home',
     pathMatch: 'full',
   },
