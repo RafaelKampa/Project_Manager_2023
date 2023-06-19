@@ -16,6 +16,7 @@ import { CentroDeCustosComponent } from './centro-de-custos/centro-de-custos.com
 import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
+import { ProducaoComponent } from './paginas-executor/producao/producao.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'home-avaliar', component: HomeAvaliarComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'servicos', component: ServicosComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
       { path: 'financeiro', component: FinanceiroComponent, canActivate: [AuthGuard], data: { authorities: ['1'] } },
+      { path: 'producao', component: ProducaoComponent, canActivate: [AuthGuard], data: { authorities: ['2'] } },
       { path: '**', redirectTo: 'home' }
     ]
   }

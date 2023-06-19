@@ -41,6 +41,7 @@ import { HomeAvaliarComponent } from './home-avaliar/home-avaliar.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { ProducaoComponent } from './paginas-executor/producao/producao.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -69,6 +70,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     HomeAvaliarComponent,
     ServicosComponent,
     FinanceiroComponent,
+    ProducaoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,13 @@
 package com.br.projetoFinal.entity;
 
 import com.br.projetoFinal.dto.AvaliacaoDto;
+import com.br.projetoFinal.dto.RemuneracaoDto;
 
 import javax.persistence.*;
 
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "Remuneracao.dtoMapping", classes = {
-                @ConstructorResult(targetClass = AvaliacaoDto.class,
+                @ConstructorResult(targetClass = RemuneracaoDto.class,
                         columns ={
                                 @ColumnResult(name = "ID_REMUNERACAO", type = Integer.class),
                                 @ColumnResult(name = "ID_USUARIO", type = Integer.class),
@@ -20,6 +21,7 @@ import javax.persistence.*;
 })
 @NamedNativeQueries({
             @NamedNativeQuery(name="Remuneracao.buscarUltimaRemuneracaoUsuario", query = "SELECT VALOR FROM REMUNERACAO WHERE ID_USUARIO = :ID_USUARIO AND (ANO_REFERENCIA, MES_REFERENCIA) = (SELECT ANO_REFERENCIA, MAX(MES_REFERENCIA) FROM REMUNERACAO WHERE ID_USUARIO = :ID_USUARIO AND ANO_REFERENCIA = (SELECT MAX(ANO_REFERENCIA) FROM REMUNERACAO WHERE ID_USUARIO = :ID_USUARIO))", resultSetMapping = "Remuneracao.dtoMapping"),
+            @NamedNativeQuery(name="Remuneracao.listarRemuneracoesUsuario", query = "SELECT * FROM REMUNERACAO WHERE ID_USUARIO = :ID_USUARIO", resultSetMapping = "Remuneracao.dtoMapping"),
 })
 
 @Entity

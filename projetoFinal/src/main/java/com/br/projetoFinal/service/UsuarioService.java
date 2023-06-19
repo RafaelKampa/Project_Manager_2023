@@ -15,4 +15,5 @@ public interface UsuarioService {
     UsuarioDto buscarPorNome(String nomeUsuario);
     void excluir(Integer idUsuario) throws SystemException;
     Integer buscarUltimoId();
+    UsuarioDto buscarPorUsername(String username);
 }

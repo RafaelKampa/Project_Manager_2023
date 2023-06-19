@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SecurityUser implements UserDetails {
 
-    private final Usuario login;
+    public final Usuario login;
     private Collection<? extends GrantedAuthority> authorities;
     private String username;
     private String senha;

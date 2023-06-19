@@ -27,6 +27,10 @@ export class RemuneracaoService {
 
   buscarRemuneracaoPorMes(idUsuario: number, mesReferencia: number, anoReferencia: number) {
     return this.httpClient.get("http://localhost:8082/remuneracao/buscarRemuneracaoPorMes/" + idUsuario + "/" + mesReferencia + "/" + anoReferencia, this.httpOptions);
+  }
+
+  listarRemuneracoesUsuario(idUsuario: number): Observable<RemuneracaoModel[]> {
+    return this.httpClient.get<RemuneracaoModel[]>("http://localhost:8082/remuneracao/listarRemuneracoesUsuario/" + idUsuario, this.httpOptions);
 
   }
 }

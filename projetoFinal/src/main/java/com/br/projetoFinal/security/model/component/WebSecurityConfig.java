@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/public/projetoFinal/autenticacao").permitAll()
                 .antMatchers(HttpMethod.POST, "/usuario/salvarUsuario").permitAll()
                 .antMatchers(HttpMethod.GET, "/usuario/buscarUltimoId").permitAll()
+                .antMatchers(HttpMethod.GET, "/usuario/buscarPorUsername").permitAll()
                 .antMatchers(HttpMethod.POST, "/remuneracao/salvarNovaRemuneracao").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/home-avaliar").hasAuthority("1")
 

@@ -88,4 +88,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         return query.getSingleResult();
     }
 
+    @Override
+    public UsuarioDto buscarPorUsername(String username) {
+        TypedQuery<UsuarioDto> query = em.createNamedQuery("Usuario.buscarPorUsername", UsuarioDto.class)
+                .setParameter("LOGIN", username);
+        return query.getSingleResult();
+    }
+
 }
