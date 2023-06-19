@@ -12,10 +12,11 @@ import { AvaliarComponent } from './avaliar/avaliar.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {
-    path: '',
+    path: '', 
     redirectTo: '/api/home',
     pathMatch: 'full',
   },

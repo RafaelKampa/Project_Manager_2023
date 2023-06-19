@@ -1,5 +1,46 @@
-<nav>
-  <ul>
-    <li><a href="/api/servico-home" mat-menu-item>Serviços</a></li>
-  </ul>
-</nav>
+<div class="sidebar-container" [ngClass]="{ 'sidebar-open': isSidebarOpen }">
+  <button class="sidebar-icon" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav></nav>
+  <div class="sidebar-content">
+    <div>
+      <div class="center margem">
+        <button class="button" mat-flat-button padding="10px" (click)="cadastrarNovoServico()">
+          <i class="fas fa-plus"></i>
+          <span class="sidebar-text">Cadastrar Serviço</span>
+        </button>
+      </div>
+      <div class="center">
+        <button class="button" mat-flat-button padding="10px" (click)="listarServicos()">
+          <i class="fas fa-list"></i>
+          <span class="sidebar-text">Listar Serviço</span>
+        </button>
+      </div>
+      <div class="center">
+        <button class="button" mat-flat-button padding="10px" (click)="cadastrarCentros()">
+          <i class="fas fa-building"></i>
+          <span class="sidebar-text">Cadastrar centro de custo</span>
+        </button>
+      </div>
+      <div class="center">
+        <button class="button" mat-flat-button padding="10px" (click)="listarCentros()">
+          <i class="fas fa-list-alt"></i>
+          <span class="sidebar-text">Listar centro de custo</span>
+        </button>
+      </div>
+      <div class="center">
+        <button class="button" mat-flat-button padding="10px" (click)="avaliarServicos()">
+          <i class="fas fa-star"></i>
+          <span class="sidebar-text">Avaliar serviços</span>
+        </button>
+      </div>
+      <div class="center">
+        <button class="button" mat-flat-button padding="10px" (click)="reavaliarServicos()">
+          <i class="fas fa-sync-alt"></i>
+          <span class="sidebar-text">Reavaliar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
