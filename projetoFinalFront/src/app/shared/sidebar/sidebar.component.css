@@ -59,7 +59,6 @@ a {
 .center {
   display: flex;
   justify-content: left;
-  padding-top: 20px;
   align-items: center;
 }
 

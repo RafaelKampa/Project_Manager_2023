@@ -1,5 +1,5 @@
 <div class="sidebar-container" [ngClass]="{ 'sidebar-open': isSidebarOpen }">
-  <button class="sidebar-icon" (click)="toggleSidebar()">
+  <button class="sidebar-icon" mat-flat-button (click)="toggleSidebar()">
     <i class="fas fa-bars"></i>
   </button>
   <nav></nav>
@@ -8,7 +8,7 @@
       <div class="center margem" *ngIf="authorities?.includes('1')">
         <button class="button" mat-flat-button padding="10px" (click)="cadastrarNovoServico()">
           <i class="fas fa-plus"></i>
-          <span class="sidebar-text">Cadastrar Serviço</span>
+          <span>Cadastrar Serviço</span>
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('1')">
@@ -42,25 +42,25 @@
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('1')">
-        <button class="button" mat-flat-button padding="10px" href="/api/financeiro">
+        <button class="button" mat-flat-button padding="10px" (click)="financeiro()">
           <i class="fas fa-sync-alt"></i>
           <span class="sidebar-text">Financeiro</span>
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('2')">
-        <button class="button" mat-flat-button padding="10px" href="/api/dashboard-usuario">
+        <button class="button" mat-flat-button padding="10px" (click)="dashboard()">
           <i class="fas fa-sync-alt"></i>
           <span class="sidebar-text">Dashboard</span>
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('2')">
-        <button class="button" mat-flat-button padding="10px" href="/api/producao">
+        <button class="button" mat-flat-button padding="10px" (click)="producao()">
           <i class="fas fa-sync-alt"></i>
           <span class="sidebar-text">Consultar produção</span>
         </button>
       </div>
       <div class="center" *ngIf="authorities?.includes('2')">
-        <button class="button" mat-flat-button padding="10px" href="/api/avaliacoes">
+        <button class="button" mat-flat-button padding="10px" (click)="avaliacoes()">
           <i class="fas fa-sync-alt"></i>
           <span class="sidebar-text">Consultar avaliações</span>
         </button>

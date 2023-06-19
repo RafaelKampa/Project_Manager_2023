@@ -5,8 +5,9 @@ import { AuthguardService } from '../authguard.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  styleUrls: ['./sidebar.component.css']
 })
+
 export class SidebarComponent implements OnInit {
 
   authorities: string[] | null = null;
@@ -26,7 +27,7 @@ export class SidebarComponent implements OnInit {
 
   isSidebarOpen = false;
 
-  publictoggleSidebar() {
+  toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
@@ -54,5 +55,21 @@ export class SidebarComponent implements OnInit {
 
   reavaliarServicos() {
     this.router.navigate(['/api/reavaliar']);
+  }
+
+  financeiro() {
+    this.router.navigate(['/api/financeiro']);
+  }
+
+  dashboard() {
+    this.router.navigate(['/api/dashboard-usuario']);
+  }
+
+  producao() {
+    this.router.navigate(['/api/producao']);
+  }
+
+  avaliacoes() {
+    this.router.navigate(['/api/avaliacoes']);
   }
 }
