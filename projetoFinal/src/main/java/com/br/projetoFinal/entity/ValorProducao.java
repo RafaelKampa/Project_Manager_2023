@@ -34,10 +34,21 @@ import javax.persistence.*;
                                 @ColumnResult(name = "VALOR_TOTAL", type = Double.class)
                         }
                 )
+        }),
+        @SqlResultSetMapping(name = "ValorProducao.valorMensalMapping", classes = {
+                @ConstructorResult(targetClass = ValorProducaoDto.class,
+                        columns = {
+                                @ColumnResult(name = "ID_USUARIO", type = Integer.class),
+                                @ColumnResult(name = "MES_REFERENCIA", type = Integer.class),
+                                @ColumnResult(name = "ANO_REFERENCIA", type = Integer.class),
+                                @ColumnResult(name = "VALOR_TOTAL", type = Double.class)
+                        }
+                )
         })
 })
 @NamedNativeQueries({
         @NamedNativeQuery(name="ValorProducao.buscarValorMensal", query = "SELECT SUM(VALOR_SERVICO) AS VALOR_TOTAL FROM VALOR_PRODUCAO WHERE ID_USUARIO = :ID_USUARIO AND MES_REFERENCIA = :MES_REFERENCIA AND ANO_REFERENCIA = :ANO_REFERENCIA", resultSetMapping = "ValorProducao.valorTotalMapping"),
+        @NamedNativeQuery(name="ValorProducao.listarProducaoPorUsuario", query = "SELECT ID_USUARIO, MES_REFERENCIA, ANO_REFERENCIA, CAST(SUM(VALOR_SERVICO) AS DECIMAL(10,2)) AS VALOR_TOTAL FROM VALOR_PRODUCAO WHERE ID_USUARIO = :ID_USUARIO GROUP BY ID_USUARIO, MES_REFERENCIA, ANO_REFERENCIA\n", resultSetMapping = "ValorProducao.valorMensalMapping"),
 })
 
 

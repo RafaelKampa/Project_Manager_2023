@@ -43,6 +43,8 @@ import { FinanceiroComponent } from './financeiro/financeiro.component';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ProducaoComponent } from './paginas-executor/producao/producao.component';
 import { AvaliacoesComponent } from './paginas-executor/avaliacoes/avaliacoes.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { DashboardUsuarioComponent } from './paginas-executor/dashboard-usuario/dashboard-usuario.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -73,6 +75,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     FinanceiroComponent,
     ProducaoComponent,
     AvaliacoesComponent,
+    DashboardUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     NgxMaskModule.forRoot(), //npm install --save ngx-mask
     MatSelectModule,
     CommonModule,
-    
+    CanvasJSAngularChartsModule,
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},

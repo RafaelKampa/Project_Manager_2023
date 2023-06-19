@@ -35,15 +35,27 @@ export class LoginComponent implements OnInit {
       let autenticacao = new Autenticacao();
       autenticacao.login = this.loginForm.get('login')?.value;
       autenticacao.senha = this.loginForm.get('senha')?.value;
-
+  
       this.loginService.login(autenticacao).subscribe(retorno => {
         localStorage.setItem('token', retorno.token);
-        alert("Usuário autenticado!\nRedirecionando...")
-        this.router.navigate(['/api/servico-home']);
+        alert("Usuário autenticado!\nRedirecionando...");
+  
+        const payload = JSON.parse(atob(retorno.token.split('.')[1]));
+        const authority = payload.authorities[0]; // Assume a primeira autoridade como a principal
+  
+        if (authority === "1") {
+          this.router.navigate(['/api/servico-home']);
+        } else if (authority === "2") {
+          this.router.navigate(['/api/dashboard-usuario']);
+        } else {
+          // Redirecionamento padrão para algum lugar caso a autoridade não seja "1" ou "2"
+          this.router.navigate(['/api/home']);
+        }
       },
       (err) => {alert("Usuário ou senha incorreto!")});
     }
   }
+  
   
   public esqueciSenha(){
     alert("Problema é seu!");

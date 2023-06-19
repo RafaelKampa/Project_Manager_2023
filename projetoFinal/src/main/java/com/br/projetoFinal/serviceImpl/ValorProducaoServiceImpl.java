@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import java.util.List;
 
 @Service
 public class ValorProducaoServiceImpl implements ValorProducaoService {
@@ -55,5 +56,10 @@ public class ValorProducaoServiceImpl implements ValorProducaoService {
     @Override
     public Double buscarValorMensal(Integer idUsuario, Integer mesReferencia, Integer anoReferencia) {
         return valorProducaoRepository.buscarValorMensal(idUsuario, mesReferencia, anoReferencia);
+    }
+
+    @Override
+    public List<ValorProducaoDto> listarProducaoPorUsuario(Integer idUsuario) {
+        return valorProducaoRepository.listarProducaoPorUsuario(idUsuario);
     }
 }

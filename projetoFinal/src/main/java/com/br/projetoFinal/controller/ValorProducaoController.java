@@ -2,6 +2,7 @@ package com.br.projetoFinal.controller;
 
 import com.br.projetoFinal.dto.RemuneracaoDto;
 import com.br.projetoFinal.dto.ValorProducaoDto;
+import com.br.projetoFinal.entity.ValorProducao;
 import com.br.projetoFinal.service.ValorProducaoService;
 import com.br.projetoFinal.util.excecao.ExcecaoExemplo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -34,6 +36,15 @@ public class ValorProducaoController {
         try {
             Double valor = valorProducaoService.buscarValorMensal(idUsuario, mesReferencia, anoReferencia);
             return new ResponseEntity<>(valor, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/listarProducaoPorUsuario/{idUsuario}")
+    public ResponseEntity<List<ValorProducaoDto>> listarProducaoPorUsuario(@PathVariable("idUsuario") Integer idUsuario) {
+        try {
+            return new ResponseEntity<>(valorProducaoService.listarProducaoPorUsuario(idUsuario), HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

@@ -9,7 +9,7 @@ import { lastValueFrom } from 'rxjs';
   styleUrls: ['./avaliacoes.component.css']
 })
 
-export class AvaliacoesComponent  implements OnInit {
+export class AvaliacoesComponent implements OnInit {
 
   public nomeUsuario: string = "";
   public colunas: string[] = ['tipoServico', 'centroDeCusto', 'localExecucao', 'data', 'conferente', 'resultado', 'obs'];

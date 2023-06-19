@@ -7,13 +7,30 @@
     <list default="true" id="95cf4c94-d92c-4943-bde3-ca4bca403a57" name="Changes" comment="Aplicação de NamedQuery para Centro de Custo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projetoFinalDB.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/AvaliacaoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/AvaliacaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/AvaliacaoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/Avaliacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/AvaliacaoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/AvaliacaoRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/AvaliacaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/AvaliacaoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetoFinalDB.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/projetoFinalDB.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ValorProducaoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/controller/ValorProducaoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ValorProducaoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/dto/ValorProducaoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ValorProducao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/entity/ValorProducao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ValorProducaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repository/ValorProducaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ValorProducaoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/repositoryImpl/ValorProducaoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/security/model/component/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ValorProducaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/service/ValorProducaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/ValorProducaoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/controller/ValorProducaoController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ValorProducao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/entity/ValorProducao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/ValorProducaoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repository/ValorProducaoRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ValorProducaoRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/repositoryImpl/ValorProducaoRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/security/model/component/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/security/model/component/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/ValorProducaoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/service/ValorProducaoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/br/projetoFinal/serviceImpl/ValorProducaoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/paginas-executor/avaliacoes/avaliacoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/paginas-executor/avaliacoes/avaliacoes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/service/valor-producao.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/service/valor-producao.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../projetoFinalFront/src/app/shared/sidebar/sidebar.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +157,7 @@
       <workItem from="1686578146057" duration="5349000" />
       <workItem from="1686964788916" duration="2681000" />
       <workItem from="1687021430855" duration="15617000" />
+      <workItem from="1687190530077" duration="4085000" />
     </task>
     <servers />
   </component>
