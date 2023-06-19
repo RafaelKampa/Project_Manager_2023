@@ -10,5 +10,11 @@
   </ul>
   <ul *ngIf="authorities?.includes('1')">
     <li><button mat-button><a class="fontStyle" href="/api/financeiro" mat-menu-item>Financeiro</a></button></li>
+  </ul>
+  <ul *ngIf="authorities?.includes('2')">
+    <li><button mat-button><a class="fontStyle" href="/api/producao" mat-menu-item>Consultar Produção</a></button></li>
+  </ul>  
+  <ul *ngIf="authorities?.includes('2')">
+    <li><button mat-button><a class="fontStyle" href="/api/avaliacoes" mat-menu-item>Consultar Avaliações</a></button></li>
   </ul>  
 </nav>

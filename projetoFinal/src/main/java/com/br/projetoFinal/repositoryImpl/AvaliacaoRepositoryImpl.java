@@ -88,4 +88,11 @@ public class AvaliacaoRepositoryImpl implements AvaliacaoRepository {
         TypedQuery<Integer> query = em.createQuery("SELECT MAX(a.idAvaliacao) FROM Avaliacao a", Integer.class);
         return query.getSingleResult();
     }
+
+    @Override
+    public List<AvaliacaoDto> listarAvaliacoesPorUsu(String usuExect) {
+        TypedQuery<AvaliacaoDto> query = em.createNamedQuery("Avaliacao.listarAvaliacoesPorUsu", AvaliacaoDto.class)
+                .setParameter("USU_EXECT", usuExect);
+        return query.getResultList();
+    }
 }

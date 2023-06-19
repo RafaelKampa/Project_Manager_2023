@@ -57,7 +57,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12" style="margin-left: 5%;" *ngIf="valorTotalCentro.length > 0 || producaoMensalFuncionario.length > 0; else semResultados">
+    <div class="col-12" *ngIf="valorTotalCentro.length > 0 || producaoMensalFuncionario.length > 0; else semResultados">
         <table *ngIf="tipoTabela == 'centroDeCusto'" mat-table [dataSource]="valorTotalCentro">
             <ng-container matColumnDef="tipoServico">
                 <th mat-header-cell *matHeaderCellDef> Serviço </th>

@@ -1,6 +1,7 @@
 package com.br.projetoFinal.repositoryImpl;
 
 import com.br.projetoFinal.dto.RemuneracaoDto;
+import com.br.projetoFinal.entity.Remuneracao;
 import com.br.projetoFinal.repository.RemuneracaoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public class RemuneracaoRepositoryImpl implements RemuneracaoRepository {
@@ -34,8 +36,8 @@ public class RemuneracaoRepositoryImpl implements RemuneracaoRepository {
     }
 
     @Override
-    public Double buscarUltimaRemuneracaoUsuario(Integer idUsuario) {
-        TypedQuery<Double> query = em.createNamedQuery("Remuneracao.buscarUltimaRemuneracaoUsuario", Double.class)
+    public RemuneracaoDto buscarUltimaRemuneracaoUsuario(Integer idUsuario) {
+        TypedQuery<RemuneracaoDto> query = em.createNamedQuery("Remuneracao.buscarUltimaRemuneracaoUsuario", RemuneracaoDto.class)
                 .setParameter("ID_USUARIO", idUsuario);
         return query.getSingleResult();
     }
@@ -52,5 +54,12 @@ public class RemuneracaoRepositoryImpl implements RemuneracaoRepository {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<RemuneracaoDto> listarRemuneracoesUsuario(Integer idUsuario) {
+        TypedQuery<RemuneracaoDto> query = em.createNamedQuery("Remuneracao.listarRemuneracoesUsuario", RemuneracaoDto.class)
+                .setParameter("ID_USUARIO", idUsuario);
+        return query.getResultList();
     }
 }

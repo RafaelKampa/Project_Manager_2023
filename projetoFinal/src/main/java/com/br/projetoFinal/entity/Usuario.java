@@ -35,6 +35,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Usuario.buscarExecutores", query = "SELECT * FROM USUARIO  WHERE TIPO_USUARIO = 2  ORDER BY NOME", resultSetMapping = "Usuario.dtoMapping"),
         @NamedNativeQuery(name="Usuario.excluirPorid", query = "DELETE FROM USUARIO WHERE ID_USUARIO = :ID_USUARIO", resultSetMapping = "Usuario.dtoMapping"),
         @NamedNativeQuery(name="Usuario.buscarPorNome", query = "SELECT * FROM USUARIO WHERE NOME = :NOME", resultSetMapping = "Usuario.dtoMapping"),
+        @NamedNativeQuery(name="Usuario.buscarPorUsername", query = "SELECT * FROM USUARIO WHERE LOGIN = :LOGIN", resultSetMapping = "Usuario.dtoMapping"),
 })
 
 @Entity

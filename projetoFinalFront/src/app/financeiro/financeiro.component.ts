@@ -14,6 +14,7 @@ import { ProducaoMensalFuncionarioModel } from '../shared/models/producao-mensal
 import { UsuarioService } from '../usuario/service/usuario.service';
 import { UsuarioModel } from '../usuario/model/usuario.model';
 import { RemuneracaoService } from '../shared/service/remuneracao.service';
+import { RemuneracaoModel } from '../shared/models/remuneracao.model';
 
 const moment = _rollupMoment || _moment;
 
@@ -56,6 +57,7 @@ export class FinanceiroComponent implements OnInit {
   public funcionarioSelecionado: UsuarioModel = new UsuarioModel();
   public valorTotalCentro: ValorTotalCentroPeriodoModel[] = [];
   public producaoMensalFuncionario: ProducaoMensalFuncionarioModel[] = [];
+  public remuneracoesUsuario: RemuneracaoModel[] = [];
   public remuneracaoMensal: number = 0;
   public tipoTabela: string = "";
   public colunasCentro: string[] = ['tipoServico', 'valorServico'];
@@ -108,8 +110,17 @@ export class FinanceiroComponent implements OnInit {
       this.tipoTabela = this.buscaSelecionada;
     }
     if (this.buscaSelecionada == "funcionario") {
-      var remuneracaoControl = await lastValueFrom(this.remuneracaoServ.buscarRemuneracaoPorMes(this.funcionarioSelecionado.idUsuario, this.periodoSelecionado[0], this.periodoSelecionado[1]));
-      this.remuneracaoMensal = Number(remuneracaoControl);
+      this.remuneracoesUsuario = await lastValueFrom(this.remuneracaoServ.listarRemuneracoesUsuario(this.funcionarioSelecionado.idUsuario));
+      const remuneracoesEncontradas = this.remuneracoesUsuario.filter(remuneracao =>
+        remuneracao.mesReferencia <= this.periodoSelecionado[0] && remuneracao.anoReferencia <= this.periodoSelecionado[1]
+      );
+      
+      if (remuneracoesEncontradas.length > 0) {
+        const remuneracaoEncontrada = remuneracoesEncontradas[remuneracoesEncontradas.length - 1];
+        this.remuneracaoMensal = remuneracaoEncontrada.valor;
+      } else {
+        this.remuneracaoMensal = 0;
+      }
       this.financeiroServ.buscarProducaoFuncionario(this.funcionarioSelecionado.nome, this.periodoSelecionado[0], this.periodoSelecionado[1]).subscribe(producao => {
         this.producaoMensalFuncionario = producao;
         var remuneracao: ProducaoMensalFuncionarioModel = new ProducaoMensalFuncionarioModel();

@@ -15,6 +15,8 @@ public class AvaliacaoDto extends Avaliacao {
     public Date dataReavaliacao;
     public Boolean resultReaval;
     public String obs;
+    public String centroDeCusto;
+    public String localExecucao;
 
     public AvaliacaoDto() {
     }
@@ -28,7 +30,8 @@ public class AvaliacaoDto extends Avaliacao {
         this.dataAvaliacao = dataAvaliacao;
     }
 
-    public AvaliacaoDto(Integer id, String tipoServico, Integer idServico, String usuExect, String usuConf, Boolean resultado, Date dataAvaliacao, Date dataReavaliacao, Boolean resultReaval, String obs) {
+    public AvaliacaoDto(Integer id, String tipoServico, Integer idServico, String usuExect, String usuConf,
+                        Boolean resultado, Date dataAvaliacao, Date dataReavaliacao, Boolean resultReaval, String obs) {
         this.idAvaliacao = id;
         this.tipoServico = tipoServico;
         this.idServico = idServico;
@@ -37,6 +40,19 @@ public class AvaliacaoDto extends Avaliacao {
         this.resultado = resultado;
         this.dataAvaliacao = dataAvaliacao;
         this.dataReavaliacao = dataReavaliacao;
+        this.resultReaval = resultReaval;
+        this.obs = obs;
+    }
+
+    public AvaliacaoDto(String tipoServico, String centroDeCusto, String localExecucao, Date dataAvaliacao, Date dataReavaliacao, String usuConf,
+                        Boolean resultado, Boolean resultReaval, String obs) {
+        this.tipoServico = tipoServico;
+        this.centroDeCusto = centroDeCusto;
+        this.localExecucao = localExecucao;
+        this.dataAvaliacao = dataAvaliacao;
+        this.dataReavaliacao = dataReavaliacao;
+        this.usuConf = usuConf;
+        this.resultado = resultado;
         this.resultReaval = resultReaval;
         this.obs = obs;
     }
@@ -139,5 +155,21 @@ public class AvaliacaoDto extends Avaliacao {
     @Override
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public String getCentroDeCusto() {
+        return centroDeCusto;
+    }
+
+    public void setCentroDeCusto(String centroDeCusto) {
+        this.centroDeCusto = centroDeCusto;
+    }
+
+    public String getLocalExecucao() {
+        return localExecucao;
+    }
+
+    public void setLocalExecucao(String localExecucao) {
+        this.localExecucao = localExecucao;
     }
 }

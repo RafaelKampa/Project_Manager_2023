@@ -20,4 +20,5 @@ public interface AvaliacaoService {
     List<AvaliacaoDto> buscarPorExecutor(Integer idUsuExect);
     List<AvaliacaoDto> buscarPorConferente(Integer idUsuConf);
     Integer buscarUltimoId();
+    List<AvaliacaoDto> listarAvaliacoesPorUsu(String usuExect);
 }

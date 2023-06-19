@@ -1,0 +1,56 @@
+<div class="row" style="padding-top: 2.5%;">
+    <h1 class="center">Avaliações realizadas para {{nomeUsuario}}</h1>
+</div>
+<div class="row">
+    <div class="col-12" *ngIf="avaliacoes.length > 0; else semResultados">
+        <table mat-table [dataSource]="avaliacoes">
+            
+            <ng-container matColumnDef="tipoServico">
+                <th mat-header-cell *matHeaderCellDef> Serviço </th>
+                <td mat-cell *matCellDef="let element"> {{element.tipoServico}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="centroDeCusto">
+                <th mat-header-cell *matHeaderCellDef> Centro de Custo </th>
+                <td mat-cell *matCellDef="let element"> {{element.centroDeCusto}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="localExecucao">
+                <th mat-header-cell *matHeaderCellDef> Local de Execução </th>
+                <td mat-cell *matCellDef="let element"> {{element.localExecucao}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.dataReavaliacao ? (element.dataReavaliacao | date: 'dd/MM/yyyy') : (element.dataAvaliacao | date: 'dd/MM/yyyy') }}
+                </td>
+            </ng-container>
+              
+            <ng-container matColumnDef="conferente">
+                <th mat-header-cell *matHeaderCellDef> Conferente </th>
+                <td mat-cell *matCellDef="let element"> {{element.usuConf}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="resultado">
+                <th mat-header-cell *matHeaderCellDef> Resultado </th>
+                <td mat-cell *matCellDef="let element"> {{obterResultado(element)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="obs">
+                <th mat-header-cell *matHeaderCellDef> Obs </th>
+                <td mat-cell *matCellDef="let element"> {{element.obs}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+            <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+        </table>
+    </div>
+</div>
+
+<ng-template #semResultados>
+    <div class="col-12 center">
+        <p>Sem resultados para a busca selecionada</p>
+    </div>
+</ng-template>
+  

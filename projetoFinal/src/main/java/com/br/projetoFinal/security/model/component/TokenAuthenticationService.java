@@ -1,5 +1,6 @@
 package com.br.projetoFinal.security.model.component;
 
+import com.br.projetoFinal.entity.Usuario;
 import com.br.projetoFinal.security.model.Autenticacao;
 import io.jsonwebtoken.*;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,11 +20,13 @@ public class TokenAuthenticationService {
     static final String TOKEN_PREFIX = "Bearer";
     static final String HEADER_STRING = "Authorization";
 
-    public static Autenticacao getToken(HttpServletResponse response, String username,
+    public static Autenticacao getToken(HttpServletResponse response, Usuario username,
                                         Collection<? extends GrantedAuthority> authorities) {
 
         JwtBuilder jwtBuilder = Jwts.builder()
-                .setSubject(username)
+                .setSubject(username.getUsername())
+                .claim("fullName", username.getNome())
+                .claim("userId", username.getIdUsuario())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET);
 
@@ -40,7 +43,7 @@ public class TokenAuthenticationService {
 
         Autenticacao autenticacao = new Autenticacao();
         autenticacao.setToken(token);
-        autenticacao.setLogin(username);
+        autenticacao.setLogin(username.getUsername());
 
         return autenticacao;
     }

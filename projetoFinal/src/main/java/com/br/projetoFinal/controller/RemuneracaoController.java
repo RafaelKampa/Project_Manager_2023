@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.SystemException;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -29,10 +30,10 @@ public class RemuneracaoController {
     }
 
     @GetMapping("/buscarUltimaRemuneracaoUsuario/{id_usuario}")
-    public ResponseEntity<Double> buscarUltimaRemuneracaoUsuario(@PathVariable("id_usuario") Integer idUsuario) {
+    public ResponseEntity<RemuneracaoDto> buscarUltimaRemuneracaoUsuario(@PathVariable("id_usuario") Integer idUsuario) {
         try {
-            Double valor = remuneracaoService.buscarUltimaRemuneracaoUsuario(idUsuario);
-            return new ResponseEntity<>(valor, HttpStatus.OK);
+            RemuneracaoDto remuneracaoDto = remuneracaoService.buscarUltimaRemuneracaoUsuario(idUsuario);
+            return new ResponseEntity<>(remuneracaoDto, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
@@ -44,9 +45,24 @@ public class RemuneracaoController {
                                                           @PathVariable("anoReferencia") Integer anoReferencia) {
         try {
             Double valor = remuneracaoService.buscarRemuneracaoPorMes(idUsuario, mesReferencia, anoReferencia);
+            if (valor == null) {
+                valor = 0.0;
+            }
             return new ResponseEntity<>(valor, HttpStatus.OK);
+        } catch (NoSuchElementException ex) {
+            return new ResponseEntity<>(0.0, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/listarRemuneracoesUsuario/{id_usuario}")
+    public ResponseEntity<List<RemuneracaoDto>> listarRemuneracoesUsuario(@PathVariable("id_usuario") Integer idUsuario) {
+        try {
+            List<RemuneracaoDto> remuneracaoDto = remuneracaoService.listarRemuneracoesUsuario(idUsuario);
+            return new ResponseEntity<>(remuneracaoDto, HttpStatus.OK);
         } catch (NoSuchElementException ex) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+
 }

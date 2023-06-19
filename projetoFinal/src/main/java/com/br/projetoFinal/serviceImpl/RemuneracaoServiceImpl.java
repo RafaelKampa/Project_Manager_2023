@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import java.util.List;
 
 @Service
 public class RemuneracaoServiceImpl implements RemuneracaoService {
@@ -51,12 +52,17 @@ public class RemuneracaoServiceImpl implements RemuneracaoService {
     }
 
     @Override
-    public Double buscarUltimaRemuneracaoUsuario(Integer idUsuario) {
+    public RemuneracaoDto buscarUltimaRemuneracaoUsuario(Integer idUsuario) {
         return remuneracaoRepository.buscarUltimaRemuneracaoUsuario(idUsuario);
     }
 
     @Override
     public Double buscarRemuneracaoPorMes(Integer idUsuario, Integer mesReferencia, Integer anoReferencia) {
         return remuneracaoRepository.buscarRemuneracaoPorMes(idUsuario, mesReferencia, anoReferencia);
+    }
+
+    @Override
+    public List<RemuneracaoDto> listarRemuneracoesUsuario(Integer idUsuario) {
+        return remuneracaoRepository.listarRemuneracoesUsuario(idUsuario);
     }
 }

@@ -20,6 +20,21 @@ import java.util.Date;
                                 @ColumnResult(name = "OBS", type = String.class)
                         }
                 )
+        }),
+        @SqlResultSetMapping(name = "Avaliacao.avaliacaoUsuDtoMapping", classes = {
+                @ConstructorResult(targetClass = AvaliacaoDto.class,
+                        columns ={
+                                @ColumnResult(name = "TIPO_SERVICO", type = String.class),
+                                @ColumnResult(name = "CENTRO_DE_CUSTO", type = String.class),
+                                @ColumnResult(name = "LOCAL_EXECUCAO", type = String.class),
+                                @ColumnResult(name = "DATA_AVALIACAO", type = Date.class),
+                                @ColumnResult(name = "DATA_REAVALIACAO", type = Date.class),
+                                @ColumnResult(name = "USU_CONF", type = String.class),
+                                @ColumnResult(name = "RESULTADO", type = Boolean.class),
+                                @ColumnResult(name = "RESULT_REAVAL", type = Boolean.class),
+                                @ColumnResult(name = "OBS", type = String.class)
+                        }
+                )
         })
 })
 @NamedNativeQueries({
@@ -29,6 +44,7 @@ import java.util.Date;
         @NamedNativeQuery(name="Avaliacao.buscarPorServico", query = "SELECT * FROM AVALIACAO a INNER JOIN SERVICO s ON a.ID_AVALIACAO = s.ID_SERVICO WHERE s.TIPO_SERVICO = :TIPO_SERVICO ORDER BY DATA_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.listarAvaliacoes", query = "SELECT * FROM AVALIACAO ODER BY ID_AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
         @NamedNativeQuery(name="Avaliacao.buscarUltimoId", query = "SELECT MAX(ID_AVALIACAO) FROM AVALIACAO", resultSetMapping = "Avaliacao.dtoMapping"),
+        @NamedNativeQuery(name="Avaliacao.listarAvaliacoesPorUsu", query = "SELECT A.TIPO_SERVICO, S.CENTRO_DE_CUSTO, S.LOCAL_EXECUCAO, A.DATA_AVALIACAO, A.DATA_REAVALIACAO, A.USU_CONF, A.RESULTADO, A.RESULT_REAVAL, A.OBS FROM AVALIACAO A INNER JOIN SERVICO S ON A.ID_SERVICO = S.ID_SERVICO WHERE USU_EXECT = :USU_EXECT ORDER BY A.DATA_AVALIACAO", resultSetMapping = "Avaliacao.avaliacaoUsuDtoMapping"),
 })
 @Entity
 @Table(name = "AVALIACAO")

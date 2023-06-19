@@ -103,4 +103,9 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
     public Integer buscarUltimoId() {
         return avaliacaoRepository.buscarUltimoId();
     }
+
+    @Override
+    public List<AvaliacaoDto> listarAvaliacoesPorUsu(String usuExect) {
+        return avaliacaoRepository.listarAvaliacoesPorUsu(usuExect);
+    }
 }
